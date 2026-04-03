@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.23.11/css/uikit.min.css"/>
 
   <!-- Fonts: modern sans + refined serif -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     /* ─── BRAND IDENTITY: 770E75 (deep magenta), 010100 (near-black), 255E0B (forest green) ─── */
@@ -303,7 +303,13 @@
       margin-bottom: 42px;
     }
 
-    /* Products slider (categories) */
+    /* Products slider - FIXED CLIPPING ISSUE */
+    .uk-slider-container {
+      overflow: visible !important;
+    }
+    .uk-slider-items {
+      overflow: visible !important;
+    }
     .product-card {
       background: white;
       border-radius: 28px;
@@ -311,11 +317,15 @@
       text-align: center;
       transition: all 0.3s var(--transition);
       border: 1px solid var(--gray-200);
+      margin: 6px;
+      position: relative;
+      z-index: 2;
     }
     .product-card:hover {
       transform: translateY(-8px);
       border-color: var(--magenta);
-      box-shadow: 0 20px 32px rgba(0,0,0,0.04);
+      box-shadow: 0 20px 32px rgba(0,0,0,0.08);
+      z-index: 10;
     }
     .product-icon {
       width: 80px;
@@ -342,23 +352,56 @@
       font-size: 12px;
       color: var(--gray-600);
     }
+    /* slider navigation visibility */
+    .uk-position-center-left-out, .uk-position-center-right-out {
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-    /* Pricing cards */
+    /* Pricing cards with image on top */
     .price-card {
       background: white;
       border-radius: 32px;
       border: 1px solid var(--gray-200);
       overflow: hidden;
       transition: all 0.3s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
     }
     .price-card:hover {
       transform: translateY(-6px);
       border-color: var(--magenta);
       box-shadow: 0 24px 44px rgba(0,0,0,0.06);
     }
+    .price-img {
+      height: 160px;
+      background: var(--gray-100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .price-img svg {
+      width: 80px;
+      height: 80px;
+      stroke: var(--magenta);
+      stroke-width: 1.2;
+    }
+    .price-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
     .price-header {
-      padding: 28px 24px 12px 24px;
-      background: var(--white);
+      padding: 24px 24px 12px 24px;
     }
     .price-brand {
       font-size: 11px;
@@ -390,6 +433,7 @@
       padding: 0 24px 24px;
       border-top: 1px solid var(--gray-200);
       margin-top: 8px;
+      flex: 1;
     }
     .price-features ul {
       list-style: none;
@@ -414,23 +458,37 @@
       margin-bottom: 12px;
     }
 
-    /* stats */
-    .stat-block {
-      background: var(--black);
-      border-radius: 48px;
-      padding: 64px 48px;
+    /* stats - NO BACKGROUND, clean inline */
+    .stats-inline {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 32px;
+      border-top: 1px solid var(--gray-200);
+      border-bottom: 1px solid var(--gray-200);
+      padding: 48px 0;
+    }
+    .stat-item {
+      flex: 1;
+      min-width: 180px;
     }
     .stat-number {
       font-family: var(--serif);
-      font-size: 68px;
+      font-size: 58px;
       font-weight: 700;
       color: var(--magenta);
       line-height: 1;
     }
     .stat-label {
-      color: rgba(255,255,255,0.7);
+      color: var(--gray-800);
       font-weight: 500;
       letter-spacing: -0.2px;
+      margin-top: 8px;
+    }
+    .stat-sub {
+      font-size: 12px;
+      color: var(--gray-600);
+      margin-top: 4px;
     }
 
     /* CTA + map */
@@ -442,6 +500,24 @@
       background: #f0efe7;
       border-radius: 28px;
       overflow: hidden;
+      padding: 20px;
+      text-align: center;
+    }
+
+    /* terms line */
+    .terms-line {
+      text-align: center;
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--gray-600);
+      line-height: 1.9;
+      border-top: 1px solid var(--gray-200);
+      padding-top: 32px;
+      margin-top: 16px;
+    }
+    .terms-line strong {
+      color: var(--black);
+      font-weight: 500;
     }
 
     /* footer */
@@ -457,7 +533,7 @@
       color: var(--magenta);
     }
 
-    /* slider nav custom */
+    /* slider custom */
     .uk-slidenav {
       color: var(--gray-600) !important;
       background: white;
@@ -471,6 +547,7 @@
     }
     @media (max-width: 740px) {
       .section { padding: 64px 0; }
+      .stats-inline { flex-direction: column; gap: 24px; }
     }
   </style>
 </head>
@@ -496,7 +573,7 @@
         </div>
         <div class="uk-navbar-right">
           <a class="btn-outline-light uk-visible@m" href="https://wa.me/254700000000?text=Hello%20NexGas!%20I%20need%20LPG%20delivery" target="_blank">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884z"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
             Order Gas
           </a>
           <div class="uk-navbar-item uk-hidden@m">
@@ -542,7 +619,7 @@
   </div>
 </section>
 
-<!-- PRODUCTS / CATEGORIES slider -->
+<!-- PRODUCTS / CATEGORIES slider - FIXED CLIPPING -->
 <section id="products" class="section">
   <div class="uk-container">
     <div class="eyebrow green"><span></span> Complete range</div>
@@ -553,8 +630,8 @@
 
     <div uk-slider="autoplay: true; interval: 5000; sets: true">
       <div class="uk-position-relative">
-        <div class="uk-slider-container">
-          <ul class="uk-slider-items uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@l uk-grid uk-grid-medium">
+        <div class="uk-slider-container" style="overflow: visible !important;">
+          <ul class="uk-slider-items uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@l uk-grid uk-grid-medium" style="overflow: visible !important;">
             <li><div class="product-card"><div class="product-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><div class="product-name">Cylinders</div><div class="product-tag">6kg – 50kg</div></div></li>
             <li><div class="product-card"><div class="product-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div class="product-name">Refills</div><div class="product-tag">Same-day swap</div></div></li>
             <li><div class="product-card"><div class="product-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M8 4h8v4H8z"/></svg></div><div class="product-name">Cookers</div><div class="product-tag">2–4 burners</div></div></li>
@@ -570,7 +647,7 @@
   </div>
 </section>
 
-<!-- PRICING GRID -->
+<!-- PRICING GRID with IMAGES on top -->
 <section id="pricing" class="section" style="background: var(--gray-100);">
   <div class="uk-container">
     <div class="eyebrow"><span></span> Transparent rates</div>
@@ -579,22 +656,24 @@
       <p class="section-sub">All prices include VAT & free delivery for orders above 2,500 KES within Nairobi.</p>
     </div>
     <div class="uk-grid uk-grid-medium uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-3@m" uk-grid>
-      <div><div class="price-card reveal-up delay-1"><div class="price-header"><div class="price-brand">K-Gas</div><div class="price-weight">6 kg</div><div class="price-amount">1,450<small> KES</small></div></div><div class="price-features"><ul><li>✔ Best for 2-3 person home</li><li>✔ Standard regulator fit</li><li>✔ 24h cylinder exchange</li></ul><a href="https://wa.me/254700000000?text=Order%20K-Gas%206kg" target="_blank" class="btn-outline-dark" style="display: block; text-align: center;">Order on WhatsApp →</a></div></div></div>
-      <div><div class="price-card reveal-up delay-2" style="border-top: 4px solid var(--magenta);"><div class="price-header"><span class="badge-best">⭐ Best seller</span><div class="price-brand">Total Gas</div><div class="price-weight">13 kg</div><div class="price-amount">2,950<small> KES</small></div></div><div class="price-features"><ul><li>✔ Most popular household size</li><li>✔ Longest lasting value</li><li>✔ Free delivery included</li></ul><a href="https://wa.me/254700000000?text=Order%20Total%2013kg" target="_blank" class="btn-primary" style="width: 100%; justify-content: center;">Buy Now →</a></div></div></div>
-      <div><div class="price-card reveal-up delay-3"><div class="price-header"><div class="price-brand">Afri Gas</div><div class="price-weight">22.5 kg</div><div class="price-amount">5,200<small> KES</small></div></div><div class="price-features"><ul><li>✔ Large families / small biz</li><li>✔ Best per-kg rate</li><li>✔ Priority dispatch</li></ul><a href="https://wa.me/254700000000?text=Afri%20Gas%2022.5kg" target="_blank" class="btn-outline-dark" style="display: block; text-align: center;">Enquire →</a></div></div></div>
+      <!-- Card 1: K-Gas 6kg -->
+      <div><div class="price-card reveal-up delay-1"><div class="price-img"><svg viewBox="0 0 48 48" fill="none"><rect x="14" y="13" width="20" height="27" rx="6" stroke="var(--magenta)" stroke-width="1.8"/><rect x="18" y="7" width="12" height="8" rx="4" stroke="var(--magenta)" stroke-width="1.4"/><circle cx="24" cy="7" r="2.5" fill="var(--magenta)"/></svg></div><div class="price-header"><div class="price-brand">K-Gas</div><div class="price-weight">6 kg Cylinder</div><div class="price-amount">1,450<small> KES</small></div></div><div class="price-features"><ul><li>✔ Best for 2-3 person home</li><li>✔ Standard regulator fit</li><li>✔ 24h cylinder exchange</li></ul><a href="https://wa.me/254700000000?text=Order%20K-Gas%206kg" target="_blank" class="btn-outline-dark" style="display: block; text-align: center;">Order on WhatsApp →</a></div></div></div>
+      <!-- Card 2: Total Gas 13kg best seller -->
+      <div><div class="price-card reveal-up delay-2" style="border-top: 4px solid var(--magenta);"><div class="price-img"><svg viewBox="0 0 48 48" fill="none"><rect x="14" y="13" width="20" height="27" rx="6" stroke="var(--green)" stroke-width="1.8"/><path d="M24 9C24 9 19 15 19 20C19 24 21 27 24 27C27 27 29 24 29 20C29 15 24 9 24 9Z" stroke="var(--green)" stroke-width="1.6"/></svg></div><div class="price-header"><span class="badge-best">⭐ Best seller</span><div class="price-brand">Total Gas</div><div class="price-weight">13 kg Cylinder</div><div class="price-amount">2,950<small> KES</small></div></div><div class="price-features"><ul><li>✔ Most popular household size</li><li>✔ Longest lasting value</li><li>✔ Free delivery included</li></ul><a href="https://wa.me/254700000000?text=Order%20Total%2013kg" target="_blank" class="btn-primary" style="width: 100%; justify-content: center;">Buy Now →</a></div></div></div>
+      <!-- Card 3: Afri Gas 22.5kg -->
+      <div><div class="price-card reveal-up delay-3"><div class="price-img"><svg viewBox="0 0 48 48" fill="none"><rect x="13" y="14" width="22" height="26" rx="5" stroke="var(--magenta)" stroke-width="1.8"/><line x1="20" y1="8" x2="28" y2="8" stroke="var(--magenta)" stroke-width="1.8"/></svg></div><div class="price-header"><div class="price-brand">Afri Gas</div><div class="price-weight">22.5 kg Cylinder</div><div class="price-amount">5,200<small> KES</small></div></div><div class="price-features"><ul><li>✔ Large families / small biz</li><li>✔ Best per-kg rate</li><li>✔ Priority dispatch</li></ul><a href="https://wa.me/254700000000?text=Afri%20Gas%2022.5kg" target="_blank" class="btn-outline-dark" style="display: block; text-align: center;">Enquire →</a></div></div></div>
     </div>
     <div class="uk-text-center uk-margin-large-top"><a href="https://wa.me/254700000000?text=Pricing%20inquiry" class="btn-secondary" style="background: var(--black);">Need commercial 50kg? Talk to us →</a></div>
   </div>
 </section>
 
-<!-- STATS + COVERAGE -->
+<!-- STATS - NO BACKGROUND, clean border layout -->
 <section id="coverage" class="section-sm">
   <div class="uk-container">
-    <div class="stat-block">
-      <div class="uk-grid uk-grid-large uk-child-width-1-2@s uk-flex-middle" uk-grid>
-        <div class="reveal-left"><div class="stat-number" id="statCounter">0</div><div class="stat-label">Neighbourhoods covered across Nairobi + Kiambu</div><div class="stat-label" style="font-size: 13px; margin-top: 8px;">🚚 Avg. delivery 38 minutes</div></div>
-        <div class="reveal-right"><div class="stat-number">24/7</div><div class="stat-label">Customer support & on-demand delivery</div><div class="stat-label" style="font-size: 13px;">⭐ 4.98/5 from 1,200+ reviews</div></div>
-      </div>
+    <div class="stats-inline">
+      <div class="stat-item reveal-left"><div class="stat-number" id="statCounter">0</div><div class="stat-label">Neighbourhoods covered</div><div class="stat-sub">Nairobi, Kiambu & surrounding</div></div>
+      <div class="stat-item reveal-up"><div class="stat-number">38<span style="font-size: 32px;">min</span></div><div class="stat-label">Average delivery time</div><div class="stat-sub">From order to doorstep</div></div>
+      <div class="stat-item reveal-right"><div class="stat-number">24/7</div><div class="stat-label">Customer support</div><div class="stat-sub">Live chat & phone</div></div>
     </div>
   </div>
 </section>
@@ -610,16 +689,26 @@
         <a class="btn-primary" href="https://wa.me/254700000000?text=I%20need%20gas%20delivery!" target="_blank"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg> Order on WhatsApp</a>
       </div>
       <div class="uk-width-auto@m reveal-right">
-        <div class="map-simple" style="width: 300px; height: 260px; background: #d9d9cf; display: flex; align-items: center; justify-content: center; flex-direction: column;">
-          <svg width="140" height="140" viewBox="0 0 24 24" fill="none" stroke="var(--magenta)" stroke-width="1.2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="3" fill="var(--magenta)" stroke="none"/></svg>
+        <div class="map-simple" style="width: 300px; background: #eae8df; text-align: center;">
+          <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="var(--magenta)" stroke-width="1.2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="3" fill="var(--magenta)" stroke="none"/></svg>
           <div class="uk-text-bold">NexGas Hub, Nairobi CBD</div>
           <div class="uk-text-small">Westlands • Kilimani • Eastleigh • All estates</div>
-          <a href="https://maps.google.com/?q=Nairobi+Kenya" target="_blank" style="margin-top: 12px; font-size: 12px; color: var(--magenta);">Get directions →</a>
+          <a href="https://maps.google.com/?q=Nairobi+Kenya" target="_blank" style="margin-top: 12px; font-size: 12px; color: var(--magenta); display: inline-block;">Get directions →</a>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- TERMS LINE (restored from original) -->
+<div class="uk-container" style="padding-bottom: 20px;">
+  <div class="terms-line">
+    <strong>Terms &amp; Conditions —</strong> Prices in KES include VAT and are subject to change per ERC-regulated LPG rates.
+    Free delivery within Nairobi on orders above KES 2,500. Cylinder exchange requires a valid empty cylinder of the same brand and size.
+    NexGas Limited is not liable for injury or damage from improper use, installation or storage of gas equipment.
+    All cylinders remain property of their respective brand companies. Payment due on delivery — M-Pesa, cash and card accepted.
+  </div>
+</div>
 
 <!-- FOOTER -->
 <footer class="footer uk-padding-large uk-padding-remove-horizontal">
