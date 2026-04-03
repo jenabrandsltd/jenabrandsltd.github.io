@@ -1,709 +1,754 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="NexGas – Smart LPG delivery, Nairobi's most reliable gas vendor. Safe, fast, transparent.">
-  <title>NexGas | LPG Delivery Nairobi</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23770E75'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3E%3C/svg%3E" type="image/svg+xml">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Jena Brands Limited – Fast, reliable LPG gas delivery across Nairobi. Premium brands, best prices.">
+  <title>Jena Brands | LPG Delivery Nairobi</title>
 
-  <!-- UIkit 3.23.11 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.23.11/css/uikit.min.css"/>
-
-  <!-- Fonts: modern sans + refined serif -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Fonts & minimal styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <!-- Swiper (lightweight) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
   <style>
-    /* ─── BRAND IDENTITY: 770E75 (deep magenta), 010100 (near-black), 255E0B (forest green) ─── */
-    :root {
-      --magenta: #770E75;
-      --magenta-dark: #5e0a5c;
-      --magenta-soft: #f9eff9;
-      --green: #255E0B;
-      --green-bright: #2f7512;
-      --green-soft: #edf7e8;
-      --black: #010100;
-      --gray-100: #f6f6f5;
-      --gray-200: #eaeae8;
-      --gray-600: #5a5a58;
-      --gray-800: #2b2b28;
-      --white: #ffffff;
-      --serif: 'Space Grotesk', system-ui, -apple-system, monospace;
-      --sans: 'Inter', system-ui, -apple-system, sans-serif;
-      --transition: cubic-bezier(0.2, 0.9, 0.4, 1.1);
-    }
+    /* ---------- RESET + BASE ---------- */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
+
     body {
-      font-family: var(--sans);
-      background: var(--white);
-      color: var(--black);
+      font-family: 'Inter', sans-serif;
+      background: #ffffff;
+      color: #111111;
+      line-height: 1.4;
       scroll-behavior: smooth;
-      -webkit-font-smoothing: antialiased;
-    }
-    ::selection {
-      background: var(--magenta);
-      color: white;
     }
 
-    /* tighter container max-width */
-    .uk-container {
-      max-width: 1120px;
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    /* minimal container */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
       padding: 0 24px;
     }
-    @media (max-width: 760px) {
-      .uk-container { padding: 0 18px; }
-    }
-    .section {
-      padding: 72px 0;
+
+    /* section spacing */
+    section {
+      padding: 80px 0;
     }
     .section-sm {
       padding: 48px 0;
     }
+
+    /* typography */
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 10px;
+      font-size: 0.75rem;
       font-weight: 600;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--magenta);
-      margin-bottom: 16px;
+      color: #1e5c10;
+      margin-bottom: 0.5rem;
     }
-    .eyebrow span {
-      width: 24px;
-      height: 2px;
-      background: var(--magenta);
-      display: inline-block;
-    }
-    .eyebrow.green span {
-      background: var(--green);
-    }
-    .eyebrow.green {
-      color: var(--green);
-    }
-    .section-title {
-      font-family: var(--serif);
-      font-size: clamp(32px, 4.8vw, 52px);
-      font-weight: 600;
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      color: var(--black);
-    }
-    .section-sub {
-      font-size: 14px;
-      line-height: 1.6;
-      color: var(--gray-600);
-      max-width: 400px;
+    .eyebrow::before {
+      content: "— ";
+      opacity: 0.7;
     }
 
-    /* navbar */
-    .nav-wrap {
+    h2 {
+      font-size: clamp(1.8rem, 5vw, 2.6rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: #0a1f05;
+    }
+
+    .text-muted {
+      color: #4a5562;
+      font-size: 0.9rem;
+      max-width: 560px;
+    }
+
+    /* ----- NAVIGATION (clean, minimal) ----- */
+    nav {
       position: fixed;
       top: 0;
       left: 0;
-      right: 0;
-      z-index: 100;
-      transition: all 0.3s ease;
+      width: 100%;
+      z-index: 1000;
+      padding: 0 24px;
+      transition: all 0.2s ease;
       background: transparent;
     }
-    .nav-wrap.scrolled {
-      background: rgba(1,1,0,0.92);
-      backdrop-filter: blur(16px);
-      box-shadow: 0 1px 0 rgba(255,255,255,0.05);
+    nav.scrolled {
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 rgba(0,0,0,0.04);
     }
-    .uk-navbar-container {
-      background: transparent !important;
-    }
-    .uk-navbar-nav > li > a {
-      font-family: var(--sans);
-      font-size: 12.5px;
-      font-weight: 500;
-      letter-spacing: 0.02em;
-      color: rgba(255,255,255,0.75) !important;
-      transition: color 0.2s;
-    }
-    .nav-wrap.scrolled .uk-navbar-nav > li > a {
-      color: rgba(255,255,255,0.85) !important;
-    }
-    .uk-navbar-nav > li > a:hover {
-      color: var(--magenta) !important;
-    }
-    .btn-outline-light {
-      display: inline-flex;
+    .nav-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
       align-items: center;
-      gap: 6px;
-      background: transparent;
-      border: 1px solid rgba(255,255,255,0.3);
-      border-radius: 40px;
-      padding: 6px 18px;
-      font-size: 12px;
-      font-weight: 600;
-      color: white;
-      transition: all 0.2s;
+      justify-content: space-between;
+      height: 68px;
     }
-    .btn-outline-light:hover {
-      background: var(--magenta);
-      border-color: var(--magenta);
-      color: white;
-    }
-    .btn-primary {
-      display: inline-flex;
+    .logo {
+      display: flex;
       align-items: center;
       gap: 8px;
-      background: var(--magenta);
-      color: white;
-      font-weight: 600;
-      font-size: 13px;
-      padding: 10px 24px;
-      border-radius: 44px;
-      text-decoration: none;
-      transition: all 0.25s;
-      border: none;
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: #1e5c10;
     }
-    .btn-primary:hover {
-      background: var(--magenta-dark);
-      transform: translateY(-1px);
-      box-shadow: 0 8px 18px rgba(119,14,117,0.25);
-      color: white;
+    .logo-img {
+      height: 38px;
+      width: auto;
+      object-fit: contain;
     }
-    .btn-secondary {
-      background: var(--green);
-      color: white;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 10px 22px;
-      border-radius: 44px;
-      font-weight: 600;
-      font-size: 13px;
-      text-decoration: none;
-      transition: 0.2s;
+    .logo-text {
+      line-height: 1;
     }
-    .btn-secondary:hover {
-      background: var(--green-bright);
-      transform: translateY(-1px);
-      color: white;
-    }
-    .btn-outline-dark {
-      border: 1px solid var(--gray-200);
-      background: white;
-      border-radius: 44px;
-      padding: 8px 20px;
+    .logo-sub {
+      font-size: 0.55rem;
       font-weight: 500;
-      font-size: 12px;
+      letter-spacing: 0.2em;
+      color: #6b1fa8;
+      text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #1a2a18;
+    }
+    .nav-links a:hover {
+      color: #1e5c10;
+    }
+    .btn-order {
+      background: #1e5c10;
+      color: white !important;
+      padding: 8px 20px;
+      border-radius: 60px;
+      font-weight: 600;
       transition: 0.2s;
-      color: var(--black);
-      text-decoration: none;
       display: inline-flex;
       align-items: center;
-      justify-content: center;
       gap: 6px;
     }
-    .btn-outline-dark:hover {
-      border-color: var(--magenta);
-      background: var(--magenta-soft);
-      color: var(--magenta);
+    .btn-order:hover {
+      background: #13430a;
+      transform: scale(0.97);
+    }
+    /* mobile */
+    .menu-icon {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+    .menu-icon span {
+      width: 22px;
+      height: 2px;
+      background: #1a2a18;
+      border-radius: 2px;
+      transition: 0.2s;
+    }
+    @media (max-width: 800px) {
+      .nav-links {
+        display: none;
+      }
+      .menu-icon {
+        display: flex;
+      }
+    }
+    /* drawer (minimal) */
+    .drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 280px;
+      height: 100%;
+      background: #0f0f0f;
+      z-index: 1100;
+      padding: 32px 24px;
+      transform: translateX(100%);
+      transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .drawer.open {
+      transform: translateX(0);
+    }
+    .drawer a {
+      color: #e0e0e0;
+      font-weight: 500;
+      font-size: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 12px 0;
+    }
+    .drawer .drawer-cta {
+      background: #1e5c10;
+      text-align: center;
+      border-radius: 60px;
+      padding: 12px;
+      border: none;
+      margin-top: 16px;
+    }
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.3);
+      z-index: 1050;
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.2s;
+    }
+    .overlay.show {
+      opacity: 1;
+      pointer-events: auto;
     }
 
-    /* Hero */
-    #hero {
-      min-height: 92vh;
-      background: var(--black);
+    /* ----- HERO (minimal, impactful) ----- */
+    .hero-swiper {
+      width: 100%;
+      height: 90vh;
+      min-height: 560px;
+    }
+    .hero-slide {
       position: relative;
       display: flex;
       align-items: flex-end;
-      overflow: hidden;
     }
-    .hero-bg-gradient {
+    .hero-bg {
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 80% 20%, rgba(119,14,117,0.22), rgba(37,94,11,0.1), #010100 90%);
+      background-size: cover;
+      background-position: center 30%;
+      filter: brightness(0.78);
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
     }
     .hero-content {
       position: relative;
-      z-index: 3;
-      padding: 120px 0 70px;
+      z-index: 2;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+      width: 100%;
     }
     .hero-badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: rgba(119,14,117,0.18);
-      backdrop-filter: blur(4px);
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(6px);
       border-radius: 60px;
-      padding: 4px 14px;
-      font-size: 11px;
-      font-weight: 500;
-      color: rgba(255,255,255,0.7);
-      margin-bottom: 20px;
-      border: 0.5px solid rgba(255,255,255,0.1);
+      padding: 4px 12px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: white;
+      letter-spacing: 0.05em;
+      margin-bottom: 1.2rem;
     }
     .hero-title {
-      font-family: var(--serif);
-      font-size: clamp(46px, 8vw, 88px);
-      font-weight: 700;
-      line-height: 0.96;
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      font-weight: 800;
+      line-height: 1.05;
       letter-spacing: -0.02em;
       color: white;
-      margin-bottom: 20px;
+      max-width: 720px;
+      margin-bottom: 1rem;
     }
     .hero-title span {
-      background: linear-gradient(135deg, #ffffff, var(--magenta), var(--green));
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
+      color: #b0f0a3;
     }
     .hero-desc {
-      font-size: 14px;
-      color: rgba(255,255,255,0.55);
-      max-width: 420px;
-      line-height: 1.65;
-      margin-bottom: 32px;
+      color: rgba(255,255,255,0.8);
+      max-width: 460px;
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
     }
-
-    /* Products slider - FIXED CLIPPING + TIGHTER */
-    .uk-slider-container {
-      overflow: visible !important;
-    }
-    .uk-slider-items {
-      overflow: visible !important;
-    }
-    .product-card {
-      background: white;
-      border-radius: 24px;
-      padding: 20px 12px 16px;
-      text-align: center;
-      transition: all 0.3s var(--transition);
-      border: 1px solid var(--gray-200);
-      margin: 4px;
-      position: relative;
-      z-index: 2;
-    }
-    .product-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--magenta);
-      box-shadow: 0 16px 28px rgba(0,0,0,0.06);
-      z-index: 10;
-    }
-    .product-icon {
-      width: 68px;
-      height: 68px;
-      margin: 0 auto 12px;
-      background: var(--magenta-soft);
-      border-radius: 50%;
+    .hero-buttons {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--magenta);
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: #1e5c10;
+      color: white;
+      padding: 12px 28px;
+      border-radius: 60px;
+      font-weight: 600;
       transition: 0.2s;
     }
-    .product-card:hover .product-icon {
-      background: var(--magenta);
+    .btn-outline-light {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.4);
       color: white;
-    }
-    .product-name {
-      font-weight: 700;
-      font-size: 15px;
-      margin-bottom: 4px;
-    }
-    .product-tag {
-      font-size: 11px;
-      color: var(--gray-600);
-    }
-    .uk-position-center-left-out, .uk-position-center-right-out {
-      background: white;
-      border-radius: 50%;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      width: 38px;
-      height: 38px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* Pricing cards with image on top - tighter */
-    .price-card {
-      background: white;
-      border-radius: 28px;
-      border: 1px solid var(--gray-200);
-      overflow: hidden;
-      transition: all 0.3s ease;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-    .price-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--magenta);
-      box-shadow: 0 20px 32px rgba(0,0,0,0.05);
-    }
-    .price-img {
-      height: 130px;
-      background: var(--gray-100);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      border-bottom: 1px solid var(--gray-200);
-    }
-    .price-img svg {
-      width: 64px;
-      height: 64px;
-      stroke: var(--magenta);
-      stroke-width: 1.2;
-    }
-    .price-header {
-      padding: 18px 20px 8px 20px;
-    }
-    .price-brand {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--magenta);
-    }
-    .price-weight {
-      font-family: var(--serif);
-      font-size: 26px;
-      font-weight: 700;
-      line-height: 1;
-      margin: 6px 0;
-    }
-    .price-amount {
-      font-size: 36px;
-      font-weight: 800;
-      color: var(--green);
-      line-height: 1;
-      margin: 8px 0;
-    }
-    .price-amount small {
-      font-size: 13px;
+      padding: 12px 28px;
+      border-radius: 60px;
       font-weight: 500;
-      color: var(--gray-600);
+      transition: 0.2s;
     }
-    .price-features {
-      padding: 0 20px 20px;
-      border-top: 1px solid var(--gray-200);
-      margin-top: 6px;
-      flex: 1;
+    .btn-primary:hover, .btn-outline-light:hover {
+      transform: translateY(-2px);
     }
-    .price-features ul {
-      list-style: none;
-      padding: 12px 0 8px;
+    .stats-row {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(255,255,255,0.1);
     }
-    .price-features li {
-      font-size: 12px;
-      padding: 5px 0;
+    .stats-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 16px 24px;
       display: flex;
-      gap: 6px;
-      align-items: center;
-      color: var(--gray-800);
-    }
-    .badge-best {
-      background: var(--magenta);
-      color: white;
-      font-size: 9px;
-      font-weight: 700;
-      padding: 3px 10px;
-      border-radius: 30px;
-      display: inline-block;
-      margin-bottom: 10px;
-    }
-
-    /* stats - NO BACKGROUND, tight border */
-    .stats-inline {
-      display: flex;
-      flex-wrap: wrap;
       justify-content: space-between;
       gap: 24px;
-      border-top: 1px solid var(--gray-200);
-      border-bottom: 1px solid var(--gray-200);
-      padding: 40px 0;
+      flex-wrap: wrap;
     }
     .stat-item {
       flex: 1;
-      min-width: 150px;
+      text-align: center;
     }
     .stat-number {
-      font-family: var(--serif);
-      font-size: 48px;
-      font-weight: 700;
-      color: var(--magenta);
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: #b0f0a3;
       line-height: 1;
     }
     .stat-label {
-      color: var(--gray-800);
-      font-weight: 500;
-      font-size: 13px;
-      letter-spacing: -0.2px;
-      margin-top: 6px;
-    }
-    .stat-sub {
-      font-size: 11px;
-      color: var(--gray-600);
-      margin-top: 3px;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.6);
+      margin-top: 4px;
     }
 
-    /* CTA + map tighter */
-    .cta-section {
-      background: linear-gradient(135deg, var(--magenta-soft) 0%, var(--green-soft) 100%);
-      border-radius: 36px;
-      padding: 40px 36px !important;
+    /* ----- category slider (light) ----- */
+    .cat-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
     }
-    .map-simple {
-      background: #f0efe7;
-      border-radius: 24px;
-      overflow: hidden;
-      padding: 16px;
-      text-align: center;
-      width: 260px;
+    .cat-nav {
+      display: flex;
+      gap: 8px;
     }
-    @media (max-width: 860px) {
-      .map-simple { width: 100%; margin-top: 20px; }
-      .cta-section { padding: 32px 24px !important; }
-    }
-
-    /* terms line */
-    .terms-line {
-      text-align: center;
-      font-size: 11px;
-      font-weight: 300;
-      color: var(--gray-600);
-      line-height: 1.8;
-      border-top: 1px solid var(--gray-200);
-      padding-top: 28px;
-      margin-top: 12px;
-    }
-    .terms-line strong {
-      color: var(--black);
-      font-weight: 500;
-    }
-
-    /* footer tighter */
-    .footer {
-      background: var(--black);
-      color: rgba(255,255,255,0.65);
-      padding: 48px 0 24px;
-    }
-    .footer a {
-      color: rgba(255,255,255,0.55);
+    .cat-nav button {
+      width: 40px;
+      height: 40px;
+      border-radius: 60px;
+      border: 1px solid #e2e8f0;
+      background: white;
       transition: 0.2s;
-      font-size: 13px;
     }
-    .footer a:hover {
-      color: var(--magenta);
+    .categories-swiper {
+      overflow: visible;
+    }
+    .cat-card {
+      background: #f8faf6;
+      border-radius: 28px;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      border: 1px solid #eef2e6;
+      transition: all 0.2s;
+      cursor: default;
+    }
+    .cat-card:hover {
+      border-color: #1e5c10;
+      background: white;
+      transform: translateY(-4px);
+    }
+    .cat-icon {
+      width: 56px;
+      height: 56px;
+      background: white;
+      border-radius: 20px;
+      margin: 0 auto 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    }
+    .cat-name {
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+    .cat-meta {
+      font-size: 0.7rem;
+      color: #5b6e5a;
+      margin-top: 4px;
     }
 
-    /* reveal animations */
-    .reveal-up, .reveal-left, .reveal-right {
-      opacity: 0;
-      transition: opacity 0.6s var(--transition), transform 0.6s var(--transition);
+    /* ----- product grid (clean cards) ----- */
+    .products-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
     }
-    .reveal-up { transform: translateY(28px); }
-    .reveal-left { transform: translateX(-24px); }
-    .reveal-right { transform: translateX(24px); }
-    .reveal-up.on, .reveal-left.on, .reveal-right.on {
-      opacity: 1;
-      transform: none;
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
     }
-    .delay-1 { transition-delay: 0.05s; }
-    .delay-2 { transition-delay: 0.12s; }
-    .delay-3 { transition-delay: 0.19s; }
-    .delay-4 { transition-delay: 0.26s; }
+    .product-card {
+      background: white;
+      border-radius: 28px;
+      border: 1px solid #edf2e8;
+      transition: all 0.2s;
+      overflow: hidden;
+    }
+    .product-card:hover {
+      border-color: #cbdcc1;
+      box-shadow: 0 12px 24px -12px rgba(0,0,0,0.08);
+    }
+    .product-img {
+      background: #f4f9f0;
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: #1e5c10;
+      color: white;
+      font-size: 0.6rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 60px;
+      text-transform: uppercase;
+    }
+    .badge-purple {
+      background: #6b1fa8;
+    }
+    .product-info {
+      padding: 1.2rem;
+    }
+    .brand {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #1e5c10;
+    }
+    .product-title {
+      font-weight: 800;
+      font-size: 1.2rem;
+      margin: 4px 0 8px;
+    }
+    .price {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #1e5c10;
+      margin: 10px 0 12px;
+      letter-spacing: -0.01em;
+    }
+    .price small {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #5e6f5c;
+    }
+    .product-actions {
+      display: flex;
+      gap: 8px;
+    }
+    .wa-btn, .call-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 0;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.8rem;
+      transition: 0.2s;
+    }
+    .wa-btn {
+      background: #25D366;
+      color: white;
+    }
+    .call-btn {
+      background: #111;
+      color: white;
+    }
+    .terms-note {
+      text-align: center;
+      font-size: 0.7rem;
+      color: #6c757d;
+      margin-top: 2rem;
+      border-top: 1px solid #ececec;
+      padding-top: 1.5rem;
+    }
+
+    /* stats band (monochrome minimal) */
+    .stats-band {
+      background: #0f1c0b;
+      border-radius: 32px;
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 1px;
+      background: #1e2a1a;
+      overflow: hidden;
+    }
+    .band-item {
+      background: #0f1c0b;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    .band-number {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #b0f0a3;
+    }
+    .band-label {
+      font-size: 0.7rem;
+      color: #bac9b3;
+      text-transform: uppercase;
+    }
+
+    /* why us grid */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 2rem;
+    }
+    .why-card {
+      background: #fbfef8;
+      border-radius: 28px;
+      padding: 1.8rem;
+      border: 1px solid #eef2e6;
+    }
+    .why-icon {
+      width: 44px;
+      height: 44px;
+      background: #eaf4e4;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    /* cta + map */
+    .cta-map {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 24px;
+    }
+    .cta-card {
+      background: linear-gradient(135deg, #15420b, #1e5c10);
+      border-radius: 32px;
+      padding: 2.5rem;
+      color: white;
+    }
+    .cta-card h3 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+    }
+    .map-card {
+      background: white;
+      border-radius: 32px;
+      border: 1px solid #edf2e8;
+      overflow: hidden;
+    }
+    .map-frame {
+      height: 200px;
+    }
+    .map-footer {
+      padding: 1rem;
+      border-top: 1px solid #f0f0f0;
+    }
+
+    /* footer */
+    footer {
+      background: #0a1307;
+      color: #b6c4b0;
+      padding: 64px 0 32px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+    @media (max-width: 700px) {
+      .footer-grid, .cta-map { grid-template-columns: 1fr; }
+      .stats-band { grid-template-columns: 1fr 1fr; }
+    }
+    .copyright {
+      font-size: 0.7rem;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding-top: 32px;
+    }
+    svg.icon { width: 18px; height: 18px; stroke-width: 1.6; }
   </style>
 </head>
 <body>
 
-<!-- NAVBAR -->
-<div class="nav-wrap" id="navbar">
-  <nav class="uk-navbar-container">
-    <div class="uk-container">
-      <div uk-navbar style="min-height: 66px;">
-        <div class="uk-navbar-left">
-          <a class="uk-navbar-item" href="#" style="padding:0; font-family: var(--serif); font-weight: 700; font-size: 20px; letter-spacing: -0.3px; color: white;">
-            NEX<span style="color: var(--magenta);">GAS</span>
-          </a>
-        </div>
-        <div class="uk-navbar-center uk-visible@m">
-          <ul class="uk-navbar-nav">
-            <li><a href="#products">Products</a></li>
-            <li><a href="#pricing">Pricing</a></li>
-            <li><a href="#coverage">Coverage</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-        <div class="uk-navbar-right">
-          <a class="btn-outline-light uk-visible@m" href="https://wa.me/254700000000?text=Hello%20NexGas!%20I%20need%20LPG%20delivery" target="_blank">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
-            Order
-          </a>
-          <div class="uk-navbar-item uk-hidden@m">
-            <a href="#offcanvas-nav" uk-toggle style="color: white;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="14" x2="21" y2="14"/></svg></a>
-          </div>
-        </div>
-      </div>
+<!-- minimal nav -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%231e5c10'/%3E%3Ctext x='20' y='27' text-anchor='middle' fill='white' font-size='20' font-weight='bold' font-family='monospace'%3EJ%3C/text%3E%3C/svg%3E" alt="Jena" class="logo-img">
+      <div class="logo-text">JENA<span class="logo-sub">BRANDS</span></div>
+    </a>
+    <div class="nav-links">
+      <a href="#products">Gas</a>
+      <a href="#prices">Prices</a>
+      <a href="#why">Why Us</a>
+      <a href="#contact">Contact</a>
+      <a href="https://wa.me/254700123456" class="btn-order">Order →</a>
     </div>
-  </nav>
+    <div class="menu-icon" id="menuToggle">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+<div class="overlay" id="overlay"></div>
+<div class="drawer" id="drawer">
+  <a href="#products" class="drawer-link">Gas cylinders</a>
+  <a href="#prices" class="drawer-link">Prices</a>
+  <a href="#why" class="drawer-link">Why Jena</a>
+  <a href="#contact" class="drawer-link">Location</a>
+  <a href="https://wa.me/254700123456" class="drawer-cta">Order on WhatsApp →</a>
 </div>
 
-<!-- Offcanvas -->
-<div id="offcanvas-nav" uk-offcanvas="overlay: true; flip: true">
-  <div class="uk-offcanvas-bar" style="background: var(--black); padding: 32px 24px;">
-    <button class="uk-offcanvas-close" type="button" uk-close style="color: rgba(255,255,255,0.5);"></button>
-    <div style="margin-bottom: 32px;">
-      <div style="font-size: 22px; font-weight: 700; color: white;">NEX<span style="color: var(--magenta);">GAS</span></div>
-    </div>
-    <ul class="uk-nav uk-nav-default" style="color: white;">
-      <li><a href="#products" style="color: rgba(255,255,255,0.7);" uk-toggle="target:#offcanvas-nav">Products</a></li>
-      <li><a href="#pricing" style="color: rgba(255,255,255,0.7);" uk-toggle="target:#offcanvas-nav">Pricing</a></li>
-      <li><a href="#coverage" style="color: rgba(255,255,255,0.7);" uk-toggle="target:#offcanvas-nav">Coverage</a></li>
-      <li><a href="#contact" style="color: rgba(255,255,255,0.7);" uk-toggle="target:#offcanvas-nav">Contact</a></li>
-    </ul>
-    <a class="btn-primary" href="https://wa.me/254700000000" target="_blank" style="margin-top: 32px; width: 100%; justify-content: center;">Order on WhatsApp</a>
-  </div>
-</div>
-
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-bg-gradient"></div>
-  <div class="hero-content">
-    <div class="uk-container">
-      <div class="hero-badge reveal-up delay-1">🔥 Smart LPG • Nairobi's fastest</div>
-      <h1 class="hero-title reveal-up delay-2">Gas delivered.<br><span>Zero downtime.</span></h1>
-      <p class="hero-desc reveal-up delay-3">Premium LPG refills, cylinders & accessories — to your doorstep in under 40 minutes. Safe, certified.</p>
-      <div class="reveal-up delay-4" style="display: flex; gap: 12px; flex-wrap: wrap;">
-        <a class="btn-primary" href="#pricing">View Prices →</a>
-        <a class="btn-secondary" href="https://wa.me/254700000000" target="_blank">Order via WhatsApp</a>
+<!-- HERO Swiper -->
+<section style="padding:0;">
+  <div class="swiper hero-swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide hero-slide">
+        <div class="hero-bg" style="background-image: linear-gradient(120deg,#0f2a0a,#1c4a10), url('data:image/svg+xml,%3Csvg...'); background-blend-mode: overlay;"></div>
+        <div class="hero-content"><div class="hero-badge">⚡ Same-day delivery</div><h1 class="hero-title">Gas to your door,<br><span>fast & safe.</span></h1><p class="hero-desc">Top LPG brands delivered across Nairobi in under 45 minutes. Genuine cylinders, transparent pricing.</p><div class="hero-buttons"><a href="#prices" class="btn-primary">View prices</a><a href="tel:+254700123456" class="btn-outline-light">Call now</a></div></div>
+      </div>
+      <div class="swiper-slide hero-slide">
+        <div class="hero-bg" style="background-image: linear-gradient(120deg,#1e3b1a,#3e1e6b);"></div>
+        <div class="hero-content"><div class="hero-badge">🏆 Best prices</div><h1 class="hero-title">Premium gas,<br><span>unmatched value.</span></h1><p class="hero-desc">K-Gas, Pro Gas, Total, Rubis — Nairobi’s most competitive rates + free delivery above KSh 2,500.</p><div class="hero-buttons"><a href="#products" class="btn-primary">Order now</a><a href="https://wa.me/254700123456" class="btn-outline-light">WhatsApp</a></div></div>
       </div>
     </div>
+    <div class="stats-row"><div class="stats-inner"><div class="stat-item"><div class="stat-number">80+</div><div class="stat-label">Neighbourhoods</div></div><div class="stat-item"><div class="stat-number">38<span style="font-size:1rem">min</span></div><div class="stat-label">Avg delivery</div></div><div class="stat-item"><div class="stat-number">6+</div><div class="stat-label">Gas brands</div></div><div class="stat-item"><div class="stat-number">7am–9pm</div><div class="stat-label">Daily</div></div></div></div>
+    <div class="swiper-pagination"></div>
   </div>
 </section>
 
-<!-- PRODUCTS slider - fully visible -->
-<section id="products" class="section">
-  <div class="uk-container">
-    <div class="eyebrow green"><span></span> Complete range</div>
-    <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px; margin-bottom: 40px;">
-      <h2 class="section-title">Everything LPG,<br>one place.</h2>
-      <p class="section-sub">From 6kg cylinders to industrial cookers, regulators and safety gear — all genuine brands.</p>
-    </div>
-    <div uk-slider="autoplay: true; interval: 5000; sets: true">
-      <div class="uk-position-relative">
-        <div class="uk-slider-container" style="overflow: visible !important;">
-          <ul class="uk-slider-items uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@l uk-grid uk-grid-small" style="overflow: visible !important;">
-            <li><div class="product-card"><div class="product-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><div class="product-name">Cylinders</div><div class="product-tag">6kg – 50kg</div></div></li>
-            <li><div class="product-card"><div class="product-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div class="product-name">Refills</div><div class="product-tag">Same-day swap</div></div></li>
-            <li><div class="product-card"><div class="product-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M8 4h8v4H8z"/></svg></div><div class="product-name">Cookers</div><div class="product-tag">2–4 burners</div></div></li>
-            <li><div class="product-card"><div class="product-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div><div class="product-name">Regulators</div><div class="product-tag">All types</div></div></li>
-            <li><div class="product-card"><div class="product-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-4 9 4-9 4-9-4zM3 15l9 4 9-4"/></svg></div><div class="product-name">Hoses</div><div class="product-tag">Rubber, copper</div></div></li>
-            <li><div class="product-card"><div class="product-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="product-name">Safety Kits</div><div class="product-tag">Detectors</div></div></li>
-          </ul>
-        </div>
-        <a class="uk-position-center-left-out uk-slidenav-large" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
-        <a class="uk-position-center-right-out uk-slidenav-large" href="#" uk-slidenav-next uk-slider-item="next"></a>
-      </div>
-    </div>
+<!-- CATEGORIES slider -->
+<section id="products">
+  <div class="container">
+    <div class="cat-header"><div><div class="eyebrow">Range</div><h2>Everything LPG</h2></div><div class="cat-nav"><button class="cat-prev">←</button><button class="cat-next">→</button></div></div>
+    <div class="swiper categories-swiper"><div class="swiper-wrapper">
+      <div class="swiper-slide" style="width:200px"><div class="cat-card"><div class="cat-icon">🍲</div><div class="cat-name">6kg</div><div class="cat-meta">Home kitchen</div></div></div>
+      <div class="swiper-slide" style="width:200px"><div class="cat-card"><div class="cat-icon">🔥</div><div class="cat-name">13kg</div><div class="cat-meta">Best seller</div></div></div>
+      <div class="swiper-slide" style="width:200px"><div class="cat-card"><div class="cat-icon">🏭</div><div class="cat-name">22.5kg</div><div class="cat-meta">Commercial</div></div></div>
+      <div class="swiper-slide" style="width:200px"><div class="cat-card"><div class="cat-icon">🏢</div><div class="cat-name">50kg Bulk</div><div class="cat-meta">Industries</div></div></div>
+      <div class="swiper-slide" style="width:200px"><div class="cat-card"><div class="cat-icon">⚙️</div><div class="cat-name">Regulators</div><div class="cat-meta">Safety gear</div></div></div>
+      <div class="swiper-slide" style="width:200px"><div class="cat-card"><div class="cat-icon">🧯</div><div class="cat-name">Hoses</div><div class="cat-meta">Certified</div></div></div>
+    </div></div>
   </div>
 </section>
 
-<!-- PRICING GRID with images on top -->
-<section id="pricing" class="section" style="background: var(--gray-100);">
-  <div class="uk-container">
-    <div class="eyebrow"><span></span> Transparent rates</div>
-    <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 40px;">
-      <h2 class="section-title">Competitive<br>prices, daily updated.</h2>
-      <p class="section-sub">All prices include VAT & free delivery for orders above 2,500 KES.</p>
+<!-- PRICES grid -->
+<section id="prices">
+  <div class="container">
+    <div class="products-header"><div><div class="eyebrow">Today's prices</div><h2>Gas & accessories</h2></div><p class="text-muted">Free delivery Nairobi ≥ KSh 2,500. All taxes included.</p></div>
+    <div class="product-grid">
+      <div class="product-card"><div class="product-img"><span class="badge">Best seller</span>🥫</div><div class="product-info"><div class="brand">K-Gas</div><div class="product-title">6kg Cylinder</div><div class="price">KSh 1,450 <small>incl VAT</small></div><div class="product-actions"><button class="wa-btn wa-order" data-product="K-Gas 6kg - KSh 1,450">WhatsApp</button><button class="call-btn call-order">Call</button></div></div></div>
+      <div class="product-card"><div class="product-img"><span class="badge badge-purple">Popular</span>⛽</div><div class="product-info"><div class="brand">Pro Gas</div><div class="product-title">13kg Cylinder</div><div class="price">KSh 2,850 <small>incl VAT</small></div><div class="product-actions"><button class="wa-btn wa-order" data-product="Pro Gas 13kg - KSh 2,850">WhatsApp</button><button class="call-btn call-order">Call</button></div></div></div>
+      <div class="product-card"><div class="product-img"><span class="badge">Bundle</span>🎁</div><div class="product-info"><div class="brand">Total Gas</div><div class="product-title">6kg + Regulator</div><div class="price">KSh 1,590 <small>incl VAT</small></div><div class="product-actions"><button class="wa-btn wa-order" data-product="Total 6kg + Regulator - KSh 1,590">WhatsApp</button><button class="call-btn call-order">Call</button></div></div></div>
+      <div class="product-card"><div class="product-img">🔴</div><div class="product-info"><div class="brand">Rubis Energy</div><div class="product-title">13kg Cylinder</div><div class="price">KSh 2,950 <small>incl VAT</small></div><div class="product-actions"><button class="wa-btn wa-order" data-product="Rubis 13kg - KSh 2,950">WhatsApp</button><button class="call-btn call-order">Call</button></div></div></div>
+      <div class="product-card"><div class="product-img">🏭</div><div class="product-info"><div class="brand">Afri Gas</div><div class="product-title">22.5kg Commercial</div><div class="price">KSh 5,200 <small>incl VAT</small></div><div class="product-actions"><button class="wa-btn wa-order" data-product="Afri Gas 22.5kg - KSh 5,200">WhatsApp</button><button class="call-btn call-order">Call</button></div></div></div>
+      <div class="product-card"><div class="product-img"><span class="badge badge-purple">Commercial</span>🏗️</div><div class="product-info"><div class="brand">Oryx Gas</div><div class="product-title">50kg Bulk</div><div class="price">KSh 10,500 <small>incl VAT</small></div><div class="product-actions"><button class="wa-btn wa-order" data-product="Oryx 50kg Commercial - KSh 10,500">Enquire</button><button class="call-btn call-order">Call</button></div></div></div>
     </div>
-    <div class="uk-grid uk-grid-small uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-3@m" uk-grid>
-      <div><div class="price-card reveal-up delay-1"><div class="price-img"><svg viewBox="0 0 48 48" fill="none"><rect x="14" y="13" width="20" height="27" rx="6" stroke="var(--magenta)" stroke-width="1.6"/><rect x="18" y="7" width="12" height="8" rx="4" stroke="var(--magenta)" stroke-width="1.4"/></svg></div><div class="price-header"><div class="price-brand">K-Gas</div><div class="price-weight">6 kg</div><div class="price-amount">1,450<small> KES</small></div></div><div class="price-features"><ul><li>✔ Best for 2-3 person home</li><li>✔ 24h cylinder exchange</li></ul><a href="https://wa.me/254700000000?text=Order%20K-Gas%206kg" target="_blank" class="btn-outline-dark" style="width:100%">Order →</a></div></div></div>
-      <div><div class="price-card reveal-up delay-2" style="border-top: 3px solid var(--magenta);"><div class="price-img"><svg viewBox="0 0 48 48" fill="none"><rect x="14" y="13" width="20" height="27" rx="6" stroke="var(--green)" stroke-width="1.6"/><path d="M24 9C24 9 19 15 19 20C19 24 21 27 24 27C27 27 29 24 29 20C29 15 24 9 24 9Z" stroke="var(--green)" stroke-width="1.4"/></svg></div><div class="price-header"><span class="badge-best">⭐ Best seller</span><div class="price-brand">Total Gas</div><div class="price-weight">13 kg</div><div class="price-amount">2,950<small> KES</small></div></div><div class="price-features"><ul><li>✔ Most popular household size</li><li>✔ Free delivery included</li></ul><a href="https://wa.me/254700000000?text=Order%20Total%2013kg" target="_blank" class="btn-primary" style="width:100%; justify-content:center;">Buy Now →</a></div></div></div>
-      <div><div class="price-card reveal-up delay-3"><div class="price-img"><svg viewBox="0 0 48 48" fill="none"><rect x="13" y="14" width="22" height="26" rx="5" stroke="var(--magenta)" stroke-width="1.6"/><line x1="20" y1="8" x2="28" y2="8" stroke="var(--magenta)" stroke-width="1.6"/></svg></div><div class="price-header"><div class="price-brand">Afri Gas</div><div class="price-weight">22.5 kg</div><div class="price-amount">5,200<small> KES</small></div></div><div class="price-features"><ul><li>✔ Large families / small biz</li><li>✔ Best per-kg rate</li></ul><a href="https://wa.me/254700000000?text=Afri%20Gas%2022.5kg" target="_blank" class="btn-outline-dark" style="width:100%">Enquire →</a></div></div></div>
-    </div>
-    <div class="uk-text-center uk-margin-medium-top"><a href="https://wa.me/254700000000?text=Pricing%20inquiry" class="btn-secondary" style="background: var(--black); font-size:12px;">Need commercial 50kg? Talk to us →</a></div>
+    <div class="terms-note">✔️ Valid empty cylinder exchange required. M-Pesa / Cash on delivery. Genuine safety-tested cylinders.</div>
   </div>
 </section>
 
-<!-- STATS - NO BACKGROUND, clean -->
-<section id="coverage" class="section-sm">
-  <div class="uk-container">
-    <div class="stats-inline">
-      <div class="stat-item reveal-left"><div class="stat-number" id="statCounter">0</div><div class="stat-label">Neighbourhoods covered</div><div class="stat-sub">Nairobi, Kiambu & surrounds</div></div>
-      <div class="stat-item reveal-up"><div class="stat-number">38<span style="font-size: 28px;">min</span></div><div class="stat-label">Average delivery time</div><div class="stat-sub">From order to doorstep</div></div>
-      <div class="stat-item reveal-right"><div class="stat-number">24/7</div><div class="stat-label">Customer support</div><div class="stat-sub">Live chat & phone</div></div>
-    </div>
-  </div>
+<!-- STATS band minimal -->
+<section class="section-sm">
+  <div class="container"><div class="stats-band"><div class="band-item"><div class="band-number">84+</div><div class="band-label">Areas covered</div></div><div class="band-item"><div class="band-number">38<span style="font-size:1rem">min</span></div><div class="band-label">Delivery avg</div></div><div class="band-item"><div class="band-number">7</div><div class="band-label">Days a week</div></div><div class="band-item"><div class="band-number">24/7</div><div class="band-label">Support</div></div></div></div>
 </section>
 
-<!-- CTA + MAP tighter -->
-<section id="contact" class="section-sm">
-  <div class="uk-container">
-    <div class="cta-section uk-flex uk-flex-between uk-flex-wrap uk-grid-small" uk-grid>
-      <div class="uk-width-expand@m reveal-up">
-        <div class="eyebrow"><span></span> Running low?</div>
-        <h2 class="section-title" style="color: var(--black); font-size: clamp(28px,4vw,42px);">Order gas,<br>we’ll be there.</h2>
-        <p class="uk-margin-small" style="color: var(--gray-800); max-width: 380px; font-size: 13px;">WhatsApp your order, pay via M-Pesa, relax. Gas arrives before you know it.</p>
-        <a class="btn-primary" href="https://wa.me/254700000000?text=I%20need%20gas%20delivery!" target="_blank" style="margin-top: 12px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg> Order on WhatsApp</a>
-      </div>
-      <div class="uk-width-auto@m reveal-right">
-        <div class="map-simple">
-          <svg width="70" height="70" viewBox="0 0 24 24" fill="none" stroke="var(--magenta)" stroke-width="1.2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="3" fill="var(--magenta)" stroke="none"/></svg>
-          <div class="uk-text-bold" style="font-size: 13px;">NexGas Hub, Nairobi</div>
-          <div class="uk-text-small" style="font-size: 11px;">Westlands • Kilimani • Eastleigh</div>
-          <a href="https://maps.google.com/?q=Nairobi+Kenya" target="_blank" style="margin-top: 8px; font-size: 11px; color: var(--magenta);">Get directions →</a>
-        </div>
-      </div>
-    </div>
-  </div>
+<!-- WHY US -->
+<section id="why">
+  <div class="container"><div style="text-align:center;margin-bottom:2rem;"><div class="eyebrow">Why choose us</div><h2>Safe. Fast. Reliable.</h2></div>
+  <div class="why-grid"><div class="why-card"><div class="why-icon">✅</div><h4>100% Genuine Gas</h4><p class="text-muted" style="margin-top:6px;">Sourced directly from licensed distributors.</p></div>
+  <div class="why-card"><div class="why-icon">⚡</div><h4>Fast Delivery</h4><p class="text-muted">Average 38 minutes across Nairobi.</p></div>
+  <div class="why-card"><div class="why-icon">💰</div><h4>Transparent Pricing</h4><p class="text-muted">No hidden fees, price = final.</p></div>
+  <div class="why-card"><div class="why-icon">📞</div><h4>24/7 Support</h4><p class="text-muted">Call or WhatsApp any time.</p></div></div></div>
 </section>
 
-<!-- TERMS LINE (restored) -->
-<div class="uk-container">
-  <div class="terms-line">
-    <strong>Terms &amp; Conditions —</strong> Prices in KES include VAT and are subject to change per ERC-regulated LPG rates.
-    Free delivery within Nairobi on orders above KES 2,500. Cylinder exchange requires a valid empty cylinder of the same brand and size.
-    NexGas Limited is not liable for injury or damage from improper use. Payment due on delivery — M-Pesa, cash and card accepted.
-  </div>
-</div>
+<!-- CONTACT + MAP -->
+<section id="contact">
+  <div class="container"><div class="cta-map"><div class="cta-card"><h3>Need gas urgently?</h3><p>Order on WhatsApp & get doorstep delivery in under 45min. 7 days a week, payment on delivery.</p><div style="display:flex;gap:12px;margin-top:1.5rem;"><a href="https://wa.me/254700123456" class="btn-primary" style="background:#25D366;">WhatsApp order</a><a href="tel:+254700123456" class="btn-outline-light" style="border-color:rgba(255,255,255,0.3);">+254 700 123 456</a></div></div>
+    <div class="map-card"><div class="map-frame"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.819753614264!2d36.82146647456375!3d-1.2865442355918797!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10d4df0f2cc9%3A0xbebf4a7a5d0e2e3!2sNairobi%20CBD!5e0!3m2!1sen!2ske!4v1719999999999" width="100%" height="200" style="border:0;" loading="lazy"></iframe></div><div class="map-footer"><div>📍 Nairobi CBD, Kenya</div><div>🕒 Mon–Sun 7am – 9pm</div><a href="https://maps.google.com/?q=Nairobi+CBD" target="_blank" style="display:inline-block;margin-top:10px;background:#1e5c10;color:white;padding:8px 16px;border-radius:60px;font-size:0.75rem;">Get directions →</a></div></div>
+  </div></div>
+</section>
 
-<!-- FOOTER tighter -->
-<footer class="footer">
-  <div class="uk-container">
-    <div class="uk-grid uk-grid-small uk-child-width-1-2@s uk-child-width-1-3@m" uk-grid>
-      <div><div style="font-size: 22px; font-weight: 700;">NEX<span style="color: var(--magenta);">GAS</span></div><p class="uk-margin-small-top" style="font-size: 12px;">Safe, certified LPG solutions across Nairobi.</p><a href="https://wa.me/254700000000" style="background: var(--magenta); padding: 6px 16px; border-radius: 40px; display: inline-block; font-size:12px;">+254 700 000 000</a></div>
-      <div><h4 style="font-size: 12px; letter-spacing: 1px;">Explore</h4><ul class="uk-list" style="font-size: 12px;"><li><a href="#products">Products</a></li><li><a href="#pricing">Prices</a></li><li><a href="#coverage">Coverage</a></li></ul></div>
-      <div><h4 style="font-size: 12px; letter-spacing: 1px;">Support</h4><ul class="uk-list" style="font-size: 12px;"><li><a href="https://wa.me/254700000000">WhatsApp</a></li><li><a href="tel:+254700000000">Call us</a></li><li><a href="#">Safety tips</a></li></ul></div>
-    </div>
-    <div class="uk-text-center uk-margin-medium-top" style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; font-size: 11px;">© 2025 NexGas — premium LPG vendor. All rights reserved.</div>
-  </div>
-</footer>
+<footer><div class="container"><div class="footer-grid"><div><div class="logo" style="margin-bottom:1rem;">JENA<span style="color:#a3e0a3;">BRANDS</span></div><p style="font-size:0.8rem;">Nairobi's trusted LPG delivery. Premium brands, genuine cylinders, unmatched speed.</p><div style="margin-top:1rem;"><a href="tel:+254700123456" style="display:block;color:#b6c4b0;">📞 +254 700 123 456</a><a href="mailto:info@jenabrands.co.ke" style="color:#b6c4b0;">✉️ info@jenabrands.co.ke</a></div></div><div><h5 style="color:white;">Quick links</h5><ul style="list-style:none;margin-top:0.5rem;"><li><a href="#products">Gas cylinders</a></li><li><a href="#prices">Prices</a></li><li><a href="#why">Why us</a></li></ul></div><div><h5 style="color:white;">Hours</h5><p>Mon–Fri: 7am–9pm<br>Sat: 8am–8pm<br>Sun: 9am–5pm</p></div></div><div class="copyright">© 2026 Jena Brands Limited — Premium LPG Solutions, Nairobi. Safety first.</div></div></footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.23.11/js/uikit.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.23.11/js/uikit-icons.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
-  const navWrap = document.getElementById('navbar');
-  window.addEventListener('scroll', () => { navWrap.classList.toggle('scrolled', window.scrollY > 30); });
-  const reveals = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => { if(entry.isIntersecting) { entry.target.classList.add('on'); observer.unobserve(entry.target); } });
-  }, { threshold: 0.1 });
-  reveals.forEach(el => observer.observe(el));
-  const statObs = new IntersectionObserver(entries => {
-    if(entries[0].isIntersecting){
-      const counter = document.getElementById('statCounter');
-      if(counter && counter.innerText === '0'){
-        let current = 0, target = 78;
-        const update = () => { if(current < target) { current += Math.ceil((target - current)/12); counter.innerText = current; requestAnimationFrame(update); } else counter.innerText = target; };
-        update();
-        statObs.disconnect();
-      }
-    }
-  }, { threshold: 0.5 });
-  if(document.getElementById('statCounter')) statObs.observe(document.getElementById('coverage'));
+  // nav scroll
+  const navEl = document.getElementById('navbar');
+  window.addEventListener('scroll', () => { if(window.scrollY > 20) navEl.classList.add('scrolled'); else navEl.classList.remove('scrolled'); });
+  // drawer
+  const toggle = document.getElementById('menuToggle'), drawer = document.getElementById('drawer'), overlay = document.getElementById('overlay');
+  function openDrawer(){ drawer.classList.add('open'); overlay.classList.add('show'); document.body.style.overflow='hidden'; }
+  function closeDrawer(){ drawer.classList.remove('open'); overlay.classList.remove('show'); document.body.style.overflow=''; }
+  toggle.addEventListener('click', openDrawer);
+  overlay.addEventListener('click', closeDrawer);
+  document.querySelectorAll('.drawer-link').forEach(link => link.addEventListener('click', closeDrawer));
+  // hero swiper
+  new Swiper('.hero-swiper', { loop: true, autoplay: { delay: 5000 }, effect: 'fade', pagination: { el: '.swiper-pagination', clickable: true } });
+  // categories swiper
+  new Swiper('.categories-swiper', { slidesPerView: 'auto', spaceBetween: 16, navigation: { nextEl: '.cat-next', prevEl: '.cat-prev' } });
+  // whatsapp buttons
+  document.querySelectorAll('.wa-order').forEach(btn => { btn.addEventListener('click', () => { const prod = btn.dataset.product || 'LPG product'; window.open(`https://wa.me/254700123456?text=${encodeURIComponent(`Hi Jena Brands, I'd like to order: ${prod}. Please deliver.`)}`, '_blank'); }); });
+  document.querySelectorAll('.call-order').forEach(btn => { btn.addEventListener('click', () => { window.location.href = 'tel:+254700123456'; }); });
 </script>
 </body>
 </html>
