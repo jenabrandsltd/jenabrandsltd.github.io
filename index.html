@@ -2,576 +2,983 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Jena Brands Limited – Fast, reliable LPG gas delivery across Nairobi.">
-  <title>Jena Brands Limited – LPG Gas Delivery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Jena Brands Limited – Premium LPG gas delivery across Nairobi. Fast, reliable, genuine.">
+  <title>Jena Brands Limited</title>
 
-  <link rel="icon" type="image/jpeg" href="favicon.jpg">
+  <link rel="icon" type="image/jpeg" href="assets/img/favicon.jpg">
 
   <!-- UIkit 3 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.21.4/css/uikit.min.css"/>
 
-  <!-- Cormorant (luxury serif display) + DM Sans (refined body) -->
+  <!-- Fonts: Cormorant Garamond (display) + Outfit (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
+    /* ─── TOKENS ───────────────────────────────────────────────── */
     :root {
-      --g:     #2a6318;
-      --g2:    #1b4410;
-      --g3:    #3d8a28;
-      --p:     #6b23a8;
-      --ink:   #0f110e;
-      --mid:   #697165;
-      --faint: #f5f4f0;
-      --line:  rgba(0,0,0,0.07);
-      --white: #ffffff;
-      --ff-d:  'Cormorant', Georgia, serif;
-      --ff-b:  'DM Sans', system-ui, sans-serif;
-      --ease:  cubic-bezier(.25,.46,.45,.94);
+      --green:       #2a5f1a;
+      --green-mid:   #3a7a26;
+      --green-pale:  #f0f5ee;
+      --purple:      #6b24a8;
+      --purple-pale: #f5f0fb;
+      --ink:         #111008;
+      --ink-60:      rgba(17,16,8,.6);
+      --ink-30:      rgba(17,16,8,.3);
+      --ink-10:      rgba(17,16,8,.07);
+      --cream:       #faf9f6;
+      --white:       #ffffff;
+      --lime:        #9fda3a;
+      --r-card:      18px;
+      --r-btn:       100px;
+      --ease:        cubic-bezier(.16,1,.3,1);
     }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: var(--ff-b);
+      font-family: 'Outfit', sans-serif;
+      background: var(--cream);
       color: var(--ink);
-      background: var(--white);
-      -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* REVEAL */
-    .r { opacity: 0; transform: translateY(24px); transition: opacity .65s var(--ease), transform .65s var(--ease); }
-    .r.left  { transform: translateX(-24px); }
-    .r.right { transform: translateX(24px); }
-    .r.on  { opacity: 1; transform: translate(0); }
-    .d1 { transition-delay: .1s; } .d2 { transition-delay: .2s; } .d3 { transition-delay: .35s; }
+    /* ─── SCROLL REVEAL ─────────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .9s var(--ease), transform .9s var(--ease);
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+    .reveal-delay-4 { transition-delay: .4s; }
+    .reveal-delay-5 { transition-delay: .5s; }
 
-    /* NAV */
-    .snav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 900;
-      transition: background .3s, box-shadow .3s;
+    /* ─── NAV ───────────────────────────────────────────────────── */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      transition: background .4s, border-color .4s, box-shadow .4s;
+      border-bottom: 1px solid transparent;
     }
-    .snav.up {
-      background: rgba(255,255,255,.97);
-      box-shadow: 0 1px 0 var(--line);
-      backdrop-filter: blur(10px);
+    #nav.scrolled {
+      background: rgba(250,249,246,.92);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-color: var(--ink-10);
+      box-shadow: 0 2px 32px rgba(17,16,8,.06);
     }
-    .ni {
-      max-width: 1200px; margin: 0 auto; padding: 0 32px;
-      height: 68px; display: flex; align-items: center; justify-content: space-between;
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
-    .nlogo img { height: 42px; width: auto; display: block; }
-    .nlogo { text-decoration: none; }
-    .nlinks { display: flex; align-items: center; gap: 32px; list-style: none; }
-    .nlinks a { font-size: 13.5px; font-weight: 500; letter-spacing: .03em; color: var(--ink); text-decoration: none; opacity: .6; transition: opacity .2s; }
-    .nlinks a:hover { opacity: 1; }
-    .ncta {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--g); color: #fff !important; opacity: 1 !important;
-      border-radius: 3px; padding: 9px 20px;
-      font-size: 12px !important; font-weight: 600 !important;
-      letter-spacing: .07em; text-transform: uppercase;
-      transition: background .2s !important;
+    .nav-logo img {
+      height: 44px;
+      width: auto;
+      display: block;
     }
-    .ncta:hover { background: var(--g2) !important; }
-    .nhbg { display: none; background: none; border: none; cursor: pointer; padding: 6px; color: var(--ink); align-items: center; }
-    @media (max-width: 768px) { .nlinks { display: none; } .nhbg { display: flex; } }
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 13.5px;
+      font-weight: 500;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 2px;
+      transition: color .25s;
+    }
+    #nav.scrolled .nav-links a { color: var(--ink); }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0;
+      width: 0; height: 1.5px;
+      background: var(--green);
+      transition: width .35s var(--ease);
+    }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a:hover { color: var(--lime); }
+    #nav.scrolled .nav-links a:hover { color: var(--green); }
+    .btn-nav-cta {
+      background: rgba(255,255,255,.15);
+      color: var(--white) !important;
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px !important;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: var(--r-btn);
+      padding: 10px 26px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background .25s, border-color .25s, transform .2s;
+      display: inline-block;
+      backdrop-filter: blur(8px);
+    }
+    #nav.scrolled .btn-nav-cta {
+      background: var(--green);
+      border-color: var(--green);
+    }
+    .btn-nav-cta:hover {
+      background: var(--lime);
+      color: var(--ink) !important;
+      border-color: var(--lime);
+      transform: translateY(-1px);
+    }
+    .nav-hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      color: var(--white);
+    }
+    #nav.scrolled .nav-hamburger { color: var(--ink); }
+    @media (max-width: 768px) {
+      .nav-links-wrap { display: none !important; }
+      .nav-hamburger { display: block; }
+    }
 
-    /* OFFCANVAS */
-    .uk-offcanvas-bar { background: var(--ink) !important; width: 290px !important; padding: 44px 28px !important; }
-    .ocb { font-family: var(--ff-d); font-size: 20px; font-weight: 600; color: #fff; display: block; margin-bottom: 2px; text-decoration: none; }
-    .ocs { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--g3); margin-bottom: 36px; display: block; }
-    .ocnav { list-style: none; }
-    .ocnav li { border-bottom: 1px solid rgba(255,255,255,.07); }
-    .ocnav a { display: block; padding: 14px 0; font-size: 15px; font-weight: 300; color: rgba(255,255,255,.65); text-decoration: none; transition: color .2s; }
-    .ocnav a:hover { color: #fff; }
-    .ocsoc { display: flex; gap: 10px; margin-top: 36px; }
-    .ocsoc a { width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgba(255,255,255,.13); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.4); text-decoration: none; transition: border-color .2s, color .2s; }
-    .ocsoc a:hover { border-color: var(--g3); color: var(--g3); }
-
-    /* HERO */
-    #hero { position: relative; height: 100vh; min-height: 620px; display: flex; align-items: flex-end; overflow: hidden; }
-    .hbg {
-      position: absolute; inset: 0;
-      background: linear-gradient(155deg, #0a1c06 0%, #162e0f 40%, #2a6318 100%);
-      animation: kb 20s ease-in-out infinite alternate;
+    /* ─── OFF CANVAS ────────────────────────────────────────────── */
+    .uk-offcanvas-bar {
+      background: var(--ink) !important;
+      width: 300px !important;
     }
-    @keyframes kb {
-      0%   { transform: scale(1.0) translate(0,0); }
-      50%  { transform: scale(1.07) translate(-1%, .7%); }
-      100% { transform: scale(1.04) translate(.6%, -1%); }
+    .oc-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--white);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 40px;
     }
-    .hgrain {
-      position: absolute; inset: 0; pointer-events: none; opacity: .5; mix-blend-mode: overlay;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");
-      background-size: 200px;
+    .oc-logo span { color: var(--lime); }
+    .oc-nav { list-style: none; }
+    .oc-nav li { border-bottom: 1px solid rgba(255,255,255,.07); }
+    .oc-nav a {
+      display: block;
+      padding: 16px 0;
+      font-size: 17px;
+      font-weight: 500;
+      letter-spacing: .02em;
+      color: rgba(255,255,255,.75);
+      text-decoration: none;
+      transition: color .2s, padding-left .25s;
     }
-    .hovl { position: absolute; inset: 0; background: linear-gradient(to top, rgba(8,16,5,.85) 0%, rgba(8,16,5,.15) 65%, transparent 100%); }
-    .hcnt { position: relative; z-index: 2; width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 32px 80px; }
-    .hey {
-      display: inline-flex; align-items: center; gap: 10px;
-      font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
-      color: rgba(255,255,255,.45); margin-bottom: 18px;
-      opacity: 0; animation: fu .8s var(--ease) .3s forwards;
+    .oc-nav a:hover { color: var(--lime); padding-left: 8px; }
+    .oc-footer {
+      position: absolute;
+      bottom: 36px; left: 32px; right: 32px;
     }
-    .hey::before { content: ''; width: 28px; height: 1px; background: var(--g3); display: block; }
-    .hh1 {
-      font-family: var(--ff-d);
-      font-size: clamp(54px, 8.5vw, 108px);
-      font-weight: 600; line-height: .93; letter-spacing: -.01em; color: #fff;
-      margin-bottom: 32px;
-      opacity: 0; animation: fu .9s var(--ease) .5s forwards;
-    }
-    .hh1 em { font-style: italic; color: #9de05e; }
-    .hrow {
-      display: flex; align-items: flex-end; justify-content: space-between; gap: 28px; flex-wrap: wrap;
-      opacity: 0; animation: fu .8s var(--ease) .78s forwards;
-    }
-    .hp { font-size: 15.5px; font-weight: 300; color: rgba(255,255,255,.55); line-height: 1.8; max-width: 360px; }
-    .hbtns { display: flex; gap: 10px; flex-shrink: 0; }
-    .htrust {
-      display: flex; gap: 28px; margin-top: 20px; flex-wrap: wrap;
-      opacity: 0; animation: fu .7s var(--ease) 1s forwards;
-    }
-    .tpill { display: flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 400; letter-spacing: .03em; color: rgba(255,255,255,.38); }
-    .tpill svg { color: #9de05e; flex-shrink: 0; }
-    @keyframes fu { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
-
-    /* BUTTONS */
-    .bp {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--g3); color: #fff; border: none; border-radius: 3px;
-      padding: 13px 26px; font-family: var(--ff-b); font-size: 12px; font-weight: 600;
-      letter-spacing: .07em; text-transform: uppercase; cursor: pointer; text-decoration: none;
-      transition: background .2s;
-    }
-    .bp:hover { background: var(--g); color: #fff; }
-    .bg {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: transparent; color: rgba(255,255,255,.65); border: 1px solid rgba(255,255,255,.2);
-      border-radius: 3px; padding: 12px 22px; font-family: var(--ff-b); font-size: 12px; font-weight: 400;
-      letter-spacing: .05em; cursor: pointer; text-decoration: none;
+    .oc-socials { display: flex; gap: 12px; margin-top: 24px; }
+    .oc-socials a {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.15);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,.5);
+      text-decoration: none;
       transition: border-color .2s, color .2s;
     }
-    .bg:hover { border-color: rgba(255,255,255,.5); color: #fff; }
-
-    /* WRAP */
-    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
-
-    /* SECTION LABELS */
-    .slbl { display: block; font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--g); margin-bottom: 12px; }
-    .stitle { font-family: var(--ff-d); font-size: clamp(32px, 4.5vw, 54px); font-weight: 600; line-height: 1.04; letter-spacing: -.01em; color: var(--ink); }
-    .stitle em { font-style: italic; color: var(--g); }
-    .ssub { font-size: 15.5px; font-weight: 300; color: var(--mid); line-height: 1.8; max-width: 460px; }
-    .ln { height: 1px; background: var(--line); }
-
-    /* CATEGORIES */
-    #categories { padding: 96px 0 80px; }
-    .chdr { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 56px; gap: 20px; flex-wrap: wrap; }
-    .uk-slider-items .ci { padding-right: 12px; }
-    .ciw { width: 56px; height: 56px; border-radius: 50%; background: var(--faint); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; transition: background .25s; }
-    .ci:hover .ciw { background: rgba(42,99,24,.09); }
-    .ciw svg { width: 26px; height: 26px; }
-    .cn { font-family: var(--ff-d); font-size: 17px; font-weight: 600; color: var(--ink); margin-bottom: 3px; }
-    .cd { font-size: 13px; color: var(--mid); font-weight: 300; }
-    .cline { width: 0; height: 1.5px; background: var(--g); margin-top: 12px; transition: width .3s var(--ease); }
-    .ci:hover .cline { width: 28px; }
-
-    /* PRICES */
-    #prices { padding: 96px 0; background: var(--faint); }
-    .phdr { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 52px; gap: 20px; flex-wrap: wrap; }
-    .pgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
-    @media (max-width: 900px) { .pgrid { grid-template-columns: repeat(2,1fr); } }
-    @media (max-width: 560px) { .pgrid { grid-template-columns: 1fr; } }
-    .pc {
-      background: var(--white); display: flex; flex-direction: column; position: relative; overflow: hidden;
-      transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+    .oc-socials a:hover { border-color: var(--lime); color: var(--lime); }
+    .btn-oc-order {
+      display: block;
+      background: var(--green);
+      color: var(--white);
+      text-align: center;
+      padding: 14px;
+      border-radius: var(--r-btn);
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background .25s;
     }
-    .pc:hover { transform: translateY(-4px); box-shadow: 0 18px 52px rgba(0,0,0,.07); z-index: 2; }
-    .pc.star { outline: 2px solid var(--g); z-index: 1; }
-    .sbdge {
-      position: absolute; top: 14px; right: 14px;
-      background: var(--g); color: #fff;
-      font-size: 10px; font-weight: 600; letter-spacing: .09em; text-transform: uppercase;
-      padding: 4px 9px; border-radius: 2px;
-    }
-    .cimg { width: 100%; aspect-ratio: 4/3; background: #e4eddf; overflow: hidden; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .cimg img { width: 100%; height: 100%; object-fit: cover; transition: transform .55s var(--ease); display: block; }
-    .pc:hover .cimg img { transform: scale(1.04); }
-    .ciph { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
-    .ciph svg { width: 52px; height: 52px; color: rgba(42,99,24,.25); }
-    .ciph span { font-size: 11px; color: rgba(0,0,0,.22); letter-spacing: .07em; text-transform: uppercase; }
-    .cbody { padding: 22px 22px 0; flex: 1; display: flex; flex-direction: column; }
-    .cbrand { font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--g); margin-bottom: 4px; }
-    .cwt { font-family: var(--ff-d); font-size: 20px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
-    .cdesc { font-size: 13px; font-weight: 300; color: var(--mid); line-height: 1.65; margin-bottom: 18px; flex: 1; }
-    .cprice { font-family: var(--ff-d); font-size: 34px; font-weight: 700; color: var(--ink); letter-spacing: -.02em; line-height: 1; margin-bottom: 18px; }
-    .cprice sup { font-size: 15px; font-weight: 400; vertical-align: super; color: var(--mid); }
-    .cprice sub { font-size: 12px; font-weight: 300; color: var(--mid); vertical-align: baseline; }
-    .cacts { display: flex; gap: 7px; padding: 0 22px 22px; }
-    .bwa {
-      flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 6px;
-      background: var(--g); color: #fff; border: none; border-radius: 3px; padding: 11px 12px;
-      font-family: var(--ff-b); font-size: 11.5px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
-      cursor: pointer; text-decoration: none; transition: background .2s; min-width: 0;
-    }
-    .bwa:hover { background: #25D366; color: #fff; }
-    .bcall {
-      width: 42px; height: 42px; flex-shrink: 0; display: flex; align-items: center; justify-content: center;
-      background: transparent; border: 1px solid var(--line); border-radius: 3px; color: var(--mid);
-      cursor: pointer; text-decoration: none; transition: border-color .2s, color .2s;
-    }
-    .bcall:hover { border-color: var(--g); color: var(--g); }
+    .btn-oc-order:hover { background: var(--green-mid); color: var(--white); }
 
-    /* TERMS */
-    #terms { padding: 30px 0; border-top: 1px solid var(--line); }
-    .ttext { font-size: 12px; color: rgba(0,0,0,.33); text-align: center; max-width: 820px; margin: 0 auto; line-height: 2; font-weight: 300; }
-
-    /* STATS */
-    #stats { background: var(--ink); }
-    .sgrid { display: grid; grid-template-columns: 1fr 1fr; }
-    @media (max-width: 560px) { .sgrid { grid-template-columns: 1fr; } }
-    .sc { padding: 84px 56px; position: relative; overflow: hidden; }
-    .sc:first-child { border-right: 1px solid rgba(255,255,255,.06); }
-    @media (max-width: 560px) { .sc { padding: 56px 32px; } .sc:first-child { border-right: none; border-bottom: 1px solid rgba(255,255,255,.06); } }
-    .snum { font-family: var(--ff-d); font-size: clamp(60px,9vw,104px); font-weight: 600; color: #fff; line-height: .88; letter-spacing: -.02em; margin-bottom: 14px; }
-    .snum em { font-style: italic; color: #9de05e; }
-    .slabel { font-size: 14px; font-weight: 500; color: rgba(255,255,255,.8); margin-bottom: 4px; }
-    .ssublbl { font-size: 13px; font-weight: 300; color: rgba(255,255,255,.3); }
-    .sacc { position: absolute; right: -60px; top: -60px; width: 240px; height: 240px; border-radius: 50%; background: radial-gradient(circle, rgba(42,99,24,.3) 0%, transparent 70%); pointer-events: none; }
-
-    /* CTA + MAP */
-    #locate { padding: 96px 0; }
-    .lgrid { display: grid; grid-template-columns: 2fr 1fr; border: 1px solid var(--line); }
-    @media (max-width: 768px) { .lgrid { grid-template-columns: 1fr; } }
-    .lcta {
-      background: var(--g2); padding: 68px 56px; position: relative; overflow: hidden;
-      display: flex; flex-direction: column; justify-content: flex-end; min-height: 420px;
+    /* ─── HERO ───────────────────────────────────────────────────── */
+    #hero {
+      position: relative;
+      height: 100svh;
+      min-height: 600px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: 80px;
     }
-    @media (max-width: 640px) { .lcta { padding: 44px 28px; min-height: 340px; } }
-    .ldeco { position: absolute; right: -10px; top: -24px; font-family: var(--ff-d); font-size: 280px; font-weight: 700; line-height: 1; color: rgba(255,255,255,.025); pointer-events: none; user-select: none; }
-    .ltag { font-size: 11px; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; color: #9de05e; margin-bottom: 16px; position: relative; }
-    .lh2 { font-family: var(--ff-d); font-size: clamp(30px,4vw,50px); font-weight: 600; color: #fff; line-height: 1.07; letter-spacing: -.01em; margin-bottom: 18px; position: relative; }
-    .lh2 em { font-style: italic; color: #9de05e; }
-    .lp { font-size: 14.5px; font-weight: 300; color: rgba(255,255,255,.5); line-height: 1.8; max-width: 380px; margin-bottom: 32px; position: relative; }
-    .lmap { background: #d8e6d4; display: flex; flex-direction: column; }
-    .mbody { flex: 1; position: relative; overflow: hidden; min-height: 300px; }
-    .mbody svg { width: 100%; height: 100%; display: block; }
-    .mftr { padding: 18px 20px; border-top: 1px solid rgba(0,0,0,.07); background: #fff; }
-    .bdir { display: flex; align-items: center; justify-content: center; gap: 7px; width: 100%; background: var(--ink); color: #fff; border: none; border-radius: 3px; padding: 13px; font-family: var(--ff-b); font-size: 11.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; text-decoration: none; transition: background .2s; }
-    .bdir:hover { background: var(--g); color: #fff; }
+    .hero-kenburns {
+      position: absolute;
+      inset: -5%;
+      background: linear-gradient(160deg, #152d0d 0%, #1e4012 45%, #2a5f1a 80%, #1a3a10 100%);
+      animation: kb 20s ease-in-out infinite alternate;
+      transform-origin: 60% 50%;
+      z-index: 0;
+    }
+    @keyframes kb {
+      0%   { transform: scale(1.0) translate(0%, 0%); }
+      100% { transform: scale(1.1) translate(-2%, 1.5%); }
+    }
+    .hero-kenburns::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.06'/%3E%3C/svg%3E");
+      opacity: .35;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(11,22,6,.85) 0%, rgba(11,22,6,.3) 55%, rgba(11,22,6,.1) 100%);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+      width: 100%;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.5);
+      margin-bottom: 20px;
+    }
+    .hero-eyebrow-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--lime);
+      animation: breathe 2.4s ease-in-out infinite;
+    }
+    @keyframes breathe {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: .4; transform: scale(.6); }
+    }
+    .hero-h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(52px, 8.5vw, 110px);
+      font-weight: 600;
+      line-height: 1.0;
+      color: var(--white);
+      margin-bottom: 32px;
+      max-width: 820px;
+    }
+    .hero-h1 em { font-style: italic; color: var(--lime); }
+    .hero-sub {
+      font-size: clamp(15px, 1.6vw, 18px);
+      font-weight: 300;
+      color: rgba(255,255,255,.65);
+      max-width: 420px;
+      line-height: 1.8;
+      margin-bottom: 44px;
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--white);
+      color: var(--green);
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: var(--r-btn);
+      padding: 16px 36px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: background .25s, transform .2s, box-shadow .25s;
+    }
+    .btn-primary:hover {
+      background: var(--lime);
+      color: var(--ink);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 36px rgba(159,218,58,.3);
+    }
+    .btn-ghost {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.7);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid rgba(255,255,255,.25);
+      padding-bottom: 2px;
+      transition: color .25s, border-color .25s;
+    }
+    .btn-ghost:hover { color: var(--white); border-color: var(--white); }
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 28px; right: 40px;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      font-size: 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.3);
+    }
+    .scroll-line {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, transparent, rgba(255,255,255,.4));
+      animation: scroll-pulse 2s ease-in-out infinite;
+    }
+    @keyframes scroll-pulse {
+      0%, 100% { opacity: .3; }
+      50%       { opacity: 1; }
+    }
 
-    /* FOOTER */
-    #footer { background: #080d06; padding: 68px 0 0; }
-    .fgrid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 48px; padding-bottom: 52px; }
-    @media (max-width: 768px) { .fgrid { grid-template-columns: 1fr; gap: 36px; } }
-    .flogo { height: 36px; width: auto; display: block; margin-bottom: 14px; filter: brightness(0) invert(1); opacity: .75; }
-    .ftag { font-size: 13.5px; font-weight: 300; color: rgba(255,255,255,.3); line-height: 1.85; margin-bottom: 24px; max-width: 240px; }
-    .fcon a { display: flex; align-items: center; gap: 9px; font-size: 13px; color: rgba(255,255,255,.38); text-decoration: none; margin-bottom: 9px; transition: color .2s; }
-    .fcon a:hover { color: var(--g3); }
-    .fcon svg { color: var(--g3); flex-shrink: 0; }
-    .fsoc { display: flex; gap: 9px; margin-top: 24px; }
-    .fsoc a { width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(255,255,255,.09); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.3); text-decoration: none; transition: border-color .2s, color .2s; }
-    .fsoc a:hover { border-color: var(--g3); color: var(--g3); }
-    .fct { font-size: 11px; font-weight: 600; letter-spacing: .11em; text-transform: uppercase; color: rgba(255,255,255,.18); margin-bottom: 18px; }
-    .flinks { list-style: none; }
-    .flinks li { margin-bottom: 9px; }
-    .flinks a { font-size: 13.5px; font-weight: 300; color: rgba(255,255,255,.38); text-decoration: none; transition: color .2s; }
-    .flinks a:hover { color: #fff; }
-    .hrow { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,.04); font-size: 13px; color: rgba(255,255,255,.32); }
-    .hrow:last-child { border: none; }
-    .hrow span:last-child { color: #9de05e; font-weight: 500; }
-    .fbot { border-top: 1px solid rgba(255,255,255,.05); padding: 18px 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
-    .fcp { font-size: 12px; color: rgba(255,255,255,.18); }
-    .fleg { display: flex; gap: 20px; }
-    .fleg a { font-size: 12px; color: rgba(255,255,255,.2); text-decoration: none; transition: color .2s; }
-    .fleg a:hover { color: rgba(255,255,255,.55); }
+    /* ─── SECTION SHARED ─────────────────────────────────────────── */
+    .section-pad { padding: 100px 0; }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+    .section-label {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--green);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 24px; height: 1.5px;
+      background: var(--green);
+      flex-shrink: 0;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 5.5vw, 64px);
+      font-weight: 600;
+      line-height: 1.05;
+      color: var(--ink);
+    }
+    .section-title em { font-style: italic; color: var(--green); }
+    .section-sub {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--ink-60);
+      line-height: 1.85;
+      max-width: 480px;
+      margin-top: 16px;
+    }
+
+    /* ─── CATEGORIES ─────────────────────────────────────────────── */
+    #categories { background: var(--white); }
+    .cat-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 32px;
+      margin-bottom: 56px;
+      flex-wrap: wrap;
+    }
+    .cat-item {
+      text-align: center;
+      padding: 16px 8px 20px;
+      cursor: pointer;
+      transition: transform .3s var(--ease);
+    }
+    .cat-item:hover { transform: translateY(-4px); }
+    .cat-icon-wrap {
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      background: var(--green-pale);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 12px;
+      transition: background .3s;
+    }
+    .cat-item:hover .cat-icon-wrap { background: var(--green); }
+    .cat-item:hover .cat-icon-wrap svg { color: var(--white) !important; }
+    .cat-icon-wrap svg { width: 28px; height: 28px; color: var(--green); transition: color .3s; }
+    .cat-name {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 2px;
+    }
+    .cat-desc { font-size: 11.5px; color: var(--ink-30); }
+
+    /* UIkit slider tweaks */
+    .uk-slidenav {
+      color: var(--ink) !important;
+      background: var(--white) !important;
+      border: 1px solid var(--ink-10) !important;
+      border-radius: 50% !important;
+      width: 44px !important; height: 44px !important;
+      display: flex !important; align-items: center !important; justify-content: center !important;
+      transition: background .2s, border-color .2s !important;
+    }
+    .uk-slidenav:hover { background: var(--green) !important; color: var(--white) !important; border-color: var(--green) !important; }
+
+    /* ─── PRICE CARDS ─────────────────────────────────────────────── */
+    #prices { background: var(--cream); }
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    @media (max-width: 900px) { .price-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .price-grid { grid-template-columns: 1fr; } }
+
+    .p-card {
+      background: var(--white);
+      border-radius: var(--r-card);
+      overflow: hidden;
+      border: 1px solid var(--ink-10);
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow .35s var(--ease), transform .35s var(--ease), border-color .35s;
+    }
+    .p-card:hover {
+      box-shadow: 0 24px 64px rgba(17,16,8,.1);
+      transform: translateY(-6px);
+      border-color: rgba(42,95,26,.2);
+    }
+    .p-card.featured { border-color: var(--green); box-shadow: 0 0 0 3px rgba(42,95,26,.1); }
+
+    .p-card-img {
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: var(--green-pale);
+      position: relative;
+    }
+    .p-card-img img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      transition: transform .6s var(--ease);
+    }
+    .p-card:hover .p-card-img img { transform: scale(1.05); }
+    .p-card-img .img-placeholder {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 10px;
+      color: var(--green); opacity: .4;
+    }
+    .p-card-img .img-placeholder svg { width: 40px; height: 40px; }
+    .p-card-img .img-placeholder span { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
+
+    .p-card-badge {
+      position: absolute; top: 14px; left: 14px;
+      background: var(--green); color: var(--white);
+      font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+      padding: 5px 12px; border-radius: 100px;
+    }
+    .p-card-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+    .p-card-brand {
+      font-size: 10px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--ink-30); margin-bottom: 5px;
+    }
+    .p-card-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px; font-weight: 700; color: var(--ink); margin-bottom: 4px;
+    }
+    .p-card-desc { font-size: 13px; color: var(--ink-60); line-height: 1.7; margin-bottom: 20px; flex: 1; }
+    .p-card-price { display: flex; align-items: baseline; gap: 4px; margin-bottom: 20px; }
+    .p-card-amount {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 40px; font-weight: 700; color: var(--green); line-height: 1;
+    }
+    .p-card.featured .p-card-amount { color: var(--purple); }
+    .p-card-unit { font-size: 13px; color: var(--ink-30); font-weight: 400; }
+    .p-card-divider { height: 1px; background: var(--ink-10); margin-bottom: 20px; }
+    .p-card-actions { display: flex; gap: 10px; }
+
+    .btn-wa {
+      flex: 2; background: #25D366; color: var(--white);
+      border: none; border-radius: 12px; padding: 13px 16px;
+      font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 700;
+      cursor: pointer; text-decoration: none;
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      transition: background .2s, transform .2s; letter-spacing: .02em;
+    }
+    .btn-wa:hover { background: #1da851; transform: translateY(-1px); color: var(--white); }
+    .btn-call-sm {
+      flex: 1; background: transparent; color: var(--green);
+      border: 1.5px solid rgba(42,95,26,.25); border-radius: 12px; padding: 13px 12px;
+      font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 600;
+      cursor: pointer; text-decoration: none;
+      display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+      transition: background .2s, border-color .2s, transform .2s;
+    }
+    .btn-call-sm:hover { background: var(--green-pale); border-color: var(--green); transform: translateY(-1px); color: var(--green); }
+
+    /* ─── TERMS ───────────────────────────────────────────────────── */
+    #terms { background: var(--white); padding: 40px 0; border-top: 1px solid var(--ink-10); }
+    .terms-text {
+      font-size: 12.5px; color: var(--ink-30);
+      text-align: center; max-width: 780px; margin: 0 auto;
+      line-height: 1.95; font-weight: 400;
+    }
+    .terms-text strong { color: var(--ink-60); font-weight: 600; }
+
+    /* ─── STATS ───────────────────────────────────────────────────── */
+    #stats { background: var(--green); padding: 0; overflow: hidden; }
+    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; }
+    @media (max-width: 560px) { .stats-grid { grid-template-columns: 1fr; } }
+    .stat-panel { padding: 80px 60px; text-align: center; position: relative; }
+    .stat-panel:first-child { border-right: 1px solid rgba(255,255,255,.12); }
+    @media (max-width: 560px) { .stat-panel:first-child { border-right: none; border-bottom: 1px solid rgba(255,255,255,.12); } }
+    .stat-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(72px, 11vw, 120px); font-weight: 600;
+      color: var(--white); line-height: 1; margin-bottom: 8px;
+    }
+    .stat-number em { font-style: italic; color: var(--lime); font-size: .55em; }
+    .stat-label { font-size: 14px; font-weight: 500; color: rgba(255,255,255,.85); letter-spacing: .04em; margin-bottom: 6px; }
+    .stat-sub { font-size: 12px; color: rgba(255,255,255,.4); letter-spacing: .06em; }
+
+    /* ─── CTA + MAP ───────────────────────────────────────────────── */
+    #cta { background: var(--cream); }
+    .cta-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 24px; align-items: stretch;
+    }
+    @media (max-width: 768px) { .cta-grid { grid-template-columns: 1fr; } }
+    .cta-banner {
+      background: var(--ink); border-radius: var(--r-card);
+      padding: clamp(40px, 6vw, 72px);
+      position: relative; overflow: hidden;
+      display: flex; flex-direction: column; justify-content: center;
+      min-height: 380px;
+    }
+    .cta-banner::before {
+      content: ''; position: absolute; right: -80px; bottom: -80px;
+      width: 320px; height: 320px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.05);
+    }
+    .cta-banner::after {
+      content: ''; position: absolute; right: -120px; bottom: -120px;
+      width: 440px; height: 440px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.03);
+    }
+    .cta-tag {
+      font-size: 10.5px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--lime); margin-bottom: 20px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .cta-tag::before { content: ''; display: block; width: 20px; height: 1.5px; background: var(--lime); }
+    .cta-h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(32px, 5vw, 56px); font-weight: 600;
+      color: var(--white); line-height: 1.08; margin-bottom: 20px;
+    }
+    .cta-h2 em { font-style: italic; color: var(--lime); }
+    .cta-p {
+      font-size: 15px; font-weight: 300; color: rgba(255,255,255,.55);
+      line-height: 1.8; margin-bottom: 36px; max-width: 380px;
+    }
+    .btn-cta {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: var(--lime); color: var(--ink);
+      font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 700;
+      letter-spacing: .07em; text-transform: uppercase;
+      border: none; border-radius: var(--r-btn); padding: 16px 36px;
+      text-decoration: none; width: fit-content;
+      transition: background .25s, transform .2s, box-shadow .25s;
+    }
+    .btn-cta:hover { background: #b8f040; transform: translateY(-2px); box-shadow: 0 12px 40px rgba(159,218,58,.25); color: var(--ink); }
+
+    .map-panel {
+      background: var(--white); border: 1px solid var(--ink-10);
+      border-radius: var(--r-card); overflow: hidden;
+      display: flex; flex-direction: column;
+    }
+    .map-top { padding: 22px 24px 18px; border-bottom: 1px solid var(--ink-10); }
+    .map-top-title {
+      font-size: 14px; font-weight: 600; color: var(--ink);
+      display: flex; align-items: center; gap: 8px; margin-bottom: 2px;
+    }
+    .map-top-title svg { color: var(--green); }
+    .map-top-sub { font-size: 12px; color: var(--ink-30); }
+    .map-visual { flex: 1; background: #e6ede7; position: relative; overflow: hidden; min-height: 220px; }
+    .map-svg { width: 100%; height: 100%; display: block; }
+    .map-bottom { padding: 16px 24px; border-top: 1px solid var(--ink-10); }
+    .btn-directions {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      background: var(--green); color: var(--white); border: none; border-radius: 10px;
+      padding: 13px; font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 700;
+      letter-spacing: .04em; text-decoration: none; width: 100%;
+      transition: background .2s;
+    }
+    .btn-directions:hover { background: var(--green-mid); color: var(--white); }
+
+    /* ─── FOOTER ──────────────────────────────────────────────────── */
+    #footer { background: var(--ink); padding: 72px 0 0; }
+    .footer-grid {
+      display: grid; grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 48px; padding-bottom: 56px;
+    }
+    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; } }
+    .footer-logo img { height: 40px; width: auto; display: block; margin-bottom: 16px; }
+    .footer-tagline { font-size: 13.5px; color: rgba(255,255,255,.35); line-height: 1.85; margin-bottom: 24px; font-weight: 300; }
+    .footer-contact a {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 13.5px; color: rgba(255,255,255,.5);
+      text-decoration: none; margin-bottom: 10px; transition: color .2s;
+    }
+    .footer-contact a:hover { color: var(--lime); }
+    .footer-contact svg { color: var(--green); flex-shrink: 0; }
+    .f-socials { display: flex; gap: 10px; margin-top: 22px; }
+    .f-socials a {
+      width: 36px; height: 36px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.1);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,.4); text-decoration: none;
+      transition: border-color .2s, color .2s, background .2s;
+    }
+    .f-socials a:hover { border-color: var(--lime); color: var(--lime); background: rgba(159,218,58,.06); }
+    .footer-col-title { font-size: 10px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.2); margin-bottom: 20px; }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 12px; }
+    .footer-links a { font-size: 14px; color: rgba(255,255,255,.5); text-decoration: none; transition: color .2s; font-weight: 400; }
+    .footer-links a:hover { color: var(--white); }
+    .footer-hours { list-style: none; }
+    .footer-hours li {
+      display: flex; justify-content: space-between;
+      font-size: 13px; color: rgba(255,255,255,.4);
+      padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,.05);
+    }
+    .footer-hours li span:last-child { color: var(--lime); font-weight: 600; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.06); padding: 24px 0;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,.2); }
+    .footer-legal { display: flex; gap: 20px; }
+    .footer-legal a { font-size: 12px; color: rgba(255,255,255,.2); text-decoration: none; transition: color .2s; }
+    .footer-legal a:hover { color: rgba(255,255,255,.6); }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────────────── */
+    @media (max-width: 640px) {
+      .section-pad { padding: 64px 0; }
+      .stat-panel { padding: 56px 32px; }
+      .cta-banner { min-height: 320px; padding: 44px 36px; }
+      .hero-scroll-hint { display: none; }
+      .container { padding: 0 20px; }
+    }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="snav" id="snav">
-  <div class="ni">
-    <a class="nlogo" href="#">
+<!-- ═══ NAV ═══════════════════════════════════════════════════════ -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
       <img src="assets/img/logo.png" alt="Jena Brands Limited"
-           onerror="this.outerHTML='<span style=\'font-family:var(--ff-d);font-size:19px;font-weight:600;color:#2a6318;letter-spacing:-.01em\'>Jena Brands</span>'">
+           onerror="this.onerror=null; this.src='assets/img/logo.jpg';">
     </a>
-    <ul class="nlinks">
-      <li><a href="#categories">Products</a></li>
-      <li><a href="#prices">Prices</a></li>
-      <li><a href="#stats">Coverage</a></li>
-      <li><a href="#locate">Find Us</a></li>
-      <li><a class="ncta" href="https://wa.me/254700000000?text=Hi%20Jena%20Brands!%20I%27d%20like%20to%20order%20gas." target="_blank">Order Now</a></li>
-    </ul>
-    <button class="nhbg" aria-label="Menu" uk-toggle="target: #oc">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
-        <line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="16" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/>
+
+    <div class="nav-links-wrap" style="display:flex; align-items:center; gap:48px;">
+      <ul class="nav-links">
+        <li><a href="#categories">Products</a></li>
+        <li><a href="#prices">Prices</a></li>
+        <li><a href="#stats">Coverage</a></li>
+        <li><a href="#cta">Find Us</a></li>
+      </ul>
+      <a class="btn-nav-cta" href="https://wa.me/254700000000?text=Hi%20Jena%20Brands!%20I%27d%20like%20to%20order%20gas." target="_blank">Order Now</a>
+    </div>
+
+    <button class="nav-hamburger" type="button" uk-toggle="target: #offcanvas" aria-label="Menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
       </svg>
     </button>
   </div>
 </nav>
 
-<!-- OFF-CANVAS -->
-<div id="oc" uk-offcanvas="overlay: true; flip: true">
-  <div class="uk-offcanvas-bar">
-    <button class="uk-offcanvas-close" type="button" uk-close style="color:rgba(255,255,255,.35); top:20px; right:20px;"></button>
-    <span class="ocb">Jena Brands</span>
-    <span class="ocs">Limited · Nairobi</span>
-    <ul class="ocnav">
-      <li><a href="#categories" uk-toggle="target: #oc">Products</a></li>
-      <li><a href="#prices" uk-toggle="target: #oc">Gas Prices</a></li>
-      <li><a href="#stats" uk-toggle="target: #oc">Coverage</a></li>
-      <li><a href="#locate" uk-toggle="target: #oc">Find Us</a></li>
+<!-- Off-canvas -->
+<div id="offcanvas" uk-offcanvas="overlay: true; flip: true">
+  <div class="uk-offcanvas-bar" style="padding: 40px 32px;">
+    <button class="uk-offcanvas-close uk-close-large" type="button" uk-close style="color: rgba(255,255,255,.5); top:20px; right:20px;"></button>
+    <a class="oc-logo" href="#">Jena <span>Brands</span></a>
+    <ul class="oc-nav">
+      <li><a href="#categories" uk-toggle="target: #offcanvas">Products</a></li>
+      <li><a href="#prices" uk-toggle="target: #offcanvas">Gas Prices</a></li>
+      <li><a href="#stats" uk-toggle="target: #offcanvas">Coverage</a></li>
+      <li><a href="#cta" uk-toggle="target: #offcanvas">Find Us</a></li>
     </ul>
-    <a href="https://wa.me/254700000000" target="_blank"
-       style="display:flex;align-items:center;gap:8px;margin-top:32px;background:var(--g);color:#fff;border-radius:3px;padding:13px 20px;font-size:12px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;text-decoration:none;">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Order on WhatsApp
-    </a>
-    <div class="ocsoc">
-      <a href="#" aria-label="Facebook"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-      <a href="#" aria-label="Instagram"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></a>
-      <a href="#" aria-label="TikTok"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34l-.03-8.04a8.17 8.17 0 004.78 1.52V5.35a4.85 4.85 0 01-1-.66z"/></svg></a>
-      <a href="#" aria-label="WhatsApp"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+    <div class="oc-footer">
+      <a class="btn-oc-order" href="https://wa.me/254700000000?text=Hi%20Jena%20Brands!%20I%27d%20like%20to%20order%20gas." target="_blank">Order on WhatsApp</a>
+      <div class="oc-socials">
+        <a href="#" aria-label="Facebook"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="TikTok"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34l-.03-8.04a8.17 8.17 0 004.78 1.52V5.35a4.85 4.85 0 01-1-.66z"/></svg></a>
+        <a href="#" aria-label="WhatsApp"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- HERO -->
+
+<!-- ═══ HERO ════════════════════════════════════════════════════════ -->
 <section id="hero">
-  <div class="hbg"></div>
-  <div class="hgrain"></div>
-  <div class="hovl"></div>
-  <div class="hcnt">
-    <div class="hey">Nairobi's LPG Specialists</div>
-    <h1 class="hh1">Gas Delivered<br><em>Right Now.</em></h1>
-    <div class="hrow">
-      <p class="hp">Order cooking gas from Kenya's top brands. Delivered to your door in under 45 minutes, any day of the week.</p>
-      <div class="hbtns">
-        <a class="bp" href="#prices">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-          View Prices
-        </a>
-        <a class="bg" href="tel:+254700000000">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.17 9.81 19.79 19.79 0 01.12 1.18 2 2 0 012.1 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
-          Call Us
-        </a>
-      </div>
+  <div class="hero-kenburns"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow"><span class="hero-eyebrow-dot"></span>Delivering across Nairobi</div>
+    <h1 class="hero-h1">Gas delivered<br><em>right to your door.</em></h1>
+    <p class="hero-sub">Premium LPG from Kenya's top brands. Order in seconds, arrive in under 45 minutes.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#prices">
+        View Gas Prices
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a class="btn-ghost" href="tel:+254700000000">
+        Call to Order
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.17 9.81 19.79 19.79 0 01.12 1.18 2 2 0 012.1 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+      </a>
     </div>
-    <div class="htrust">
-      <div class="tpill"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Free delivery over KES 2,500</div>
-      <div class="tpill"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>30–45 min delivery</div>
-      <div class="tpill"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>100% KEBS certified</div>
-    </div>
+  </div>
+  <div class="hero-scroll-hint">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
   </div>
 </section>
 
-<!-- CATEGORIES -->
-<section id="categories">
-  <div class="wrap">
-    <div class="chdr">
-      <div class="r">
-        <span class="slbl">What We Stock</span>
-        <h2 class="stitle">Everything<br><em>LPG</em></h2>
+
+<!-- ═══ CATEGORIES ══════════════════════════════════════════════════ -->
+<section id="categories" class="section-pad">
+  <div class="container">
+    <div class="cat-header">
+      <div class="reveal">
+        <div class="section-label">What We Carry</div>
+        <h2 class="section-title">Everything <em>LPG</em>,<br>under one roof</h2>
       </div>
-      <p class="ssub r d2">From cylinder exchanges to accessories and commercial refills — Kenya's most trusted brands, delivered.</p>
+      <p class="section-sub reveal reveal-delay-2">From cylinder refills to cookers, regulators and safety kits — stocked and delivered to you.</p>
     </div>
-    <div uk-slider="autoplay: true; autoplay-interval: 3000; sets: true">
+
+    <div class="reveal reveal-delay-1" uk-slider="autoplay: true; sets: true; autoplay-interval: 3200">
       <div class="uk-position-relative">
         <div class="uk-slider-container">
-          <ul class="uk-slider-items uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@l uk-grid uk-grid-large">
-            <li><div class="ci r">
-              <div class="ciw"><svg viewBox="0 0 48 48" fill="none"><rect x="14" y="13" width="20" height="28" rx="6" stroke="var(--g)" stroke-width="2"/><rect x="19" y="7" width="10" height="7" rx="3.5" stroke="var(--g)" stroke-width="1.8"/><line x1="19" y1="27" x2="29" y2="27" stroke="var(--g)" stroke-width="1.5" stroke-linecap="round"/><line x1="19" y1="31" x2="25" y2="31" stroke="var(--g)" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-              <div class="cn">Cylinders</div><div class="cd">6 kg · 13 kg · 22.5 kg · 50 kg</div>
-              <div class="cline"></div>
+          <ul class="uk-slider-items uk-child-width-1-3@s uk-child-width-1-4@m uk-child-width-1-6@l uk-grid uk-grid-small">
+
+            <li><div class="cat-item">
+              <div class="cat-icon-wrap"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="14" height="18" rx="5"/><path d="M12 6h8"/><circle cx="16" cy="4" r="1.5" fill="currentColor" stroke="none"/><path d="M12 22 Q16 25 20 22"/></svg></div>
+              <div class="cat-name">Cylinders</div><div class="cat-desc">6 kg – 50 kg</div>
             </div></li>
-            <li><div class="ci r d1">
-              <div class="ciw"><svg viewBox="0 0 48 48" fill="none"><path d="M24 10C24 10 15 19 15 27a9 9 0 0018 0C33 19 24 10 24 10Z" stroke="var(--p)" stroke-width="2" stroke-linejoin="round"/><path d="M20 29a4 4 0 004 4" stroke="var(--p)" stroke-width="1.8" stroke-linecap="round"/></svg></div>
-              <div class="cn">Gas Refills</div><div class="cd">Same-day refill service</div>
-              <div class="cline"></div>
+
+            <li><div class="cat-item">
+              <div class="cat-icon-wrap"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4 C16 4 10 11 10 17 C10 20.3 12.7 23 16 23 C19.3 23 22 20.3 22 17 C22 11 16 4 16 4Z"/><path d="M13 20 C13 21.7 14.3 23 16 23"/><line x1="16" y1="23" x2="16" y2="28"/><line x1="12" y1="28" x2="20" y2="28"/></svg></div>
+              <div class="cat-name">Refills</div><div class="cat-desc">Same-day service</div>
             </div></li>
-            <li><div class="ci r d2">
-              <div class="ciw"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="23" r="11" stroke="var(--g)" stroke-width="2"/><circle cx="24" cy="23" r="4.5" stroke="var(--g)" stroke-width="1.8"/><line x1="24" y1="12" x2="24" y2="9" stroke="var(--g)" stroke-width="2" stroke-linecap="round"/><rect x="20" y="34" width="8" height="6" rx="2" stroke="var(--g)" stroke-width="1.8"/></svg></div>
-              <div class="cn">Regulators</div><div class="cd">High-pressure &amp; standard</div>
-              <div class="cline"></div>
+
+            <li><div class="cat-item">
+              <div class="cat-icon-wrap"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="15" r="8"/><circle cx="16" cy="15" r="3"/><line x1="16" y1="7" x2="16" y2="10"/><line x1="16" y1="20" x2="16" y2="23"/><line x1="8" y1="15" x2="11" y2="15"/><line x1="21" y1="15" x2="24" y2="15"/><rect x="12" y="24" width="8" height="5" rx="2"/></svg></div>
+              <div class="cat-name">Regulators</div><div class="cat-desc">High & standard</div>
             </div></li>
-            <li><div class="ci r d3">
-              <div class="ciw"><svg viewBox="0 0 48 48" fill="none"><rect x="8" y="18" width="32" height="20" rx="3" stroke="var(--g)" stroke-width="2"/><rect x="8" y="12" width="32" height="7" rx="2" stroke="var(--g)" stroke-width="1.8"/><circle cx="17" cy="29" r="5" stroke="var(--g)" stroke-width="1.8"/><circle cx="31" cy="29" r="5" stroke="var(--g)" stroke-width="1.8"/></svg></div>
-              <div class="cn">Gas Cookers</div><div class="cd">2-burner · 3-burner · built-in</div>
-              <div class="cline"></div>
+
+            <li><div class="cat-item">
+              <div class="cat-icon-wrap"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="24" height="18" rx="3"/><rect x="4" y="6" width="24" height="6" rx="2"/><circle cx="12" cy="21" r="4"/><circle cx="12" cy="21" r="1.5" fill="currentColor" stroke="none"/><circle cx="22" cy="21" r="4"/><circle cx="22" cy="21" r="1.5" fill="currentColor" stroke="none"/></svg></div>
+              <div class="cat-name">Gas Cookers</div><div class="cat-desc">2 & 3 burner</div>
             </div></li>
-            <li><div class="ci r">
-              <div class="ciw"><svg viewBox="0 0 48 48" fill="none"><path d="M8 28Q20 14 28 28Q36 40 40 24" stroke="var(--p)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8" cy="28" r="3.5" stroke="var(--p)" stroke-width="1.8"/><circle cx="40" cy="24" r="3.5" stroke="var(--p)" stroke-width="1.8"/></svg></div>
-              <div class="cn">Pipes &amp; Hoses</div><div class="cd">PVC, rubber &amp; copper</div>
-              <div class="cline"></div>
+
+            <li><div class="cat-item">
+              <div class="cat-icon-wrap"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18 Q10 8 16 18 Q22 28 28 18"/><circle cx="4" cy="18" r="3"/><circle cx="28" cy="18" r="3"/></svg></div>
+              <div class="cat-name">Hoses & Pipes</div><div class="cat-desc">PVC, rubber & copper</div>
             </div></li>
-            <li><div class="ci r d1">
-              <div class="ciw"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="30" r="10" stroke="var(--g)" stroke-width="2"/><path d="M21 26c0-4 3-6 3-10 0 4 3 6 3 10" stroke="#f97316" stroke-width="2" stroke-linecap="round"/><path d="M17 28c1-3 3-3 3 0" stroke="#f97316" stroke-width="1.8" stroke-linecap="round"/><path d="M28 28c0-3 2-3 3 0" stroke="#f97316" stroke-width="1.8" stroke-linecap="round"/></svg></div>
-              <div class="cn">Gas Burners</div><div class="cd">Single · double · commercial</div>
-              <div class="cline"></div>
+
+            <li><div class="cat-item">
+              <div class="cat-icon-wrap"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="20" r="8"/><path d="M13 17 C13 13 16 11 16 8 C16 11 19 13 19 17"/><path d="M10 19 C11 15 13 16 13 19"/><path d="M19 19 C19 16 21 15 22 19"/></svg></div>
+              <div class="cat-name">Burners</div><div class="cat-desc">Single & double</div>
             </div></li>
-            <li><div class="ci r d2">
-              <div class="ciw"><svg viewBox="0 0 48 48" fill="none"><path d="M24 7L38 13V25C38 34 30 41 24 43C18 41 10 34 10 25V13Z" stroke="var(--g)" stroke-width="2" stroke-linejoin="round"/><path d="M17 25l5 5 9-10" stroke="var(--g)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              <div class="cn">Safety Kit</div><div class="cd">Detectors &amp; accessories</div>
-              <div class="cline"></div>
+
+            <li><div class="cat-item">
+              <div class="cat-icon-wrap"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3 L28 8 V18 C28 25 20 30 16 31 C12 30 4 25 4 18 V8 Z"/><polyline points="11,16 15,20 21,12"/></svg></div>
+              <div class="cat-name">Safety Kits</div><div class="cat-desc">Detectors & accessories</div>
             </div></li>
-            <li><div class="ci r d3">
-              <div class="ciw"><svg viewBox="0 0 48 48" fill="none"><rect x="4" y="18" width="28" height="18" rx="3" stroke="var(--g)" stroke-width="2"/><path d="M32 24h12v12H32" stroke="var(--g)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M32 18h6l6 6" fill="none" stroke="var(--g)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="38" r="3.5" stroke="var(--g)" stroke-width="1.8"/><circle cx="36" cy="38" r="3.5" stroke="var(--g)" stroke-width="1.8"/></svg></div>
-              <div class="cn">Fast Delivery</div><div class="cd">30–45 min to your door</div>
-              <div class="cline"></div>
+
+            <li><div class="cat-item">
+              <div class="cat-icon-wrap"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="10" width="18" height="14" rx="2"/><path d="M20 14 L20 24 L30 24 L30 18 L26 14 Z"/><path d="M20 14 L26 14 L30 18"/><circle cx="8" cy="26" r="3"/><circle cx="24" cy="26" r="3"/></svg></div>
+              <div class="cat-name">Fast Delivery</div><div class="cat-desc">30–45 min Nairobi</div>
             </div></li>
+
           </ul>
         </div>
-        <a class="uk-position-center-left-out" href uk-slidenav-previous uk-slider-item="previous" style="color:var(--ink);opacity:.3;"></a>
-        <a class="uk-position-center-right-out" href uk-slidenav-next uk-slider-item="next" style="color:var(--ink);opacity:.3;"></a>
+        <a class="uk-position-center-left-out uk-slidenav-large" href uk-slidenav-previous uk-slider-item="previous" style="left:-20px;"></a>
+        <a class="uk-position-center-right-out uk-slidenav-large" href uk-slidenav-next uk-slider-item="next" style="right:-20px;"></a>
       </div>
     </div>
   </div>
 </section>
 
-<div class="ln"></div>
 
-<!-- PRICES -->
-<section id="prices">
-  <div class="wrap">
-    <div class="phdr">
-      <div class="r">
-        <span class="slbl">Current Pricing</span>
-        <h2 class="stitle">Gas Prices<br><em>Today</em></h2>
+<!-- ═══ PRICES ══════════════════════════════════════════════════════ -->
+<section id="prices" class="section-pad">
+  <div class="container">
+    <div style="margin-bottom:56px;">
+      <div class="section-label reveal">Current Pricing</div>
+      <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap;">
+        <h2 class="section-title reveal reveal-delay-1">Gas prices,<br><em>today.</em></h2>
+        <p class="section-sub reveal reveal-delay-2" style="margin-top:0;">Transparent pricing updated daily in line with ERC guidelines. No surprises, no hidden charges.</p>
       </div>
-      <p class="ssub r d2">Transparent pricing updated daily in line with ERC-regulated LPG rates. No hidden charges.</p>
     </div>
-  </div>
-  <div class="wrap">
-    <div class="pgrid">
 
-      <!-- K-Gas 6kg -->
-      <div class="pc r">
-        <div class="cimg">
-          <img src="assets/img/kgas-6kg.jpg" alt="K-Gas 6kg"
-               onerror="this.parentElement.innerHTML='<div class=\'ciph\'><svg viewBox=\'0 0 48 48\' fill=\'none\'><rect x=\'14\' y=\'13\' width=\'20\' height=\'28\' rx=\'6\' stroke=\'currentColor\' stroke-width=\'1.8\'/><rect x=\'19\' y=\'7\' width=\'10\' height=\'7\' rx=\'3.5\' stroke=\'currentColor\' stroke-width=\'1.5\'/></svg><span>K-Gas · 6 kg</span></div>'">
+    <div class="price-grid">
+
+      <!-- helper macro as inline HTML - K-Gas 6kg -->
+      <div class="p-card reveal reveal-delay-1">
+        <div class="p-card-img">
+          <img src="assets/img/kgas-6kg.jpg" alt="K-Gas 6kg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="img-placeholder" style="display:none;"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="9" y="9" width="14" height="18" rx="5"/><path d="M12 6h8"/></svg><span>K-Gas 6 kg</span></div>
         </div>
-        <div class="cbody">
-          <div class="cbrand">K-Gas</div>
-          <div class="cwt">6 kg Cylinder</div>
-          <div class="cdesc">Perfect for single-person households. Lasts 2–3 weeks for everyday cooking.</div>
-          <div class="cprice"><sup>KES </sup>1,450<sub> / refill</sub></div>
-        </div>
-        <div class="cacts">
-          <a class="bwa" href="https://wa.me/254700000000?text=Hi%20Jena%20Brands!%20I%20want%20K-Gas%206kg%20at%20KES%201450." target="_blank">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            Buy Now
-          </a>
-          <a class="bcall" href="tel:+254700000000"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.17 9.81 19.79 19.79 0 01.12 1.18 2 2 0 012.1 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg></a>
+        <div class="p-card-body">
+          <div class="p-card-brand">K-Gas</div>
+          <div class="p-card-name">6 kg Cylinder</div>
+          <p class="p-card-desc">Ideal for bedsitters and small households. Lasts 2–3 weeks for a solo cook.</p>
+          <div class="p-card-price"><div class="p-card-amount">1,450</div><div class="p-card-unit">KES / refill</div></div>
+          <div class="p-card-divider"></div>
+          <div class="p-card-actions">
+            <a class="btn-wa" href="https://wa.me/254700000000?text=Hi!%20I%27d%20like%20K-Gas%206kg%20at%20KES%201450." target="_blank"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Buy Now</a>
+            <a class="btn-call-sm" href="tel:+254700000000"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.17 9.81 19.79 19.79 0 01.12 1.18 2 2 0 012.1 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>Call</a>
+          </div>
         </div>
       </div>
 
-      <!-- Pro Gas 13kg – FEATURED -->
-      <div class="pc star r d1">
-        <div class="sbdge">Most Popular</div>
-        <div class="cimg">
-          <img src="assets/img/progas-13kg.jpg" alt="Pro Gas 13kg"
-               onerror="this.parentElement.innerHTML='<div class=\'ciph\'><svg viewBox=\'0 0 48 48\' fill=\'none\'><rect x=\'14\' y=\'13\' width=\'20\' height=\'28\' rx=\'6\' stroke=\'currentColor\' stroke-width=\'1.8\'/><rect x=\'19\' y=\'7\' width=\'10\' height=\'7\' rx=\'3.5\' stroke=\'currentColor\' stroke-width=\'1.5\'/></svg><span>Pro Gas · 13 kg</span></div>'">
+      <!-- Pro Gas 13kg FEATURED -->
+      <div class="p-card featured reveal reveal-delay-2">
+        <div class="p-card-img">
+          <img src="assets/img/progas-13kg.jpg" alt="Pro Gas 13kg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="img-placeholder" style="display:none;"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="9" y="9" width="14" height="18" rx="5"/><path d="M12 6h8"/></svg><span>Pro Gas 13 kg</span></div>
+          <div class="p-card-badge">Most Popular</div>
         </div>
-        <div class="cbody">
-          <div class="cbrand">Pro Gas</div>
-          <div class="cwt">13 kg Cylinder</div>
-          <div class="cdesc">Ideal for families of 3–5. Great value per kg with longer intervals between refills.</div>
-          <div class="cprice"><sup>KES </sup>2,850<sub> / refill</sub></div>
-        </div>
-        <div class="cacts">
-          <a class="bwa" href="https://wa.me/254700000000?text=Hi%20Jena%20Brands!%20I%20want%20Pro%20Gas%2013kg%20at%20KES%202850." target="_blank">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            Buy Now
-          </a>
-          <a class="bcall" href="tel:+254700000000"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.17 9.81 19.79 19.79 0 01.12 1.18 2 2 0 012.1 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg></a>
+        <div class="p-card-body">
+          <div class="p-card-brand">Pro Gas</div>
+          <div class="p-card-name">13 kg Cylinder</div>
+          <p class="p-card-desc">Best value for families of 3–5. Longer intervals between refills, free delivery always included.</p>
+          <div class="p-card-price"><div class="p-card-amount">2,850</div><div class="p-card-unit">KES / refill</div></div>
+          <div class="p-card-divider"></div>
+          <div class="p-card-actions">
+            <a class="btn-wa" href="https://wa.me/254700000000?text=Hi!%20I%27d%20like%20Pro%20Gas%2013kg%20at%20KES%202850." target="_blank"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Buy Now</a>
+            <a class="btn-call-sm" href="tel:+254700000000"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.17 9.81 19.79 19.79 0 01.12 1.18 2 2 0 012.1 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>Call</a>
+          </div>
         </div>
       </div>
 
       <!-- Total Gas 6kg -->
-      <div class="pc r d2">
-        <div class="cimg">
-          <img src="assets/img/totalgas-6kg.jpg" alt="Total Gas 6kg"
-               onerror="this.parentElement.innerHTML='<div class=\'ciph\'><svg viewBox=\'0 0 48 48\' fill=\'none\'><rect x=\'14\' y=\'13\' width=\'20\' height=\'28\' rx=\'6\' stroke=\'currentColor\' stroke-width=\'1.8\'/><rect x=\'19\' y=\'7\' width=\'10\' height=\'7\' rx=\'3.5\' stroke=\'currentColor\' stroke-width=\'1.5\'/></svg><span>Total Gas · 6 kg</span></div>'">
+      <div class="p-card reveal reveal-delay-3">
+        <div class="p-card-img">
+          <img src="assets/img/totalgas-6kg.jpg" alt="Total Gas 6kg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="img-placeholder" style="display:none;"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="9" y="9" width="14" height="18" rx="5"/><path d="M12 6h8"/></svg><span>Total Gas 6 kg</span></div>
         </div>
-        <div class="cbody">
-          <div class="cbrand">Total Gas</div>
-          <div class="cwt">6 kg Cylinder</div>
-          <div class="cdesc">TotalEnergies branded cylinder. Clean, consistent burn ideal for everyday household cooking.</div>
-          <div class="cprice"><sup>KES </sup>1,500<sub> / refill</sub></div>
-        </div>
-        <div class="cacts">
-          <a class="bwa" href="https://wa.me/254700000000?text=Hi%20Jena%20Brands!%20I%20want%20Total%20Gas%206kg%20at%20KES%201500." target="_blank">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            Buy Now
-          </a>
-          <a class="bcall" href="tel:+254700000000"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.17 9.81 19.79 19.79 0 01.12 1.18 2 2 0 012.1 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg></a>
+        <div class="p-card-body">
+          <div class="p-card-brand">Total Gas</div>
+          <div class="p-card-name">6 kg Cylinder</div>
+          <p class="p-card-desc">TotalEnergies' clean-burning LPG. Consistent, reliable heat for everyday cooking needs.</p>
+          <div class="p-card-price"><div class="p-card-amount">1,500</div><div class="p-card-unit">KES / refill</div></div>
+          <div class="p-card-divider"></div>
+          <div class="p-card-actions">
+            <a class="btn-wa" href="https://wa.me/254700000000?text=Hi!%20I%27d%20like%20Total%20Gas%206kg%20at%20KES%201500." target="_blank"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Buy Now</a>
+            <a class="btn-call-sm" href="tel:+254700000000"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.17 9.81 19.79 19.79 0 01.12 1.18 2 2 0 012.1 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>Call</a>
+          </div>
         </div>
       </div>
 
       <!-- K-Gas 13kg -->
-      <div class="pc r d3">
-        <div class="cimg">
-          <img src="assets/img/kgas-13kg.jpg" alt="K-Gas 13kg"
-               onerror="this.parentElement.innerHTML='<div class=\'ciph\'><svg viewBox=\'0 0 48 48\' fill=\'none\'><rect x=\'14\' y=\'13\' width=\'20\' height=\'28\' rx=\'6\' stroke=\'currentColor\' stroke-width=\'1.8\'/><rect x=\'19\' y=\'7\' width=\'10\' height=\'7\' rx=\'3.5\' stroke=\'currentColor\' stroke-width=\'1.5\'/></svg><span>K-Gas · 13 kg</span></div>'">
+      <div class="p-card reveal reveal-delay-1">
+        <div class="p-card-img">
+          <img src="assets/img/kgas-13kg.jpg" alt="K-Gas 13kg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="img-placeholder" style="display:none;"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="9" y="9" width="14" height="18" rx="5"/><path d="M12 6h8"/></svg><span>K-Gas 13 kg</span></div>
         </div>
-        <div class="cbody">
-          <div class="cbrand">K-Gas</div>
-          <div class="cwt">13 kg Cylinder</div>
-          <div class="cdesc">Kenya's most trusted LPG brand. Ideal for medium to large families needing a reliable supply.</div>
-          <div class="cprice"><sup>KES </sup>2,800<sub> / refill</sub></div>
-        </div>
-        <div class="cacts">
-          <a class="bwa" href="https://wa.me/254700000000?text=Hi%20Jena%20Brands!%20I%20want%20K-Gas%2013kg%20at%20KES%202800." target="_blank">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            Buy Now
-          </a>
-          <a class="bcall" href="tel:+254700000000"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.17 9.81 19.79 19.79 0 01.12 1.18 2 2 0 012.1 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg></a>
+        <div class="p-card-body">
+          <div class="p-card-brand">K-Gas</div>
+          <div class="p-card-name">13 kg Cylinder</div>
+          <p class="p-card-desc">Kenya's most trusted LPG brand in the larger size. Great for medium to large households.</p>
+          <div class="p-card-price"><div class="p-card-amount">2,800</div><div class="p-card-unit">KES / refill</div></div>
+          <div class="p-card-divider"></div>
+          <div class="p-card-actions">
+            <a class="btn-wa" href="https://wa.me/254700000000?text=Hi!%20I%27d%20like%20K-Gas%2013kg%20at%20KES%202800." target="_blank"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Buy Now</a>
+            <a class="btn-call-sm" href="tel:+254700000000"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.17 9.81 19.79 19.79 0 01.12 1.18 2 2 0 012.1 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>Call</a>
+          </div>
         </div>
       </div>
 
       <!-- Afri Gas 22.5kg -->
-      <div class="pc r">
-        <div class="cimg">
-          <img src="assets/img/afrigas-22kg.jpg" alt="Afri Gas 22.5kg"
-               onerror="this.parentElement.innerHTML='<div class=\'ciph\'><svg viewBox=\'0 0 48 48\' fill=\'none\'><rect x=\'14\' y=\'13\' width=\'20\' height=\'28\' rx=\'6\' stroke=\'currentColor\' stroke-width=\'1.8\'/><rect x=\'19\' y=\'7\' width=\'10\' height=\'7\' rx=\'3.5\' stroke=\'currentColor\' stroke-width=\'1.5\'/></svg><span>Afri Gas · 22.5 kg</span></div>'">
+      <div class="p-card reveal reveal-delay-2">
+        <div class="p-card-img">
+          <img src="assets/img/afrigas-22kg.jpg" alt="Afri Gas 22.5kg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="img-placeholder" style="display:none;"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="9" y="9" width="14" height="18" rx="5"/><path d="M12 6h8"/></svg><span>Afri Gas 22.5 kg</span></div>
         </div>
-        <div class="cbody">
-          <div class="cbrand">Afri Gas</div>
-          <div class="cwt">22.5 kg Cylinder</div>
-          <div class="cdesc">Large household or small restaurant cylinder. Excellent value per kg for high-use kitchens.</div>
-          <div class="cprice"><sup>KES </sup>5,200<sub> / refill</sub></div>
-        </div>
-        <div class="cacts">
-          <a class="bwa" href="https://wa.me/254700000000?text=Hi%20Jena%20Brands!%20I%20want%20Afri%20Gas%2022.5kg%20at%20KES%205200." target="_blank">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.358.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            Buy Now
-          </a>
-          <a class="bcall" href="tel:+254700000000"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.17 9.81 19.79 19.79 0 01.12 1.18 2 2 0 012.1 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg></a>
+        <div class="p-card-body">
+          <div class="p-card-brand">Afri Gas</div>
+          <div class="p-card-name">22.5 kg Cylinder</div>
+          <p class="p-card-desc">Large household cylinder with exceptional value per kg. Perfect for big families and small restaurants.</p>
+          <div class="p-card-price"><div class="p-card-amount">5,200</div><div class="p-card-unit">KES / refill</div></div>
+          <div class="p-card-divider"></div>
+          <div class="p-card-actions">
+            <a class="btn-wa" href="https://wa.me/254700000000?text=Hi!%20I%27d%20like%20Afri%20Gas%2022.5kg%20at%20KES%205200." target="_blank"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Buy Now</a>
+            <a class="btn-call-sm" href="tel:+254700000000"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.17 9.81 19.79 19.79 0 01.12 1.18 2 2 0 012.1 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>Call</a>
+          </div>
         </div>
       </div>
 
       <!-- Oryx 50kg -->
-      <div class="pc r d1">
-        <div class="cimg">
-          <img src="assets/img/oryx-50kg.jpg" alt="Oryx Gas 50kg"
-               onerror="this.parentElement.innerHTML='<div class=\'ciph\'><svg viewBox=\'0 0 48 48\' fill=\'none\'><rect x=\'14\' y=\'13\' width=\'20\' height=\'28\' rx=\'6\' stroke=\'currentColor\' stroke-width=\'1.8\'/><rect x=\'19\' y=\'7\' width=\'10\' height=\'7\' rx=\'3.5\' stroke=\'currentColor\' stroke-width=\'1.5\'/></svg><span>Oryx Gas · 50 kg</span></div>'">
+      <div class="p-card reveal reveal-delay-3">
+        <div class="p-card-img">
+          <img src="assets/img/oryx-50kg.jpg" alt="Oryx Gas 50kg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="img-placeholder" style="display:none;"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="9" y="9" width="14" height="18" rx="5"/><path d="M12 6h8"/></svg><span>Oryx 50 kg</span></div>
         </div>
-        <div class="cbody">
-          <div class="cbrand">Oryx Gas</div>
-          <div class="cwt">50 kg Commercial</div>
-          <div class="cdesc">Commercial-grade LPG for restaurants and industrial kitchens. Bulk discounts available on request.</div>
-          <div class="cprice"><sup>KES </sup>10,500<sub> / refill</sub></div>
-        </div>
-        <div class="cacts">
-          <a class="bwa" href="https://wa.me/254700000000?text=Hi%20Jena%20Brands!%20I%20want%20to%20enquire%20about%20Oryx%20Gas%2050kg." target="_blank">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            Enquire
-          </a>
-          <a class="bcall" href="tel:+254700000000"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.17 9.81 19.79 19.79 0 01.12 1.18 2 2 0 012.1 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg></a>
+        <div class="p-card-body">
+          <div class="p-card-brand">Oryx Gas</div>
+          <div class="p-card-name">50 kg Commercial</div>
+          <p class="p-card-desc">For restaurants, caterers, and industrial kitchens. Bulk pricing and scheduled refill service available.</p>
+          <div class="p-card-price"><div class="p-card-amount">10,500</div><div class="p-card-unit">KES / refill</div></div>
+          <div class="p-card-divider"></div>
+          <div class="p-card-actions">
+            <a class="btn-wa" href="https://wa.me/254700000000?text=Hi!%20I%27d%20like%20to%20enquire%20about%20Oryx%20Gas%2050kg." target="_blank"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Enquire</a>
+            <a class="btn-call-sm" href="tel:+254700000000"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.17 9.81 19.79 19.79 0 01.12 1.18 2 2 0 012.1 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>Call</a>
+          </div>
         </div>
       </div>
 
@@ -579,72 +986,78 @@
   </div>
 </section>
 
-<!-- TERMS -->
+
+<!-- ═══ TERMS ════════════════════════════════════════════════════════ -->
 <section id="terms">
-  <div class="wrap">
-    <p class="ttext">Prices are in KES and include VAT — updated daily in line with ERC-regulated LPG rates. Free delivery applies within Nairobi on orders above KES 2,500. Cylinder exchange requires a valid empty cylinder of the same brand and size. All cylinders remain property of their respective brand companies. Payment on delivery — M-Pesa, cash, or card accepted. Jena Brands Limited is not liable for damage arising from improper use or storage of gas equipment.</p>
+  <div class="container">
+    <p class="terms-text">
+      <strong>Terms & Conditions —</strong> All prices are in KES and include VAT, subject to change per ERC-regulated LPG pricing. Free delivery applies within Nairobi on orders above KES 2,500. Cylinder exchange requires a valid empty cylinder of the same brand and size. Jena Brands Limited is not liable for damage resulting from improper use, installation, or storage of gas products. Payment accepted on delivery via M-Pesa, cash, or card. All cylinders remain the property of their respective brand companies.
+    </p>
   </div>
 </section>
 
-<div class="ln"></div>
 
-<!-- STATS -->
+<!-- ═══ STATS ════════════════════════════════════════════════════════ -->
 <section id="stats">
-  <div class="sgrid">
-    <div class="sc r left">
-      <div class="sacc"></div>
-      <div class="snum"><span id="cnt">0</span><em>+</em></div>
-      <div class="slabel">Neighbourhoods Covered</div>
-      <div class="ssublbl">Nairobi, Kiambu &amp; surrounding areas</div>
+  <div class="stats-grid">
+    <div class="stat-panel reveal">
+      <div class="stat-number" id="counter-hoods">0<em>+</em></div>
+      <div class="stat-label">Neighbourhoods Covered</div>
+      <div class="stat-sub">Nairobi, Kiambu & beyond</div>
     </div>
-    <div class="sc r right">
-      <div class="snum">45<em>min</em></div>
-      <div class="slabel">Average Delivery Time</div>
-      <div class="ssublbl">Order now — gas at your door, fast</div>
+    <div class="stat-panel reveal reveal-delay-2">
+      <div class="stat-number">45<em>min</em></div>
+      <div class="stat-label">Average Delivery Time</div>
+      <div class="stat-sub">Order now, arrive fast</div>
     </div>
   </div>
 </section>
 
-<!-- LOCATE -->
-<section id="locate">
-  <div class="wrap">
-    <div class="lgrid r">
-      <div class="lcta">
-        <div class="ldeco">G</div>
-        <div class="ltag">Order Today</div>
-        <h2 class="lh2">Running low?<br>We're <em>already</em><br>on our way.</h2>
-        <p class="lp">Order on WhatsApp and our team will be with you in under 45 minutes. Available 7 days a week, 7 am – 9 pm.</p>
-        <a class="bp" href="https://wa.me/254700000000?text=Hi%20Jena%20Brands!%20I%20need%20gas%20delivered." target="_blank">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+
+<!-- ═══ CTA + MAP ════════════════════════════════════════════════════ -->
+<section id="cta" class="section-pad">
+  <div class="container">
+    <div class="cta-grid">
+      <div class="cta-banner reveal">
+        <div class="cta-tag">Order Today</div>
+        <h2 class="cta-h2">Running out<br>of gas? We've<br>got you <em>covered.</em></h2>
+        <p class="cta-p">Message us on WhatsApp and our team will be at your door in under 45 minutes. Open 7 days a week, 7 am – 9 pm.</p>
+        <a class="btn-cta" href="https://wa.me/254700000000?text=Hi%20Jena%20Brands!%20I%20need%20gas%20delivered%20ASAP." target="_blank">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           Order on WhatsApp
         </a>
       </div>
-      <div class="lmap">
-        <div class="mbody">
-          <svg viewBox="0 0 300 380" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-            <rect width="300" height="380" fill="#d8e6d4"/>
-            <line x1="0" y1="95" x2="300" y2="95" stroke="#c2d8be" stroke-width="10"/>
-            <line x1="0" y1="175" x2="300" y2="175" stroke="#c2d8be" stroke-width="10"/>
-            <line x1="0" y1="258" x2="300" y2="258" stroke="#c2d8be" stroke-width="6"/>
-            <line x1="68" y1="0" x2="68" y2="380" stroke="#c2d8be" stroke-width="6"/>
-            <line x1="155" y1="0" x2="155" y2="380" stroke="#c2d8be" stroke-width="10"/>
-            <line x1="240" y1="0" x2="240" y2="380" stroke="#c2d8be" stroke-width="6"/>
-            <rect x="78" y="105" width="66" height="60" rx="3" fill="#c5d9c1"/>
-            <rect x="163" y="105" width="66" height="60" rx="3" fill="#c5d9c1"/>
-            <rect x="78" y="185" width="66" height="60" rx="3" fill="#c5d9c1"/>
-            <rect x="163" y="185" width="66" height="60" rx="3" fill="#c5d9c1"/>
-            <rect x="10" y="28" width="48" height="56" rx="3" fill="#cadeC8"/>
-            <rect x="250" y="112" width="40" height="38" rx="3" fill="#cadeC8"/>
-            <ellipse cx="155" cy="186" rx="14" ry="4" fill="rgba(0,0,0,0.1)"/>
-            <path d="M155 142C141 142 130 153.5 130 167C130 184 155 204 155 204C155 204 180 184 180 167C180 153.5 169 142 155 142Z" fill="#2a6318"/>
-            <circle cx="155" cy="166" r="8" fill="white"/>
-            <rect x="106" y="210" width="98" height="21" rx="3" fill="white" opacity="0.88"/>
-            <text x="155" y="225" text-anchor="middle" font-family="sans-serif" font-size="9.5" font-weight="600" fill="#1b4410">Jena Brands Ltd</text>
+
+      <div class="map-panel reveal reveal-delay-2">
+        <div class="map-top">
+          <div class="map-top-title">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Find Our Store
+          </div>
+          <div class="map-top-sub">Nairobi, Kenya</div>
+        </div>
+        <div class="map-visual">
+          <svg class="map-svg" viewBox="0 0 280 220" xmlns="http://www.w3.org/2000/svg">
+            <rect width="280" height="220" fill="#e8ede9"/>
+            <rect x="0" y="65" width="280" height="9" fill="#d0dbd1"/><rect x="0" y="125" width="280" height="9" fill="#d0dbd1"/>
+            <rect x="0" y="175" width="280" height="6" fill="#d8e2d9"/>
+            <rect x="50" y="0" width="7" height="220" fill="#d0dbd1"/><rect x="120" y="0" width="9" height="220" fill="#d0dbd1"/><rect x="200" y="0" width="7" height="220" fill="#d8e2d9"/>
+            <rect x="60" y="76" width="52" height="40" rx="3" fill="#dce8dd" opacity=".9"/>
+            <rect x="132" y="76" width="60" height="40" rx="3" fill="#dce8dd" opacity=".9"/>
+            <rect x="60" y="136" width="52" height="30" rx="3" fill="#dce8dd" opacity=".9"/>
+            <rect x="132" y="136" width="60" height="30" rx="3" fill="#dce8dd" opacity=".9"/>
+            <rect x="10" y="15" width="32" height="42" rx="3" fill="#dce8dd" opacity=".8"/>
+            <rect x="210" y="80" width="62" height="36" rx="3" fill="#dce8dd" opacity=".8"/>
+            <circle cx="124" cy="96" r="20" fill="#2a5f1a" opacity=".15"/>
+            <path d="M124 78 C115 78 108 85.2 108 94 C108 105 124 118 124 118 C124 118 140 105 140 94 C140 85.2 133 78 124 78Z" fill="#2a5f1a"/>
+            <circle cx="124" cy="93" r="6" fill="white"/>
+            <rect x="84" y="120" width="80" height="18" rx="4" fill="white" opacity=".95"/>
+            <text x="124" y="132.5" text-anchor="middle" font-family="Outfit,sans-serif" font-size="9" font-weight="600" fill="#2a5f1a">Jena Brands Ltd</text>
           </svg>
         </div>
-        <div class="mftr">
-          <a class="bdir" href="https://maps.google.com/?q=Nairobi,Kenya" target="_blank">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <div class="map-bottom">
+          <a class="btn-directions" href="https://maps.google.com/?q=Nairobi,Kenya" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             Get Directions
           </a>
         </div>
@@ -653,88 +1066,107 @@
   </div>
 </section>
 
-<!-- FOOTER -->
+
+<!-- ═══ FOOTER ═══════════════════════════════════════════════════════ -->
 <footer id="footer">
-  <div class="wrap">
-    <div class="fgrid">
+  <div class="container">
+    <div class="footer-grid">
       <div>
-        <img class="flogo" src="assets/img/logo.png" alt="Jena Brands Limited"
-             onerror="this.outerHTML='<div style=\'font-family:var(--ff-d);font-size:18px;font-weight:600;color:rgba(255,255,255,.65);margin-bottom:14px\'>Jena Brands Limited</div>'">
-        <p class="ftag">Fast, reliable LPG delivery across Nairobi. Your comfort — delivered.</p>
-        <div class="fcon">
-          <a href="tel:+254700000000"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.17 9.81 19.79 19.79 0 01.12 1.18 2 2 0 012.1 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>+254 700 000 000</a>
-          <a href="mailto:info@jenabrands.co.ke"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>info@jenabrands.co.ke</a>
-          <a href="#"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Nairobi, Kenya</a>
+        <div class="footer-logo">
+          <img src="assets/img/logo.png" alt="Jena Brands Limited" onerror="this.onerror=null;this.src='assets/img/logo.jpg';">
         </div>
-        <div class="fsoc">
-          <a href="#" aria-label="Facebook"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-          <a href="#" aria-label="Instagram"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></a>
-          <a href="#" aria-label="TikTok"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34l-.03-8.04a8.17 8.17 0 004.78 1.52V5.35a4.85 4.85 0 01-1-.66z"/></svg></a>
-          <a href="#" aria-label="WhatsApp"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
-          <a href="#" aria-label="YouTube"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.4a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#080d06"/></svg></a>
+        <p class="footer-tagline">Fast, reliable LPG delivery across Nairobi. Your comfort is our commitment.</p>
+        <div class="footer-contact">
+          <a href="tel:+254700000000"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.17 9.81 19.79 19.79 0 01.12 1.18 2 2 0 012.1 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>+254 700 000 000</a>
+          <a href="mailto:info@jenabrands.co.ke"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>info@jenabrands.co.ke</a>
+          <a href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Nairobi, Kenya</a>
+        </div>
+        <div class="f-socials">
+          <a href="#" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="TikTok"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34l-.03-8.04a8.17 8.17 0 004.78 1.52V5.35a4.85 4.85 0 01-1-.66z"/></svg></a>
+          <a href="#" aria-label="WhatsApp"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.4a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#111008"/></svg></a>
         </div>
       </div>
+
       <div>
-        <div class="fct">Navigate</div>
-        <ul class="flinks">
+        <div class="footer-col-title">Navigate</div>
+        <ul class="footer-links">
           <li><a href="#categories">Products</a></li>
           <li><a href="#prices">Gas Prices</a></li>
-          <li><a href="#stats">Coverage</a></li>
-          <li><a href="#locate">Find Us</a></li>
-          <li><a href="https://wa.me/254700000000" target="_blank">Order on WhatsApp</a></li>
+          <li><a href="#stats">Our Coverage</a></li>
+          <li><a href="#cta">Find Our Store</a></li>
         </ul>
       </div>
+
       <div>
-        <div class="fct">Hours</div>
-        <div class="hrow"><span>Mon – Fri</span><span>7 am – 9 pm</span></div>
-        <div class="hrow"><span>Saturday</span><span>8 am – 8 pm</span></div>
-        <div class="hrow"><span>Sunday</span><span>9 am – 5 pm</span></div>
-        <div style="margin-top:24px;padding:16px;border:1px solid rgba(255,255,255,.06);border-radius:2px;">
-          <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:5px;">Emergency?</div>
-          <div style="font-size:13px;font-weight:300;color:rgba(255,255,255,.35);line-height:1.7;">Call us anytime — we'll do our best to help.</div>
-          <a href="tel:+254700000000" style="display:inline-block;margin-top:10px;font-size:13px;color:#9de05e;text-decoration:none;font-weight:500;">+254 700 000 000 →</a>
+        <div class="footer-col-title">Operating Hours</div>
+        <ul class="footer-hours">
+          <li><span>Mon – Fri</span><span>7am – 9pm</span></li>
+          <li><span>Saturday</span><span>8am – 8pm</span></li>
+          <li><span>Sunday</span><span>9am – 5pm</span></li>
+        </ul>
+        <div style="margin-top:24px; padding:16px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.06); border-radius:10px;">
+          <div style="font-size:10px; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--lime); margin-bottom:4px;">Emergency?</div>
+          <div style="font-size:13px; color:rgba(255,255,255,.35); font-weight:300; line-height:1.7;">Call us anytime — we'll do our best to help.</div>
         </div>
       </div>
     </div>
-    <div class="fbot">
-      <div class="fcp">© 2025 Jena Brands Limited. All rights reserved.</div>
-      <div class="fleg"><a href="#">Privacy Policy</a><a href="#">Terms &amp; Conditions</a></div>
+
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Jena Brands Limited. All rights reserved.</div>
+      <div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms & Conditions</a></div>
     </div>
   </div>
 </footer>
 
+
+<!-- UIkit JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.21.4/js/uikit.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.21.4/js/uikit-icons.min.js"></script>
+
 <script>
-  // Nav scroll
-  const nav = document.getElementById('snav');
-  addEventListener('scroll', () => nav.classList.toggle('up', scrollY > 36), { passive: true });
+  /* ── Nav scroll state ── */
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 40);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
-  // Scroll reveal
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.r').forEach(el => io.observe(el));
+  /* ── Scroll-reveal ── */
+  const revealObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
-  // Counter
-  let done = false;
-  const statsEl = document.getElementById('stats');
-  const cntEl = document.getElementById('cnt');
-  const sio = new IntersectionObserver(entries => {
-    if (entries[0].isIntersecting && !done) {
-      done = true;
-      let s = null;
-      const step = ts => {
-        if (!s) s = ts;
-        const p = Math.min((ts - s) / 1300, 1);
-        const e = 1 - Math.pow(1 - p, 3);
-        cntEl.textContent = Math.floor(e * 80);
-        if (p < 1) requestAnimationFrame(step);
-      };
-      requestAnimationFrame(step);
+  /* ── Counter ── */
+  function animateCount(el, target, duration) {
+    const em = el.querySelector('em') ? el.querySelector('em').outerHTML : '';
+    let start = 0;
+    const step = target / (duration / 16);
+    const t = setInterval(() => {
+      start = Math.min(start + step, target);
+      el.innerHTML = Math.round(start) + em;
+      if (start >= target) clearInterval(t);
+    }, 16);
+  }
+  let counted = false;
+  const statsObs = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting && !counted) {
+      counted = true;
+      animateCount(document.getElementById('counter-hoods'), 80, 1400);
     }
-  }, { threshold: 0.5 });
-  if (statsEl) sio.observe(statsEl);
+  }, { threshold: 0.4 });
+  statsObs.observe(document.getElementById('stats'));
+
+  /* ── Hero staggered entrance ── */
+  window.addEventListener('load', () => {
+    const els = document.querySelectorAll('.hero-eyebrow, .hero-h1, .hero-sub, .hero-actions, .hero-scroll-hint');
+    els.forEach((el, i) => {
+      el.style.cssText = `opacity:0; transform:translateY(22px); transition:opacity .9s cubic-bezier(.16,1,.3,1) ${i * 0.13 + 0.15}s, transform .9s cubic-bezier(.16,1,.3,1) ${i * 0.13 + 0.15}s`;
+      requestAnimationFrame(() => requestAnimationFrame(() => { el.style.opacity = '1'; el.style.transform = 'none'; }));
+    });
+  });
 </script>
 </body>
 </html>
