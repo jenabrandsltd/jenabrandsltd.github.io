@@ -142,7 +142,8 @@
     .nav-logo .logo-inverted { display: none; }
     #nav.scrolled .nav-logo .logo-default { display: none; }
     #nav.scrolled .nav-logo .logo-inverted { display: block; }
-    .nav-links { display: flex; gap: 40px; list-style: none; align-items: center; }
+    .nav-links { display: flex; gap: 40px; list-style: none; align-items: center; margin: 0; padding: 0; }
+    .nav-links li { margin: 0; padding: 0; }
     .nav-links a {
       font-size: 12.5px; font-weight: 600; letter-spacing: .07em;
       text-transform: uppercase; color: rgba(255,255,255,.85);
@@ -475,15 +476,12 @@
     }
     .terms-inner {
       max-width: 860px; margin: 0 auto;
-      background: var(--white);
-      border: 1px solid var(--ink-10);
-      border-radius: var(--r-card);
-      padding: 28px 36px;
-      display: flex; gap: 18px; align-items: flex-start;
+      display: flex; gap: 14px; align-items: flex-start;
+      padding: 0 4px;
     }
     .terms-icon {
-      flex-shrink: 0; width: 36px; height: 36px; margin-top: 2px;
-      color: var(--ink-30);
+      flex-shrink: 0; width: 16px; height: 16px; margin-top: 1px;
+      color: var(--ink-30); opacity: .7;
     }
     .terms-text {
       font-size: 12px; color: var(--ink-30);
@@ -491,79 +489,131 @@
     }
     .terms-text strong { color: var(--ink-60); font-weight: 600; }
     @media (max-width: 640px) {
-      .terms-inner { padding: 20px; gap: 14px; }
+      .terms-inner { gap: 10px; }
     }
 
     /* ═══ STATS ════════════════════════════════════════════════ */
     #stats {
-      background: var(--black);
-      padding: 0; overflow: hidden; position: relative;
-    }
-    #stats .orn-stats {
-      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-      width: 420px; height: 480px; opacity: .04; pointer-events: none;
-    }
-    /* subtle purple glow left, green glow right */
-    #stats::before {
-      content: ''; position: absolute; inset: 0; pointer-events: none;
-      background:
-        radial-gradient(ellipse 50% 100% at 0% 50%, rgba(119,14,117,.28) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 100% at 100% 50%, rgba(37,94,11,.18) 0%, transparent 70%);
-    }
-    /* top accent bar */
-    #stats::after {
-      content: ''; position: absolute; top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--purple) 0%, var(--lime) 50%, var(--green) 100%);
+      overflow: hidden; position: relative;
     }
     .stats-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      position: relative; z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 480px;
     }
-    @media (max-width: 560px) { .stats-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 680px) {
+      .stats-grid { grid-template-columns: 1fr; }
+    }
 
-    .stat-panel {
-      padding: 72px 56px;
-      display: flex; flex-direction: column; align-items: center;
-      text-align: center; gap: 0;
+    /* ── LEFT: image panel with centred title ── */
+    .stats-img-panel {
       position: relative;
+      background:
+        linear-gradient(to bottom, rgba(1,1,0,.52) 0%, rgba(37,94,11,.45) 60%, rgba(1,1,0,.7) 100%),
+        url('assets/img/stats-bg.jpg') center/cover no-repeat;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 72px 48px; text-align: center;
     }
-    .stat-panel:first-child { border-right: 1px solid rgba(255,255,255,.07); }
-    @media (max-width: 560px) {
-      .stat-panel:first-child { border-right: none; border-bottom: 1px solid rgba(255,255,255,.07); }
+    /* fallback gradient if image doesn't load */
+    .stats-img-panel::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: linear-gradient(145deg, #0d260a 0%, #1a4506 40%, #255E0B 70%, #010100 100%);
+      z-index: 0;
     }
-    @media (max-width: 768px) { .stat-panel { padding: 52px 32px; } }
+    /* LPG cylinder SVG watermark behind text */
+    .stats-img-panel .stats-watermark {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      pointer-events: none; z-index: 1; opacity: .07;
+    }
+    .stats-img-panel .stats-watermark svg { width: 220px; height: auto; }
+    .stats-img-title-wrap { position: relative; z-index: 2; }
+    .stats-img-eyebrow {
+      font-size: 10px; font-weight: 700; letter-spacing: .25em; text-transform: uppercase;
+      color: var(--lime); margin-bottom: 20px;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+    }
+    .stats-img-eyebrow::before, .stats-img-eyebrow::after {
+      content: ''; display: block; width: 24px; height: 1px; background: var(--lime);
+    }
+    .stats-img-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 5vw, 60px); font-weight: 600;
+      color: var(--white); line-height: 1.08; margin-bottom: 16px;
+    }
+    .stats-img-title em { font-style: italic; color: var(--lime); }
+    .stats-img-sub {
+      font-size: 14px; font-weight: 300; color: rgba(255,255,255,.52);
+      line-height: 1.75; max-width: 280px; margin: 0 auto;
+    }
+    @media (max-width: 680px) {
+      .stats-img-panel { min-height: 300px; padding: 56px 32px; }
+    }
+
+    /* ── RIGHT: gradient panel with two stacked stats ── */
+    .stats-data-panel {
+      background: linear-gradient(160deg, #1a0419 0%, #3d0739 40%, #5a0a58 75%, #010100 100%);
+      display: flex; flex-direction: column;
+      justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    /* purple radial glow */
+    .stats-data-panel::before {
+      content: ''; position: absolute; top: -60px; right: -60px;
+      width: 320px; height: 320px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(119,14,117,.35) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    /* lime accent line left edge */
+    .stats-data-panel::after {
+      content: ''; position: absolute; top: 0; left: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, transparent, var(--lime) 40%, var(--purple) 100%);
+    }
+    .stat-panel {
+      padding: 52px 56px;
+      display: flex; align-items: center; gap: 24px;
+      position: relative; z-index: 1;
+      flex: 1;
+    }
+    .stat-panel:first-child { border-bottom: 1px solid rgba(255,255,255,.07); }
+    @media (max-width: 768px) { .stat-panel { padding: 40px 32px; gap: 18px; } }
 
     .stat-icon-wrap {
-      width: 56px; height: 56px; border-radius: 16px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.1);
+      flex-shrink: 0; width: 52px; height: 52px; border-radius: 14px;
       display: flex; align-items: center; justify-content: center;
-      margin-bottom: 24px;
     }
     .stat-icon-wrap svg { width: 26px; height: 26px; }
 
-    /* first stat: purple accent */
-    .stat-panel:first-child .stat-icon-wrap { background: rgba(119,14,117,.18); border-color: rgba(119,14,117,.35); }
-    .stat-panel:first-child .stat-icon-wrap svg { color: #c46ec3; }
-    /* second stat: lime accent */
-    .stat-panel:last-child .stat-icon-wrap { background: rgba(127,207,26,.12); border-color: rgba(127,207,26,.3); }
-    .stat-panel:last-child .stat-icon-wrap svg { color: var(--lime); }
+    /* delivery stat: lime accent */
+    .stat-panel--delivery .stat-icon-wrap {
+      background: rgba(127,207,26,.12); border: 1px solid rgba(127,207,26,.3);
+    }
+    .stat-panel--delivery .stat-icon-wrap svg { color: var(--lime); }
+
+    /* coverage stat: purple accent */
+    .stat-panel--coverage .stat-icon-wrap {
+      background: rgba(119,14,117,.2); border: 1px solid rgba(119,14,117,.4);
+    }
+    .stat-panel--coverage .stat-icon-wrap svg { color: #d080cf; }
 
     .stat-content { flex: 1; }
     .stat-number {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(80px, 12vw, 128px); font-weight: 600;
-      color: var(--white); line-height: 1; margin-bottom: 12px;
+      font-size: clamp(56px, 8vw, 96px);
+      font-weight: 600; color: var(--white); line-height: 1; margin-bottom: 6px;
     }
-    .stat-number em { font-style: italic; color: var(--lime); font-size: .48em; vertical-align: super; }
+    .stat-number em {
+      font-style: italic; color: var(--lime); font-size: .44em;
+      vertical-align: super; line-height: 0;
+    }
     .stat-label {
-      font-size: 14px; font-weight: 600; color: rgba(255,255,255,.8);
-      letter-spacing: .06em; text-transform: uppercase; margin-bottom: 8px;
+      font-size: 11px; font-weight: 700; color: rgba(255,255,255,.55);
+      letter-spacing: .18em; text-transform: uppercase; margin-bottom: 4px;
     }
     .stat-sub {
       font-size: 13px; color: rgba(255,255,255,.32);
-      font-weight: 300; line-height: 1.6;
+      font-weight: 300; line-height: 1.65;
     }
 
     /* ═══ CTA + MAP ════════════════════════════════════════════ */
@@ -1081,9 +1131,8 @@
 <section id="terms" aria-label="Terms and conditions">
   <div class="container">
     <div class="terms-inner">
-      <svg class="terms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M9 12l2 2 4-4"/><rect x="3" y="3" width="18" height="18" rx="3"/>
-        <path d="M9 7h6M9 17h3"/>
+      <svg class="terms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
       </svg>
       <p class="terms-text">
         <strong>Terms &amp; Conditions —</strong> All prices are in KES and include VAT, subject to change per ERC-regulated LPG pricing. Free delivery applies within Nairobi on orders above KES&nbsp;2,500. Cylinder exchange requires a valid empty cylinder of the same brand and size. Jena Brands Limited is not liable for damage resulting from improper use or installation of gas products. Payment accepted on delivery via M-Pesa, cash, or card. All cylinders remain property of their respective brand companies.
@@ -1095,59 +1144,72 @@
 
 <!-- ═══ STATS ════════════════════════════════════════════════════════ -->
 <section id="stats" aria-label="Coverage statistics">
-  <!-- ornamental cylinder + flame motif -->
-  <svg class="orn-stats" viewBox="0 0 500 560" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <!-- main flame -->
-    <path d="M250 20 C250 20 170 100 162 190 C155 270 195 308 215 338 C192 295 205 262 230 242 C222 272 230 300 248 318 C266 300 274 272 266 242 C291 262 304 295 281 338 C301 308 341 270 334 190 C326 100 250 20 250 20Z" stroke="white" stroke-width="2" fill="none"/>
-    <!-- inner flame -->
-    <path d="M250 90 C250 90 215 135 213 172 C211 204 224 222 235 238 C229 218 232 200 248 188 C264 200 267 218 261 238 C272 222 285 204 283 172 C281 135 250 90 250 90Z" stroke="white" stroke-width="1.5" fill="none" opacity=".6"/>
-    <!-- cylinder body -->
-    <ellipse cx="250" cy="390" rx="130" ry="36" stroke="white" stroke-width="2"/>
-    <ellipse cx="250" cy="520" rx="130" ry="36" stroke="white" stroke-width="2"/>
-    <line x1="120" y1="390" x2="120" y2="520" stroke="white" stroke-width="2"/>
-    <line x1="380" y1="390" x2="380" y2="520" stroke="white" stroke-width="2"/>
-    <!-- shoulder curves -->
-    <ellipse cx="250" cy="368" rx="92" ry="24" stroke="white" stroke-width="1.5"/>
-    <line x1="158" y1="368" x2="120" y2="390" stroke="white" stroke-width="1.5"/>
-    <line x1="342" y1="368" x2="380" y2="390" stroke="white" stroke-width="1.5"/>
-    <!-- valve -->
-    <rect x="225" y="335" width="50" height="35" rx="10" stroke="white" stroke-width="1.5"/>
-    <line x1="200" y1="350" x2="300" y2="350" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
-    <!-- base -->
-    <ellipse cx="250" cy="533" rx="145" ry="28" stroke="white" stroke-width="1"/>
-    <!-- label stripe -->
-    <rect x="128" y="434" width="244" height="48" rx="4" stroke="white" stroke-width="1" opacity=".35"/>
-  </svg>
-
   <div class="stats-grid">
-    <div class="stat-panel reveal">
-      <div class="stat-icon-wrap">
-        <!-- Map icon -->
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M3 7l6-3 6 3 6-3v13l-6 3-6-3-6 3V7z"/>
-          <line x1="9" y1="4" x2="9" y2="17"/>
-          <line x1="15" y1="7" x2="15" y2="20"/>
+
+    <!-- LEFT: image background panel with centred title -->
+    <div class="stats-img-panel">
+      <!-- LPG cylinder watermark -->
+      <div class="stats-watermark" aria-hidden="true">
+        <svg viewBox="0 0 200 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="100" cy="70" rx="72" ry="20" stroke="white" stroke-width="2.5"/>
+          <ellipse cx="100" cy="270" rx="72" ry="20" stroke="white" stroke-width="2.5"/>
+          <line x1="28" y1="70" x2="28" y2="270" stroke="white" stroke-width="2.5"/>
+          <line x1="172" y1="70" x2="172" y2="270" stroke="white" stroke-width="2.5"/>
+          <ellipse cx="100" cy="52" rx="50" ry="14" stroke="white" stroke-width="2"/>
+          <line x1="50" y1="52" x2="28" y2="70" stroke="white" stroke-width="2"/>
+          <line x1="150" y1="52" x2="172" y2="70" stroke="white" stroke-width="2"/>
+          <rect x="82" y="28" width="36" height="26" rx="7" stroke="white" stroke-width="2"/>
+          <line x1="66" y1="40" x2="134" y2="40" stroke="white" stroke-width="3" stroke-linecap="round"/>
+          <ellipse cx="100" cy="282" rx="80" ry="16" stroke="white" stroke-width="1.5"/>
+          <rect x="36" y="148" width="128" height="40" rx="4" stroke="white" stroke-width="1.5" opacity=".5"/>
+          <!-- flame above -->
+          <path d="M100 4 C100 4 82 20 81 34 C80 46 89 52 94 58 C91 49 93 41 99 37 C98 43 100 50 100 53 C100 50 102 43 101 37 C107 41 109 49 106 58 C111 52 120 46 119 34 C118 20 100 4 100 4Z" stroke="white" stroke-width="1.5" fill="none"/>
         </svg>
       </div>
-      <div class="stat-content">
-        <div class="stat-number" id="counter-hoods">0<em>+</em></div>
-        <div class="stat-label">Neighbourhoods Covered</div>
-        <div class="stat-sub">Kilimani · Kileleshwa · Lavington<br>Westlands · Upper Hill &amp; beyond</div>
+      <div class="stats-img-title-wrap reveal">
+        <div class="stats-img-eyebrow">Our Reach</div>
+        <h2 class="stats-img-title">Nairobi's<br><em>fastest</em><br>gas delivery</h2>
+        <p class="stats-img-sub">From order to doorstep — reliable, safe, and always on time across Nairobi.</p>
       </div>
     </div>
-    <div class="stat-panel reveal reveal-delay-2">
-      <div class="stat-icon-wrap">
-        <!-- Flame icon -->
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M12 2c0 0-5 4.5-5 9a5 5 0 0 0 10 0c0-1.8-.7-3.4-1.8-4.6C14.5 7.8 14 9 13 9.5c0 0 1-3-1-7.5z"/>
-          <path d="M9 17c0 1.7 1.3 3 3 3s3-1.3 3-3"/>
-        </svg>
+
+    <!-- RIGHT: purple gradient with two stacked stats -->
+    <div class="stats-data-panel">
+
+      <!-- Stat 1: Delivery time -->
+      <div class="stat-panel stat-panel--delivery reveal">
+        <div class="stat-icon-wrap">
+          <!-- Clock icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <div class="stat-content">
+          <div class="stat-number">45<em>min</em></div>
+          <div class="stat-label">Average Delivery Time</div>
+          <div class="stat-sub">Order now — gas at your door fast,<br>7 days a week</div>
+        </div>
       </div>
-      <div class="stat-content">
-        <div class="stat-number">45<em>min</em></div>
-        <div class="stat-label">Average Delivery Time</div>
-        <div class="stat-sub">Order now — gas at your door<br>in under 45 minutes, 7 days a week</div>
+
+      <!-- Stat 2: Neighbourhoods -->
+      <div class="stat-panel stat-panel--coverage reveal reveal-delay-2">
+        <div class="stat-icon-wrap">
+          <!-- Delivery bike/truck icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="1" y="3" width="15" height="13" rx="1"/>
+            <path d="M16 8h4l3 5v3h-7V8z"/>
+            <circle cx="5.5" cy="18.5" r="2.5"/>
+            <circle cx="18.5" cy="18.5" r="2.5"/>
+          </svg>
+        </div>
+        <div class="stat-content">
+          <div class="stat-number" id="counter-hoods">0<em>+</em></div>
+          <div class="stat-label">Neighbourhoods Served</div>
+          <div class="stat-sub">Kilimani · Kileleshwa · Lavington<br>Westlands · Upper Hill &amp; beyond</div>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
