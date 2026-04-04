@@ -1003,7 +1003,7 @@
     <div class="stat-panel reveal">
       <div class="stat-number" id="counter-hoods">0<em>+</em></div>
       <div class="stat-label">Neighbourhoods Covered</div>
-      <div class="stat-sub">Nairobi, Kiambu & beyond</div>
+      <div class="stat-sub">Kilimani, Kileleshwa</div>
     </div>
     <div class="stat-panel reveal reveal-delay-2">
       <div class="stat-number">45<em>min</em></div>
@@ -1154,7 +1154,7 @@
   const statsObs = new IntersectionObserver(entries => {
     if (entries[0].isIntersecting && !counted) {
       counted = true;
-      animateCount(document.getElementById('counter-hoods'), 80, 1400);
+      animateCount(document.getElementById('counter-hoods'), 7, 1400);
     }
   }, { threshold: 0.4 });
   statsObs.observe(document.getElementById('stats'));
