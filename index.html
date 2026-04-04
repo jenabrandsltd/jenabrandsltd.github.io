@@ -77,6 +77,8 @@
       --green-bright:#3a9612;
       --purple-pale: #f7eef7;
       --purple-mid:  #8f1a8d;
+      --purple-dark: #5a0a58;
+      --purple-deep: #3d0739;
 
       /* Neutrals */
       --ink:         #010100;
@@ -134,7 +136,12 @@
       max-width: 1200px; margin: 0 auto; padding: 0 32px;
       height: 72px; display: flex; align-items: center; justify-content: space-between;
     }
-    .nav-logo img { height: 44px; width: auto; display: block; }
+    .nav-logo img { height: 52px; width: auto; display: block; transition: opacity .3s; }
+    /* inverted logo shown on transparent nav (dark hero bg), regular logo when scrolled */
+    .nav-logo .logo-default { display: block; }
+    .nav-logo .logo-inverted { display: none; }
+    #nav.scrolled .nav-logo .logo-default { display: none; }
+    #nav.scrolled .nav-logo .logo-inverted { display: block; }
     .nav-links { display: flex; gap: 40px; list-style: none; }
     .nav-links a {
       font-size: 12.5px; font-weight: 600; letter-spacing: .07em;
@@ -179,7 +186,7 @@
       color: var(--white); text-decoration: none; display: block; margin-bottom: 40px;
     }
     .oc-logo span { color: var(--lime); }
-    .oc-nav { list-style: none; }
+    .oc-nav { list-style: none; padding:0; margin:0; }
     .oc-nav li { border-bottom: 1px solid rgba(255,255,255,.07); }
     .oc-nav a {
       display: block; padding: 16px 0; font-size: 17px; font-weight: 500;
@@ -212,7 +219,7 @@
     }
     .hero-bg {
       position: absolute; inset: -5%;
-      background: linear-gradient(150deg, #010100 0%, #1a4506 40%, #255E0B 70%, #010100 100%);
+      background: linear-gradient(150deg, #010100 0%, #3d0739 30%, #770E75 60%, #1a4506 85%, #010100 100%);
       animation: kb 22s ease-in-out infinite alternate;
       transform-origin: 55% 50%; z-index: 0;
     }
@@ -229,12 +236,23 @@
     .hero-arc {
       position: absolute; top: -180px; right: -180px;
       width: 520px; height: 520px; border-radius: 50%;
-      border: 1px solid rgba(119,14,117,.25); z-index: 1;
+      border: 1.5px solid rgba(119,14,117,.55); z-index: 1;
     }
     .hero-arc-2 {
       position: absolute; top: -280px; right: -280px;
       width: 720px; height: 720px; border-radius: 50%;
-      border: 1px solid rgba(119,14,117,.1); z-index: 1;
+      border: 1px solid rgba(119,14,117,.28); z-index: 1;
+    }
+    /* Large decorative flame – bottom right of hero */
+    .hero-flame-orn {
+      position: absolute; bottom: -40px; right: 5vw;
+      width: clamp(180px, 22vw, 320px); height: auto;
+      opacity: .13; z-index: 2; pointer-events: none;
+    }
+    /* Gas cylinder ornament – categories top-right */
+    .orn-cylinder-lg {
+      position: absolute; top: -30px; right: -30px;
+      width: 260px; height: auto; opacity: .06; pointer-events: none;
     }
     .hero-overlay {
       position: absolute; inset: 0; z-index: 2;
@@ -317,7 +335,7 @@
     #categories { background: var(--white); position: relative; overflow: hidden; }
     /* ornamental ring top-left */
     #categories .orn-ring {
-      top: -60px; left: -60px; width: 280px; height: 280px; opacity: .06;
+      top: -80px; left: -60px; width: 200px; height: 300px; opacity: .055;
     }
     /* ornamental dots grid bottom-right */
     #categories .orn-dots {
@@ -368,11 +386,11 @@
     .uk-slidenav:hover { background: var(--green) !important; color: var(--white) !important; border-color: var(--green) !important; }
 
     /* ═══ PRICES ════════════════════════════════════════════════ */
-    #prices { background: var(--cream); position: relative; overflow: hidden; }
+    #prices { background: var(--cream); position: relative; overflow: hidden; padding-bottom: 48px; }
     /* ornament – large faint circle */
     #prices .orn-circle { top: -120px; right: -120px; width: 440px; height: 440px; opacity: .05; }
     /* ornament – small leaf bottom-left */
-    #prices .orn-leaf { bottom: 40px; left: -40px; width: 220px; height: 220px; opacity: .06; }
+    #prices .orn-leaf { bottom: 20px; left: -50px; width: 220px; height: 340px; opacity: .065; }
 
     .price-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
     @media (max-width: 900px) { .price-grid { grid-template-columns: repeat(2,1fr); } }
@@ -432,29 +450,48 @@
     .btn-call-sm:hover { background:var(--green-pale); border-color:var(--green); transform:translateY(-1px); color:var(--green); }
 
     /* ═══ TERMS ════════════════════════════════════════════════ */
-    #terms { background:var(--white); padding:36px 0; border-top:1px solid var(--ink-10); }
+    #terms { background:transparent; padding:28px 0 0; }
     .terms-text { font-size:12.5px; color:var(--ink-30); text-align:center; max-width:800px; margin:0 auto; line-height:1.95; }
     .terms-text strong { color:var(--ink-60); font-weight:600; }
 
     /* ═══ STATS ════════════════════════════════════════════════ */
-    #stats { background:var(--green); padding:0; overflow:hidden; position:relative; }
+    #stats { background: linear-gradient(135deg, var(--purple-dark) 0%, var(--purple) 50%, var(--purple-mid) 100%); padding:0; overflow:hidden; position:relative; }
     /* ornamental SVG – big hollow cylinder background */
     #stats .orn-stats {
       position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
-      width:500px; height:500px; opacity:.06; pointer-events:none;
+      width:420px; height:480px; opacity:.07; pointer-events:none;
+    }
+    /* purple noise/dot texture overlay */
+    #stats::before {
+      content:''; position:absolute; inset:0; pointer-events:none;
+      background-image: radial-gradient(circle, rgba(255,255,255,.06) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+    /* lime accent line top */
+    #stats::after {
+      content:''; position:absolute; top:0; left:0; right:0;
+      height:3px; background:linear-gradient(90deg, transparent 0%, var(--lime) 40%, var(--green) 100%);
     }
     .stats-grid { display:grid; grid-template-columns:1fr 1fr; position:relative; z-index:1; }
     @media (max-width:560px) { .stats-grid { grid-template-columns:1fr; } }
-    .stat-panel { padding:80px 60px; text-align:center; }
+    .stat-panel { padding:80px 60px; display:flex; align-items:center; gap:32px; }
     .stat-panel:first-child { border-right:1px solid rgba(255,255,255,.12); }
     @media (max-width:560px) { .stat-panel:first-child { border-right:none; border-bottom:1px solid rgba(255,255,255,.12); } }
+    @media (max-width:768px) { .stat-panel { padding:56px 32px; gap:20px; } }
+    .stat-icon-wrap {
+      flex-shrink:0; width:80px; height:80px; border-radius:20px;
+      background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.15);
+      display:flex; align-items:center; justify-content:center;
+    }
+    .stat-icon-wrap svg { width:42px; height:42px; color:var(--lime); }
+    .stat-content { flex:1; text-align:left; }
     .stat-number {
       font-family:'Cormorant Garamond',serif;
       font-size:clamp(72px,11vw,120px); font-weight:600; color:var(--white); line-height:1; margin-bottom:8px;
     }
     .stat-number em { font-style:italic; color:var(--lime); font-size:.5em; }
     .stat-label { font-size:14px; font-weight:500; color:rgba(255,255,255,.85); letter-spacing:.04em; margin-bottom:6px; }
-    .stat-sub { font-size:12px; color:rgba(255,255,255,.38); letter-spacing:.06em; }
+    .stat-sub { font-size:12px; color:rgba(255,255,255,.45); letter-spacing:.06em; }
 
     /* ═══ CTA + MAP ════════════════════════════════════════════ */
     #cta { background:var(--cream); position:relative; overflow:hidden; }
@@ -531,7 +568,7 @@
     #footer .orn-footer { top:-60px; right:-60px; width:300px; height:300px; opacity:.07; pointer-events:none; }
     .footer-grid { display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:48px; padding-bottom:56px; position:relative; z-index:1; }
     @media (max-width:768px) { .footer-grid { grid-template-columns:1fr; } }
-    .footer-logo img { height:40px; width:auto; display:block; margin-bottom:16px; }
+    .footer-logo img { height: 52px; width: auto; display: block; margin-bottom: 16px; }
     .footer-tagline { font-size:13.5px; color:rgba(255,255,255,.32); line-height:1.85; margin-bottom:24px; font-weight:300; }
     .footer-contact a { display:flex; align-items:center; gap:10px; font-size:13.5px; color:rgba(255,255,255,.48); text-decoration:none; margin-bottom:10px; transition:color .2s; }
     .footer-contact a:hover { color:var(--lime); }
@@ -546,11 +583,11 @@
     }
     .f-socials a:hover { border-color:var(--lime); color:var(--lime); background:rgba(127,207,26,.06); }
     .footer-col-title { font-size:10px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:rgba(255,255,255,.18); margin-bottom:20px; }
-    .footer-links { list-style:none; }
+    .footer-links { list-style:none; padding:0; margin:0; }
     .footer-links li { margin-bottom:12px; }
     .footer-links a { font-size:14px; color:rgba(255,255,255,.48); text-decoration:none; transition:color .2s; }
     .footer-links a:hover { color:var(--white); }
-    .footer-hours { list-style:none; }
+    .footer-hours { list-style:none; padding:0; margin:0; }
     .footer-hours li { display:flex; justify-content:space-between; font-size:13px; color:rgba(255,255,255,.38); padding:8px 0; border-bottom:1px solid rgba(255,255,255,.05); }
     .footer-hours li span:last-child { color:var(--lime); font-weight:600; }
     .footer-bottom {
@@ -579,8 +616,12 @@
 <nav id="nav" aria-label="Main navigation">
   <div class="nav-inner">
     <a href="#" class="nav-logo" aria-label="Jena Brands Limited – Home">
-      <img src="assets/img/logo.png" alt="Jena Brands Limited logo"
+      <!-- logo-inverted: light/white version for dark hero background -->
+      <img class="logo-default" src="assets/img/logo-inverted.png" alt="Jena Brands Limited"
            onerror="this.onerror=null;this.src='assets/img/logo-alt.svg';">
+      <!-- logo: dark version for scrolled/light navbar -->
+      <img class="logo-inverted" src="assets/img/logo.png" alt="Jena Brands Limited"
+           onerror="this.onerror=null;this.src='assets/img/logo.png';">
     </a>
     <div class="nav-links-wrap" style="display:flex;align-items:center;gap:48px;">
       <ul class="nav-links">
@@ -617,7 +658,8 @@
         <a href="#" aria-label="Facebook"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
         <a href="#" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></a>
         <a href="#" aria-label="TikTok"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.77.22 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 00-6.13 6.33 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34l-.03-8.04a8.17 8.17 0 004.78 1.52V5.35a4.85 4.85 0 01-1-.66z"/></svg></a>
-        <a href="#" aria-label="WhatsApp"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+        <a href="#" aria-label="X (Twitter)"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.736-8.858L1.254 2.25H8.08l4.261 5.635zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        <a href="https://wa.me/254700000000" aria-label="WhatsApp"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
       </div>
     </div>
   </div>
@@ -631,6 +673,23 @@
   <div class="hero-arc"></div>
   <div class="hero-arc-2"></div>
   <div class="hero-overlay"></div>
+
+  <!-- Large decorative flame ornament -->
+  <svg class="hero-flame-orn" viewBox="0 0 200 320" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <!-- outer flame -->
+    <path d="M100 10 C100 10 40 70 35 130 C30 185 55 210 65 230 C50 200 58 175 72 162 C68 185 75 205 90 218 C82 195 85 172 100 158 C115 172 118 195 110 218 C125 205 132 185 128 162 C142 175 150 200 135 230 C145 210 170 185 165 130 C160 70 100 10 100 10Z" fill="white" opacity="0.9"/>
+    <!-- inner flame core -->
+    <path d="M100 80 C100 80 70 115 68 148 C66 175 78 192 86 205 C80 185 84 168 95 158 C92 172 96 188 100 195 C104 188 108 172 105 158 C116 168 120 185 114 205 C122 192 134 175 132 148 C130 115 100 80 100 80Z" fill="white" opacity="0.6"/>
+    <!-- flame tip highlight -->
+    <ellipse cx="100" cy="135" rx="12" ry="30" fill="white" opacity="0.3"/>
+    <!-- gas burner base -->
+    <rect x="55" y="268" width="90" height="14" rx="7" fill="white" opacity="0.7"/>
+    <rect x="45" y="280" width="110" height="8" rx="4" fill="white" opacity="0.5"/>
+    <!-- burner holes -->
+    <circle cx="75" cy="268" r="4" fill="none" stroke="white" stroke-width="2" opacity="0.6"/>
+    <circle cx="100" cy="268" r="4" fill="none" stroke="white" stroke-width="2" opacity="0.6"/>
+    <circle cx="125" cy="268" r="4" fill="none" stroke="white" stroke-width="2" opacity="0.6"/>
+  </svg>
   <div class="hero-content">
     <div class="hero-eyebrow"><span class="hero-dot"></span>Delivering across Nairobi</div>
     <h1 class="hero-h1">Gas delivered<br><em>right to your door.</em></h1>
@@ -653,11 +712,27 @@
 <!-- ═══ CATEGORIES ══════════════════════════════════════════════════ -->
 <section id="categories" class="section-pad" aria-labelledby="cat-heading">
 
-  <!-- ORNAMENT: hollow ring top-left -->
-  <svg class="ornament orn-ring" viewBox="0 0 280 280" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <circle cx="140" cy="140" r="130" stroke="#255E0B" stroke-width="1.5"/>
-    <circle cx="140" cy="140" r="100" stroke="#255E0B" stroke-width="1"/>
-    <circle cx="140" cy="140" r="70" stroke="#255E0B" stroke-width=".75"/>
+  <!-- ORNAMENT: LPG gas cylinder – top-left, large -->
+  <svg class="ornament orn-ring" viewBox="0 0 280 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <!-- cylinder body -->
+    <ellipse cx="140" cy="85" rx="100" ry="28" stroke="#255E0B" stroke-width="2"/>
+    <ellipse cx="140" cy="335" rx="100" ry="28" stroke="#255E0B" stroke-width="2"/>
+    <line x1="40" y1="85" x2="40" y2="335" stroke="#255E0B" stroke-width="2"/>
+    <line x1="240" y1="85" x2="240" y2="335" stroke="#255E0B" stroke-width="2"/>
+    <!-- shoulder -->
+    <ellipse cx="140" cy="65" rx="70" ry="18" stroke="#255E0B" stroke-width="1.5"/>
+    <line x1="70" y1="65" x2="40" y2="85" stroke="#255E0B" stroke-width="1.5"/>
+    <line x1="210" y1="65" x2="240" y2="85" stroke="#255E0B" stroke-width="1.5"/>
+    <!-- valve neck -->
+    <rect x="120" y="35" width="40" height="30" rx="8" stroke="#255E0B" stroke-width="1.5"/>
+    <!-- valve handle -->
+    <line x1="100" y1="48" x2="180" y2="48" stroke="#255E0B" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- base ring -->
+    <ellipse cx="140" cy="350" rx="110" ry="22" stroke="#255E0B" stroke-width="1"/>
+    <!-- flame above -->
+    <path d="M140 5 C140 5 118 25 116 44 C114 60 125 68 131 76 C127 65 130 56 138 50 C136 58 138 66 140 70 C142 66 144 58 142 50 C150 56 153 65 149 76 C155 68 166 60 164 44 C162 25 140 5 140 5Z" stroke="#770E75" stroke-width="1.5" fill="none"/>
+    <!-- label band -->
+    <rect x="55" y="170" width="170" height="60" rx="4" stroke="#255E0B" stroke-width="1" opacity=".4"/>
   </svg>
 
   <!-- ORNAMENT: dot grid bottom-right -->
@@ -777,10 +852,20 @@
     <circle cx="220" cy="220" r="110" stroke="#770E75" stroke-width=".5"/>
   </svg>
 
-  <!-- ORNAMENT: organic leaf / flame shape bottom-left -->
-  <svg class="ornament orn-leaf" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <path d="M110 200 C60 180 20 140 30 90 C40 40 80 20 110 10 C140 20 180 40 190 90 C200 140 160 180 110 200Z" stroke="#255E0B" stroke-width="1.5" fill="none"/>
-    <path d="M110 180 C70 165 42 132 50 90 C58 48 85 30 110 22 C135 30 162 48 170 90 C178 132 150 165 110 180Z" stroke="#255E0B" stroke-width="1" fill="none"/>
+  <!-- ORNAMENT: large flame shape bottom-left -->
+  <svg class="ornament orn-leaf" viewBox="0 0 220 340" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <!-- outer flame -->
+    <path d="M110 10 C110 10 45 75 40 145 C35 210 65 238 78 262 C60 228 70 200 88 184 C83 210 90 234 108 250 C98 222 102 195 110 178 C118 195 122 222 112 250 C130 234 137 210 132 184 C150 200 160 228 142 262 C155 238 185 210 180 145 C175 75 110 10 110 10Z" stroke="#770E75" stroke-width="1.8" fill="none"/>
+    <!-- inner flame -->
+    <path d="M110 70 C110 70 80 108 78 142 C76 172 90 190 100 207 C93 185 97 165 110 152 C123 165 127 185 120 207 C130 190 144 172 142 142 C140 108 110 70 110 70Z" stroke="#770E75" stroke-width="1.2" fill="none" opacity=".6"/>
+    <!-- burner rings -->
+    <ellipse cx="110" cy="290" rx="60" ry="16" stroke="#255E0B" stroke-width="1.5"/>
+    <ellipse cx="110" cy="290" rx="40" ry="10" stroke="#255E0B" stroke-width="1"/>
+    <ellipse cx="110" cy="318" rx="70" ry="12" stroke="#255E0B" stroke-width="1"/>
+    <!-- burner spokes -->
+    <line x1="50" y1="290" x2="55" y2="275" stroke="#255E0B" stroke-width="1" opacity=".5"/>
+    <line x1="170" y1="290" x2="165" y2="275" stroke="#255E0B" stroke-width="1" opacity=".5"/>
+    <line x1="110" y1="274" x2="110" y2="260" stroke="#255E0B" stroke-width="1" opacity=".5"/>
   </svg>
 
   <div class="container">
@@ -929,26 +1014,59 @@
 
 <!-- ═══ STATS ════════════════════════════════════════════════════════ -->
 <section id="stats" aria-label="Coverage statistics">
-  <!-- ornamental cylinder motif -->
-  <svg class="orn-stats" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <ellipse cx="250" cy="100" rx="140" ry="35" stroke="white" stroke-width="1.5"/>
-    <ellipse cx="250" cy="400" rx="140" ry="35" stroke="white" stroke-width="1.5"/>
-    <line x1="110" y1="100" x2="110" y2="400" stroke="white" stroke-width="1.5"/>
-    <line x1="390" y1="100" x2="390" y2="400" stroke="white" stroke-width="1.5"/>
-    <ellipse cx="250" cy="100" rx="90" ry="22" stroke="white" stroke-width=".8"/>
-    <ellipse cx="250" cy="400" rx="90" ry="22" stroke="white" stroke-width=".8"/>
+  <!-- ornamental cylinder + flame motif -->
+  <svg class="orn-stats" viewBox="0 0 500 560" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <!-- main flame -->
+    <path d="M250 20 C250 20 170 100 162 190 C155 270 195 308 215 338 C192 295 205 262 230 242 C222 272 230 300 248 318 C266 300 274 272 266 242 C291 262 304 295 281 338 C301 308 341 270 334 190 C326 100 250 20 250 20Z" stroke="white" stroke-width="2" fill="none"/>
+    <!-- inner flame -->
+    <path d="M250 90 C250 90 215 135 213 172 C211 204 224 222 235 238 C229 218 232 200 248 188 C264 200 267 218 261 238 C272 222 285 204 283 172 C281 135 250 90 250 90Z" stroke="white" stroke-width="1.5" fill="none" opacity=".6"/>
+    <!-- cylinder body -->
+    <ellipse cx="250" cy="390" rx="130" ry="36" stroke="white" stroke-width="2"/>
+    <ellipse cx="250" cy="520" rx="130" ry="36" stroke="white" stroke-width="2"/>
+    <line x1="120" y1="390" x2="120" y2="520" stroke="white" stroke-width="2"/>
+    <line x1="380" y1="390" x2="380" y2="520" stroke="white" stroke-width="2"/>
+    <!-- shoulder curves -->
+    <ellipse cx="250" cy="368" rx="92" ry="24" stroke="white" stroke-width="1.5"/>
+    <line x1="158" y1="368" x2="120" y2="390" stroke="white" stroke-width="1.5"/>
+    <line x1="342" y1="368" x2="380" y2="390" stroke="white" stroke-width="1.5"/>
+    <!-- valve -->
+    <rect x="225" y="335" width="50" height="35" rx="10" stroke="white" stroke-width="1.5"/>
+    <line x1="200" y1="350" x2="300" y2="350" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- base -->
+    <ellipse cx="250" cy="533" rx="145" ry="28" stroke="white" stroke-width="1"/>
+    <!-- label stripe -->
+    <rect x="128" y="434" width="244" height="48" rx="4" stroke="white" stroke-width="1" opacity=".35"/>
   </svg>
 
   <div class="stats-grid">
     <div class="stat-panel reveal">
-      <div class="stat-number" id="counter-hoods">0<em>+</em></div>
-      <div class="stat-label">Neighbourhoods Covered</div>
-      <div class="stat-sub">Kilimani, Kileleshwa &amp; beyond</div>
+      <div class="stat-icon-wrap">
+        <!-- Map/neighbourhood icon -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 7l6-3 6 3 6-3v13l-6 3-6-3-6 3V7z"/>
+          <line x1="9" y1="4" x2="9" y2="17"/>
+          <line x1="15" y1="7" x2="15" y2="20"/>
+        </svg>
+      </div>
+      <div class="stat-content">
+        <div class="stat-number" id="counter-hoods">0<em>+</em></div>
+        <div class="stat-label">Neighbourhoods Covered</div>
+        <div class="stat-sub">Kilimani, Kileleshwa &amp; beyond</div>
+      </div>
     </div>
     <div class="stat-panel reveal reveal-delay-2">
-      <div class="stat-number">45<em>min</em></div>
-      <div class="stat-label">Average Delivery Time</div>
-      <div class="stat-sub">Order now, gas at your door fast</div>
+      <div class="stat-icon-wrap">
+        <!-- Flame / LPG delivery icon -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2c0 0-5 4.5-5 9a5 5 0 0 0 10 0c0-1.8-.7-3.4-1.8-4.6C14.5 7.8 14 9 13 9.5c0 0 1-3-1-7.5z"/>
+          <path d="M9 17c0 1.7 1.3 3 3 3s3-1.3 3-3"/>
+        </svg>
+      </div>
+      <div class="stat-content">
+        <div class="stat-number">45<em>min</em></div>
+        <div class="stat-label">Average Delivery Time</div>
+        <div class="stat-sub">Order now, gas at your door fast</div>
+      </div>
     </div>
   </div>
 </section>
@@ -1043,15 +1161,15 @@
         <p class="footer-tagline">Fast, reliable LPG delivery across Nairobi. Your comfort is our commitment.</p>
         <address class="footer-contact" style="font-style:normal;">
           <a href="tel:+254700000000"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.17 9.81 19.79 19.79 0 01.12 1.18 2 2 0 012.1 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>+254 700 000 000</a>
-          <a href="mailto:info@jenabrands.co.ke"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>info@jenabrands.co.ke</a>
+          <a href="/cdn-cgi/l/email-protection#98f1f6fef7d8f2fdf6f9faeaf9f6fcebb6fbf7b6f3fd"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span class="__cf_email__" data-cfemail="f79e999198b79d929996958596999384d99498d99c92">[email&#160;protected]</span></a>
           <a href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Nairobi, Kenya</a>
         </address>
         <div class="f-socials">
           <a href="#" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
           <a href="#" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></a>
           <a href="#" aria-label="TikTok"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.77.22 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 00-6.13 6.33 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34l-.03-8.04a8.17 8.17 0 004.78 1.52V5.35a4.85 4.85 0 01-1-.66z"/></svg></a>
-          <a href="#" aria-label="WhatsApp"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
-          <a href="#" aria-label="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.4a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#010100"/></svg></a>
+          <a href="#" aria-label="X (Twitter)"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.736-8.858L1.254 2.25H8.08l4.261 5.635zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="https://wa.me/254700000000" aria-label="WhatsApp"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
         </div>
       </div>
 
@@ -1083,7 +1201,6 @@
       <div class="footer-copy">© 2026 Jena Brands Limited. All rights reserved.</div>
       <div class="footer-legal">
         <a href="#terms">Terms of Service</a>
-        <a href="#">Privacy Policy</a>
       </div>
     </div>
   </div>
@@ -1091,7 +1208,7 @@
 
 
 <!-- UIkit JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.21.4/js/uikit.min.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.21.4/js/uikit.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.21.4/js/uikit-icons.min.js"></script>
 
 <script>
@@ -1133,8 +1250,10 @@
   addEventListener('load', () => {
     document.querySelectorAll('.hero-eyebrow,.hero-h1,.hero-sub,.hero-actions,.hero-scroll')
       .forEach((el, i) => {
-        el.style.cssText = `opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.16,1,.3,1) ${i*0.13+0.15}s,transform .9s cubic-bezier(.16,1,.3,1) ${i*0.13+0.15}s`;
-        requestAnimationFrame(() => requestAnimationFrame(() => { el.style.opacity='1'; el.style.transform='none'; }));
+        el.style.cssText = `opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.16,1,.3,1) ${i*.13}s,transform .9s cubic-bezier(.16,1,.3,1) ${i*.13}s`;
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          el.style.opacity = '1'; el.style.transform = 'none';
+        }));
       });
   });
 </script>
