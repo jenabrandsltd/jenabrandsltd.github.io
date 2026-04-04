@@ -61,7 +61,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     /* ═══ BRAND TOKENS (exact palette from PDF) ══════════════════ */
@@ -183,7 +183,7 @@
     /* ═══ OFF-CANVAS ═════════════════════════════════════════════ */
     .uk-offcanvas-bar { background: var(--black) !important; width: 300px !important; }
     .oc-logo {
-      font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700;
+      font-family: 'DM Serif Display', serif; font-size: 22px; font-weight: 700;
       color: var(--white); text-decoration: none; display: block; margin-bottom: 40px;
     }
     .oc-logo span { color: var(--lime); }
@@ -271,7 +271,7 @@
     .hero-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--lime); animation: breathe 2.4s ease-in-out infinite; }
     @keyframes breathe { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.35;transform:scale(.5)} }
     .hero-h1 {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'DM Serif Display', serif;
       font-size: clamp(52px, 8.5vw, 112px); font-weight: 600;
       line-height: 1.0; color: var(--white); margin-bottom: 28px; max-width: 840px;
     }
@@ -297,11 +297,11 @@
       font-size: 13px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase;
       color: rgba(255,255,255,.68); text-decoration: none;
       display: inline-flex; align-items: center; gap: 8px;
-      position: relative; padding-bottom: 3px;
+      position: relative;
       transition: color .25s;
     }
     .btn-ghost::after {
-      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      content: ''; position: absolute; bottom: -3px; left: 0; right: 0;
       height: 1px; background: rgba(255,255,255,.25);
       transition: background .25s;
     }
@@ -329,7 +329,7 @@
     }
     .section-label::before { content:''; display:block; width:22px; height:1.5px; background:var(--purple); flex-shrink:0; }
     .section-title {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'DM Serif Display', serif;
       font-size: clamp(36px, 5.5vw, 64px); font-weight: 600; line-height: 1.05; color: var(--ink);
     }
     .section-title em { font-style: italic; color: var(--green); }
@@ -443,10 +443,10 @@
     }
     .p-card-body { padding:24px; flex:1; display:flex; flex-direction:column; }
     .p-card-brand { font-size:10px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-30); margin-bottom:5px; }
-    .p-card-name { font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:700; color:var(--ink); margin-bottom:4px; }
+    .p-card-name { font-family:'DM Serif Display',serif; font-size:26px; font-weight:700; color:var(--ink); margin-bottom:4px; }
     .p-card-desc { font-size:13px; color:var(--ink-60); line-height:1.7; margin-bottom:20px; flex:1; }
     .p-card-price { display:flex; align-items:baseline; gap:4px; margin-bottom:20px; }
-    .p-card-amount { font-family:'Cormorant Garamond',serif; font-size:40px; font-weight:700; color:var(--green); line-height:1; }
+    .p-card-amount { font-family:'DM Serif Display',serif; font-size:40px; font-weight:700; color:var(--green); line-height:1; }
     .p-card.featured .p-card-amount { color:var(--purple); }
     .p-card-unit { font-size:13px; color:var(--ink-30); font-weight:400; }
     .p-card-divider { height:1px; background:var(--ink-10); margin-bottom:20px; }
@@ -505,21 +505,15 @@
       .stats-grid { grid-template-columns: 1fr; }
     }
 
-    /* ── LEFT: image panel with centred title ── */
+    /* ── LEFT: pure background image panel with overlay ── */
     .stats-img-panel {
       position: relative;
       background:
-        linear-gradient(to bottom, rgba(1,1,0,.52) 0%, rgba(37,94,11,.45) 60%, rgba(1,1,0,.7) 100%),
+        linear-gradient(to bottom, rgba(1,1,0,.38) 0%, rgba(37,94,11,.3) 55%, rgba(1,1,0,.58) 100%),
         url('assets/img/stats-bg.jpg') center/cover no-repeat;
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
       padding: 72px 48px; text-align: center;
-    }
-    /* fallback gradient if image doesn't load */
-    .stats-img-panel::before {
-      content: ''; position: absolute; inset: 0; pointer-events: none;
-      background: linear-gradient(145deg, #0d260a 0%, #1a4506 40%, #255E0B 70%, #010100 100%);
-      z-index: 0;
     }
     /* LPG cylinder SVG watermark behind text */
     .stats-img-panel .stats-watermark {
@@ -537,83 +531,71 @@
       content: ''; display: block; width: 24px; height: 1px; background: var(--lime);
     }
     .stats-img-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(36px, 5vw, 60px); font-weight: 600;
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(36px, 5vw, 60px); font-weight: 400;
       color: var(--white); line-height: 1.08; margin-bottom: 16px;
     }
     .stats-img-title em { font-style: italic; color: var(--lime); }
     .stats-img-sub {
-      font-size: 14px; font-weight: 300; color: rgba(255,255,255,.52);
+      font-size: 14px; font-weight: 300; color: rgba(255,255,255,.72);
       line-height: 1.75; max-width: 280px; margin: 0 auto;
     }
     @media (max-width: 680px) {
       .stats-img-panel { min-height: 300px; padding: 56px 32px; }
     }
 
-    /* ── RIGHT: gradient panel with two stacked stats ── */
+    /* ── RIGHT: no background, stats in one horizontal row ── */
     .stats-data-panel {
-      background: linear-gradient(160deg, #1a0419 0%, #3d0739 40%, #5a0a58 75%, #010100 100%);
-      display: flex; flex-direction: column;
-      justify-content: center;
+      background: var(--cream);
+      display: flex; flex-direction: row;
+      align-items: stretch;
       position: relative; overflow: hidden;
     }
-    /* purple radial glow */
-    .stats-data-panel::before {
-      content: ''; position: absolute; top: -60px; right: -60px;
-      width: 320px; height: 320px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(119,14,117,.35) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    /* lime accent line left edge */
-    .stats-data-panel::after {
-      content: ''; position: absolute; top: 0; left: 0; bottom: 0;
-      width: 2px;
-      background: linear-gradient(to bottom, transparent, var(--lime) 40%, var(--purple) 100%);
-    }
     .stat-panel {
-      padding: 52px 56px;
-      display: flex; align-items: center; gap: 24px;
+      padding: 52px 36px;
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; gap: 14px;
       position: relative; z-index: 1;
-      flex: 1;
+      flex: 1; text-align: center;
     }
-    .stat-panel:first-child { border-bottom: 1px solid rgba(255,255,255,.07); }
-    @media (max-width: 768px) { .stat-panel { padding: 40px 32px; gap: 18px; } }
+    .stat-panel:first-child {
+      border-right: 1px solid var(--ink-10);
+    }
+    @media (max-width: 768px) { .stat-panel { padding: 36px 20px; gap: 10px; } }
 
+    /* Large icon — no background, no border */
     .stat-icon-wrap {
-      flex-shrink: 0; width: 52px; height: 52px; border-radius: 14px;
+      flex-shrink: 0;
       display: flex; align-items: center; justify-content: center;
+      background: none !important; border: none !important;
+      width: auto; height: auto; border-radius: 0;
     }
-    .stat-icon-wrap svg { width: 26px; height: 26px; }
+    .stat-icon-wrap svg { width: 60px; height: 60px; }
 
-    /* delivery stat: lime accent */
-    .stat-panel--delivery .stat-icon-wrap {
-      background: rgba(127,207,26,.12); border: 1px solid rgba(127,207,26,.3);
-    }
-    .stat-panel--delivery .stat-icon-wrap svg { color: var(--lime); }
+    /* delivery stat: green icon */
+    .stat-panel--delivery .stat-icon-wrap svg { color: var(--green); }
 
-    /* coverage stat: purple accent */
-    .stat-panel--coverage .stat-icon-wrap {
-      background: rgba(119,14,117,.2); border: 1px solid rgba(119,14,117,.4);
-    }
-    .stat-panel--coverage .stat-icon-wrap svg { color: #d080cf; }
+    /* coverage stat: purple icon */
+    .stat-panel--coverage .stat-icon-wrap svg { color: var(--purple); }
 
-    .stat-content { flex: 1; }
+    .stat-panel--coverage .stat-number em { color: var(--purple); }
+    .stat-content { flex: 0; width: 100%; }
     .stat-number {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(56px, 8vw, 96px);
-      font-weight: 600; color: var(--white); line-height: 1; margin-bottom: 6px;
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(52px, 7vw, 88px);
+      font-weight: 400; color: var(--ink); line-height: 1; margin-bottom: 6px;
     }
     .stat-number em {
-      font-style: italic; color: var(--lime); font-size: .44em;
+      font-style: italic; color: var(--green); font-size: .44em;
       vertical-align: super; line-height: 0;
     }
     .stat-label {
-      font-size: 11px; font-weight: 700; color: rgba(255,255,255,.55);
+      font-size: 10.5px; font-weight: 700; color: var(--ink-60);
       letter-spacing: .18em; text-transform: uppercase; margin-bottom: 4px;
     }
     .stat-sub {
-      font-size: 13px; color: rgba(255,255,255,.32);
-      font-weight: 300; line-height: 1.65;
+      font-size: 12.5px; color: var(--ink-60);
+      font-weight: 400; line-height: 1.65;
     }
 
     /* ═══ CTA + MAP ════════════════════════════════════════════ */
@@ -650,7 +632,7 @@
     }
     .cta-tag::before { content:''; display:block; width:20px; height:1.5px; background:var(--lime); }
     .cta-h2 {
-      font-family:'Cormorant Garamond',serif;
+      font-family:'DM Serif Display',serif;
       font-size:clamp(32px,5vw,56px); font-weight:600;
       color:var(--white); line-height:1.08; margin-bottom:18px;
     }
