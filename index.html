@@ -265,7 +265,7 @@
     }
     .hero-content {
       position: relative; z-index: 3;
-      max-width: 1200px; margin: 0 auto; padding: 0 32px; width: 100%;
+      max-width: 1200px; margin: 0 auto; padding: 80px 32px 0; width: 100%;
     }
     .hero-eyebrow {
       display: inline-flex; align-items: center; gap: 10px;
@@ -339,11 +339,11 @@
     #categories { background: var(--white); position: relative; overflow: hidden; }
     /* ornamental icon top-left */
     #categories .orn-ring {
-      top: -60px; left: -40px; width: 280px; height: 280px; opacity: .08;
+      top: -80px; left: -60px; width: 340px; height: 340px; opacity: .07;
     }
     /* ornamental icon bottom-right */
     #categories .orn-dots {
-      bottom: -40px; right: -40px; width: 240px; height: 240px; opacity: .07;
+      bottom: -60px; right: -60px; width: 300px; height: 300px; opacity: .06;
     }
 
     .cat-header { display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; margin-bottom: 56px; flex-wrap: wrap; }
@@ -818,15 +818,16 @@
 <!-- ═══ CATEGORIES ══════════════════════════════════════════════════ -->
 <section id="categories" class="section-pad" aria-labelledby="cat-heading">
 
-  <!-- ORNAMENT: Heroicon fire – top-left -->
+  <!-- ORNAMENT: flame – top-left, muted green -->
   <svg class="ornament orn-ring" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" stroke="#255E0B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
     <path d="M15.362 5.214A8.252 8.252 0 0 1 12 21 8.25 8.25 0 0 1 6.038 7.047 8.287 8.287 0 0 0 9 9.601a8.983 8.983 0 0 1 3.361-6.867 8.21 8.21 0 0 0 3 2.48Z"/>
     <path d="M12 18a3.75 3.75 0 0 0 .495-7.468 5.99 5.99 0 0 0-1.925 3.547 5.975 5.975 0 0 1-2.133-1.001A3.75 3.75 0 0 0 12 18Z"/>
   </svg>
 
-  <!-- ORNAMENT: Heroicon squares-2x2 – bottom-right -->
-  <svg class="ornament orn-dots" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" stroke="#255E0B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z"/>
+  <!-- ORNAMENT: flame – bottom-right, muted green -->
+  <svg class="ornament orn-dots" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" stroke="#255E0B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" style="transform:rotate(180deg);">
+    <path d="M15.362 5.214A8.252 8.252 0 0 1 12 21 8.25 8.25 0 0 1 6.038 7.047 8.287 8.287 0 0 0 9 9.601a8.983 8.983 0 0 1 3.361-6.867 8.21 8.21 0 0 0 3 2.48Z"/>
+    <path d="M12 18a3.75 3.75 0 0 0 .495-7.468 5.99 5.99 0 0 0-1.925 3.547 5.975 5.975 0 0 1-2.133-1.001A3.75 3.75 0 0 0 12 18Z"/>
   </svg>
 
   <div class="container">
@@ -939,14 +940,16 @@
 <!-- ═══ PRICES ══════════════════════════════════════════════════════ -->
 <section id="prices" class="section-pad" aria-labelledby="prices-heading">
 
-  <!-- ORNAMENT: Heroicon globe-alt – top-right, large, muted purple -->
-  <svg class="ornament orn-circle" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" stroke="#770E75" stroke-width=".7" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"/>
+  <!-- ORNAMENT: flame – top-right, muted purple -->
+  <svg class="ornament orn-circle" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" stroke="#770E75" stroke-width=".8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M15.362 5.214A8.252 8.252 0 0 1 12 21 8.25 8.25 0 0 1 6.038 7.047 8.287 8.287 0 0 0 9 9.601a8.983 8.983 0 0 1 3.361-6.867 8.21 8.21 0 0 0 3 2.48Z"/>
+    <path d="M12 18a3.75 3.75 0 0 0 .495-7.468 5.99 5.99 0 0 0-1.925 3.547 5.975 5.975 0 0 1-2.133-1.001A3.75 3.75 0 0 0 12 18Z"/>
   </svg>
 
-  <!-- ORNAMENT: Heroicon sparkles – bottom-left, muted purple -->
+  <!-- ORNAMENT: flame – bottom-left, muted purple -->
   <svg class="ornament orn-leaf" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" stroke="#770E75" stroke-width=".8" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"/>
+    <path d="M15.362 5.214A8.252 8.252 0 0 1 12 21 8.25 8.25 0 0 1 6.038 7.047 8.287 8.287 0 0 0 9 9.601a8.983 8.983 0 0 1 3.361-6.867 8.21 8.21 0 0 0 3 2.48Z"/>
+    <path d="M12 18a3.75 3.75 0 0 0 .495-7.468 5.99 5.99 0 0 0-1.925 3.547 5.975 5.975 0 0 1-2.133-1.001A3.75 3.75 0 0 0 12 18Z"/>
   </svg>
 
   <div class="container">
@@ -963,6 +966,8 @@
         <p class="section-sub reveal reveal-delay-2" style="margin-top:0;">Transparent, ERC-compliant pricing updated daily. No surprises, no hidden charges.</p>
       </div>
     </div>
+
+    <div class="price-grid">
 
       <!-- ── CARD TEMPLATE (repeated 6×) ── -->
       <!-- Swap src paths for real product images -->
@@ -1082,8 +1087,8 @@
         </div>
       </article>
 
-    </div>
-  </div>
+    </div><!-- /.price-grid -->
+  </div><!-- /.container -->
 </section>
 
 
@@ -1177,9 +1182,10 @@
 <!-- ═══ CTA + MAP ════════════════════════════════════════════════════ -->
 <section id="cta" class="section-pad" aria-labelledby="cta-heading">
 
-  <!-- ORNAMENT: Heroicon truck – top-right, muted purple -->
+  <!-- ORNAMENT: flame – top-right, muted purple -->
   <svg class="ornament orn-wave" style="position:absolute;top:-60px;right:-60px;width:320px;height:320px;opacity:.05;" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" stroke="#770E75" stroke-width=".8" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"/>
+    <path d="M15.362 5.214A8.252 8.252 0 0 1 12 21 8.25 8.25 0 0 1 6.038 7.047 8.287 8.287 0 0 0 9 9.601a8.983 8.983 0 0 1 3.361-6.867 8.21 8.21 0 0 0 3 2.48Z"/>
+    <path d="M12 18a3.75 3.75 0 0 0 .495-7.468 5.99 5.99 0 0 0-1.925 3.547 5.975 5.975 0 0 1-2.133-1.001A3.75 3.75 0 0 0 12 18Z"/>
   </svg>
 
   <div class="container">
@@ -1216,10 +1222,10 @@
 <!-- ═══ FOOTER ═══════════════════════════════════════════════════════ -->
 <footer id="footer" aria-label="Footer">
 
-  <!-- ornament top-right: Heroicon map-pin -->
+  <!-- ornament top-right: flame -->
   <svg class="ornament orn-footer" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" stroke="#770E75" stroke-width=".7" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
-    <path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/>
+    <path d="M15.362 5.214A8.252 8.252 0 0 1 12 21 8.25 8.25 0 0 1 6.038 7.047 8.287 8.287 0 0 0 9 9.601a8.983 8.983 0 0 1 3.361-6.867 8.21 8.21 0 0 0 3 2.48Z"/>
+    <path d="M12 18a3.75 3.75 0 0 0 .495-7.468 5.99 5.99 0 0 0-1.925 3.547 5.975 5.975 0 0 1-2.133-1.001A3.75 3.75 0 0 0 12 18Z"/>
   </svg>
 
   <div class="container">
