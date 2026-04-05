@@ -252,16 +252,32 @@
     .hero-flame-orn {
       position: absolute; bottom: -60px; right: 3vw;
       width: clamp(240px, 30vw, 420px); height: auto;
-      opacity: .12; z-index: 2; pointer-events: none;
+      opacity: .10; z-index: 3; pointer-events: none;
     }
     /* Gas cylinder ornament – categories top-right */
     .orn-cylinder-lg {
       position: absolute; top: -30px; right: -30px;
       width: 260px; height: auto; opacity: .06; pointer-events: none;
     }
+    .hero-img-bg {
+      position: absolute; inset: 0; z-index: 1;
+      background: url('assets/img/hero-bg.jpg') right bottom / cover no-repeat;
+      background-color: transparent;
+      /* mask: invisible top-left, visible bottom-right */
+      -webkit-mask-image: linear-gradient(135deg, transparent 0%, transparent 25%, rgba(0,0,0,.55) 55%, rgba(0,0,0,.9) 80%, #000 100%);
+      mask-image: linear-gradient(135deg, transparent 0%, transparent 25%, rgba(0,0,0,.55) 55%, rgba(0,0,0,.9) 80%, #000 100%);
+    }
+    @media (max-width: 640px) {
+      .hero-img-bg {
+        -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,.7) 0%, rgba(0,0,0,.3) 40%, transparent 70%);
+        mask-image: linear-gradient(to top, rgba(0,0,0,.7) 0%, rgba(0,0,0,.3) 40%, transparent 70%);
+      }
+    }
     .hero-overlay {
       position: absolute; inset: 0; z-index: 2;
-      background: linear-gradient(to top, rgba(1,1,0,.88) 0%, rgba(1,1,0,.32) 55%, transparent 100%);
+      background:
+        linear-gradient(to right,  rgba(1,1,0,.92) 0%, rgba(1,1,0,.7) 40%, rgba(1,1,0,.15) 70%, transparent 100%),
+        linear-gradient(to top,    rgba(1,1,0,.88) 0%, rgba(1,1,0,.3) 45%, transparent 75%);
     }
     .hero-content {
       position: relative; z-index: 3;
@@ -786,6 +802,8 @@
 <!-- ═══ HERO ════════════════════════════════════════════════════════ -->
 <section id="hero" aria-label="Hero">
   <div class="hero-bg"></div>
+  <!-- Photo: bottom-right, masked to blend with gradient -->
+  <div class="hero-img-bg" aria-hidden="true"></div>
   <div class="hero-grain"></div>
   <div class="hero-arc"></div>
   <div class="hero-arc-2"></div>
