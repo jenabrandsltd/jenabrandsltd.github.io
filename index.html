@@ -181,13 +181,18 @@
     @media (max-width: 768px) { .nav-links-wrap { display: none !important; } .nav-hamburger { display: block; } }
 
     /* ═══ OFF-CANVAS ═════════════════════════════════════════════ */
-    .uk-offcanvas-bar { background: var(--black) !important; width: 300px !important; }
+    .uk-offcanvas-bar {
+      background: var(--black) !important; width: 300px !important;
+      display: flex !important; flex-direction: column !important;
+      overflow-y: auto !important; padding: 40px 32px !important;
+    }
     .oc-logo {
       font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700;
       color: var(--white); text-decoration: none; display: block; margin-bottom: 40px;
+      flex-shrink: 0;
     }
     .oc-logo span { color: var(--lime); }
-    .oc-nav { list-style: none; padding:0; margin:0; }
+    .oc-nav { list-style: none; padding:0; margin:0; flex-shrink: 0; }
     .oc-nav li { border-bottom: 1px solid rgba(255,255,255,.07); }
     .oc-nav a {
       display: block; padding: 16px 0; font-size: 17px; font-weight: 500;
@@ -195,7 +200,7 @@
       transition: color .2s, padding-left .25s;
     }
     .oc-nav a:hover { color: var(--lime); padding-left: 8px; }
-    .oc-footer { position: absolute; bottom: 36px; left: 32px; right: 32px; }
+    .oc-footer { margin-top: auto; padding-top: 36px; flex-shrink: 0; }
     .oc-socials { display: flex; gap: 10px; margin-top: 20px; }
     .oc-socials a {
       width: 36px; height: 36px; border-radius: 50%;
@@ -244,11 +249,10 @@
       width: 720px; height: 720px; border-radius: 50%;
       border: 1px solid rgba(119,14,117,.28); z-index: 1;
     }
-    /* Large decorative flame – bottom right of hero */
     .hero-flame-orn {
-      position: absolute; bottom: -40px; right: 5vw;
-      width: clamp(180px, 22vw, 320px); height: auto;
-      opacity: .13; z-index: 2; pointer-events: none;
+      position: absolute; bottom: -60px; right: 3vw;
+      width: clamp(240px, 30vw, 420px); height: auto;
+      opacity: .12; z-index: 2; pointer-events: none;
     }
     /* Gas cylinder ornament – categories top-right */
     .orn-cylinder-lg {
@@ -261,12 +265,12 @@
     }
     .hero-content {
       position: relative; z-index: 3;
-      max-width: 1200px; margin: 0 auto; padding: 88px 32px 0; width: 100%;
+      max-width: 1200px; margin: 0 auto; padding: 0 32px; width: 100%;
     }
     .hero-eyebrow {
       display: inline-flex; align-items: center; gap: 10px;
       font-size: 11px; font-weight: 600; letter-spacing: .2em;
-      text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 20px;
+      text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 14px;
     }
     .hero-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--lime); animation: breathe 2.4s ease-in-out infinite; }
     @keyframes breathe { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.35;transform:scale(.5)} }
@@ -333,13 +337,13 @@
 
     /* ═══ CATEGORIES ═════════════════════════════════════════════ */
     #categories { background: var(--white); position: relative; overflow: hidden; }
-    /* ornamental ring top-left */
+    /* ornamental icon top-left */
     #categories .orn-ring {
-      top: -80px; left: -60px; width: 200px; height: 300px; opacity: .055;
+      top: -60px; left: -40px; width: 280px; height: 280px; opacity: .08;
     }
-    /* ornamental dots grid bottom-right */
+    /* ornamental icon bottom-right */
     #categories .orn-dots {
-      bottom: -20px; right: -20px; width: 180px; height: 180px; opacity: .07;
+      bottom: -40px; right: -40px; width: 240px; height: 240px; opacity: .07;
     }
 
     .cat-header { display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; margin-bottom: 56px; flex-wrap: wrap; }
@@ -409,9 +413,9 @@
     /* ═══ PRICES ════════════════════════════════════════════════ */
     #prices { background: var(--cream); position: relative; overflow: hidden; }
     /* ornament – large faint circle */
-    #prices .orn-circle { top: -120px; right: -120px; width: 440px; height: 440px; opacity: .05; }
+    #prices .orn-circle { top: -80px; right: -80px; width: 500px; height: 500px; opacity: .06; }
     /* ornament – small leaf bottom-left */
-    #prices .orn-leaf { bottom: 20px; left: -50px; width: 220px; height: 340px; opacity: .065; }
+    #prices .orn-leaf { bottom: -20px; left: -60px; width: 320px; height: 320px; opacity: .07; }
 
     .price-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
     @media (max-width: 900px) { .price-grid { grid-template-columns: repeat(2,1fr); } }
@@ -679,7 +683,7 @@
     /* ═══ FOOTER ════════════════════════════════════════════════ */
     #footer { background:var(--black); padding:72px 0 0; position:relative; overflow:hidden; }
     /* ornament top-right */
-    #footer .orn-footer { top:-60px; right:-60px; width:300px; height:300px; opacity:.07; pointer-events:none; }
+    #footer .orn-footer { top:-80px; right:-80px; width:400px; height:400px; opacity:.09; pointer-events:none; }
     .footer-grid { display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:48px; padding-bottom:56px; position:relative; z-index:1; }
     @media (max-width:768px) { .footer-grid { grid-template-columns:1fr; } }
     .footer-logo img { height: 52px; width: auto; display: block; margin-bottom: 16px; }
@@ -755,9 +759,9 @@
 
 <!-- Off-canvas -->
 <div id="offcanvas" uk-offcanvas="overlay:true;flip:true">
-  <div class="uk-offcanvas-bar" style="padding:40px 32px;">
-    <button class="uk-offcanvas-close uk-close-large" type="button" uk-close style="color:rgba(255,255,255,.45);top:18px;right:18px;"></button>
-    <a class="oc-logo" href="/"><img src="assets/img/logo-alt.svg" alt="Jena Brands Limited logo"
+  <div class="uk-offcanvas-bar">
+    <button class="uk-offcanvas-close uk-close-large" type="button" uk-close style="color:rgba(255,255,255,.45);top:18px;right:18px;position:absolute;"></button>
+    <a class="oc-logo" href="/" style="margin-top:8px;"><img src="assets/img/logo-alt.svg" alt="Jena Brands Limited logo"
            onerror="this.onerror=null;this.src='assets/img/logo.png';"></a>
     <ul class="oc-nav">
       <li><a href="#categories" uk-toggle="target:#offcanvas">Products</a></li>
@@ -787,21 +791,10 @@
   <div class="hero-arc-2"></div>
   <div class="hero-overlay"></div>
 
-  <!-- Large decorative flame ornament -->
-  <svg class="hero-flame-orn" viewBox="0 0 200 320" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <!-- outer flame -->
-    <path d="M100 10 C100 10 40 70 35 130 C30 185 55 210 65 230 C50 200 58 175 72 162 C68 185 75 205 90 218 C82 195 85 172 100 158 C115 172 118 195 110 218 C125 205 132 185 128 162 C142 175 150 200 135 230 C145 210 170 185 165 130 C160 70 100 10 100 10Z" fill="white" opacity="0.9"/>
-    <!-- inner flame core -->
-    <path d="M100 80 C100 80 70 115 68 148 C66 175 78 192 86 205 C80 185 84 168 95 158 C92 172 96 188 100 195 C104 188 108 172 105 158 C116 168 120 185 114 205 C122 192 134 175 132 148 C130 115 100 80 100 80Z" fill="white" opacity="0.6"/>
-    <!-- flame tip highlight -->
-    <ellipse cx="100" cy="135" rx="12" ry="30" fill="white" opacity="0.3"/>
-    <!-- gas burner base -->
-    <rect x="55" y="268" width="90" height="14" rx="7" fill="white" opacity="0.7"/>
-    <rect x="45" y="280" width="110" height="8" rx="4" fill="white" opacity="0.5"/>
-    <!-- burner holes -->
-    <circle cx="75" cy="268" r="4" fill="none" stroke="white" stroke-width="2" opacity="0.6"/>
-    <circle cx="100" cy="268" r="4" fill="none" stroke="white" stroke-width="2" opacity="0.6"/>
-    <circle cx="125" cy="268" r="4" fill="none" stroke="white" stroke-width="2" opacity="0.6"/>
+  <!-- Large decorative fire Heroicon – bottom right -->
+  <svg class="hero-flame-orn" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" stroke="white" stroke-width=".6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M15.362 5.214A8.252 8.252 0 0 1 12 21 8.25 8.25 0 0 1 6.038 7.047 8.287 8.287 0 0 0 9 9.601a8.983 8.983 0 0 1 3.361-6.867 8.21 8.21 0 0 0 3 2.48Z"/>
+    <path d="M12 18a3.75 3.75 0 0 0 .495-7.468 5.99 5.99 0 0 0-1.925 3.547 5.975 5.975 0 0 1-2.133-1.001A3.75 3.75 0 0 0 12 18Z"/>
   </svg>
   <div class="hero-content">
     <div class="hero-eyebrow"><span class="hero-dot"></span>Delivering across Nairobi</div>
@@ -825,40 +818,15 @@
 <!-- ═══ CATEGORIES ══════════════════════════════════════════════════ -->
 <section id="categories" class="section-pad" aria-labelledby="cat-heading">
 
-  <!-- ORNAMENT: LPG gas cylinder – top-left, large -->
-  <svg class="ornament orn-ring" viewBox="0 0 280 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <!-- cylinder body -->
-    <ellipse cx="140" cy="85" rx="100" ry="28" stroke="#255E0B" stroke-width="2"/>
-    <ellipse cx="140" cy="335" rx="100" ry="28" stroke="#255E0B" stroke-width="2"/>
-    <line x1="40" y1="85" x2="40" y2="335" stroke="#255E0B" stroke-width="2"/>
-    <line x1="240" y1="85" x2="240" y2="335" stroke="#255E0B" stroke-width="2"/>
-    <!-- shoulder -->
-    <ellipse cx="140" cy="65" rx="70" ry="18" stroke="#255E0B" stroke-width="1.5"/>
-    <line x1="70" y1="65" x2="40" y2="85" stroke="#255E0B" stroke-width="1.5"/>
-    <line x1="210" y1="65" x2="240" y2="85" stroke="#255E0B" stroke-width="1.5"/>
-    <!-- valve neck -->
-    <rect x="120" y="35" width="40" height="30" rx="8" stroke="#255E0B" stroke-width="1.5"/>
-    <!-- valve handle -->
-    <line x1="100" y1="48" x2="180" y2="48" stroke="#255E0B" stroke-width="2.5" stroke-linecap="round"/>
-    <!-- base ring -->
-    <ellipse cx="140" cy="350" rx="110" ry="22" stroke="#255E0B" stroke-width="1"/>
-    <!-- flame above -->
-    <path d="M140 5 C140 5 118 25 116 44 C114 60 125 68 131 76 C127 65 130 56 138 50 C136 58 138 66 140 70 C142 66 144 58 142 50 C150 56 153 65 149 76 C155 68 166 60 164 44 C162 25 140 5 140 5Z" stroke="#770E75" stroke-width="1.5" fill="none"/>
-    <!-- label band -->
-    <rect x="55" y="170" width="170" height="60" rx="4" stroke="#255E0B" stroke-width="1" opacity=".4"/>
+  <!-- ORNAMENT: Heroicon fire – top-left -->
+  <svg class="ornament orn-ring" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" stroke="#255E0B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M15.362 5.214A8.252 8.252 0 0 1 12 21 8.25 8.25 0 0 1 6.038 7.047 8.287 8.287 0 0 0 9 9.601a8.983 8.983 0 0 1 3.361-6.867 8.21 8.21 0 0 0 3 2.48Z"/>
+    <path d="M12 18a3.75 3.75 0 0 0 .495-7.468 5.99 5.99 0 0 0-1.925 3.547 5.975 5.975 0 0 1-2.133-1.001A3.75 3.75 0 0 0 12 18Z"/>
   </svg>
 
-  <!-- ORNAMENT: dot grid bottom-right -->
-  <svg class="ornament orn-dots" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <g fill="#255E0B">
-      <!-- 6×6 dot grid -->
-      <circle cx="10" cy="10" r="3"/><circle cx="40" cy="10" r="3"/><circle cx="70" cy="10" r="3"/><circle cx="100" cy="10" r="3"/><circle cx="130" cy="10" r="3"/><circle cx="160" cy="10" r="3"/>
-      <circle cx="10" cy="40" r="3"/><circle cx="40" cy="40" r="3"/><circle cx="70" cy="40" r="3"/><circle cx="100" cy="40" r="3"/><circle cx="130" cy="40" r="3"/><circle cx="160" cy="40" r="3"/>
-      <circle cx="10" cy="70" r="3"/><circle cx="40" cy="70" r="3"/><circle cx="70" cy="70" r="3"/><circle cx="100" cy="70" r="3"/><circle cx="130" cy="70" r="3"/><circle cx="160" cy="70" r="3"/>
-      <circle cx="10" cy="100" r="3"/><circle cx="40" cy="100" r="3"/><circle cx="70" cy="100" r="3"/><circle cx="100" cy="100" r="3"/><circle cx="130" cy="100" r="3"/><circle cx="160" cy="100" r="3"/>
-      <circle cx="10" cy="130" r="3"/><circle cx="40" cy="130" r="3"/><circle cx="70" cy="130" r="3"/><circle cx="100" cy="130" r="3"/><circle cx="130" cy="130" r="3"/><circle cx="160" cy="130" r="3"/>
-      <circle cx="10" cy="160" r="3"/><circle cx="40" cy="160" r="3"/><circle cx="70" cy="160" r="3"/><circle cx="100" cy="160" r="3"/><circle cx="130" cy="160" r="3"/><circle cx="160" cy="160" r="3"/>
-    </g>
+  <!-- ORNAMENT: Heroicon squares-2x2 – bottom-right -->
+  <svg class="ornament orn-dots" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" stroke="#255E0B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z"/>
   </svg>
 
   <div class="container">
@@ -971,39 +939,30 @@
 <!-- ═══ PRICES ══════════════════════════════════════════════════════ -->
 <section id="prices" class="section-pad" aria-labelledby="prices-heading">
 
-  <!-- ORNAMENT: large hollow circle top-right -->
-  <svg class="ornament orn-circle" viewBox="0 0 440 440" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <circle cx="220" cy="220" r="210" stroke="#770E75" stroke-width="1.2"/>
-    <circle cx="220" cy="220" r="160" stroke="#770E75" stroke-width=".8"/>
-    <circle cx="220" cy="220" r="110" stroke="#770E75" stroke-width=".5"/>
+  <!-- ORNAMENT: Heroicon globe-alt – top-right, large, muted purple -->
+  <svg class="ornament orn-circle" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" stroke="#770E75" stroke-width=".7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"/>
   </svg>
 
-  <!-- ORNAMENT: large flame shape bottom-left -->
-  <svg class="ornament orn-leaf" viewBox="0 0 220 340" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <!-- outer flame -->
-    <path d="M110 10 C110 10 45 75 40 145 C35 210 65 238 78 262 C60 228 70 200 88 184 C83 210 90 234 108 250 C98 222 102 195 110 178 C118 195 122 222 112 250 C130 234 137 210 132 184 C150 200 160 228 142 262 C155 238 185 210 180 145 C175 75 110 10 110 10Z" stroke="#770E75" stroke-width="1.8" fill="none"/>
-    <!-- inner flame -->
-    <path d="M110 70 C110 70 80 108 78 142 C76 172 90 190 100 207 C93 185 97 165 110 152 C123 165 127 185 120 207 C130 190 144 172 142 142 C140 108 110 70 110 70Z" stroke="#770E75" stroke-width="1.2" fill="none" opacity=".6"/>
-    <!-- burner rings -->
-    <ellipse cx="110" cy="290" rx="60" ry="16" stroke="#255E0B" stroke-width="1.5"/>
-    <ellipse cx="110" cy="290" rx="40" ry="10" stroke="#255E0B" stroke-width="1"/>
-    <ellipse cx="110" cy="318" rx="70" ry="12" stroke="#255E0B" stroke-width="1"/>
-    <!-- burner spokes -->
-    <line x1="50" y1="290" x2="55" y2="275" stroke="#255E0B" stroke-width="1" opacity=".5"/>
-    <line x1="170" y1="290" x2="165" y2="275" stroke="#255E0B" stroke-width="1" opacity=".5"/>
-    <line x1="110" y1="274" x2="110" y2="260" stroke="#255E0B" stroke-width="1" opacity=".5"/>
+  <!-- ORNAMENT: Heroicon sparkles – bottom-left, muted purple -->
+  <svg class="ornament orn-leaf" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" stroke="#770E75" stroke-width=".8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"/>
   </svg>
 
   <div class="container">
     <div style="margin-bottom:56px;">
-      <div class="section-label reveal">Current Pricing</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:14px;">
+        <div class="section-label reveal">Current Pricing</div>
+        <div id="prices-updated-text" style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-30);display:flex;align-items:center;gap:7px;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--green);flex-shrink:0;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Loading…
+        </div>
+      </div>
       <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;">
         <h2 class="section-title reveal reveal-delay-1" id="prices-heading">Gas prices,<br><em>today.</em></h2>
         <p class="section-sub reveal reveal-delay-2" style="margin-top:0;">Transparent, ERC-compliant pricing updated daily. No surprises, no hidden charges.</p>
       </div>
     </div>
-
-    <div class="price-grid">
 
       <!-- ── CARD TEMPLATE (repeated 6×) ── -->
       <!-- Swap src paths for real product images -->
@@ -1218,10 +1177,9 @@
 <!-- ═══ CTA + MAP ════════════════════════════════════════════════════ -->
 <section id="cta" class="section-pad" aria-labelledby="cta-heading">
 
-  <!-- ORNAMENT: cross-hatch lines top -->
-  <svg class="ornament orn-wave" style="position:absolute;top:0;left:0;right:0;width:100%;height:80px;opacity:.04;" viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <path d="M0 40 Q150 10 300 40 Q450 70 600 40 Q750 10 900 40 Q1050 70 1200 40" stroke="#770E75" stroke-width="1.5" fill="none"/>
-    <path d="M0 55 Q150 25 300 55 Q450 85 600 55 Q750 25 900 55 Q1050 85 1200 55" stroke="#255E0B" stroke-width="1" fill="none"/>
+  <!-- ORNAMENT: Heroicon truck – top-right, muted purple -->
+  <svg class="ornament orn-wave" style="position:absolute;top:-60px;right:-60px;width:320px;height:320px;opacity:.05;" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" stroke="#770E75" stroke-width=".8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"/>
   </svg>
 
   <div class="container">
@@ -1258,14 +1216,10 @@
 <!-- ═══ FOOTER ═══════════════════════════════════════════════════════ -->
 <footer id="footer" aria-label="Footer">
 
-  <!-- ornament top-right -->
-  <svg class="ornament orn-footer" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <circle cx="150" cy="150" r="140" stroke="#770E75" stroke-width="1.2"/>
-    <circle cx="150" cy="150" r="100" stroke="#770E75" stroke-width=".8"/>
-    <circle cx="150" cy="150" r="60" stroke="#255E0B" stroke-width=".6"/>
-    <!-- cross lines -->
-    <line x1="10" y1="150" x2="290" y2="150" stroke="#770E75" stroke-width=".5"/>
-    <line x1="150" y1="10" x2="150" y2="290" stroke="#770E75" stroke-width=".5"/>
+  <!-- ornament top-right: Heroicon map-pin -->
+  <svg class="ornament orn-footer" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" stroke="#770E75" stroke-width=".7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+    <path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/>
   </svg>
 
   <div class="container">
@@ -1368,7 +1322,11 @@
     const el = document.getElementById('prices-updated-text');
     if (!el) return;
     const now = new Date();
-    el.textContent = 'Updated ' + now.toLocaleDateString('en-KE', { day: 'numeric', month: 'long', year: 'numeric' });
+    const dateStr = 'Updated ' + now.toLocaleDateString('en-KE', { day: 'numeric', month: 'long', year: 'numeric' });
+    // Replace only the text node, keep the SVG icon intact
+    const textNode = [...el.childNodes].find(n => n.nodeType === Node.TEXT_NODE && n.textContent.trim());
+    if (textNode) { textNode.textContent = dateStr; }
+    else { el.appendChild(document.createTextNode(dateStr)); }
   })();
 
   /* ── Hero stagger ── */
