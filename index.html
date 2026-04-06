@@ -415,64 +415,131 @@
 
     /* ═══ PRICES ════════════════════════════════════════════════ */
     #prices { background: var(--cream); position: relative; overflow: hidden; }
-    /* ornament – large faint circle */
     #prices .orn-circle { top: -80px; right: -80px; width: 500px; height: 500px; opacity: .06; }
-    .price-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
-    @media (max-width: 900px) { .price-grid { grid-template-columns: repeat(2,1fr); } }
-    @media (max-width: 560px) { .price-grid { grid-template-columns: 1fr; } }
 
-    .p-card {
-      background: var(--white); border-radius: var(--r-card); overflow: hidden;
-      border: 1.5px solid var(--ink-10); display: flex; flex-direction: column;
-      transition: box-shadow .35s var(--ease), transform .35s var(--ease), border-color .35s;
-    }
-    .p-card:hover { box-shadow: 0 24px 64px rgba(119,14,117,.1); transform: translateY(-6px); border-color: rgba(119,14,117,.25); }
-    .p-card.featured { border-color: var(--purple); box-shadow: 0 0 0 3px rgba(119,14,117,.1); }
-    .p-card.featured:hover { box-shadow: 0 24px 64px rgba(119,14,117,.15); border-color: var(--purple); }
+    /* ── Category block (6kg, 13kg, etc.) ── */
+    .price-category { margin-bottom: 64px; }
+    .price-category:last-child { margin-bottom: 0; }
 
-    .p-card-img { aspect-ratio: 4/3; overflow: hidden; background: var(--purple-pale); position: relative; padding: 16px; }
-    .p-card-img img { width:100%; height:100%; object-fit:contain; display:block; transition: transform .6s var(--ease); }
-    .p-card:hover .p-card-img img { transform: scale(1.05); }
-    .p-card-img .img-placeholder {
-      position:absolute; inset:0; width:100%; height:100%;
-      display:flex; align-items:center; justify-content:center;
-      flex-direction:column; gap:10px; color:var(--purple); opacity:.4;
+    .price-cat-header {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 32px;
+      align-items: start;
+      margin-bottom: 28px;
     }
-    .p-card-img .img-placeholder svg { width:40px; height:40px; }
-    .p-card-img .img-placeholder span { font-size:11px; letter-spacing:.1em; text-transform:uppercase; }
-    .p-card-badge {
-      position:absolute; top:14px; left:14px;
-      background: var(--purple); color:var(--white);
-      font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
-      padding:5px 12px; border-radius:100px;
+    @media (max-width: 720px) {
+      .price-cat-header { grid-template-columns: 1fr; gap: 20px; }
     }
-    .p-card-body { padding:24px; flex:1; display:flex; flex-direction:column; }
-    .p-card-brand { font-size:11px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--purple); opacity:.5; margin-bottom:5px; }
-    .p-card-name { font-family:'Playfair Display',serif; font-size:27px; font-weight:700; color:var(--ink); margin-bottom:4px; }
-    .p-card-desc { font-size:14px; color:var(--ink-60); line-height:1.75; margin-bottom:20px; flex:1; }
-    .p-card-price { display:flex; align-items:baseline; gap:4px; margin-bottom:20px; }
-    .p-card-amount { font-family:'Playfair Display',serif; font-size:40px; font-weight:700; color:var(--purple); line-height:1; }
-    .p-card.featured .p-card-amount { color:var(--purple); }
-    .p-card-unit { font-size:13px; color:var(--ink-30); font-weight:400; }
-    .p-card-divider { height:1px; background:var(--ink-10); margin-bottom:20px; }
-    .p-card-actions { display:flex; gap:10px; }
+
+    /* cylinder photo */
+    .price-cat-img {
+      border-radius: 14px; overflow: hidden;
+      background: var(--purple-pale);
+      aspect-ratio: 3/4;
+      position: relative;
+    }
+    .price-cat-img img {
+      width: 100%; height: 100%; object-fit: contain; display: block; padding: 16px;
+    }
+    .price-cat-img .img-placeholder {
+      position: absolute; inset: 0; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 10px;
+      color: var(--purple); opacity: .35;
+    }
+    .price-cat-img .img-placeholder svg { width: 52px; height: 52px; }
+    .price-cat-img .img-placeholder span { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
+    /* no-image variant (accessories) – just a small icon block */
+    .price-cat-img.no-img {
+      aspect-ratio: auto;
+      min-height: 0;
+      padding: 24px;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .price-cat-meta { padding-top: 4px; }
+    .price-cat-label {
+      font-size: 10.5px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase;
+      color: var(--purple); display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
+    }
+    .price-cat-label::before { content:''; display:block; width:18px; height:1.5px; background:var(--purple); flex-shrink:0; }
+    .price-cat-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(26px, 3.5vw, 38px); font-weight: 700; color: var(--ink); line-height: 1.1; margin-bottom: 8px;
+    }
+    .price-cat-title em { font-style: italic; color: var(--purple); }
+    .price-cat-desc { font-size: 14px; color: var(--ink-60); line-height: 1.75; margin-bottom: 20px; max-width: 480px; }
+
+    /* ── Sub-table (Refill / New Cylinder) ── */
+    .price-sub { margin-bottom: 16px; }
+    .price-sub-title {
+      font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--ink-60); margin-bottom: 10px; padding-bottom: 8px;
+      border-bottom: 1.5px solid var(--ink-10);
+    }
+    .price-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 8px;
+    }
+    .price-row {
+      background: var(--white); border: 1.5px solid var(--ink-10); border-radius: 10px;
+      padding: 10px 14px;
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
+      transition: border-color .25s, box-shadow .25s;
+    }
+    .price-row:hover { border-color: rgba(119,14,117,.25); box-shadow: 0 4px 16px rgba(119,14,117,.07); }
+    .price-brand { font-size: 13.5px; font-weight: 600; color: var(--ink); }
+    .price-amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px; font-weight: 700; color: var(--purple); white-space: nowrap;
+    }
+    .price-amount span { font-family: 'Outfit', sans-serif; font-size: 10px; font-weight: 400; color: var(--ink-30); }
+
+    /* ── Accessories table (no image) ── */
+    .price-acc-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 8px;
+    }
+    .price-acc-row {
+      background: var(--white); border: 1.5px solid var(--ink-10); border-radius: 10px;
+      padding: 12px 16px;
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
+      transition: border-color .25s, box-shadow .25s;
+    }
+    .price-acc-row:hover { border-color: rgba(119,14,117,.25); box-shadow: 0 4px 16px rgba(119,14,117,.07); }
+    .price-acc-name { font-size: 13.5px; font-weight: 500; color: var(--ink); }
+    .price-acc-amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px; font-weight: 700; color: var(--green); white-space: nowrap;
+    }
+    .price-acc-amount span { font-family: 'Outfit', sans-serif; font-size: 10px; font-weight: 400; color: var(--ink-30); }
+
+    /* ── Category divider ── */
+    .price-cat-divider { height: 1px; background: var(--ink-10); margin: 56px 0; }
+
+    /* ── Order CTA strip ── */
+    .price-order-strip {
+      display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 16px;
+    }
     .btn-wa {
-      flex:2; background:#25D366; color:var(--white); border:none; border-radius:12px;
-      padding:13px 14px; font-family:'Outfit',sans-serif; font-size:13px; font-weight:700;
-      cursor:pointer; text-decoration:none;
-      display:inline-flex; align-items:center; justify-content:center; gap:8px;
-      transition:background .2s, transform .2s; letter-spacing:.02em;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #25D366; color: var(--white); border: none; border-radius: var(--r-btn);
+      padding: 12px 24px; font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 700;
+      cursor: pointer; text-decoration: none; letter-spacing: .02em;
+      transition: background .2s, transform .2s;
     }
-    .btn-wa:hover { background:#1da851; transform:translateY(-1px); color:var(--white); }
+    .btn-wa:hover { background: #1da851; transform: translateY(-1px); color: var(--white); }
     .btn-call-sm {
-      flex:1; background:transparent; color:var(--purple);
-      border:1.5px solid rgba(119,14,117,.2); border-radius:12px; padding:13px 10px;
-      font-family:'Outfit',sans-serif; font-size:13px; font-weight:600;
-      cursor:pointer; text-decoration:none;
-      display:inline-flex; align-items:center; justify-content:center; gap:7px;
-      transition:background .2s, border-color .2s, transform .2s;
+      display: inline-flex; align-items: center; gap: 7px;
+      background: transparent; color: var(--purple);
+      border: 1.5px solid rgba(119,14,117,.2); border-radius: var(--r-btn); padding: 11px 20px;
+      font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 600;
+      cursor: pointer; text-decoration: none;
+      transition: background .2s, border-color .2s, transform .2s;
     }
-    .btn-call-sm:hover { background:var(--purple-pale); border-color:var(--purple); transform:translateY(-1px); color:var(--purple); }
+    .btn-call-sm:hover { background: var(--purple-pale); border-color: var(--purple); transform: translateY(-1px); color: var(--purple); }
 
     /* ═══ TERMS ════════════════════════════════════════════════ */
     #terms {
@@ -956,127 +1023,215 @@
       </div>
     </div>
 
-    <div class="price-grid">
+    <!-- ═══════════════════════════════════════════
+         6 KG CATEGORY
+    ════════════════════════════════════════════ -->
+    <div class="price-category reveal">
 
-      <!-- ── CARD TEMPLATE (repeated 6×) ── -->
-      <!-- Swap src paths for real product images -->
-
-      <article class="p-card reveal reveal-delay-1">
-        <div class="p-card-img">
-          <img src="assets/img/kgas-6kg.jpg" alt="K-Gas 6kg cylinder" loading="lazy"
+      <div class="price-cat-header">
+        <div class="price-cat-img">
+          <img src="assets/img/kgas-6kg.jpg" alt="6kg gas cylinder" loading="lazy"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-          <div class="img-placeholder" style="display:none;"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="9" y="9" width="14" height="18" rx="5"/><path d="M12 6h8"/></svg><span>K-Gas 6 kg</span></div>
-        </div>
-        <div class="p-card-body">
-          <div class="p-card-brand">K-Gas</div>
-          <div class="p-card-name">6 kg Cylinder</div>
-          <p class="p-card-desc">Ideal for bedsitters & small households. Lasts 2–3 weeks for a solo cook.</p>
-          <div class="p-card-price"><div class="p-card-amount">1,450</div><div class="p-card-unit">KES / refill</div></div>
-          <div class="p-card-divider"></div>
-          <div class="p-card-actions">
-            <a class="btn-wa" href="https://wa.me/254700000000?text=Hi!%20I%27d%20like%20K-Gas%206kg%20-%20KES%201450." target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Buy Now</a>
-            <a class="btn-call-sm" href="tel:+254700000000"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.17 9.81 19.79 19.79 0 01.12 1.18 2 2 0 012.1 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>Call</a>
+          <div class="img-placeholder" style="display:none;">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="9" y="9" width="14" height="18" rx="5"/><path d="M12 6h8"/></svg>
+            <span>6 kg</span>
           </div>
         </div>
-      </article>
 
-      <article class="p-card featured reveal reveal-delay-2">
-        <div class="p-card-img">
-          <img src="assets/img/progas-13kg.jpg" alt="Pro Gas 13kg cylinder" loading="lazy"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-          <div class="img-placeholder" style="display:none;"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="9" y="9" width="14" height="18" rx="5"/><path d="M12 6h8"/></svg><span>Pro Gas 13 kg</span></div>
-          <div class="p-card-badge">Most Popular</div>
+        <div class="price-cat-meta">
+          <div class="price-cat-label">Small Cylinder</div>
+          <div class="price-cat-title">6 kg <em>Gas</em></div>
+          <p class="price-cat-desc">Ideal for bedsitters & small households. Also available as a new cylinder with gas for first-time buyers, and Shell Afrigas bundle with regulator & 2M pipe.</p>
+
+          <!-- 6kg REFILL -->
+          <div class="price-sub">
+            <div class="price-sub-title">Refill Only</div>
+            <div class="price-list">
+              <div class="price-row"><span class="price-brand">K-Gas (Rubis)</span><span class="price-amount">1,700 <span>KES</span></span></div>
+              <div class="price-row"><span class="price-brand">Pro Gas</span><span class="price-amount">1,700 <span>KES</span></span></div>
+              <div class="price-row"><span class="price-brand">Shell Afrigas</span><span class="price-amount">1,700 <span>KES</span></span></div>
+              <div class="price-row"><span class="price-brand">Lake Gas</span><span class="price-amount">1,700 <span>KES</span></span></div>
+              <div class="price-row"><span class="price-brand">Hashi</span><span class="price-amount">1,700 <span>KES</span></span></div>
+              <div class="price-row"><span class="price-brand">Ola Mpishi</span><span class="price-amount">1,700 <span>KES</span></span></div>
+              <div class="price-row"><span class="price-brand">National Oil</span><span class="price-amount">1,700 <span>KES</span></span></div>
+              <div class="price-row"><span class="price-brand">Total Gas</span><span class="price-amount">1,750 <span>KES</span></span></div>
+            </div>
+          </div>
+
+          <!-- 6kg NEW CYLINDER WITH GAS -->
+          <div class="price-sub">
+            <div class="price-sub-title">New Cylinder with Gas</div>
+            <div class="price-list">
+              <div class="price-row"><span class="price-brand">K-Gas (Rubis)</span><span class="price-amount">3,700 <span>KES</span></span></div>
+              <div class="price-row"><span class="price-brand">Pro Gas</span><span class="price-amount">3,700 <span>KES</span></span></div>
+              <div class="price-row"><span class="price-brand">Ola Mpishi</span><span class="price-amount">3,700 <span>KES</span></span></div>
+              <div class="price-row"><span class="price-brand">National Oil</span><span class="price-amount">3,700 <span>KES</span></span></div>
+              <div class="price-row"><span class="price-brand">Total Gas</span><span class="price-amount">3,750 <span>KES</span></span></div>
+              <div class="price-row"><span class="price-brand">Shell Afrigas</span><span class="price-amount">3,900 <span>KES</span></span></div>
+              <div class="price-row"><span class="price-brand">Lake Gas</span><span class="price-amount">3,900 <span>KES</span></span></div>
+              <div class="price-row"><span class="price-brand">Hashi</span><span class="price-amount">3,900 <span>KES</span></span></div>
+            </div>
+          </div>
+
+          <!-- 6kg STARTER BUNDLE -->
+          <div class="price-sub">
+            <div class="price-sub-title">Starter Bundle</div>
+            <div class="price-list">
+              <div class="price-row"><span class="price-brand">Shell Afrigas — Cylinder + Regulator + 2M Pipe</span><span class="price-amount">5,000 <span>KES</span></span></div>
+            </div>
+          </div>
+
+          <div class="price-order-strip">
+            <a class="btn-wa" href="https://wa.me/254700000000?text=Hi!%20I%27d%20like%20to%20order%20a%206kg%20gas%20cylinder." target="_blank" rel="noopener">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Order 6kg Gas
+            </a>
+            <a class="btn-call-sm" href="tel:+254700000000">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.17 9.81 19.79 19.79 0 01.12 1.18 2 2 0 012.1 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+              Call Us
+            </a>
+          </div>
+
         </div>
-        <div class="p-card-body">
-          <div class="p-card-brand">Pro Gas</div>
-          <div class="p-card-name">13 kg Cylinder</div>
-          <p class="p-card-desc">Best value for families of 3–5. Longer intervals, free delivery always included.</p>
-          <div class="p-card-price"><div class="p-card-amount">2,850</div><div class="p-card-unit">KES / refill</div></div>
-          <div class="p-card-divider"></div>
-          <div class="p-card-actions">
-            <a class="btn-wa" href="https://wa.me/254700000000?text=Hi!%20I%27d%20like%20Pro%20Gas%2013kg%20-%20KES%202850." target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Buy Now</a>
-            <a class="btn-call-sm" href="tel:+254700000000"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.17 9.81 19.79 19.79 0 01.12 1.18 2 2 0 012.1 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>Call</a>
+      </div>
+    </div><!-- /.price-category 6kg -->
+
+    <div class="price-cat-divider"></div>
+
+    <!-- ═══════════════════════════════════════════
+         13 KG CATEGORY
+    ════════════════════════════════════════════ -->
+    <div class="price-category reveal">
+
+      <div class="price-cat-header">
+        <div class="price-cat-img">
+          <img src="assets/img/kgas-13kg.jpg" alt="13kg gas cylinder" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="img-placeholder" style="display:none;">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="9" y="9" width="14" height="18" rx="5"/><path d="M12 6h8"/></svg>
+            <span>13 kg</span>
           </div>
         </div>
-      </article>
 
-      <article class="p-card reveal reveal-delay-3">
-        <div class="p-card-img">
-          <img src="assets/img/totalgas-6kg.jpg" alt="Total Gas 6kg cylinder" loading="lazy"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-          <div class="img-placeholder" style="display:none;"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="9" y="9" width="14" height="18" rx="5"/><path d="M12 6h8"/></svg><span>Total Gas 6 kg</span></div>
-        </div>
-        <div class="p-card-body">
-          <div class="p-card-brand">Total Gas</div>
-          <div class="p-card-name">6 kg Cylinder</div>
-          <p class="p-card-desc">TotalEnergies clean-burning LPG. Consistent, reliable heat for everyday cooking.</p>
-          <div class="p-card-price"><div class="p-card-amount">1,500</div><div class="p-card-unit">KES / refill</div></div>
-          <div class="p-card-divider"></div>
-          <div class="p-card-actions">
-            <a class="btn-wa" href="https://wa.me/254700000000?text=Hi!%20I%27d%20like%20Total%20Gas%206kg%20-%20KES%201500." target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Buy Now</a>
-            <a class="btn-call-sm" href="tel:+254700000000"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.17 9.81 19.79 19.79 0 01.12 1.18 2 2 0 012.1 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>Call</a>
+        <div class="price-cat-meta">
+          <div class="price-cat-label">Most Popular</div>
+          <div class="price-cat-title">13 kg <em>Gas</em></div>
+          <p class="price-cat-desc">Best value for families of 3–5. Multiple brands available — same-day delivery across our coverage area.</p>
+
+          <!-- 13kg REFILL -->
+          <div class="price-sub">
+            <div class="price-sub-title">Refill Only</div>
+            <div class="price-list">
+              <div class="price-row"><span class="price-brand">Shell Afrigas</span><span class="price-amount">3,500 <span>KES</span></span></div>
+              <div class="price-row"><span class="price-brand">Ola Mpishi</span><span class="price-amount">3,500 <span>KES</span></span></div>
+              <div class="price-row"><span class="price-brand">Hashi</span><span class="price-amount">3,500 <span>KES</span></span></div>
+              <div class="price-row"><span class="price-brand">K-Gas (Rubis)</span><span class="price-amount">3,500 <span>KES</span></span></div>
+              <div class="price-row"><span class="price-brand">National Oil</span><span class="price-amount">3,500 <span>KES</span></span></div>
+              <div class="price-row"><span class="price-brand">Total Gas</span><span class="price-amount">3,500 <span>KES</span></span></div>
+              <div class="price-row"><span class="price-brand">Hunkar Gas</span><span class="price-amount">3,400 <span>KES</span></span></div>
+              <div class="price-row"><span class="price-brand">Jatel Gas</span><span class="price-amount">3,400 <span>KES</span></span></div>
+              <div class="price-row"><span class="price-brand">Lake Gas</span><span class="price-amount">3,400 <span>KES</span></span></div>
+              <div class="price-row"><span class="price-brand">Safe Gas</span><span class="price-amount">3,400 <span>KES</span></span></div>
+              <div class="price-row"><span class="price-brand">Sea Gas</span><span class="price-amount">3,200 <span>KES</span></span></div>
+              <div class="price-row"><span class="price-brand">Pro Gas</span><span class="price-amount">3,200 <span>KES</span></span></div>
+            </div>
           </div>
-        </div>
-      </article>
 
-      <article class="p-card reveal reveal-delay-1">
-        <div class="p-card-img">
-          <img src="assets/img/kgas-13kg.jpg" alt="K-Gas 13kg cylinder" loading="lazy"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-          <div class="img-placeholder" style="display:none;"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="9" y="9" width="14" height="18" rx="5"/><path d="M12 6h8"/></svg><span>K-Gas 13 kg</span></div>
-        </div>
-        <div class="p-card-body">
-          <div class="p-card-brand">K-Gas</div>
-          <div class="p-card-name">13 kg Cylinder</div>
-          <p class="p-card-desc">Kenya's most trusted LPG brand in the larger size. Great for medium-large households.</p>
-          <div class="p-card-price"><div class="p-card-amount">2,800</div><div class="p-card-unit">KES / refill</div></div>
-          <div class="p-card-divider"></div>
-          <div class="p-card-actions">
-            <a class="btn-wa" href="https://wa.me/254700000000?text=Hi!%20I%27d%20like%20K-Gas%2013kg%20-%20KES%202800." target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Buy Now</a>
-            <a class="btn-call-sm" href="tel:+254700000000"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.17 9.81 19.79 19.79 0 01.12 1.18 2 2 0 012.1 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>Call</a>
+          <!-- 13kg NEW CYLINDER WITH GAS -->
+          <div class="price-sub">
+            <div class="price-sub-title">New Cylinder with Gas</div>
+            <div class="price-list">
+              <div class="price-row"><span class="price-brand">Shell Afrigas</span><span class="price-amount">7,000 <span>KES</span></span></div>
+              <div class="price-row"><span class="price-brand">Sea Gas</span><span class="price-amount">7,500 <span>KES</span></span></div>
+              <div class="price-row"><span class="price-brand">Ola Mpishi</span><span class="price-amount">8,500 <span>KES</span></span></div>
+              <div class="price-row"><span class="price-brand">Hashi</span><span class="price-amount">8,500 <span>KES</span></span></div>
+              <div class="price-row"><span class="price-brand">K-Gas (Rubis)</span><span class="price-amount">8,500 <span>KES</span></span></div>
+              <div class="price-row"><span class="price-brand">National Oil</span><span class="price-amount">8,500 <span>KES</span></span></div>
+              <div class="price-row"><span class="price-brand">Hunkar Gas</span><span class="price-amount">8,500 <span>KES</span></span></div>
+              <div class="price-row"><span class="price-brand">Jatel Gas</span><span class="price-amount">8,500 <span>KES</span></span></div>
+              <div class="price-row"><span class="price-brand">Lake Gas</span><span class="price-amount">8,500 <span>KES</span></span></div>
+              <div class="price-row"><span class="price-brand">Pro Gas</span><span class="price-amount">8,500 <span>KES</span></span></div>
+              <div class="price-row"><span class="price-brand">Safe Gas</span><span class="price-amount">8,500 <span>KES</span></span></div>
+              <div class="price-row"><span class="price-brand">Total Gas</span><span class="price-amount">8,500 <span>KES</span></span></div>
+            </div>
           </div>
-        </div>
-      </article>
 
-      <article class="p-card reveal reveal-delay-2">
-        <div class="p-card-img">
-          <img src="assets/img/afrigas-22kg.jpg" alt="Afri Gas 22.5kg cylinder" loading="lazy"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-          <div class="img-placeholder" style="display:none;"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="9" y="9" width="14" height="18" rx="5"/><path d="M12 6h8"/></svg><span>Afri Gas 22.5 kg</span></div>
-        </div>
-        <div class="p-card-body">
-          <div class="p-card-brand">Afri Gas</div>
-          <div class="p-card-name">22.5 kg Cylinder</div>
-          <p class="p-card-desc">Large household cylinder with exceptional value per kg. Perfect for big families & small restaurants.</p>
-          <div class="p-card-price"><div class="p-card-amount">5,200</div><div class="p-card-unit">KES / refill</div></div>
-          <div class="p-card-divider"></div>
-          <div class="p-card-actions">
-            <a class="btn-wa" href="https://wa.me/254700000000?text=Hi!%20I%27d%20like%20Afri%20Gas%2022.5kg%20-%20KES%205200." target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Buy Now</a>
-            <a class="btn-call-sm" href="tel:+254700000000"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.17 9.81 19.79 19.79 0 01.12 1.18 2 2 0 012.1 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>Call</a>
+          <div class="price-order-strip">
+            <a class="btn-wa" href="https://wa.me/254700000000?text=Hi!%20I%27d%20like%20to%20order%20a%2013kg%20gas%20cylinder." target="_blank" rel="noopener">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Order 13kg Gas
+            </a>
+            <a class="btn-call-sm" href="tel:+254700000000">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.17 9.81 19.79 19.79 0 01.12 1.18 2 2 0 012.1 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+              Call Us
+            </a>
           </div>
-        </div>
-      </article>
 
-      <article class="p-card reveal reveal-delay-3">
-        <div class="p-card-img">
-          <img src="assets/img/oryx-50kg.jpg" alt="Oryx Gas 50kg commercial cylinder" loading="lazy"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-          <div class="img-placeholder" style="display:none;"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="9" y="9" width="14" height="18" rx="5"/><path d="M12 6h8"/></svg><span>Oryx 50 kg</span></div>
         </div>
-        <div class="p-card-body">
-          <div class="p-card-brand">Oryx Gas</div>
-          <div class="p-card-name">50 kg Commercial</div>
-          <p class="p-card-desc">For restaurants, caterers & industrial kitchens. Bulk pricing and scheduled refill available.</p>
-          <div class="p-card-price"><div class="p-card-amount">10,500</div><div class="p-card-unit">KES / refill</div></div>
-          <div class="p-card-divider"></div>
-          <div class="p-card-actions">
-            <a class="btn-wa" href="https://wa.me/254700000000?text=Hi!%20I%27d%20like%20to%20enquire%20about%20Oryx%20Gas%2050kg." target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Enquire</a>
-            <a class="btn-call-sm" href="tel:+254700000000"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.17 9.81 19.79 19.79 0 01.12 1.18 2 2 0 012.1 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>Call</a>
-          </div>
-        </div>
-      </article>
+      </div>
+    </div><!-- /.price-category 13kg -->
 
-    </div><!-- /.price-grid -->
+    <div class="price-cat-divider"></div>
+
+    <!-- ═══════════════════════════════════════════
+         LARGE / COMMERCIAL CYLINDERS
+    ════════════════════════════════════════════ -->
+    <div class="price-category reveal">
+      <div class="price-cat-label" style="margin-bottom:14px;">Commercial & Large</div>
+      <div class="price-cat-title" style="font-family:'Playfair Display',serif;font-size:clamp(22px,3vw,34px);font-weight:700;color:var(--ink);margin-bottom:8px;">25 kg – 50 kg <em style="font-style:italic;color:var(--purple);">Refills</em></div>
+      <p class="price-cat-desc">For restaurants, caterers & large households. Scheduled or on-demand delivery — call or WhatsApp to confirm availability.</p>
+
+      <div class="price-sub">
+        <div class="price-sub-title">Refill Only — All Brands</div>
+        <div class="price-acc-list">
+          <div class="price-acc-row"><span class="price-acc-name">25 kg Cylinder Refill</span><span class="price-acc-amount">5,500 <span>KES</span></span></div>
+          <div class="price-acc-row"><span class="price-acc-name">35 kg Cylinder Refill</span><span class="price-acc-amount">9,500 <span>KES</span></span></div>
+          <div class="price-acc-row"><span class="price-acc-name">50 kg Cylinder Refill</span><span class="price-acc-amount">16,000 <span>KES</span></span></div>
+        </div>
+      </div>
+
+      <div class="price-order-strip" style="margin-top:16px;">
+        <a class="btn-wa" href="https://wa.me/254700000000?text=Hi!%20I%27d%20like%20to%20enquire%20about%20a%20large%20cylinder%20refill." target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Enquire on WhatsApp
+        </a>
+        <a class="btn-call-sm" href="tel:+254700000000">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.17 9.81 19.79 19.79 0 01.12 1.18 2 2 0 012.1 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+          Call Us
+        </a>
+      </div>
+    </div><!-- /.price-category commercial -->
+
+    <div class="price-cat-divider"></div>
+
+    <!-- ═══════════════════════════════════════════
+         GAS ACCESSORIES
+    ════════════════════════════════════════════ -->
+    <div class="price-category reveal">
+      <div class="price-cat-label" style="margin-bottom:14px;">Accessories & Fittings</div>
+      <div class="price-cat-title" style="font-family:'Playfair Display',serif;font-size:clamp(22px,3vw,34px);font-weight:700;color:var(--ink);margin-bottom:8px;">Gas <em style="font-style:italic;color:var(--purple);">Accessories</em></div>
+      <p class="price-cat-desc" style="margin-bottom:20px;">Regulators, hoses and cooker accessories. Ensuring a safe, complete installation from cylinder to flame.</p>
+
+      <div class="price-acc-list">
+        <div class="price-acc-row"><span class="price-acc-name">6kg Grill</span><span class="price-acc-amount">500 <span>KES</span></span></div>
+        <div class="price-acc-row"><span class="price-acc-name">6kg Burner</span><span class="price-acc-amount">1,000 <span>KES</span></span></div>
+        <div class="price-acc-row"><span class="price-acc-name">Gas Pipe — 1M</span><span class="price-acc-amount">500 <span>KES</span></span></div>
+        <div class="price-acc-row"><span class="price-acc-name">Gas Pipe — 2M</span><span class="price-acc-amount">1,000 <span>KES</span></span></div>
+        <div class="price-acc-row"><span class="price-acc-name">Standard Regulator (6kg)</span><span class="price-acc-amount">1,000 <span>KES</span></span></div>
+        <div class="price-acc-row"><span class="price-acc-name">Premium Regulator (13kg)</span><span class="price-acc-amount">1,000 <span>KES</span></span></div>
+      </div>
+
+      <div class="price-order-strip" style="margin-top:20px;">
+        <a class="btn-wa" href="https://wa.me/254700000000?text=Hi!%20I%27d%20like%20to%20order%20gas%20accessories." target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Order Accessories
+        </a>
+        <a class="btn-call-sm" href="tel:+254700000000">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.17 9.81 19.79 19.79 0 01.12 1.18 2 2 0 012.1 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+          Call Us
+        </a>
+      </div>
+    </div><!-- /.price-category accessories -->
   </div><!-- /.container -->
 </section>
 
@@ -1091,7 +1246,7 @@
         </svg>
       </div>
       <p class="terms-text">
-        <strong>Terms &amp; Conditions</strong> — All prices are in KES and include VAT, subject to change per ERC-regulated LPG pricing. Free delivery applies within Nairobi on orders above KES&nbsp;2,500. Cylinder exchange requires a valid empty cylinder of the same brand and size. Jena Brands Limited is not liable for damage resulting from improper use or installation of gas products. Payment accepted on delivery via M-Pesa, cash, or card. All cylinders remain property of their respective brand companies.
+        <strong>Delivery</strong> — Average delivery time is <strong>~15 minutes</strong> within Kilimani, Kileleshwa, Hurlingham, Lavington and Karen. Delays may occur due to product availability, high order volumes or delivery agent capacity — we'll always keep you informed. &nbsp;·&nbsp; <strong>Payment</strong> — M-Pesa Till: <strong>5656599</strong>, cash on delivery, or M-Pesa on delivery. &nbsp;·&nbsp; <strong>Terms &amp; Conditions</strong> — All prices are in KES and include VAT, subject to change per ERC-regulated LPG pricing. Cylinder exchange requires a valid empty cylinder of the same brand and size. Jena Brands Limited is not liable for damage resulting from improper use or installation of gas products. All cylinders remain property of their respective brand companies.
       </p>
     </div>
   </div>
