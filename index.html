@@ -109,17 +109,19 @@
             transform: translateY(-2px); background: rgba(255,255,255,0.1) !important;
         }
 
+        /* Eyebrows now use secondary (green) color */
         .eyebrow {
             display: inline-flex; align-items: center; gap: 9px;
             font-size: 0.75rem; font-weight: 700; font-stretch: 100%;
-            text-transform: uppercase; letter-spacing: 0.14em; color: var(--purple); margin-bottom: 12px;
+            text-transform: uppercase; letter-spacing: 0.14em; color: var(--green); margin-bottom: 12px;
         }
         .eyebrow::before, .eyebrow::after {
             content: ''; display: block; width: 18px; height: 1.5px;
-            background: var(--purple); border-radius: 2px; flex-shrink: 0;
+            background: var(--green); border-radius: 2px; flex-shrink: 0;
         }
         .eyebrow--white { color: rgba(255,255,255,0.7); }
         .eyebrow--white::before, .eyebrow--white::after { background: rgba(255,255,255,0.45); }
+        /* No need for eyebrow--green as default is green, but keep class for consistency */
         .eyebrow--green { color: var(--green); }
         .eyebrow--green::before, .eyebrow--green::after { background: var(--green); }
 
@@ -155,21 +157,35 @@
             line-height: 1.2;
         }
 
-        /* Homepage services: large icon + title, left aligned, no card */
+        /* Narrower container for centered sections */
+        .narrow-container {
+            max-width: 860px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Homepage services: icon in purple circle, larger, centered */
         .home-service-item {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            text-align: left;
+            align-items: center;
+            text-align: center;
             padding: 10px 0;
         }
         .home-service-item .home-service-icon {
+            background: var(--purple);
+            color: #fff;
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 2.8rem;
-            color: var(--purple);
-            margin-bottom: 10px;
+            margin-bottom: 14px;
         }
         .home-service-item h3 {
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             font-weight: 700;
             margin: 0;
             line-height: 1.3;
@@ -243,11 +259,11 @@
             .why-image-col {
                 position: relative;
                 width: auto;
-                margin: 28px 28px 28px;   /* balanced top & bottom padding */
+                margin: 28px 28px 28px;
                 min-height: 300px;
                 border-radius: var(--radius);
                 overflow: hidden;
-                order: -1;                  /* image on top */
+                order: -1;
             }
             .why-content-container {
                 order: 0;
@@ -565,10 +581,10 @@
         </section>
 
         <section class="section">
-            <div class="uk-container">
+            <div class="uk-container narrow-container">
                 <div class="eyebrow">What We Do</div>
                 <h2 class="section-title">Comprehensive Business Solutions</h2>
-                <div class="uk-grid uk-grid-medium uk-child-width-1-2@s uk-child-width-1-4@m uk-margin-medium-top" uk-grid>
+                <div class="uk-grid uk-grid-medium uk-child-width-1-2@s uk-child-width-1-4@m uk-margin-medium-top uk-flex-center" uk-grid>
                     <div>
                         <div class="home-service-item">
                             <div class="home-service-icon"><i class="ri-funds-line"></i></div>
