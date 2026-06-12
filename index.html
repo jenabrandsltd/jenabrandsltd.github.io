@@ -121,7 +121,6 @@
         }
         .eyebrow--white { color: rgba(255,255,255,0.7); }
         .eyebrow--white::before, .eyebrow--white::after { background: rgba(255,255,255,0.45); }
-        /* No need for eyebrow--green as default is green, but keep class for consistency */
         .eyebrow--green { color: var(--green); }
         .eyebrow--green::before, .eyebrow--green::after { background: var(--green); }
 
@@ -582,8 +581,10 @@
 
         <section class="section">
             <div class="uk-container narrow-container">
-                <div class="eyebrow">What We Do</div>
-                <h2 class="section-title">Comprehensive Business Solutions</h2>
+                <div class="uk-text-center">
+                    <div class="eyebrow">What We Do</div>
+                    <h2 class="section-title">Comprehensive Business Solutions</h2>
+                </div>
                 <div class="uk-grid uk-grid-medium uk-child-width-1-2@s uk-child-width-1-4@m uk-margin-medium-top uk-flex-center" uk-grid>
                     <div>
                         <div class="home-service-item">
