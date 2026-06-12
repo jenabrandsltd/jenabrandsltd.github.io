@@ -109,7 +109,6 @@
             transform: translateY(-2px); background: rgba(255,255,255,0.1) !important;
         }
 
-        /* Eyebrows now use secondary (green) color */
         .eyebrow {
             display: inline-flex; align-items: center; gap: 9px;
             font-size: 0.75rem; font-weight: 700; font-stretch: 100%;
@@ -156,14 +155,12 @@
             line-height: 1.2;
         }
 
-        /* Narrower container for centered sections */
         .narrow-container {
             max-width: 860px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        /* Description below section title */
         .section-subtitle {
             font-size: 1rem;
             line-height: 1.6;
@@ -173,7 +170,6 @@
             text-align: center;
         }
 
-        /* Homepage services: icon in purple circle, larger, centered */
         .home-service-item {
             display: flex;
             flex-direction: column;
@@ -201,11 +197,10 @@
             max-width: 14ch;
         }
 
-        /* Why Choose – image right on desktop, top on mobile inside black padding */
+        /* Why Choose – restores left alignment with container */
         .why-wrapper {
             position: relative;
             min-height: 380px;
-            background: transparent;
         }
         .why-dark-bg {
             position: absolute;
@@ -263,21 +258,33 @@
                 display: flex;
                 flex-direction: column;
             }
-            .why-dark-bg { width: 100%; }
-            .why-content-col { flex: 1 1 100%; padding: 50px 28px; }
+            .why-dark-bg {
+                position: relative;
+                width: 100%;
+                order: 1;
+            }
             .why-image-col {
                 position: relative;
-                width: auto;
-                margin: 28px 28px 28px;
+                width: 100%;
                 min-height: 300px;
+                order: -1;
                 border-radius: var(--radius);
                 overflow: hidden;
-                order: -1;
+                margin: 0 28px;
             }
             .why-content-container {
-                order: 0;
+                order: 1;
+                background: #0d0d0d;
             }
-            .why-inner { flex-direction: column; }
+            .why-content-col {
+                padding: 50px 28px;
+            }
+        }
+        @media (max-width: 640px) {
+            .why-image-col {
+                margin: 0;
+                border-radius: 0;
+            }
         }
 
         .client-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
@@ -307,7 +314,6 @@
             flex: 1 1 55%; font-size: 0.9rem; color: var(--ink-mid); line-height: 1.6;
         }
 
-        /* Mobile optimization for strategic objectives */
         @media (max-width: 640px) {
             .obj-grid {
                 grid-template-columns: 1fr;
@@ -436,9 +442,9 @@
         .uk-form-label { font-size: 0.72rem !important; font-weight: 700 !important; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint) !important; margin-bottom: 6px; display: block; }
         .uk-input, .uk-select, .uk-textarea { border-radius: var(--radius) !important; border: 1px solid var(--rule) !important; font-family: 'Radio Canada', sans-serif !important; font-size: 0.93rem !important; padding: 11px 14px !important; background: var(--bg) !important; color: var(--ink) !important; }
         .uk-select {
-            height: 50px !important;                     /* increased height to prevent cropping */
+            height: 50px !important;
             line-height: 1.4;
-            padding: 11px 36px 11px 14px !important;    /* right padding for arrow */
+            padding: 11px 36px 11px 14px !important;
             background-position: right 14px center;
         }
         .uk-input:focus, .uk-select:focus, .uk-textarea:focus { border-color: var(--purple) !important; box-shadow: 0 0 0 3px rgba(119,14,117,0.07) !important; }
@@ -459,7 +465,6 @@
         .enquire-btn { display: inline-block; background: var(--purple); color: #fff; border: none; border-radius: var(--radius); padding: 14px 28px; font-family: 'Radio Canada', sans-serif; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: background var(--trans); margin-top: 20px; }
         .enquire-btn:hover { background: var(--purple-hover); }
 
-        /* CTA section */
         .cta-section {
             background-image: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1400&q=80');
             background-size: cover; background-position: center;
@@ -474,7 +479,6 @@
         .cta-section h2 { font-size: clamp(2rem, 3.8vw, 3.2rem); color: #fff; margin-bottom: 14px; }
         .cta-section p { color: rgba(255,255,255,0.85); max-width: 46ch; margin: 0 auto 32px; font-size: 1.05rem; }
 
-        /* Footer with solid primary colour */
         .site-footer {
             background: var(--purple);
             color: rgba(255,255,255,0.85);
@@ -516,7 +520,6 @@
         @media (max-width: 640px) {
             .hero h1 { max-width: 100%; }
             .hero .hero-sub { max-width: 100%; }
-            .why-content-col .why-desc { max-width: 100%; }
             .footer-inner { flex-direction: column; align-items: flex-start; }
             .footer-links { flex-direction: column; gap: 12px; }
             .hero-home-height { min-height: 80vh; }
@@ -566,7 +569,6 @@
         </div>
     </div>
 
-    <!-- PAGE: HOME -->
     <div id="page-home" class="page-section">
         <section class="hero hero-home-height" style="background-image:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&q=80')">
             <div class="uk-container">
@@ -618,7 +620,6 @@
             </div>
         </section>
 
-        <!-- Why Choose Jena Brands – image right on desktop, top on mobile -->
         <div class="why-wrapper">
             <div class="why-dark-bg"></div>
             <div class="uk-container why-content-container">
@@ -657,7 +658,6 @@
         </section>
     </div>
 
-    <!-- PAGE: ABOUT -->
     <div id="page-about" class="page-section" style="display:none;">
         <section class="hero hero-inner-height" style="background-image:url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1400&q=80')">
             <div class="uk-container"><h1>About Us</h1><p class="hero-sub">Our story, vision, mission and the values that drive everything we do.</p></div>
@@ -724,7 +724,6 @@
         </section>
     </div>
 
-    <!-- PAGE: SERVICES -->
     <div id="page-services" class="page-section" style="display:none;">
         <section class="hero hero-inner-height" style="background-image:url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1400&q=80')">
             <div class="uk-container"><h1>Our Services</h1><p class="hero-sub">Comprehensive solutions designed to mobilize resources, elevate brands and deliver exceptional experiences.</p></div>
@@ -740,7 +739,6 @@
         </div></div></section>
     </div>
 
-    <!-- Service Modals -->
     <div id="modal-service-1" class="service-modal" uk-modal><div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" style="max-width:580px;"><button class="uk-modal-close-default" type="button" uk-close></button><h2 class="uk-modal-title">Resource Mobilization & Sponsorship</h2><p>We help organizations secure financial and non-financial support through strategic sponsorship acquisition, donor engagement, fundraising initiatives and partnership development.</p><p>Our team identifies opportunities, develops compelling sponsorship proposals, engages potential partners and manages stakeholder relationships to maximize resource generation and project sustainability.</p><h4>Key Solutions</h4><ul class="modal-list"><li><i class="ri-check-fill"></i><span>Sponsorship Strategy Development</span></li><li><i class="ri-check-fill"></i><span>Fundraising Campaigns</span></li><li><i class="ri-check-fill"></i><span>Donor Engagement</span></li><li><i class="ri-check-fill"></i><span>Partnership Acquisition</span></li><li><i class="ri-check-fill"></i><span>Proposal Development</span></li><li><i class="ri-check-fill"></i><span>Corporate Sponsorship Management</span></li><li><i class="ri-check-fill"></i><span>Resource Mobilization Advisory</span></li></ul><button class="enquire-btn js-enquire-btn" data-service="Resource Mobilization">Enquire about this service</button></div></div>
     <div id="modal-service-2" class="service-modal" uk-modal><div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" style="max-width:580px;"><button class="uk-modal-close-default" type="button" uk-close></button><h2 class="uk-modal-title">Event Planning & Management</h2><p>We design, coordinate and execute professional events that deliver exceptional experiences and measurable outcomes.</p><p>From concept development to post-event reporting, we manage every aspect of your event with precision and attention to detail.</p><h4>Events We Manage</h4><ul class="modal-list"><li><i class="ri-check-fill"></i><span>Conferences</span></li><li><i class="ri-check-fill"></i><span>Corporate Events</span></li><li><i class="ri-check-fill"></i><span>Annual General Meetings</span></li><li><i class="ri-check-fill"></i><span>Professional Forums</span></li><li><i class="ri-check-fill"></i><span>Product Launches</span></li><li><i class="ri-check-fill"></i><span>Awards Ceremonies</span></li><li><i class="ri-check-fill"></i><span>Trade Exhibitions</span></li><li><i class="ri-check-fill"></i><span>Networking Events</span></li><li><i class="ri-check-fill"></i><span>Government Functions</span></li><li><i class="ri-check-fill"></i><span>Team Buildings</span></li></ul><button class="enquire-btn js-enquire-btn" data-service="Event Planning">Enquire about this service</button></div></div>
     <div id="modal-service-3" class="service-modal" uk-modal><div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" style="max-width:580px;"><button class="uk-modal-close-default" type="button" uk-close></button><h2 class="uk-modal-title">Event Marketing & Promotion</h2><p>A successful event requires the right audience. We develop and implement targeted marketing strategies that maximize attendance, engagement, visibility and return on investment.</p><p>Our campaigns leverage both traditional and digital platforms to ensure your event reaches the right stakeholders.</p><h4>Services Include</h4><ul class="modal-list"><li><i class="ri-check-fill"></i><span>Event Branding</span></li><li><i class="ri-check-fill"></i><span>Digital Marketing</span></li><li><i class="ri-check-fill"></i><span>Media Buying</span></li><li><i class="ri-check-fill"></i><span>Social Media Campaigns</span></li><li><i class="ri-check-fill"></i><span>Audience Acquisition</span></li><li><i class="ri-check-fill"></i><span>Email Marketing</span></li><li><i class="ri-check-fill"></i><span>Content Creation</span></li><li><i class="ri-check-fill"></i><span>Stakeholder Engagement</span></li></ul><button class="enquire-btn js-enquire-btn" data-service="Event Marketing">Enquire about this service</button></div></div>
@@ -749,7 +747,6 @@
     <div id="modal-service-6" class="service-modal" uk-modal><div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" style="max-width:580px;"><button class="uk-modal-close-default" type="button" uk-close></button><h2 class="uk-modal-title">Brand Activation Campaigns</h2><p>We create memorable brand experiences that connect organizations with their target audiences and inspire meaningful engagement.</p><p>Our activation campaigns are designed to increase visibility, awareness, customer interaction and brand loyalty.</p><h4>Services Include</h4><ul class="modal-list"><li><i class="ri-check-fill"></i><span>Experiential Marketing</span></li><li><i class="ri-check-fill"></i><span>Product Launch Activations</span></li><li><i class="ri-check-fill"></i><span>Roadshows</span></li><li><i class="ri-check-fill"></i><span>Consumer Engagement Campaigns</span></li><li><i class="ri-check-fill"></i><span>Trade Activations</span></li><li><i class="ri-check-fill"></i><span>Community Outreach Programs</span></li></ul><button class="enquire-btn js-enquire-btn" data-service="Brand Activation">Enquire about this service</button></div></div>
     <div id="modal-service-7" class="service-modal" uk-modal><div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" style="max-width:580px;"><button class="uk-modal-close-default" type="button" uk-close></button><h2 class="uk-modal-title">Strategic Partnerships</h2><p>Strong partnerships create sustainable growth and long-term success. We help organizations identify, establish and manage strategic alliances that create shared value.</p><p>We facilitate collaboration between private sector organizations, government agencies, professional associations, development partners and international institutions.</p><h4>Services Include</h4><ul class="modal-list"><li><i class="ri-check-fill"></i><span>Partnership Strategy Development</span></li><li><i class="ri-check-fill"></i><span>Stakeholder Mapping</span></li><li><i class="ri-check-fill"></i><span>Strategic Alliance Facilitation</span></li><li><i class="ri-check-fill"></i><span>Partnership Negotiations</span></li><li><i class="ri-check-fill"></i><span>Relationship Management</span></li><li><i class="ri-check-fill"></i><span>Collaborative Project Development</span></li></ul><button class="enquire-btn js-enquire-btn" data-service="Strategic Partnerships">Enquire about this service</button></div></div>
 
-    <!-- PAGE: CONTACT -->
     <div id="page-contact" class="page-section" style="display:none;">
         <section class="hero hero-inner-height" style="background-image:url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1400&q=80')">
             <div class="uk-container"><h1>Contact Us</h1><p class="hero-sub">Ready to start a conversation? Reach out and let's explore how we can work together.</p></div>
@@ -766,14 +763,14 @@
                                 <i class="ri-mail-line"></i>
                                 <div class="contact-info-text">
                                     <div class="contact-info-label">Email</div>
-                                    <div class="contact-info-value"><a href="mailto:info@jenabrands.co.ke">info@jenabrands.co.ke</a></div>
+                                    <div class="contact-info-value"><a href="mailto:info@jenabrandsltd.co.ke">info@jenabrandsltd.co.ke</a></div>
                                 </div>
                             </div>
                             <div class="contact-info-item">
                                 <i class="ri-phone-line"></i>
                                 <div class="contact-info-text">
                                     <div class="contact-info-label">Phone</div>
-                                    <div class="contact-info-value">+254 (0) 700 000 000</div>
+                                    <div class="contact-info-value">+254 739 537 367</div>
                                 </div>
                             </div>
                             <div class="contact-info-item">
@@ -786,16 +783,16 @@
                         </div>
                     </div>
                     <div class="uk-width-2-3@m uk-width-1-1">
-                        <form class="uk-form-stacked">
+                        <form class="uk-form-stacked" action="process.php" method="post">
                             <div class="uk-grid uk-grid-small" uk-grid>
-                                <div class="uk-width-1-2@s"><label class="uk-form-label">Full Name *</label><input class="uk-input" type="text" placeholder="Your full name" required></div>
-                                <div class="uk-width-1-2@s"><label class="uk-form-label">Email Address *</label><input class="uk-input" type="email" placeholder="you@example.com" required></div>
+                                <div class="uk-width-1-2@s"><label class="uk-form-label">Full Name *</label><input class="uk-input" type="text" name="name" placeholder="Your full name" required></div>
+                                <div class="uk-width-1-2@s"><label class="uk-form-label">Email Address *</label><input class="uk-input" type="email" name="email" placeholder="you@example.com" required></div>
                             </div>
                             <div class="uk-grid uk-grid-small uk-margin-small-top" uk-grid>
-                                <div class="uk-width-1-2@s"><label class="uk-form-label">Phone Number</label><input class="uk-input" type="tel" placeholder="+254 700 000 000"></div>
-                                <div class="uk-width-1-2@s"><label class="uk-form-label">Service Interest</label><select class="uk-select" id="contact-service-select"><option>— Select —</option><option>Resource Mobilization</option><option>Event Planning</option><option>Event Marketing</option><option>Corporate Communications</option><option>PR Support</option><option>Brand Activation</option><option>Strategic Partnerships</option><option>General Inquiry</option></select></div>
+                                <div class="uk-width-1-2@s"><label class="uk-form-label">Phone Number</label><input class="uk-input" type="tel" name="phone" placeholder="+254 700 000 000"></div>
+                                <div class="uk-width-1-2@s"><label class="uk-form-label">Service Interest</label><select class="uk-select" name="service" id="contact-service-select"><option>— Select —</option><option>Resource Mobilization</option><option>Event Planning</option><option>Event Marketing</option><option>Corporate Communications</option><option>PR Support</option><option>Brand Activation</option><option>Strategic Partnerships</option><option>General Inquiry</option></select></div>
                             </div>
-                            <div class="uk-margin-small-top"><label class="uk-form-label">Your Message *</label><textarea class="uk-textarea" rows="5" placeholder="Tell us about your project or inquiry..." required></textarea></div>
+                            <div class="uk-margin-small-top"><label class="uk-form-label">Your Message *</label><textarea class="uk-textarea" name="message" rows="5" placeholder="Tell us about your project or inquiry..." required></textarea></div>
                             <button type="submit" class="btn-primary uk-button uk-margin-medium-top">Send Message</button>
                         </form>
                     </div>
@@ -804,15 +801,53 @@
         </section>
     </div>
 
-    <!-- PAGE: PRIVACY -->
     <div id="page-privacy" class="page-section" style="display:none;">
         <section class="hero hero-inner-height" style="background-image:url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1400&q=80')">
             <div class="uk-container"><h1>Privacy Policy</h1><p class="hero-sub">How we collect, use and protect your information.</p></div>
         </section>
-        <section class="section"><div class="uk-container" style="max-width:720px;"><p><strong>Effective Date:</strong> January 2024</p><p>At Jena Brands Ltd, we are committed to protecting your privacy.</p><h3>1. Information We Collect</h3><p>We collect personal information you voluntarily provide.</p><h3>2. How We Use Your Information</h3><p>To respond to inquiries and provide services.</p><h3>3. Data Protection</h3><p>We implement security measures to protect your data.</p><h3>4. Cookies</h3><p>We may use cookies; you can control settings in your browser.</p><h3>5. Third-Party Services</h3><p>Trusted providers bound by confidentiality.</p><h3>6. Your Rights</h3><p>Access, correct or delete your data. Contact info@jenabrands.co.ke.</p><h3>7. Changes</h3><p>We may update this policy; changes will be posted here.</p><h3>8. Contact</h3><p>info@jenabrands.co.ke</p></div></section>
+        <section class="section">
+            <div class="uk-container" style="max-width:720px;">
+                <p><strong>Effective Date:</strong> January 2024</p>
+                <p>Jena Brands Ltd ("we", "us", or "our") respects your privacy and is committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.</p>
+                <h3>1. Information We Collect</h3>
+                <p>We may collect the following types of information:</p>
+                <ul>
+                    <li><strong>Personal Identification Information:</strong> Name, email address, phone number, and any other details you voluntarily provide through our contact form or when communicating with us.</li>
+                    <li><strong>Usage Data:</strong> Information about how you interact with our website, including IP address, browser type, pages visited, time and date of visit, and other diagnostic data.</li>
+                </ul>
+                <h3>2. How We Use Your Information</h3>
+                <p>We use the collected information for various purposes:</p>
+                <ul>
+                    <li>To respond to your inquiries and provide the services you request.</li>
+                    <li>To improve our website and customer experience.</li>
+                    <li>To send periodic emails regarding our services, updates, or promotional materials (if you have opted in).</li>
+                    <li>To comply with legal obligations.</li>
+                </ul>
+                <h3>3. Sharing Your Information</h3>
+                <p>We do not sell, trade, or rent your personal information to third parties. We may share data with trusted service providers who assist us in operating our website and conducting our business, provided they agree to keep this information confidential and comply with data protection laws.</p>
+                <h3>4. Cookies and Tracking Technologies</h3>
+                <p>Our website may use cookies to enhance your browsing experience. You can choose to disable cookies through your browser settings; however, this may affect certain features of the site.</p>
+                <h3>5. Data Security</h3>
+                <p>We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the Internet is 100% secure.</p>
+                <h3>6. Your Data Protection Rights</h3>
+                <p>Depending on your jurisdiction, you may have the right to:</p>
+                <ul>
+                    <li>Access the personal data we hold about you.</li>
+                    <li>Request correction of inaccurate or incomplete data.</li>
+                    <li>Request deletion of your data under certain conditions.</li>
+                    <li>Object to or restrict processing of your data.</li>
+                    <li>Withdraw consent at any time where we rely on consent to process your information.</li>
+                </ul>
+                <p>To exercise any of these rights, please contact us at <a href="mailto:info@jenabrandsltd.co.ke">info@jenabrandsltd.co.ke</a>.</p>
+                <h3>7. Changes to This Privacy Policy</h3>
+                <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated effective date. We encourage you to review this policy periodically.</p>
+                <h3>8. Contact Us</h3>
+                <p>If you have any questions about this Privacy Policy, please contact us:</p>
+                <p>Email: <a href="mailto:info@jenabrandsltd.co.ke">info@jenabrandsltd.co.ke</a><br>Phone: +254 739 537 367</p>
+            </div>
+        </section>
     </div>
 
-    <!-- Global CTA (curve completely removed) -->
     <section id="global-cta" class="cta-section" style="display:none;">
         <div class="uk-container">
             <h2>Ready to create impact together?</h2>
@@ -821,7 +856,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="site-footer">
         <div class="uk-container">
             <div class="footer-inner">
