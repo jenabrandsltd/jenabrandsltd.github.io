@@ -197,93 +197,78 @@
             max-width: 14ch;
         }
 
-        /* Why Choose – restores left alignment with container */
-        .why-wrapper {
+        /* ===== Why Choose section – dark bg with image on right, fading into dark ===== */
+        .page-hero {
             position: relative;
-            min-height: 380px;
-        }
-        .why-dark-bg {
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 50%;
+            padding: 100px 0 84px;
+            border-bottom: 1px solid var(--rule);
+            overflow: hidden;
             background: #0d0d0d;
-            z-index: 0;
-        }
-        .why-content-container {
-            position: relative;
-            z-index: 1;
-            height: 100%;
-        }
-        .why-inner {
-            display: flex;
-            height: 100%;
-            align-items: stretch;
-        }
-        .why-content-col {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            padding: 60px 0;
             color: #fff;
         }
-        .why-content-col .why-content {
+        .page-hero .wrap {
+            position: relative;
+            z-index: 2;
             max-width: 520px;
-            width: 100%;
         }
-        .why-content-col .eyebrow { color: rgba(255,255,255,0.55); }
-        .why-content-col .eyebrow::before,
-        .why-content-col .eyebrow::after { background: rgba(255,255,255,0.3); }
-        .why-content-col .section-title { color: #fff; margin-bottom: 24px; font-size: clamp(1.8rem, 3.2vw, 2.6rem); }
-        .why-desc {
+        .page-hero .eyebrow { color: rgba(255,255,255,0.55); }
+        .page-hero .eyebrow::before,
+        .page-hero .eyebrow::after { background: rgba(255,255,255,0.3); }
+        .page-hero .section-title { color: #fff; margin-bottom: 24px; font-size: clamp(1.8rem, 3.2vw, 2.6rem); }
+        .page-hero .why-desc {
             color: rgba(255,255,255,0.72);
             font-size: 0.95rem;
             line-height: 1.7;
             margin-bottom: 28px;
             max-width: 46ch;
         }
-        .why-image-col {
+
+        /* image pseudo-element */
+        .page-hero::before {
+            content: "";
             position: absolute;
-            right: 0;
             top: 0;
+            right: 0;
             bottom: 0;
-            width: 50%;
+            width: 48%;
             background-size: cover;
             background-position: center;
+            z-index: 0;
+            pointer-events: none;
+        }
+        /* gradient fade from dark into image */
+        .page-hero::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 48%;
+            background: linear-gradient(to right, #0d0d0d 0%, rgba(13,13,13,0.4) 50%, rgba(13,13,13,0) 100%);
             z-index: 1;
+            pointer-events: none;
         }
+
+        .page-hero--why-image::before {
+            background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=80');
+        }
+
         @media (max-width: 960px) {
-            .why-wrapper {
-                display: flex;
-                flex-direction: column;
+            .page-hero {
+                padding: 60px 0 60px;
             }
-            .why-dark-bg {
-                position: relative;
+            .page-hero::before,
+            .page-hero::after {
                 width: 100%;
-                order: 1;
+                top: auto;
+                bottom: 0;
+                height: 40%;
             }
-            .why-image-col {
-                position: relative;
-                width: 100%;
-                min-height: 300px;
-                order: -1;
-                border-radius: var(--radius);
-                overflow: hidden;
-                margin: 0 28px;
+            .page-hero::after {
+                background: linear-gradient(to bottom, #0d0d0d 0%, rgba(13,13,13,0.4) 50%, rgba(13,13,13,0) 100%);
             }
-            .why-content-container {
-                order: 1;
-                background: #0d0d0d;
-            }
-            .why-content-col {
-                padding: 50px 28px;
-            }
-        }
-        @media (max-width: 640px) {
-            .why-image-col {
-                margin: 0;
-                border-radius: 0;
+            .page-hero .wrap {
+                max-width: 100%;
             }
         }
 
@@ -620,23 +605,18 @@
             </div>
         </section>
 
-        <div class="why-wrapper">
-            <div class="why-dark-bg"></div>
-            <div class="uk-container why-content-container">
-                <div class="why-inner">
-                    <div class="why-content-col">
-                        <div class="why-content">
-                            <div class="eyebrow">Why Choose Jena Brands Ltd?</div>
-                            <h2 class="section-title">Trusted Since 2020</h2>
-                            <p class="why-desc">
-                                With an experienced team, strategic partnership expertise, and a results‑oriented approach, we deliver end‑to‑end support, customized solutions, and international‑grade standards — all backed by reliable delivery and measurable accountability.
-                            </p>
-                            <a href="#contact" class="btn-primary" data-nav="contact">Get in touch</a>
-                        </div>
-                    </div>
+        <!-- Why Choose Jena Brands – dark background, image on right fades into dark -->
+        <div class="page-hero page-hero--why-image">
+            <div class="uk-container">
+                <div class="wrap">
+                    <div class="eyebrow">Why Choose Jena Brands</div>
+                    <h2 class="section-title">Trusted Since 2020</h2>
+                    <p class="why-desc">
+                        With an experienced team, strategic partnership expertise, and a results‑oriented approach, we deliver end‑to‑end support, customized solutions, and international‑grade standards — all backed by reliable delivery and measurable accountability.
+                    </p>
+                    <a href="#contact" class="btn-primary" data-nav="contact">Get in touch</a>
                 </div>
             </div>
-            <div class="why-image-col" style="background-image:url('https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=80');"></div>
         </div>
 
         <section class="section section--warm">
