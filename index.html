@@ -1,1021 +1,913 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jena Brands Ltd — Connecting Brands, People & Opportunities</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.21.6/dist/css/uikit.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Radio+Canada:wdth,wght@75,300..800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        :root {
+            --ink:          #111111;
+            --ink-mid:      #444444;
+            --ink-faint:    #888888;
+            --rule:         #e0e0e0;
+            --bg:           #ffffff;
+            --bg-warm:      #f8f7f5;
+            --purple:       #770E75;
+            --purple-hover: #5e0b5c;
+            --purple-tint:  #faf2fa;
+            --green:        #255E0B;
+            --radius:       8px;
+            --trans:        0.2s ease;
+        }
 
-  <!-- ═══ SEO ════════════════════════════════════════════════════ -->
-  <title>Jena Brands Limited – Fast LPG Gas Delivery in Nairobi within Kilimani, Kileleshwa, Hurlingham, Upper Hill, Lavington, Langata, Karen & Westlands.</title>
-  <meta name="description" content="Order cooking gas online in Nairobi. Jena Brands Limited delivers K-Gas, Pro Gas, Total Gas & more to your door in under 45 minutes. Competitive prices, genuine cylinders.">
-  <meta name="keywords" content="gas delivery Nairobi, LPG gas Nairobi, cooking gas delivery, K-Gas Nairobi, Pro Gas delivery, gas cylinder Nairobi, Jena Brands">
-  <meta name="robots" content="index, follow">
-  <meta name="author" content="Jena Brands Limited">
-  <link rel="canonical" href="https://www.jenabrands.co.ke/">
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Jena Brands Limited">
-  <meta property="og:title" content="Jena Brands Limited – Fast LPG Gas Delivery in Nairobi">
-  <meta property="og:description" content="Order cooking gas online. Delivered to your door in under 45 minutes anywhere in Nairobi. K-Gas, Pro Gas, Total Gas & more.">
-  <meta property="og:image" content="https://www.jenabrands.co.ke/assets/img/og-image.jpg">
-  <meta property="og:url" content="https://www.jenabrands.co.ke/">
-  <meta property="og:locale" content="en_KE">
+        body {
+            font-family: 'Radio Canada', sans-serif;
+            font-weight: 400;
+            font-stretch: 100%;
+            color: var(--ink);
+            background: var(--bg);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
 
-  <!-- Twitter / X Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Jena Brands Limited – Fast LPG Gas Delivery in Nairobi">
-  <meta name="twitter:description" content="Order cooking gas online. Delivered in under 45 minutes. K-Gas, Pro Gas, Total Gas & more.">
-  <meta name="twitter:image" content="https://www.jenabrands.co.ke/assets/img/og-image.jpg">
+        h1, h2, h3 {
+            font-family: 'Radio Canada', sans-serif;
+            font-stretch: 100%;
+            font-weight: 750;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            color: var(--ink);
+        }
+        h4, h5 {
+            font-family: 'Radio Canada', sans-serif;
+            font-stretch: 100%;
+            font-weight: 650;
+            letter-spacing: -0.01em;
+            line-height: 1.25;
+            color: var(--ink);
+        }
 
-  <!-- Structured Data – Local Business -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Jena Brands Limited",
-    "description": "Fast LPG cooking gas delivery across Nairobi. K-Gas, Pro Gas, Total Gas and more delivered in under 15 minutes.",
-    "url": "https://www.jenabrands.co.ke",
-    "telephone": "+254739721415",
-    "email": "gas@jenabrandsltd.co.ke",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Nairobi",
-      "addressCountry": "KE"
-    },
-    "openingHours": ["Mo-Fr 07:00-21:00","Sa 08:00-20:00","Su 09:00-17:00"],
-    "priceRange": "KES 1,450 – 10,500",
-    "image": "https://www.jenabrands.co.ke/assets/img/logo.png",
-    "sameAs": [
-      "https://www.facebook.com/jenabrands",
-      "https://www.instagram.com/jenabrands"
-    ]
-  }
-  </script>
+        .uk-navbar-container {
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--rule);
+            padding: 6px 0;
+        }
+        .uk-navbar-container.uk-navbar-sticky { box-shadow: 0 1px 12px rgba(0,0,0,0.06); }
+        .uk-navbar-nav > li > a {
+            font-weight: 450; font-stretch: 100%; font-size: 0.92rem;
+            color: var(--ink-mid); letter-spacing: 0; padding: 0 18px;
+            transition: color var(--trans);
+        }
+        .uk-navbar-nav > li > a:hover,
+        .uk-navbar-nav > li > a.nav-active { color: var(--ink); }
+        .uk-navbar-nav > li > a.nav-active { color: var(--purple); }
+        .nav-logo img { height: 70px; display: block; }
+        .nav-cta { margin-left: 16px; }
 
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+        .uk-offcanvas-bar { background: var(--bg); }
+        .uk-offcanvas-bar .uk-nav-default > li > a {
+            color: var(--ink); font-weight: 450; font-size: 1rem;
+            padding: 11px 0; border-bottom: 1px solid var(--rule); border-radius: 0;
+        }
+        .uk-offcanvas-bar .uk-nav-default > li > a:hover,
+        .uk-offcanvas-bar .uk-nav-default > li > a.nav-active { color: var(--purple); background: none; }
 
-  <!-- UIkit 3 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.21.4/css/uikit.min.css"/>
+        .btn-primary {
+            display: inline-block; background: var(--purple) !important; color: #fff !important;
+            border: none !important; border-radius: var(--radius) !important; padding: 14px 30px !important;
+            font-family: 'Radio Canada', sans-serif !important; font-weight: 600 !important;
+            font-stretch: 100% !important; font-size: 0.95rem !important; letter-spacing: 0.02em;
+            text-decoration: none !important; transition: background var(--trans), transform var(--trans), box-shadow var(--trans) !important;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(119,14,117,0.25);
+        }
+        .btn-primary:hover {
+            background: var(--purple-hover) !important; transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(119,14,117,0.35); color: #fff !important;
+        }
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        .btn-ghost {
+            display: inline-block; background: transparent !important; color: rgba(255,255,255,0.92) !important;
+            border: 1px solid rgba(255,255,255,0.45) !important; border-radius: var(--radius) !important;
+            padding: 14px 30px !important; font-family: 'Radio Canada', sans-serif !important;
+            font-weight: 600 !important; font-stretch: 100% !important; font-size: 0.95rem !important;
+            letter-spacing: 0.02em; text-decoration: none !important;
+            transition: border-color var(--trans), color var(--trans), transform var(--trans), background var(--trans) !important;
+        }
+        .btn-ghost:hover {
+            border-color: rgba(255,255,255,0.8) !important; color: #fff !important;
+            transform: translateY(-2px); background: rgba(255,255,255,0.1) !important;
+        }
 
-  <style>
-    /* ═══ BRAND TOKENS (exact palette from PDF) ══════════════════ */
-    :root {
-      /* Core brand */
-      --purple:      #770E75;
-      --black:       #010100;
-      --green:       #255E0B;
+        .eyebrow {
+            display: inline-flex; align-items: center; gap: 9px;
+            font-size: 0.75rem; font-weight: 700; font-stretch: 100%;
+            text-transform: uppercase; letter-spacing: 0.14em; color: var(--purple); margin-bottom: 12px;
+        }
+        .eyebrow::before, .eyebrow::after {
+            content: ''; display: block; width: 18px; height: 1.5px;
+            background: var(--purple); border-radius: 2px; flex-shrink: 0;
+        }
+        .eyebrow--white { color: rgba(255,255,255,0.7); }
+        .eyebrow--white::before, .eyebrow--white::after { background: rgba(255,255,255,0.45); }
+        .eyebrow--green { color: var(--green); }
+        .eyebrow--green::before, .eyebrow--green::after { background: var(--green); }
 
-      /* Tints & shades */
-      --green-mid:   #2f7a0e;
-      --green-pale:  #edf5e9;
-      --green-bright:#3a9612;
-      --purple-pale: #f7eef7;
-      --purple-mid:  #8f1a8d;
-      --purple-dark: #5a0a58;
-      --purple-deep: #3d0739;
+        .hero {
+            background-size: cover; background-position: center; position: relative;
+            display: flex; align-items: flex-end; padding: 0 0 80px; color: #fff;
+        }
+        .hero::before {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.1) 100%);
+            z-index: 1;
+        }
+        .hero .uk-container { position: relative; z-index: 2; width: 100%; }
+        .hero-home-height { min-height: 88vh; }
+        .hero-inner-height { min-height: 42vh; padding: 0 0 60px; }
 
-      /* Neutrals */
-      --ink:         #010100;
-      --ink-60:      rgba(1,1,0,.58);
-      --ink-30:      rgba(1,1,0,.28);
-      --ink-10:      rgba(1,1,0,.07);
-      --cream:       #f8f7f4;
-      --white:       #ffffff;
+        .hero h1 {
+            font-size: clamp(2.8rem, 6vw, 5.6rem); font-weight: 800; color: #fff;
+            margin-bottom: 24px; max-width: 18ch; line-height: 1.1;
+        }
+        .hero-inner-height h1 { font-size: clamp(2.4rem, 4.5vw, 4rem); margin-bottom: 12px; max-width: 16ch; }
+        .hero .hero-sub {
+            font-size: clamp(1.05rem, 1.8vw, 1.25rem); font-weight: 380; color: rgba(255,255,255,0.85);
+            margin-bottom: 36px; max-width: 46ch; line-height: 1.55;
+        }
+        .hero-inner-height .hero-sub { font-size: 1.05rem; margin-bottom: 0; max-width: 42ch; }
+        .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
 
-      /* Accents */
-      --lime:        #7fcf1a;   /* bright accent used on dark BG */
-      --gold:        #d4a017;   /* warm premium accent */
+        .section { padding: 80px 0; }
+        .section--warm { background: var(--bg-warm); }
+        .section-title {
+            font-size: clamp(1.8rem, 3.2vw, 2.6rem); margin-bottom: 14px; font-weight: 750;
+            line-height: 1.2;
+        }
 
-      --r-card:      16px;
-      --r-btn:       100px;
-      --ease:        cubic-bezier(.16,1,.3,1);
-    }
+        /* Homepage services: large icon + title, left aligned, no card */
+        .home-service-item {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            padding: 10px 0;
+        }
+        .home-service-item .home-service-icon {
+            font-size: 2.8rem;
+            color: var(--purple);
+            margin-bottom: 10px;
+        }
+        .home-service-item h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.3;
+            max-width: 14ch;
+        }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Outfit', sans-serif;
-      background: var(--cream);
-      color: var(--ink);
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
+        /* Why Choose – image right on desktop, top on mobile inside black padding */
+        .why-wrapper {
+            position: relative;
+            min-height: 380px;
+            background: transparent;
+        }
+        .why-dark-bg {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 50%;
+            background: #0d0d0d;
+            z-index: 0;
+        }
+        .why-content-container {
+            position: relative;
+            z-index: 1;
+            height: 100%;
+        }
+        .why-inner {
+            display: flex;
+            height: 100%;
+            align-items: stretch;
+        }
+        .why-content-col {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            padding: 60px 0;
+            color: #fff;
+        }
+        .why-content-col .why-content {
+            max-width: 520px;
+            width: 100%;
+        }
+        .why-content-col .eyebrow { color: rgba(255,255,255,0.55); }
+        .why-content-col .eyebrow::before,
+        .why-content-col .eyebrow::after { background: rgba(255,255,255,0.3); }
+        .why-content-col .section-title { color: #fff; margin-bottom: 24px; font-size: clamp(1.8rem, 3.2vw, 2.6rem); }
+        .why-desc {
+            color: rgba(255,255,255,0.72);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 28px;
+            max-width: 46ch;
+        }
+        .why-image-col {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 50%;
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+        }
+        @media (max-width: 960px) {
+            .why-wrapper {
+                display: flex;
+                flex-direction: column;
+            }
+            .why-dark-bg { width: 100%; }
+            .why-content-col { flex: 1 1 100%; padding: 50px 28px; }
+            .why-image-col {
+                position: relative;
+                width: auto;
+                margin: 28px 28px 28px;   /* balanced top & bottom padding */
+                min-height: 300px;
+                border-radius: var(--radius);
+                overflow: hidden;
+                order: -1;                  /* image on top */
+            }
+            .why-content-container {
+                order: 0;
+            }
+            .why-inner { flex-direction: column; }
+        }
 
-    /* ═══ SCROLL REVEAL ══════════════════════════════════════════ */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity .85s var(--ease), transform .85s var(--ease);
-    }
-    .reveal.visible { opacity: 1; transform: none; }
-    .reveal-delay-1 { transition-delay: .1s; }
-    .reveal-delay-2 { transition-delay: .2s; }
-    .reveal-delay-3 { transition-delay: .32s; }
+        .client-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+        .client-pill { background: var(--bg); border: 1px solid var(--rule); border-radius: 50px; padding: 6px 16px; font-size: 0.82rem; font-weight: 500; color: var(--ink-mid); transition: border-color var(--trans), color var(--trans); white-space: nowrap; }
+        .client-pill:hover { border-color: var(--purple); color: var(--purple); }
 
-    /* ═══ NAV ════════════════════════════════════════════════════ */
-    #nav {
-      position: fixed; top: 0; left: 0; right: 0;
-      z-index: 200;
-      transition: background .4s, border-color .4s, box-shadow .4s;
-      border-bottom: 1px solid transparent;
-    }
-    #nav.scrolled {
-      background: rgba(248,247,244,.95);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-color: var(--ink-10);
-      box-shadow: 0 2px 40px rgba(1,1,0,.07);
-    }
-    .nav-inner {
-      max-width: 1200px; margin: 0 auto; padding: 0 32px;
-      height: 72px; display: flex; align-items: center; justify-content: space-between;
-    }
-    .nav-logo img { height: 52px; width: auto; display: block; transition: opacity .3s; }
-    /* inverted logo shown on transparent nav (dark hero bg), regular logo when scrolled */
-    .nav-logo .logo-default { display: block; }
-    .nav-logo .logo-inverted { display: none; }
-    #nav.scrolled .nav-logo .logo-default { display: none; }
-    #nav.scrolled .nav-logo .logo-inverted { display: block; }
-    .nav-links { display: flex; gap: 40px; list-style: none; align-items: center; margin: 0; padding: 0; }
-    .nav-links li { margin: 0; padding: 0; }
-    .nav-links a {
-      font-size: 12.5px; font-weight: 600; letter-spacing: .07em;
-      text-transform: uppercase; color: rgba(255,255,255,.85);
-      text-decoration: none; position: relative;
-      transition: color .25s; line-height: 1;
-    }
-    #nav.scrolled .nav-links a { color: var(--ink); }
-    .nav-links a::after {
-      content: ''; position: absolute; bottom: -4px; left: 0;
-      width: 0; height: 1.5px; background: var(--purple);
-      transition: width .35s var(--ease);
-    }
-    .nav-links a:hover::after { width: 100%; }
-    .nav-links a:hover { color: var(--lime); }
-    #nav.scrolled .nav-links a:hover { color: var(--purple); }
-    .btn-nav-cta {
-      background: var(--purple); color: var(--white) !important;
-      font-family: 'Outfit', sans-serif; font-size: 12.5px; font-weight: 700;
-      letter-spacing: .07em; text-transform: uppercase;
-      border: none; border-radius: var(--r-btn); padding: 11px 28px;
-      text-decoration: none; display: inline-block;
-      transition: background .25s, transform .2s, box-shadow .2s;
-    }
-    .btn-nav-cta:hover {
-      background: var(--purple-mid); transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(119,14,117,.3);
-    }
-    #nav.scrolled .btn-nav-cta { background: var(--purple); }
-    #nav.scrolled .btn-nav-cta:hover { background: var(--purple-mid); box-shadow: 0 6px 20px rgba(119,14,117,.3); }
-    .nav-hamburger {
-      display: none; background: none; border: none;
-      cursor: pointer; padding: 4px; color: var(--white);
-    }
-    #nav.scrolled .nav-hamburger { color: var(--ink); }
-    @media (max-width: 768px) { .nav-links-wrap { display: none !important; } .nav-hamburger { display: block; } }
+        .obj-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .obj-card {
+            background: var(--bg); border: 1px solid var(--rule); border-radius: var(--radius);
+            padding: 28px 24px; display: flex; align-items: center; gap: 0;
+            transition: box-shadow var(--trans), transform var(--trans);
+        }
+        .obj-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.06); transform: translateY(-2px); }
+        .obj-title {
+            flex: 1 1 45%; font-weight: 700; font-size: 1.15rem; color: var(--ink);
+            padding-right: 20px; line-height: 1.25;
+        }
+        .obj-divider {
+            width: 1px; background: var(--rule); align-self: stretch; margin: 0 20px;
+        }
+        .obj-desc {
+            flex: 1 1 55%; font-size: 0.9rem; color: var(--ink-mid); line-height: 1.6;
+        }
 
-    /* ═══ OFF-CANVAS ═════════════════════════════════════════════ */
-    .uk-offcanvas-bar {
-      background: var(--black) !important; width: 300px !important;
-      display: flex !important; flex-direction: column !important;
-      overflow-y: auto !important; padding: 40px 32px !important;
-    }
-    .oc-logo {
-      font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700;
-      color: var(--white); text-decoration: none; display: block; margin-bottom: 40px;
-      flex-shrink: 0;
-    }
-    .oc-logo span { color: var(--lime); }
-    .oc-nav { list-style: none; padding:0; margin:0; flex-shrink: 0; }
-    .oc-nav li { border-bottom: 1px solid rgba(255,255,255,.07); }
-    .oc-nav a {
-      display: block; padding: 16px 0; font-size: 17px; font-weight: 500;
-      color: rgba(255,255,255,.75); text-decoration: none;
-      transition: color .2s, padding-left .25s;
-    }
-    .oc-nav a:hover { color: var(--lime); padding-left: 8px; }
-    .oc-footer { margin-top: auto; padding-top: 36px; flex-shrink: 0; }
-    .oc-socials { display: flex; gap: 10px; margin-top: 20px; }
-    .oc-socials a {
-      width: 36px; height: 36px; border-radius: 50%;
-      border: 1px solid rgba(255,255,255,.15);
-      display: flex; align-items: center; justify-content: center;
-      color: rgba(255,255,255,.5); text-decoration: none;
-      transition: border-color .2s, color .2s;
-    }
-    .oc-socials a:hover { border-color: var(--lime); color: var(--lime); }
-    .btn-oc-order {
-      display: block; background: var(--purple); color: var(--white);
-      text-align: center; padding: 14px; border-radius: var(--r-btn);
-      font-weight: 700; font-size: 13px; letter-spacing: .06em;
-      text-transform: uppercase; text-decoration: none; transition: background .25s;
-    }
-    .btn-oc-order:hover { background: var(--purple-mid); color: var(--white); }
+        /* Mobile optimization for strategic objectives */
+        @media (max-width: 640px) {
+            .obj-grid {
+                grid-template-columns: 1fr;
+            }
+            .obj-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .obj-divider {
+                display: none;
+            }
+            .obj-title {
+                flex: none;
+                width: 100%;
+                padding-right: 0;
+                margin-bottom: 8px;
+                font-size: 1.05rem;
+            }
+            .obj-desc {
+                flex: none;
+                width: 100%;
+                font-size: 0.9rem;
+            }
+        }
 
-    /* ═══ HERO ═══════════════════════════════════════════════════ */
-    #hero {
-      position: relative; height: 100svh; min-height: 620px;
-      overflow: hidden; display: flex; align-items: flex-end; padding-bottom: 88px; padding-top: 72px;
-    }
-    .hero-bg {
-      position: absolute; inset: -5%;
-      background: linear-gradient(150deg, #010100 0%, #3d0739 30%, #770E75 60%, #1a4506 85%, #010100 100%);
-      animation: kb 22s ease-in-out infinite alternate;
-      transform-origin: 55% 50%; z-index: 0;
-    }
-    @keyframes kb {
-      0%   { transform: scale(1.0) translate(0%, 0%); }
-      100% { transform: scale(1.12) translate(-2.5%, 2%); }
-    }
-    /* film-grain overlay */
-    .hero-grain {
-      position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: .28;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23g)' opacity='.08'/%3E%3C/svg%3E");
-    }
-    /* purple accent arc top-right */
-    .hero-arc {
-      position: absolute; top: -180px; right: -180px;
-      width: 520px; height: 520px; border-radius: 50%;
-      border: 1.5px solid rgba(119,14,117,.55); z-index: 1;
-    }
-    .hero-arc-2 {
-      position: absolute; top: -280px; right: -280px;
-      width: 720px; height: 720px; border-radius: 50%;
-      border: 1px solid rgba(119,14,117,.28); z-index: 1;
-    }
-    .hero-flame-orn {
-      position: absolute; bottom: -60px; right: 3vw;
-      width: clamp(240px, 30vw, 420px); height: auto;
-      opacity: .10; z-index: 3; pointer-events: none;
-    }
-    /* Gas cylinder ornament – categories top-right */
-    .orn-cylinder-lg {
-      position: absolute; top: -30px; right: -30px;
-      width: 260px; height: auto; opacity: .06; pointer-events: none;
-    }
-    .hero-img-bg {
-      position: absolute; inset: 0; z-index: 1;
-      background: url('assets/img/hero-bg.jpg') right bottom / cover no-repeat;
-      background-color: transparent;
-      /* mask: invisible top-left, visible bottom-right */
-      -webkit-mask-image: linear-gradient(135deg, transparent 0%, transparent 25%, rgba(0,0,0,.55) 55%, rgba(0,0,0,.9) 80%, #000 100%);
-      mask-image: linear-gradient(135deg, transparent 0%, transparent 25%, rgba(0,0,0,.55) 55%, rgba(0,0,0,.9) 80%, #000 100%);
-    }
-    @media (max-width: 640px) {
-      .hero-img-bg {
-        -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,.7) 0%, rgba(0,0,0,.3) 40%, transparent 70%);
-        mask-image: linear-gradient(to top, rgba(0,0,0,.7) 0%, rgba(0,0,0,.3) 40%, transparent 70%);
-      }
-    }
-    .hero-overlay {
-      position: absolute; inset: 0; z-index: 2;
-      background:
-        linear-gradient(to right,  rgba(1,1,0,.92) 0%, rgba(1,1,0,.7) 40%, rgba(1,1,0,.15) 70%, transparent 100%),
-        linear-gradient(to top,    rgba(1,1,0,.88) 0%, rgba(1,1,0,.3) 45%, transparent 75%);
-    }
-    .hero-content {
-      position: relative; z-index: 3;
-      max-width: 1200px; margin: 0 auto; padding: 80px 32px 0; width: 100%;
-    }
-    .hero-h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(52px, 8.5vw, 112px); font-weight: 600;
-      line-height: 1.0; color: var(--white); margin-bottom: 28px; max-width: 840px;
-    }
-    .hero-h1 em { font-style: italic; color: var(--lime); }
-    .hero-sub {
-      font-size: clamp(15px, 1.6vw, 18px); font-weight: 300;
-      color: rgba(255,255,255,.62); max-width: 420px; line-height: 1.8; margin-bottom: 44px;
-    }
-    .hero-actions { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
-    .btn-primary {
-      background: var(--purple); color: var(--white);
-      font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 700;
-      letter-spacing: .07em; text-transform: uppercase; border: none;
-      border-radius: var(--r-btn); padding: 17px 38px; cursor: pointer;
-      text-decoration: none; display: inline-flex; align-items: center; gap: 10px;
-      transition: background .25s, transform .2s, box-shadow .25s;
-    }
-    .btn-primary:hover {
-      background: var(--purple-mid); transform: translateY(-2px);
-      box-shadow: 0 12px 40px rgba(119,14,117,.4); color: var(--white);
-    }
-    .btn-ghost {
-      font-size: 13px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase;
-      color: rgba(255,255,255,.68); text-decoration: none;
-      display: inline-flex; align-items: center; gap: 8px;
-      transition: color .25s;
-    }
-    .btn-ghost:hover { color: var(--white); }
-    .hero-scroll {
-      position: absolute; bottom: 28px; right: 40px; z-index: 3;
-      display: flex; flex-direction: column; align-items: center; gap: 8px;
-      font-size: 9px; letter-spacing: .2em; text-transform: uppercase;
-      color: rgba(255,255,255,.28);
-    }
-    .scroll-line {
-      width: 1px; height: 48px;
-      background: linear-gradient(to bottom, transparent, rgba(255,255,255,.35));
-      animation: spulse 2.2s ease-in-out infinite;
-    }
-    @keyframes spulse { 0%,100%{opacity:.3} 50%{opacity:1} }
+        .vm-full-bleed { display: flex; flex-wrap: wrap; margin: 0; }
+        .vm-full-bleed .vm-bg-col { flex: 1 1 50%; min-height: 340px; background-size: cover; background-position: center; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; color: #fff; padding: 40px 24px; border-radius: 0; }
+        .vm-full-bleed .vm-bg-col::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.45); z-index: 1; }
+        .vm-full-bleed .vm-content { position: relative; z-index: 2; max-width: 360px; }
+        .vm-full-bleed .vm-icon-large {
+            font-size: clamp(4rem, 8vw, 6.5rem);
+            color: var(--purple);
+            margin-bottom: 20px;
+        }
+        .vm-full-bleed h3 { color: #fff; font-size: 1.3rem; margin-bottom: 12px; }
+        .vm-full-bleed p { color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.65; }
+        @media (max-width: 640px) {
+            .vm-full-bleed .vm-bg-col { flex: 1 1 100%; min-height: 280px; }
+        }
 
-    /* ═══ SECTION SHARED ═════════════════════════════════════════ */
-    .section-pad { padding: 100px 0; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
-    .section-label {
-      font-size: 10.5px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase;
-      color: var(--purple); display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
-    }
-    .section-label::before { content:''; display:block; width:22px; height:1.5px; background:var(--purple); flex-shrink:0; }
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(38px, 5.5vw, 68px); font-weight: 600; line-height: 1.05; color: var(--ink);
-    }
-    .section-title em { font-style: italic; color: var(--purple); }
-    .section-sub { font-size: 17px; font-weight: 300; color: var(--ink-60); line-height: 1.85; max-width: 480px; margin-top: 14px; }
+        .core-values-section {
+            margin-top: 28px;
+        }
+        .core-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0;
+            border: 1px solid var(--rule);
+            border-radius: var(--radius);
+            overflow: hidden;
+            width: fit-content;
+        }
+        .core-tab {
+            padding: 8px 18px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--ink-faint);
+            cursor: pointer;
+            background: none;
+            border: none;
+            border-right: 1px solid var(--rule);
+            transition: color 0.2s, border-color 0.2s, background 0.2s;
+            font-family: 'Radio Canada', sans-serif;
+        }
+        .core-tab:last-child {
+            border-right: none;
+        }
+        .core-tab:hover {
+            color: var(--ink-mid);
+        }
+        .core-tab.active {
+            color: var(--green);
+            font-weight: 600;
+            background: var(--bg-warm);
+        }
+        .values-desc-row {
+            font-size: 0.88rem;
+            color: var(--ink-mid);
+            text-align: left;
+            min-height: 28px;
+            margin-top: 16px;
+        }
 
-    /* ═══ ORNAMENTAL SVGs HELPER ════════════════════════════════ */
-    .ornament { position: absolute; pointer-events: none; }
+        .contact-info-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+        .contact-info-item i {
+            font-size: 1.3rem;
+            color: var(--purple);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .contact-info-text {
+            line-height: 1.45;
+        }
+        .contact-info-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--ink-faint);
+            margin-bottom: 2px;
+        }
+        .contact-info-value {
+            font-size: 0.98rem;
+            color: var(--ink);
+            font-weight: 500;
+        }
+        .contact-info-value a {
+            color: var(--ink);
+            text-decoration: none;
+            transition: color var(--trans);
+        }
+        .contact-info-value a:hover {
+            color: var(--purple);
+        }
 
-    /* ═══ CATEGORIES ═════════════════════════════════════════════ */
-    #categories { background: var(--white); position: relative; overflow: hidden; }
-    /* ornamental icon top-left */
-    #categories .orn-ring {
-      top: -80px; left: -60px; width: 340px; height: 340px; opacity: .07;
-    }
-    .cat-header { display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; margin-bottom: 56px; flex-wrap: wrap; }
+        .uk-form-label { font-size: 0.72rem !important; font-weight: 700 !important; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint) !important; margin-bottom: 6px; display: block; }
+        .uk-input, .uk-select, .uk-textarea { border-radius: var(--radius) !important; border: 1px solid var(--rule) !important; font-family: 'Radio Canada', sans-serif !important; font-size: 0.93rem !important; padding: 11px 14px !important; background: var(--bg) !important; color: var(--ink) !important; }
+        .uk-select { height: 46px; }
+        .uk-input:focus, .uk-select:focus, .uk-textarea:focus { border-color: var(--purple) !important; box-shadow: 0 0 0 3px rgba(119,14,117,0.07) !important; }
+        .uk-grid-small > .uk-width-1-2\@s { display: flex; flex-direction: column; justify-content: flex-start; }
 
-    .cat-item { text-align: center; padding: 12px 8px 20px; cursor: pointer; transition: transform .3s var(--ease); }
-    .cat-item:hover { transform: translateY(-5px); }
-    .cat-img-wrap img {
-      width: 100%; height: 100%; object-fit: cover; display: block;
-      transition: transform .4s var(--ease);
-    }
-    .cat-item:hover .cat-img-wrap img { transform: scale(1.08); }
-    /* fallback icon when no image */
-    .cat-img-wrap .cat-icon-fallback {
-      width: 100%; height: 100%;
-      display: flex; align-items: center; justify-content: center;
-      background: var(--purple-pale);
-    }
-    .cat-name { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
-    .cat-desc { font-size: 12px; color: var(--ink-30); }
+        .card-service { background: var(--bg); border: 1px solid var(--rule); border-radius: var(--radius); padding: 28px 24px 22px; cursor: pointer; height: 100%; display: flex; flex-direction: column; transition: box-shadow var(--trans), transform var(--trans); }
+        .card-service:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.09); transform: translateY(-3px); }
+        .service-icon { font-size: 2rem; color: #fff; margin-bottom: 16px; display: flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 50%; background: var(--purple); }
+        .card-service h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; }
+        .card-service p { font-size: 0.88rem; color: var(--ink-mid); flex-grow: 1; margin-bottom: 18px; }
+        .card-link { font-size: 0.83rem; font-weight: 600; color: var(--purple); display: inline-flex; align-items: center; gap: 5px; text-decoration: none; transition: gap var(--trans); }
+        .card-link:hover { gap: 9px; }
 
-    /* slider nav */
-    .uk-slidenav {
-      color: var(--ink) !important; background: var(--white) !important;
-      border: 1.5px solid var(--ink-10) !important; border-radius: 50% !important;
-      width: 40px !important; height: 40px !important;
-      display: flex !important; align-items: center !important; justify-content: center !important;
-      transition: background .2s, border-color .2s !important;
-    }
-    .uk-slidenav:hover { background: var(--purple) !important; color: var(--white) !important; border-color: var(--purple) !important; }
+        .service-modal .uk-modal-dialog { border-radius: 12px; overflow: hidden; }
+        .modal-list { list-style: none; padding-left: 0; margin-top: 16px; }
+        .modal-list li { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
+        .modal-list li i { color: var(--green); flex-shrink: 0; font-size: 1.1rem; margin-top: 2px; }
+        .enquire-btn { display: inline-block; background: var(--purple); color: #fff; border: none; border-radius: var(--radius); padding: 14px 28px; font-family: 'Radio Canada', sans-serif; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: background var(--trans); margin-top: 20px; }
+        .enquire-btn:hover { background: var(--purple-hover); }
 
-    /* slider: arrows sit inside the view, above the cards */
-    .slider-outer {
-      position: relative;
-    }
-    .slider-outer .uk-position-center-left-out,
-    .slider-outer .uk-position-center-right-out {
-      position: absolute !important;
-      top: 50% !important;
-      transform: translateY(-50%) !important;
-    }
-    .slider-outer .uk-position-center-left-out { left: 0 !important; }
-    .slider-outer .uk-position-center-right-out { right: 0 !important; }
-    .slider-outer .uk-slider-container {
-      padding: 0 52px;
-    }
-    @media (max-width: 640px) {
-      .slider-outer .uk-slider-container { padding: 0 44px; }
-      .uk-slidenav { width: 34px !important; height: 34px !important; }
-    }
+        /* CTA section */
+        .cta-section {
+            background-image: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1400&q=80');
+            background-size: cover; background-position: center;
+            position: relative; padding: 100px 0; text-align: center; color: #fff;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: ''; position: absolute; inset: 0;
+            background: rgba(15,15,15,0.65);
+            z-index: 0;
+        }
+        .cta-section .uk-container { position: relative; z-index: 2; }
+        .cta-section h2 { font-size: clamp(2rem, 3.8vw, 3.2rem); color: #fff; margin-bottom: 14px; }
+        .cta-section p { color: rgba(255,255,255,0.85); max-width: 46ch; margin: 0 auto 32px; font-size: 1.05rem; }
 
-    .cat-img-wrap {
-      width: 100px; height: 100px; border-radius: 50%; overflow: hidden;
-      margin: 0 auto 14px;
-      border: 2.5px solid var(--purple-pale);
-      background: var(--purple-pale);
-      transition: border-color .3s, box-shadow .3s;
-    }
-    .cat-img-wrap .cat-icon-fallback svg { width: 40px; height: 40px; color: var(--purple); }
-    .cat-item:hover .cat-img-wrap {
-      border-color: var(--purple);
-      box-shadow: 0 0 0 4px rgba(119,14,117,.1);
-    }
-    .cat-item:hover .cat-img-wrap .cat-icon-fallback { background: var(--purple); }
-    .cat-item:hover .cat-img-wrap .cat-icon-fallback svg { color: var(--white); }
+        /* Gentle curve – ripple only on the right side */
+        .cta-curve {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1;
+            line-height: 0;
+        }
+        .cta-curve svg {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
 
-    /* ═══ PRICES ════════════════════════════════════════════════ */
-    #prices { background: var(--cream); position: relative; overflow: hidden; }
-    #prices .orn-circle { top: -80px; right: -80px; width: 500px; height: 500px; opacity: .06; }
+        /* Footer with solid primary colour */
+        .site-footer {
+            background: var(--purple);
+            color: rgba(255,255,255,0.85);
+            font-size: 0.92rem;
+            padding: 64px 0 32px;
+            border-top: none;
+        }
+        .footer-inner {
+            display: flex; justify-content: space-between; align-items: flex-start;
+            flex-wrap: wrap; gap: 40px; margin-bottom: 48px;
+        }
+        .footer-brand { max-width: 280px; }
+        .footer-brand img { height: 38px; filter: brightness(0) invert(1); opacity: 0.95; margin-bottom: 14px; }
+        .footer-brand p { font-size: 0.85rem; color: rgba(255,255,255,0.65); line-height: 1.6; }
+        .footer-links { list-style: none; padding: 0; margin: 0; display: flex; gap: 32px; flex-wrap: wrap; }
+        .footer-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.88rem; transition: color var(--trans); }
+        .footer-links a:hover { color: #fff; }
+        .footer-social { display: flex; gap: 12px; }
+        .footer-social a {
+            width: 36px; height: 36px; border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.3);
+            display: flex; align-items: center; justify-content: center;
+            color: rgba(255,255,255,0.75); font-size: 0.9rem;
+            text-decoration: none; transition: border-color var(--trans), color var(--trans);
+        }
+        .footer-social a:hover { border-color: rgba(255,255,255,0.65); color: #fff; }
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 22px;
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 12px; font-size: 0.78rem; color: rgba(255,255,255,0.6);
+        }
+        .footer-bottom a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color var(--trans); }
+        .footer-bottom a:hover { color: #fff; }
 
-    /* ── Category block (6kg, 13kg, etc.) ── */
-    .price-category { margin-bottom: 64px; }
-    .price-category:last-child { margin-bottom: 0; }
+        .fade-in { animation: fadeUp 0.38s ease forwards; }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-    .price-cat-header {
-      display: grid;
-      grid-template-columns: 220px 1fr;
-      gap: 32px;
-      align-items: start;
-      margin-bottom: 28px;
-    }
-    @media (max-width: 720px) {
-      .price-cat-header { grid-template-columns: 1fr; gap: 20px; }
-    }
-
-    /* cylinder photo */
-    .price-cat-img {
-      border-radius: 14px; overflow: hidden;
-      background: var(--purple-pale);
-      aspect-ratio: 3/4;
-      position: relative;
-    }
-    .price-cat-img img {
-      width: 100%; height: 100%; object-fit: contain; display: block; padding: 16px;
-    }
-    .price-cat-img .img-placeholder {
-      position: absolute; inset: 0; display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: 10px;
-      color: var(--purple); opacity: .35;
-    }
-    .price-cat-img .img-placeholder svg { width: 52px; height: 52px; }
-    .price-cat-img .img-placeholder span { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
-    /* no-image variant (accessories) – just a small icon block */
-    .price-cat-img.no-img {
-      aspect-ratio: auto;
-      min-height: 0;
-      padding: 24px;
-      display: flex; align-items: center; justify-content: center;
-    }
-
-    .price-cat-meta { padding-top: 4px; }
-    .price-cat-label {
-      font-size: 10.5px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase;
-      color: var(--purple); display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
-    }
-    .price-cat-label::before { content:''; display:block; width:18px; height:1.5px; background:var(--purple); flex-shrink:0; }
-    .price-cat-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(26px, 3.5vw, 38px); font-weight: 700; color: var(--ink); line-height: 1.1; margin-bottom: 8px;
-    }
-    .price-cat-title em { font-style: italic; color: var(--purple); }
-    .price-cat-desc { font-size: 14px; color: var(--ink-60); line-height: 1.75; margin-bottom: 20px; max-width: 480px; }
-
-    /* ── Sub-table (Refill / New Cylinder) ── */
-    .price-sub { margin-bottom: 16px; }
-    .price-sub-title {
-      font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
-      color: var(--ink-60); margin-bottom: 10px; padding-bottom: 8px;
-      border-bottom: 1.5px solid var(--ink-10);
-    }
-    .price-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-      gap: 8px;
-    }
-    .price-row {
-      background: var(--white); border: 1.5px solid var(--ink-10); border-radius: 10px;
-      padding: 10px 14px;
-      display: flex; align-items: center; justify-content: space-between; gap: 8px;
-      transition: border-color .25s, box-shadow .25s;
-    }
-    .price-row:hover { border-color: rgba(119,14,117,.25); box-shadow: 0 4px 16px rgba(119,14,117,.07); }
-    .price-brand { font-size: 13.5px; font-weight: 600; color: var(--ink); }
-    .price-amount {
-      font-family: 'Playfair Display', serif;
-      font-size: 17px; font-weight: 700; color: var(--purple); white-space: nowrap;
-    }
-    .price-amount span { font-family: 'Outfit', sans-serif; font-size: 10px; font-weight: 400; color: var(--ink-30); }
-
-    /* ── Accessories table (no image) ── */
-    .price-acc-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 8px;
-    }
-    .price-acc-row {
-      background: var(--white); border: 1.5px solid var(--ink-10); border-radius: 10px;
-      padding: 12px 16px;
-      display: flex; align-items: center; justify-content: space-between; gap: 8px;
-      transition: border-color .25s, box-shadow .25s;
-    }
-    .price-acc-row:hover { border-color: rgba(119,14,117,.25); box-shadow: 0 4px 16px rgba(119,14,117,.07); }
-    .price-acc-name { font-size: 13.5px; font-weight: 500; color: var(--ink); }
-    .price-acc-amount {
-      font-family: 'Playfair Display', serif;
-      font-size: 17px; font-weight: 700; color: var(--green); white-space: nowrap;
-    }
-    .price-acc-amount span { font-family: 'Outfit', sans-serif; font-size: 10px; font-weight: 400; color: var(--ink-30); }
-
-    /* ── Category divider ── */
-    .price-cat-divider { height: 1px; background: var(--ink-10); margin: 56px 0; }
-
-    /* ── Order CTA strip ── */
-    .price-order-strip {
-      display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 16px;
-    }
-    .btn-wa {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: #25D366; color: var(--white); border: none; border-radius: var(--r-btn);
-      padding: 12px 24px; font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 700;
-      cursor: pointer; text-decoration: none; letter-spacing: .02em;
-      transition: background .2s, transform .2s;
-    }
-    .btn-wa:hover { background: #1da851; transform: translateY(-1px); color: var(--white); }
-    .btn-call-sm {
-      display: inline-flex; align-items: center; gap: 7px;
-      background: transparent; color: var(--purple);
-      border: 1.5px solid rgba(119,14,117,.2); border-radius: var(--r-btn); padding: 11px 20px;
-      font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 600;
-      cursor: pointer; text-decoration: none;
-      transition: background .2s, border-color .2s, transform .2s;
-    }
-    .btn-call-sm:hover { background: var(--purple-pale); border-color: var(--purple); transform: translateY(-1px); color: var(--purple); }
-
-    /* ═══ TERMS ════════════════════════════════════════════════ */
-    #terms {
-      background: var(--cream);
-      padding: 0 0 96px;
-    }
-    .terms-inner {
-      max-width: 680px; margin: 0 auto;
-      display: flex; flex-direction: column; align-items: center;
-      text-align: center; padding: 0 16px; gap: 16px;
-    }
-    .terms-icon-wrap {
-      width: 48px; height: 48px; border-radius: 50%;
-      background: var(--purple-pale);
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-    .terms-icon-wrap svg { width: 22px; height: 22px; color: var(--purple); }
-    .terms-text {
-      font-size: 13px; color: var(--ink-30);
-      line-height: 2.1; margin: 0;
-    }
-    .terms-text strong {
-      color: var(--ink-60); font-weight: 600;
-    }
-
-    /* ═══ STATS ════════════════════════════════════════════════ */
-    #stats {
-      overflow: hidden; position: relative;
-    }
-    .stats-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: 480px;
-    }
-    @media (max-width: 680px) {
-      .stats-grid { grid-template-columns: 1fr; }
-    }
-
-    /* ── LEFT: pure background image panel with overlay ── */
-    .stats-img-panel {
-      position: relative;
-      background:
-        linear-gradient(to bottom, rgba(1,1,0,.38) 0%, rgba(119,14,117,.28) 55%, rgba(1,1,0,.58) 100%),
-        url('assets/img/stats-bg.jpg') center/cover no-repeat;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      padding: 72px 48px; text-align: center;
-    }
-    /* LPG cylinder SVG watermark behind text */
-    .stats-img-panel .stats-watermark {
-      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
-      pointer-events: none; z-index: 1; opacity: .07;
-    }
-    .stats-img-panel .stats-watermark svg { width: 220px; height: auto; }
-    .stats-img-title-wrap { position: relative; z-index: 2; }
-    .stats-img-eyebrow {
-      font-size: 10px; font-weight: 700; letter-spacing: .25em; text-transform: uppercase;
-      color: var(--lime); margin-bottom: 20px;
-      display: flex; align-items: center; justify-content: center; gap: 10px;
-    }
-    .stats-img-eyebrow::before, .stats-img-eyebrow::after {
-      content: ''; display: block; width: 24px; height: 1px; background: var(--lime);
-    }
-    .stats-img-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(36px, 5vw, 60px); font-weight: 400;
-      color: var(--white); line-height: 1.08; margin-bottom: 16px;
-    }
-    .stats-img-title em { font-style: italic; color: var(--lime); }
-    .stats-img-sub {
-      font-size: 15px; font-weight: 300; color: rgba(255,255,255,.72);
-      line-height: 1.75; max-width: 280px; margin: 0 auto;
-    }
-    @media (max-width: 680px) {
-      .stats-img-panel { min-height: 300px; padding: 56px 32px; }
-    }
-
-    /* ── RIGHT: no background, stats in one horizontal row ── */
-    .stats-data-panel {
-      background: var(--cream);
-      display: flex; flex-direction: row;
-      align-items: stretch;
-      position: relative; overflow: hidden;
-    }
-    .stat-panel {
-      padding: 52px 36px;
-      display: flex; flex-direction: column; align-items: center;
-      justify-content: center; gap: 14px;
-      position: relative; z-index: 1;
-      flex: 1; text-align: center;
-    }
-    .stat-panel:first-child {
-      border-right: 1px solid var(--ink-10);
-    }
-    @media (max-width: 768px) { .stat-panel { padding: 36px 20px; gap: 10px; } }
-
-    /* Large icon — no background, no border */
-    .stat-icon-wrap {
-      flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center;
-      background: none !important; border: none !important;
-      width: auto; height: auto; border-radius: 0;
-    }
-    .stat-icon-wrap svg { width: 60px; height: 60px; }
-
-    /* delivery stat: purple icon */
-    .stat-panel--delivery .stat-icon-wrap svg { color: var(--purple); }
-
-    /* coverage stat: green icon (accent) */
-    .stat-panel--coverage .stat-icon-wrap svg { color: var(--green); }
-
-    .stat-panel--coverage .stat-number em { color: var(--green); }
-    .stat-content { flex: 0; width: 100%; }
-    .stat-number {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(52px, 7vw, 88px);
-      font-weight: 400; color: var(--ink); line-height: 1; margin-bottom: 6px;
-    }
-    .stat-number em {
-      font-style: italic; color: var(--purple); font-size: .44em;
-      vertical-align: super; line-height: 0;
-    }
-    .stat-label {
-      font-size: 11px; font-weight: 700; color: var(--ink-60);
-      letter-spacing: .18em; text-transform: uppercase; margin-bottom: 4px;
-    }
-    .stat-sub {
-      font-size: 14px; color: var(--ink-60);
-      font-weight: 400; line-height: 1.65;
-    }
-
-    /* ═══ CTA + MAP ════════════════════════════════════════════ */
-    #cta { background:var(--cream); position:relative; overflow:hidden; }
-    #cta .orn-wave { top:-30px; left:0; right:0; width:100%; opacity:.05; }
-
-    .cta-banner {
-      border-radius:var(--r-card);
-      position:relative; overflow:hidden;
-      display:flex; flex-direction:column; justify-content:center;
-      min-height:480px; padding:clamp(48px,6vw,88px);
-    }
-    /* Real map image fills the background */
-    .cta-map-bg {
-      position:absolute; inset:0; z-index:0;
-      background: url('assets/img/map-bg.jpg') right center / cover no-repeat;
-      background-color: #e7ede8; /* fallback */
-    }
-    /* gradient: solid dark on left → transparent on right, map visible right side */
-    .cta-overlay {
-      position:absolute; inset:0; z-index:1;
-      background: linear-gradient(to right,
-        #010100 0%,
-        rgba(10,2,16,.97) 28%,
-        rgba(10,2,16,.78) 52%,
-        rgba(10,2,16,.22) 72%,
-        transparent 100%
-      );
-    }
-    @media (max-width:640px) {
-      .cta-overlay {
-        background: linear-gradient(to bottom,
-          #010100 0%,
-          rgba(10,2,16,.96) 42%,
-          rgba(10,2,16,.55) 68%,
-          transparent 100%
-        );
-      }
-      .cta-banner { min-height:540px; padding:52px 28px; justify-content:flex-start; }
-    }
-    .cta-content {
-      position:relative; z-index:2; max-width:460px;
-    }
-    .cta-tag {
-      font-size:10.5px; font-weight:700; letter-spacing:.2em; text-transform:uppercase;
-      color:var(--lime); margin-bottom:18px;
-      display:flex; align-items:center; gap:10px;
-    }
-    .cta-tag::before { content:''; display:block; width:20px; height:1.5px; background:var(--lime); }
-    .cta-h2 {
-      font-family:'Playfair Display',serif;
-      font-size:clamp(32px,5vw,56px); font-weight:600;
-      color:var(--white); line-height:1.08; margin-bottom:18px;
-    }
-    .cta-h2 em { font-style:italic; color:var(--lime); }
-    .cta-p { font-size:16px; font-weight:300; color:rgba(255,255,255,.55); line-height:1.8; margin-bottom:32px; }
-    .cta-actions {
-      display:flex; align-items:center; gap:20px; flex-wrap:wrap;
-    }
-    .btn-cta {
-      display:inline-flex; align-items:center; gap:12px;
-      background:var(--purple); color:var(--white);
-      font-family:'Outfit',sans-serif; font-size:13px; font-weight:700;
-      letter-spacing:.07em; text-transform:uppercase;
-      border:none; border-radius:var(--r-btn); padding:16px 36px;
-      text-decoration:none; width:fit-content; position:relative; z-index:1;
-      transition:background .25s, transform .2s, box-shadow .25s;
-    }
-    .btn-cta:hover { background:var(--purple-mid); transform:translateY(-2px); box-shadow:0 12px 40px rgba(119,14,117,.4); color:var(--white); }
-    .btn-directions-inline {
-      display:inline-flex; align-items:center; gap:8px;
-      color:rgba(255,255,255,.5); font-size:12px; font-weight:600;
-      letter-spacing:.06em; text-transform:uppercase; text-decoration:none;
-      transition:color .2s; white-space:nowrap;
-    }
-    .btn-directions-inline:hover { color:var(--white); }
-
-    /* ═══ FOOTER ════════════════════════════════════════════════ */
-    #footer { background:var(--black); padding:72px 0 0; position:relative; overflow:hidden; }
-    /* ornament top-right */
-    #footer .orn-footer { top:-80px; right:-80px; width:400px; height:400px; opacity:.09; pointer-events:none; }
-    .footer-grid { display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:48px; padding-bottom:56px; position:relative; z-index:1; }
-    @media (max-width:768px) { .footer-grid { grid-template-columns:1fr; } }
-    .footer-logo img { height: 52px; width: auto; display: block; margin-bottom: 16px; }
-    .footer-tagline { font-size:14.5px; color:rgba(255,255,255,.32); line-height:1.85; margin-bottom:24px; font-weight:300; }
-    .footer-contact a { display:flex; align-items:center; gap:10px; font-size:14.5px; color:rgba(255,255,255,.48); text-decoration:none; margin-bottom:10px; transition:color .2s; }
-    .footer-contact a:hover { color:var(--lime); }
-    .footer-contact svg { color:var(--purple); flex-shrink:0; }
-    .f-socials { display:flex; gap:10px; margin-top:20px; }
-    .f-socials a {
-      width:36px; height:36px; border-radius:50%;
-      border:1px solid rgba(255,255,255,.1);
-      display:flex; align-items:center; justify-content:center;
-      color:rgba(255,255,255,.38); text-decoration:none;
-      transition:border-color .2s, color .2s, background .2s;
-    }
-    .f-socials a:hover { border-color:var(--purple); color:var(--purple); background:rgba(119,14,117,.08); }
-    .footer-col-title { font-size:10px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:rgba(255,255,255,.18); margin-bottom:20px; }
-    .footer-links { list-style:none; padding:0; margin:0; }
-    .footer-links li { margin-bottom:12px; }
-    .footer-links a { font-size:14.5px; color:rgba(255,255,255,.48); text-decoration:none; transition:color .2s; }
-    .footer-links a:hover { color:var(--white); }
-    .footer-hours { list-style:none; padding:0; margin:0; }
-    .footer-hours li { display:flex; justify-content:space-between; font-size:13.5px; color:rgba(255,255,255,.38); padding:8px 0; border-bottom:1px solid rgba(255,255,255,.05); }
-    .footer-hours li span:last-child { color:var(--lime); font-weight:600; }
-    .footer-bottom {
-      border-top:1px solid rgba(255,255,255,.06); padding:24px 0;
-      display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;
-      position:relative; z-index:1;
-    }
-    .footer-copy { font-size:12px; color:rgba(255,255,255,.2); }
-    .footer-legal { display:flex; gap:20px; }
-    .footer-legal a { font-size:12px; color:rgba(255,255,255,.2); text-decoration:none; transition:color .2s; }
-    .footer-legal a:hover { color:rgba(255,255,255,.6); }
-
-    /* ═══ RESPONSIVE ════════════════════════════════════════════ */
-    @media (max-width:640px) {
-      .section-pad { padding:72px 0; }
-      .stat-panel { padding:40px 24px; gap:12px; }
-      .hero-scroll { display:none; }
-      .container { padding:0 20px; }
-    }
-  </style>
+        @media (max-width: 640px) {
+            .hero h1 { max-width: 100%; }
+            .hero .hero-sub { max-width: 100%; }
+            .why-content-col .why-desc { max-width: 100%; }
+            .footer-inner { flex-direction: column; align-items: flex-start; }
+            .footer-links { flex-direction: column; gap: 12px; }
+            .hero-home-height { min-height: 80vh; }
+            .section { padding: 60px 0; }
+            .home-service-item h3 { max-width: none; }
+        }
+    </style>
 </head>
 <body>
 
-<!-- ═══ NAV ═══════════════════════════════════════════════════════ -->
-<nav id="nav" aria-label="Main navigation">
-  <div class="nav-inner">
-    <a href="#" class="nav-logo" aria-label="Jena Brands Limited – Home">
-      <!-- logo-inverted: light/white version for dark hero background -->
-      <img class="logo-default" src="assets/img/logo-inverted.png" alt="Jena Brands Limited"
-           onerror="this.onerror=null;this.src='assets/img/logo-alt.svg';">
-      <!-- logo: dark version for scrolled/light navbar -->
-      <img class="logo-inverted" src="assets/img/logo.png" alt="Jena Brands Limited"
-           onerror="this.onerror=null;this.src='assets/img/logo.png';">
-    </a>
-    <div class="nav-links-wrap" style="display:flex;align-items:center;gap:48px;">
-      <ul class="nav-links">
-        <li><a href="#categories">Products</a></li>
-        <li><a href="#prices">Prices</a></li>
-        <li><a href="#stats">Coverage</a></li>
-        <li><a href="#cta">Find Us</a></li>
-      </ul>
-      <a class="btn-nav-cta" href="https://wa.me/254739721415?text=Hi%20Jena%20Brands!%20I%27d%20like%20to%20order%20gas." target="_blank" rel="noopener">Order Now</a>
-    </div>
-    <button class="nav-hamburger" type="button" uk-toggle="target: #offcanvas" aria-label="Open menu">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
-      </svg>
-    </button>
-  </div>
-</nav>
-
-<!-- Off-canvas -->
-<div id="offcanvas" uk-offcanvas="overlay:true;flip:true">
-  <div class="uk-offcanvas-bar">
-    <button class="uk-offcanvas-close uk-close-large" type="button" uk-close style="color:rgba(255,255,255,.45);top:18px;right:18px;position:absolute;"></button>
-    <a class="oc-logo" href="/" style="margin-top:8px;"><img src="assets/img/logo-alt.svg" alt="Jena Brands Limited logo"
-           onerror="this.onerror=null;this.src='assets/img/logo.png';"></a>
-    <ul class="oc-nav">
-      <li><a href="#categories" uk-toggle="target:#offcanvas">Products</a></li>
-      <li><a href="#prices" uk-toggle="target:#offcanvas">Gas Prices</a></li>
-      <li><a href="#stats" uk-toggle="target:#offcanvas">Coverage</a></li>
-      <li><a href="#cta" uk-toggle="target:#offcanvas">Find Us</a></li>
-    </ul>
-    <div class="oc-footer">
-      <a class="btn-oc-order" href="https://wa.me/254739721415?text=Hi%20Jena%20Brands!%20I%27d%20like%20to%20order%20gas." target="_blank" rel="noopener">Order on WhatsApp</a>
-      <div class="oc-socials">
-        <a href="#" aria-label="Facebook"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-        <a href="#" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></a>
-        <a href="#" aria-label="TikTok"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.77.22 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 00-6.13 6.33 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34l-.03-8.04a8.17 8.17 0 004.78 1.52V5.35a4.85 4.85 0 01-1-.66z"/></svg></a>
-        <a href="#" aria-label="X (Twitter)"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.736-8.858L1.254 2.25H8.08l4.261 5.635zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-        <a href="https://wa.me/254739721415" aria-label="WhatsApp"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- ═══ HERO ════════════════════════════════════════════════════════ -->
-<section id="hero" aria-label="Hero">
-  <div class="hero-bg"></div>
-  <!-- Photo: bottom-right, masked to blend with gradient -->
-  <div class="hero-img-bg" aria-hidden="true"></div>
-  <div class="hero-grain"></div>
-  <div class="hero-arc"></div>
-  <div class="hero-arc-2"></div>
-  <div class="hero-overlay"></div>
-
-  <!-- Large decorative fire Heroicon – bottom right -->
-  <svg class="hero-flame-orn" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" stroke="white" stroke-width=".6" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M15.362 5.214A8.252 8.252 0 0 1 12 21 8.25 8.25 0 0 1 6.038 7.047 8.287 8.287 0 0 0 9 9.601a8.983 8.983 0 0 1 3.361-6.867 8.21 8.21 0 0 0 3 2.48Z"/>
-    <path d="M12 18a3.75 3.75 0 0 0 .495-7.468 5.99 5.99 0 0 0-1.925 3.547 5.975 5.975 0 0 1-2.133-1.001A3.75 3.75 0 0 0 12 18Z"/>
-  </svg>
-  <div class="hero-content">
-    <h1 class="hero-h1">Gas delivered<br><em>right to your door.</em></h1>
-    <p class="hero-sub">Premium LPG from Kenya's top brands. Order in seconds, delivered in under 15 minutes.</p>
-    <div class="hero-actions">
-      <a class="btn-primary" href="#prices">
-        View Gas Prices
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </a>
-      <a class="btn-ghost" href="tel:+254739721415">
-        Call to Order
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.17 9.81 19.79 19.79 0 01.12 1.18 2 2 0 012.1 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
-      </a>
-    </div>
-  </div>
-  <div class="hero-scroll" aria-hidden="true"><div class="scroll-line"></div><span>Scroll</span></div>
-</section>
-
-
-<!-- Page content here -->
-
-
-<!-- ═══ FOOTER ═══════════════════════════════════════════════════════ -->
-<footer id="footer" aria-label="Footer">
-
-  <!-- ornament top-right: flame -->
-  <svg class="ornament orn-footer" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" stroke="#770E75" stroke-width=".7" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M15.362 5.214A8.252 8.252 0 0 1 12 21 8.25 8.25 0 0 1 6.038 7.047 8.287 8.287 0 0 0 9 9.601a8.983 8.983 0 0 1 3.361-6.867 8.21 8.21 0 0 0 3 2.48Z"/>
-    <path d="M12 18a3.75 3.75 0 0 0 .495-7.468 5.99 5.99 0 0 0-1.925 3.547 5.975 5.975 0 0 1-2.133-1.001A3.75 3.75 0 0 0 12 18Z"/>
-  </svg>
-
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <div class="footer-logo">
-          <img src="assets/img/logo-alt.svg" alt="Jena Brands Limited" onerror="this.onerror=null;this.src='assets/img/logo.png';">
+    <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
+        <div class="uk-navbar-container">
+            <div class="uk-container">
+                <nav class="uk-navbar" uk-navbar>
+                    <div class="uk-navbar-left">
+                        <a href="#home" class="nav-logo uk-navbar-item" data-nav="home">
+                            <img src="assets/img/logo.png" alt="Jena Brands">
+                        </a>
+                    </div>
+                    <div class="uk-navbar-right uk-visible@m">
+                        <ul class="uk-navbar-nav">
+                            <li><a href="#home" data-nav="home" class="nav-active">Home</a></li>
+                            <li><a href="#about" data-nav="about">About</a></li>
+                            <li><a href="#services" data-nav="services">Services</a></li>
+                            <li><a href="#contact" data-nav="contact">Contact</a></li>
+                        </ul>
+                        <a href="#contact" class="btn-primary uk-button nav-cta" data-nav="contact">Get in touch</a>
+                    </div>
+                    <div class="uk-navbar-right uk-hidden@m">
+                        <a class="uk-navbar-toggle" uk-toggle="target: #offcanvas-nav" uk-navbar-toggle-icon></a>
+                    </div>
+                </nav>
+            </div>
         </div>
-        <p class="footer-tagline">Fast, reliable LPG delivery across Nairobi. Your comfort is our commitment.</p>
-        <address class="footer-contact" style="font-style:normal;">
-          <a href="tel:+254739721415"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.17 9.81 19.79 19.79 0 01.12 1.18 2 2 0 012.1 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>+254 739 721 415</a>
-          <a href="tel:+254742721415"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.17 9.81 19.79 19.79 0 01.12 1.18 2 2 0 012.1 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>+254 742 721 415</a>
-          <a href="mailto:gas@jenabrandsltd.co.ke"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>gas@jenabrandsltd.co.ke</a>
-          <a href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Nairobi, Kenya</a>
-        </address>
-        <div class="f-socials">
-          <a href="#" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-          <a href="#" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></a>
-          <a href="#" aria-label="TikTok"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.77.22 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 00-6.13 6.33 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34l-.03-8.04a8.17 8.17 0 004.78 1.52V5.35a4.85 4.85 0 01-1-.66z"/></svg></a>
-          <a href="#" aria-label="X (Twitter)"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.736-8.858L1.254 2.25H8.08l4.261 5.635zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-          <a href="https://wa.me/254739721415" aria-label="WhatsApp"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
-        </div>
-      </div>
-
-      <div>
-        <div class="footer-col-title">Navigate</div>
-        <ul class="footer-links">
-          <li><a href="#categories">Products</a></li>
-          <li><a href="#prices">Gas Prices</a></li>
-          <li><a href="#stats">Our Coverage</a></li>
-          <li><a href="#cta">Find Our Store</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <div class="footer-col-title">Operating Hours</div>
-        <ul class="footer-hours">
-          <li><span>Mon – Fri</span><span>7am – 9pm</span></li>
-          <li><span>Saturday</span><span>8am – 8pm</span></li>
-          <li><span>Sunday</span><span>9am – 5pm</span></li>
-        </ul>
-        <div style="margin-top:24px;padding:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;">
-          <div style="font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--lime);margin-bottom:4px;">Emergency?</div>
-          <div style="font-size:13px;color:rgba(255,255,255,.32);font-weight:300;line-height:1.7;">Call us anytime — we'll do our best to help.</div>
-        </div>
-      </div>
     </div>
 
-    <div class="footer-bottom">
-      <div class="footer-copy">© 2026 Jena Brands Limited. All rights reserved.</div>
-      <div class="footer-legal">
-        <a href="#terms">Terms of Service</a>
-      </div>
+    <div id="offcanvas-nav" uk-offcanvas="overlay: true; flip: true">
+        <div class="uk-offcanvas-bar">
+            <button class="uk-offcanvas-close" type="button" uk-close></button>
+            <ul class="uk-nav uk-nav-default uk-margin-top">
+                <li><a href="#home" data-nav="home" class="nav-active">Home</a></li>
+                <li><a href="#about" data-nav="about">About</a></li>
+                <li><a href="#services" data-nav="services">Services</a></li>
+                <li><a href="#contact" data-nav="contact">Contact</a></li>
+                <li class="uk-margin-medium-top"><a href="#contact" class="btn-primary uk-button uk-width-1-1" data-nav="contact">Get in touch</a></li>
+            </ul>
+        </div>
     </div>
-  </div>
-</footer>
 
+    <!-- PAGE: HOME -->
+    <div id="page-home" class="page-section">
+        <section class="hero hero-home-height" style="background-image:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&q=80')">
+            <div class="uk-container">
+                <h1>Creating Meaningful Connections, Powerful Partnerships and Impactful Experiences</h1>
+                <p class="hero-sub">Jena Brands Ltd is a premier resource mobilization, event management, marketing and stakeholder engagement company helping organizations secure opportunities, build strategic partnerships and deliver world-class events that drive measurable results.</p>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn-primary" data-nav="contact">Request a Consultation</a>
+                    <a href="#contact" class="btn-ghost" data-nav="contact">Partner With Us</a>
+                </div>
+            </div>
+        </section>
 
-<!-- UIkit JS -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.21.4/js/uikit.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.21.4/js/uikit-icons.min.js"></script>
+        <section class="section">
+            <div class="uk-container">
+                <div class="eyebrow">What We Do</div>
+                <h2 class="section-title">Comprehensive Business Solutions</h2>
+                <div class="uk-grid uk-grid-medium uk-child-width-1-2@s uk-child-width-1-4@m uk-margin-medium-top" uk-grid>
+                    <div>
+                        <div class="home-service-item">
+                            <div class="home-service-icon"><i class="ri-funds-line"></i></div>
+                            <h3>Resource Mobilization</h3>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="home-service-item">
+                            <div class="home-service-icon"><i class="ri-calendar-event-line"></i></div>
+                            <h3>Event Planning &amp; Management</h3>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="home-service-item">
+                            <div class="home-service-icon"><i class="ri-megaphone-line"></i></div>
+                            <h3>Event Marketing</h3>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="home-service-item">
+                            <div class="home-service-icon"><i class="ri-chat-3-line"></i></div>
+                            <h3>Corporate Communications</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-text-center uk-margin-medium-top">
+                    <a href="#services" class="btn-primary" data-nav="services">Explore All Services</a>
+                </div>
+            </div>
+        </section>
 
-<script>
-  /* ── Nav scroll ── */
-  const nav = document.getElementById('nav');
-  const syncNav = () => nav.classList.toggle('scrolled', window.scrollY > 40);
-  window.addEventListener('scroll', syncNav, { passive: true });
-  syncNav();
+        <!-- Why Choose Jena Brands – image right on desktop, top on mobile -->
+        <div class="why-wrapper">
+            <div class="why-dark-bg"></div>
+            <div class="uk-container why-content-container">
+                <div class="why-inner">
+                    <div class="why-content-col">
+                        <div class="why-content">
+                            <div class="eyebrow">Why Choose Jena Brands Ltd?</div>
+                            <h2 class="section-title">Trusted Since 2020</h2>
+                            <p class="why-desc">
+                                With an experienced team, strategic partnership expertise, and a results‑oriented approach, we deliver end‑to‑end support, customized solutions, and international‑grade standards — all backed by reliable delivery and measurable accountability.
+                            </p>
+                            <a href="#contact" class="btn-primary" data-nav="contact">Get in touch</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="why-image-col" style="background-image:url('https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=80');"></div>
+        </div>
 
-  /* ── Scroll-reveal ── */
-  const ro = new IntersectionObserver((entries, obs) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
-    });
-  }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+        <section class="section section--warm">
+            <div class="uk-container">
+                <div class="eyebrow eyebrow--green">Clients We Serve</div>
+                <h2 class="section-title">Diverse Sectors, One Standard</h2>
+                <div class="client-pills">
+                    <span class="client-pill">Government Institutions</span>
+                    <span class="client-pill">Professional Associations</span>
+                    <span class="client-pill">Corporations</span>
+                    <span class="client-pill">International Organizations</span>
+                    <span class="client-pill">NGOs &amp; Development Partners</span>
+                    <span class="client-pill">Educational Institutions</span>
+                    <span class="client-pill">Industry Bodies</span>
+                    <span class="client-pill">Chambers of Commerce</span>
+                    <span class="client-pill">SMEs and Startups among others</span>
+                </div>
+            </div>
+        </section>
+    </div>
 
-  /* ── Counter ── */
-  function animCount(el, target, ms) {
-    const em = el.querySelector('em') ? el.querySelector('em').outerHTML : '';
-    let n = 0; const step = target / (ms / 16);
-    const t = setInterval(() => {
-      n = Math.min(n + step, target);
-      el.innerHTML = Math.round(n) + em;
-      if (n >= target) clearInterval(t);
-    }, 16);
-  }
-  let counted = false;
-  const statsEl = document.getElementById('stats');
-  if (statsEl) {
-    new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting && !counted) {
-        counted = true;
-        animCount(document.getElementById('counter-hoods'), 8, 1400);
-      }
-    }, { threshold: 0.4 }).observe(statsEl);
-  }
+    <!-- PAGE: ABOUT -->
+    <div id="page-about" class="page-section" style="display:none;">
+        <section class="hero hero-inner-height" style="background-image:url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1400&q=80')">
+            <div class="uk-container"><h1>About Us</h1><p class="hero-sub">Our story, vision, mission and the values that drive everything we do.</p></div>
+        </section>
+        <section class="section">
+            <div class="uk-container">
+                <div class="uk-grid uk-grid-large" uk-grid>
+                    <div class="uk-width-1-2@m">
+                        <div class="eyebrow">Who We Are</div>
+                        <h2 class="section-title">A Dynamic Business Solutions Company</h2>
+                        <p class="uk-margin-medium-top" style="font-size:1.05rem; color:var(--ink-mid); line-height:1.75; max-width:48ch;">Jena Brands Ltd is a dynamic business solutions company specializing in resource mobilization, sponsorship acquisition, event planning and management, event marketing, corporate communications, public relations and strategic partnership development.</p>
+                    </div>
+                    <div class="uk-width-1-2@m">
+                        <p style="font-size:0.95rem; color:var(--ink-mid); line-height:1.75;">We work with corporations, government institutions, professional associations, development partners, NGOs and international organizations to create meaningful engagements that strengthen brands, mobilize resources and deliver exceptional experiences.</p>
+                        <p style="font-size:0.95rem; color:var(--ink-mid); line-height:1.75; margin-top:20px;">Our approach combines strategic thinking, creativity, professionalism and execution excellence to help our clients achieve their objectives while creating lasting value for stakeholders.</p>
+                    </div>
+                </div>
+                <div class="core-values-section">
+                    <div class="eyebrow">Core Values</div>
+                    <div class="core-tabs" id="coreTabs">
+                        <button class="core-tab" data-value="excellence" data-desc="We pursue the highest standards of quality, professionalism and service delivery.">Excellence</button>
+                        <button class="core-tab" data-value="collaboration" data-desc="We believe strong partnerships and teamwork create sustainable success.">Collaboration</button>
+                        <button class="core-tab" data-value="integrity" data-desc="We conduct our business with honesty, transparency, accountability and ethical responsibility.">Integrity</button>
+                        <button class="core-tab" data-value="client-centricity" data-desc="We place our clients' objectives at the center of everything we do.">Client-Centricity</button>
+                        <button class="core-tab" data-value="innovation" data-desc="We embrace creativity and forward-thinking solutions to address evolving client needs.">Innovation</button>
+                        <button class="core-tab" data-value="reliability" data-desc="We honor our commitments and consistently deliver on our promises.">Reliability</button>
+                        <button class="core-tab" data-value="impact" data-desc="We focus on delivering measurable outcomes that create meaningful value.">Impact</button>
+                    </div>
+                    <div class="values-desc-row" id="valuesDescRow"></div>
+                </div>
+            </div>
+        </section>
 
-  /* ── Prices last updated ── */
-  (function () {
-    const el = document.getElementById('prices-updated-text');
-    if (!el) return;
-    const now = new Date();
-    const dateStr = 'Updated ' + now.toLocaleDateString('en-KE', { day: 'numeric', month: 'long', year: 'numeric' });
-    // Replace only the text node, keep the SVG icon intact
-    const textNode = [...el.childNodes].find(n => n.nodeType === Node.TEXT_NODE && n.textContent.trim());
-    if (textNode) { textNode.textContent = dateStr; }
-    else { el.appendChild(document.createTextNode(dateStr)); }
-  })();
+        <div class="vm-full-bleed">
+            <div class="vm-bg-col" style="background-image: url('https://images.unsplash.com/photo-1552581234-26160f608093?w=800&q=80');">
+                <div class="vm-content">
+                    <div class="vm-icon-large"><i class="ri-lightbulb-flash-line"></i></div>
+                    <h3>Our Vision</h3>
+                    <p>To be Africa's leading strategic partnerships, resource mobilization and event solutions company, connecting organizations with opportunities that create sustainable impact and growth.</p>
+                </div>
+            </div>
+            <div class="vm-bg-col" style="background-image: url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80');">
+                <div class="vm-content">
+                    <div class="vm-icon-large"><i class="ri-rocket-line"></i></div>
+                    <h3>Our Mission</h3>
+                    <p>To empower organizations through innovative resource mobilization, impactful events, strategic partnerships and effective communication solutions that drive visibility, growth and lasting stakeholder value.</p>
+                </div>
+            </div>
+        </div>
 
-  /* ── Hero stagger ── */
-  window.addEventListener('load', () => {
-    document.querySelectorAll('.hero-h1, .hero-sub, .hero-actions, .hero-scroll')
-      .forEach((el, i) => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = `opacity .9s cubic-bezier(.16,1,.3,1) ${i * .13}s, transform .9s cubic-bezier(.16,1,.3,1) ${i * .13}s`;
-        requestAnimationFrame(() => requestAnimationFrame(() => {
-          el.style.opacity = '1';
-          el.style.transform = 'none';
+        <section class="section">
+            <div class="uk-container">
+                <div class="eyebrow">Strategic Objectives</div>
+                <h2 class="section-title">Our Roadmap for Growth</h2>
+                <div class="obj-grid">
+                    <div class="obj-card"><div class="obj-title">Strengthen Resource Mobilization Capacity</div><div class="obj-divider"></div><div class="obj-desc">Help organizations access sustainable funding, sponsorships and strategic support.</div></div>
+                    <div class="obj-card"><div class="obj-title">Deliver World‑Class Events</div><div class="obj-divider"></div><div class="obj-desc">Provide innovative event management solutions that exceed stakeholder expectations.</div></div>
+                    <div class="obj-card"><div class="obj-title">Build Strategic Partnerships</div><div class="obj-divider"></div><div class="obj-desc">Facilitate collaborations that create long‑term value and mutual growth.</div></div>
+                    <div class="obj-card"><div class="obj-title">Enhance Organizational Visibility</div><div class="obj-divider"></div><div class="obj-desc">Support clients in strengthening their brands, reputation, and stakeholder engagement.</div></div>
+                    <div class="obj-card"><div class="obj-title">Promote Sustainable Growth</div><div class="obj-divider"></div><div class="obj-desc">Develop solutions that contribute to organizational resilience and long‑term success.</div></div>
+                    <div class="obj-card"><div class="obj-title">Expand Regional and Global Reach</div><div class="obj-divider"></div><div class="obj-desc">Connect clients to local, regional, and international opportunities.</div></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PAGE: SERVICES -->
+    <div id="page-services" class="page-section" style="display:none;">
+        <section class="hero hero-inner-height" style="background-image:url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1400&q=80')">
+            <div class="uk-container"><h1>Our Services</h1><p class="hero-sub">Comprehensive solutions designed to mobilize resources, elevate brands and deliver exceptional experiences.</p></div>
+        </section>
+        <section class="section"><div class="uk-container"><div class="uk-grid uk-grid-medium uk-child-width-1-2@s uk-child-width-1-3@l" uk-grid>
+            <div><div class="card-service" uk-toggle="target: #modal-service-1"><div class="service-icon"><i class="ri-funds-line"></i></div><h3>Resource Mobilization & Sponsorship</h3><p>We help organizations secure financial and non-financial support through strategic sponsorship acquisition, donor engagement, fundraising initiatives and partnership development.</p><span class="card-link">Learn more <i class="ri-arrow-right-line"></i></span></div></div>
+            <div><div class="card-service" uk-toggle="target: #modal-service-2"><div class="service-icon"><i class="ri-calendar-event-line"></i></div><h3>Event Planning & Management</h3><p>We design, coordinate and execute professional events that deliver exceptional experiences and measurable outcomes.</p><span class="card-link">Learn more <i class="ri-arrow-right-line"></i></span></div></div>
+            <div><div class="card-service" uk-toggle="target: #modal-service-3"><div class="service-icon"><i class="ri-megaphone-line"></i></div><h3>Event Marketing & Promotion</h3><p>A successful event requires the right audience. We develop and implement targeted marketing strategies that maximize attendance, engagement, visibility and return on investment.</p><span class="card-link">Learn more <i class="ri-arrow-right-line"></i></span></div></div>
+            <div><div class="card-service" uk-toggle="target: #modal-service-4"><div class="service-icon"><i class="ri-chat-3-line"></i></div><h3>Corporate Communications</h3><p>We help organizations communicate effectively with internal and external stakeholders through strategic messaging and communication planning.</p><span class="card-link">Learn more <i class="ri-arrow-right-line"></i></span></div></div>
+            <div><div class="card-service" uk-toggle="target: #modal-service-5"><div class="service-icon"><i class="ri-shake-hands-line"></i></div><h3>Public Relations Support</h3><p>We build and protect organizational reputation through strategic media engagement, public relations planning and stakeholder relations.</p><span class="card-link">Learn more <i class="ri-arrow-right-line"></i></span></div></div>
+            <div><div class="card-service" uk-toggle="target: #modal-service-6"><div class="service-icon"><i class="ri-brush-3-line"></i></div><h3>Brand Activation Campaigns</h3><p>We create memorable brand experiences that connect organizations with their target audiences and inspire meaningful engagement.</p><span class="card-link">Learn more <i class="ri-arrow-right-line"></i></span></div></div>
+            <div><div class="card-service" uk-toggle="target: #modal-service-7"><div class="service-icon"><i class="ri-link"></i></div><h3>Strategic Partnerships</h3><p>Strong partnerships create sustainable growth and long-term success. We help organizations identify, establish and manage strategic alliances that create shared value.</p><span class="card-link">Learn more <i class="ri-arrow-right-line"></i></span></div></div>
+        </div></div></section>
+    </div>
+
+    <!-- Service Modals -->
+    <div id="modal-service-1" class="service-modal" uk-modal><div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" style="max-width:580px;"><button class="uk-modal-close-default" type="button" uk-close></button><h2 class="uk-modal-title">Resource Mobilization & Sponsorship</h2><p>We help organizations secure financial and non-financial support through strategic sponsorship acquisition, donor engagement, fundraising initiatives and partnership development.</p><p>Our team identifies opportunities, develops compelling sponsorship proposals, engages potential partners and manages stakeholder relationships to maximize resource generation and project sustainability.</p><h4>Key Solutions</h4><ul class="modal-list"><li><i class="ri-check-fill"></i><span>Sponsorship Strategy Development</span></li><li><i class="ri-check-fill"></i><span>Fundraising Campaigns</span></li><li><i class="ri-check-fill"></i><span>Donor Engagement</span></li><li><i class="ri-check-fill"></i><span>Partnership Acquisition</span></li><li><i class="ri-check-fill"></i><span>Proposal Development</span></li><li><i class="ri-check-fill"></i><span>Corporate Sponsorship Management</span></li><li><i class="ri-check-fill"></i><span>Resource Mobilization Advisory</span></li></ul><button class="enquire-btn js-enquire-btn" data-service="Resource Mobilization">Enquire about this service</button></div></div>
+    <div id="modal-service-2" class="service-modal" uk-modal><div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" style="max-width:580px;"><button class="uk-modal-close-default" type="button" uk-close></button><h2 class="uk-modal-title">Event Planning & Management</h2><p>We design, coordinate and execute professional events that deliver exceptional experiences and measurable outcomes.</p><p>From concept development to post-event reporting, we manage every aspect of your event with precision and attention to detail.</p><h4>Events We Manage</h4><ul class="modal-list"><li><i class="ri-check-fill"></i><span>Conferences</span></li><li><i class="ri-check-fill"></i><span>Corporate Events</span></li><li><i class="ri-check-fill"></i><span>Annual General Meetings</span></li><li><i class="ri-check-fill"></i><span>Professional Forums</span></li><li><i class="ri-check-fill"></i><span>Product Launches</span></li><li><i class="ri-check-fill"></i><span>Awards Ceremonies</span></li><li><i class="ri-check-fill"></i><span>Trade Exhibitions</span></li><li><i class="ri-check-fill"></i><span>Networking Events</span></li><li><i class="ri-check-fill"></i><span>Government Functions</span></li><li><i class="ri-check-fill"></i><span>Team Buildings</span></li></ul><button class="enquire-btn js-enquire-btn" data-service="Event Planning">Enquire about this service</button></div></div>
+    <div id="modal-service-3" class="service-modal" uk-modal><div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" style="max-width:580px;"><button class="uk-modal-close-default" type="button" uk-close></button><h2 class="uk-modal-title">Event Marketing & Promotion</h2><p>A successful event requires the right audience. We develop and implement targeted marketing strategies that maximize attendance, engagement, visibility and return on investment.</p><p>Our campaigns leverage both traditional and digital platforms to ensure your event reaches the right stakeholders.</p><h4>Services Include</h4><ul class="modal-list"><li><i class="ri-check-fill"></i><span>Event Branding</span></li><li><i class="ri-check-fill"></i><span>Digital Marketing</span></li><li><i class="ri-check-fill"></i><span>Media Buying</span></li><li><i class="ri-check-fill"></i><span>Social Media Campaigns</span></li><li><i class="ri-check-fill"></i><span>Audience Acquisition</span></li><li><i class="ri-check-fill"></i><span>Email Marketing</span></li><li><i class="ri-check-fill"></i><span>Content Creation</span></li><li><i class="ri-check-fill"></i><span>Stakeholder Engagement</span></li></ul><button class="enquire-btn js-enquire-btn" data-service="Event Marketing">Enquire about this service</button></div></div>
+    <div id="modal-service-4" class="service-modal" uk-modal><div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" style="max-width:580px;"><button class="uk-modal-close-default" type="button" uk-close></button><h2 class="uk-modal-title">Corporate Communications</h2><p>We help organizations communicate effectively with internal and external stakeholders through strategic messaging and communication planning.</p><p>Our communication solutions enhance reputation, strengthen stakeholder trust and support organizational objectives.</p><h4>Services Include</h4><ul class="modal-list"><li><i class="ri-check-fill"></i><span>Communication Strategy Development</span></li><li><i class="ri-check-fill"></i><span>Corporate Messaging</span></li><li><i class="ri-check-fill"></i><span>Internal Communications</span></li><li><i class="ri-check-fill"></i><span>Executive Communications</span></li><li><i class="ri-check-fill"></i><span>Crisis Communication Support</span></li><li><i class="ri-check-fill"></i><span>Stakeholder Communication Plans</span></li></ul><button class="enquire-btn js-enquire-btn" data-service="Corporate Communications">Enquire about this service</button></div></div>
+    <div id="modal-service-5" class="service-modal" uk-modal><div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" style="max-width:580px;"><button class="uk-modal-close-default" type="button" uk-close></button><h2 class="uk-modal-title">Public Relations Support</h2><p>We build and protect organizational reputation through strategic media engagement, public relations planning and stakeholder relations.</p><p>Our PR services ensure your organization maintains a positive public image while effectively communicating its value proposition.</p><h4>Services Include</h4><ul class="modal-list"><li><i class="ri-check-fill"></i><span>Media Relations</span></li><li><i class="ri-check-fill"></i><span>Press Conferences</span></li><li><i class="ri-check-fill"></i><span>Press Release Development</span></li><li><i class="ri-check-fill"></i><span>Reputation Management</span></li><li><i class="ri-check-fill"></i><span>Thought Leadership Positioning</span></li><li><i class="ri-check-fill"></i><span>Stakeholder Engagement</span></li></ul><button class="enquire-btn js-enquire-btn" data-service="PR Support">Enquire about this service</button></div></div>
+    <div id="modal-service-6" class="service-modal" uk-modal><div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" style="max-width:580px;"><button class="uk-modal-close-default" type="button" uk-close></button><h2 class="uk-modal-title">Brand Activation Campaigns</h2><p>We create memorable brand experiences that connect organizations with their target audiences and inspire meaningful engagement.</p><p>Our activation campaigns are designed to increase visibility, awareness, customer interaction and brand loyalty.</p><h4>Services Include</h4><ul class="modal-list"><li><i class="ri-check-fill"></i><span>Experiential Marketing</span></li><li><i class="ri-check-fill"></i><span>Product Launch Activations</span></li><li><i class="ri-check-fill"></i><span>Roadshows</span></li><li><i class="ri-check-fill"></i><span>Consumer Engagement Campaigns</span></li><li><i class="ri-check-fill"></i><span>Trade Activations</span></li><li><i class="ri-check-fill"></i><span>Community Outreach Programs</span></li></ul><button class="enquire-btn js-enquire-btn" data-service="Brand Activation">Enquire about this service</button></div></div>
+    <div id="modal-service-7" class="service-modal" uk-modal><div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" style="max-width:580px;"><button class="uk-modal-close-default" type="button" uk-close></button><h2 class="uk-modal-title">Strategic Partnerships</h2><p>Strong partnerships create sustainable growth and long-term success. We help organizations identify, establish and manage strategic alliances that create shared value.</p><p>We facilitate collaboration between private sector organizations, government agencies, professional associations, development partners and international institutions.</p><h4>Services Include</h4><ul class="modal-list"><li><i class="ri-check-fill"></i><span>Partnership Strategy Development</span></li><li><i class="ri-check-fill"></i><span>Stakeholder Mapping</span></li><li><i class="ri-check-fill"></i><span>Strategic Alliance Facilitation</span></li><li><i class="ri-check-fill"></i><span>Partnership Negotiations</span></li><li><i class="ri-check-fill"></i><span>Relationship Management</span></li><li><i class="ri-check-fill"></i><span>Collaborative Project Development</span></li></ul><button class="enquire-btn js-enquire-btn" data-service="Strategic Partnerships">Enquire about this service</button></div></div>
+
+    <!-- PAGE: CONTACT -->
+    <div id="page-contact" class="page-section" style="display:none;">
+        <section class="hero hero-inner-height" style="background-image:url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1400&q=80')">
+            <div class="uk-container"><h1>Contact Us</h1><p class="hero-sub">Ready to start a conversation? Reach out and let's explore how we can work together.</p></div>
+        </section>
+        <section class="section">
+            <div class="uk-container">
+                <div class="uk-grid uk-grid-large" uk-grid>
+                    <div class="uk-width-1-3@m uk-width-1-1">
+                        <div class="eyebrow">Reach Out</div>
+                        <h2 class="section-title" style="font-size:2.2rem;">Let's Talk</h2>
+                        <p class="uk-margin-small-top" style="font-size:1rem; color:var(--ink-mid);">We'd love to hear from you. Our team responds promptly to every inquiry.</p>
+                        <div class="contact-info-list uk-margin-medium-top">
+                            <div class="contact-info-item">
+                                <i class="ri-mail-line"></i>
+                                <div class="contact-info-text">
+                                    <div class="contact-info-label">Email</div>
+                                    <div class="contact-info-value"><a href="mailto:info@jenabrands.co.ke">info@jenabrands.co.ke</a></div>
+                                </div>
+                            </div>
+                            <div class="contact-info-item">
+                                <i class="ri-phone-line"></i>
+                                <div class="contact-info-text">
+                                    <div class="contact-info-label">Phone</div>
+                                    <div class="contact-info-value">+254 (0) 700 000 000</div>
+                                </div>
+                            </div>
+                            <div class="contact-info-item">
+                                <i class="ri-map-pin-line"></i>
+                                <div class="contact-info-text">
+                                    <div class="contact-info-label">Location</div>
+                                    <div class="contact-info-value">Nairobi, Kenya</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-width-2-3@m uk-width-1-1">
+                        <form class="uk-form-stacked">
+                            <div class="uk-grid uk-grid-small" uk-grid>
+                                <div class="uk-width-1-2@s"><label class="uk-form-label">Full Name *</label><input class="uk-input" type="text" placeholder="Your full name" required></div>
+                                <div class="uk-width-1-2@s"><label class="uk-form-label">Email Address *</label><input class="uk-input" type="email" placeholder="you@example.com" required></div>
+                            </div>
+                            <div class="uk-grid uk-grid-small uk-margin-small-top" uk-grid>
+                                <div class="uk-width-1-2@s"><label class="uk-form-label">Phone Number</label><input class="uk-input" type="tel" placeholder="+254 700 000 000"></div>
+                                <div class="uk-width-1-2@s"><label class="uk-form-label">Service Interest</label><select class="uk-select" id="contact-service-select"><option>— Select —</option><option>Resource Mobilization</option><option>Event Planning</option><option>Event Marketing</option><option>Corporate Communications</option><option>PR Support</option><option>Brand Activation</option><option>Strategic Partnerships</option><option>General Inquiry</option></select></div>
+                            </div>
+                            <div class="uk-margin-small-top"><label class="uk-form-label">Your Message *</label><textarea class="uk-textarea" rows="5" placeholder="Tell us about your project or inquiry..." required></textarea></div>
+                            <button type="submit" class="btn-primary uk-button uk-margin-medium-top">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PAGE: PRIVACY -->
+    <div id="page-privacy" class="page-section" style="display:none;">
+        <section class="hero hero-inner-height" style="background-image:url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1400&q=80')">
+            <div class="uk-container"><h1>Privacy Policy</h1><p class="hero-sub">How we collect, use and protect your information.</p></div>
+        </section>
+        <section class="section"><div class="uk-container" style="max-width:720px;"><p><strong>Effective Date:</strong> January 2024</p><p>At Jena Brands Ltd, we are committed to protecting your privacy.</p><h3>1. Information We Collect</h3><p>We collect personal information you voluntarily provide.</p><h3>2. How We Use Your Information</h3><p>To respond to inquiries and provide services.</p><h3>3. Data Protection</h3><p>We implement security measures to protect your data.</p><h3>4. Cookies</h3><p>We may use cookies; you can control settings in your browser.</p><h3>5. Third-Party Services</h3><p>Trusted providers bound by confidentiality.</p><h3>6. Your Rights</h3><p>Access, correct or delete your data. Contact info@jenabrands.co.ke.</p><h3>7. Changes</h3><p>We may update this policy; changes will be posted here.</p><h3>8. Contact</h3><p>info@jenabrands.co.ke</p></div></section>
+    </div>
+
+    <!-- Global CTA (with gentle curve on the right) -->
+    <section id="global-cta" class="cta-section" style="display:none;">
+        <div class="uk-container">
+            <h2>Ready to create impact together?</h2>
+            <p>Let's discuss how we can mobilize resources, build partnerships and deliver exceptional experiences for your organization.</p>
+            <a href="#contact" class="btn-ghost" data-nav="contact">Request a Consultation</a>
+        </div>
+        <!-- Ripple only on the right side -->
+        <div class="cta-curve">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 80" preserveAspectRatio="none">
+                <path fill="#770E75" d="M0,80 L0,40 Q1080,10,1440,40 L1440,80 Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="uk-container">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <img src="assets/img/logo.png" alt="Jena Brands Ltd">
+                    <p>Connecting Brands, People & Opportunities.</p>
+                </div>
+                <ul class="footer-links">
+                    <li><a href="#home" data-nav="home">Home</a></li>
+                    <li><a href="#about" data-nav="about">About</a></li>
+                    <li><a href="#services" data-nav="services">Services</a></li>
+                    <li><a href="#contact" data-nav="contact">Contact</a></li>
+                </ul>
+                <div class="footer-social">
+                    <a href="#" aria-label="LinkedIn"><i class="ri-linkedin-fill"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="ri-facebook-fill"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+                    <a href="#" aria-label="X"><i class="ri-twitter-x-line"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; <span id="current-year"></span> Jena Brands Ltd. All rights reserved.</span>
+                <a href="#privacy" data-nav="privacy">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.6/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.6/dist/js/uikit-icons.min.js"></script>
+    <script>
+    (function () {
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        const pages = document.querySelectorAll('.page-section');
+        const navLinks = document.querySelectorAll('[data-nav]');
+        const globalCta = document.getElementById('global-cta');
+        const offcanvas = document.getElementById('offcanvas-nav');
+
+        function showPage(name) {
+            pages.forEach(p => p.style.display = 'none');
+            const target = document.getElementById('page-' + name);
+            if (target) {
+                target.style.display = 'block';
+                target.classList.remove('fade-in');
+                void target.offsetWidth;
+                target.classList.add('fade-in');
+            }
+            globalCta.style.display = ['home','about','services'].includes(name) ? 'block' : 'none';
+            navLinks.forEach(l => l.classList.toggle('nav-active', l.getAttribute('data-nav') === name));
+            if (history.pushState) history.pushState(null, null, '#' + name);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            try { if (offcanvas && UIkit) UIkit.offcanvas(offcanvas).hide(); } catch(e) {}
+        }
+
+        navLinks.forEach(l => l.addEventListener('click', function(e) {
+            e.preventDefault();
+            const p = this.getAttribute('data-nav');
+            if (p) showPage(p);
         }));
-      });
-  });
-</script>
+
+        document.querySelectorAll('.js-enquire-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const service = this.dataset.service;
+                const modalEl = this.closest('.uk-modal');
+                if (modalEl && UIkit) { UIkit.modal(modalEl).hide(); }
+                showPage('contact');
+                setTimeout(() => {
+                    const select = document.getElementById('contact-service-select');
+                    if (select) { select.value = service; }
+                }, 120);
+            });
+        });
+
+        const tabs = document.querySelectorAll('.core-tab');
+        const descRow = document.getElementById('valuesDescRow');
+        function setActive(tab) {
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            const desc = tab.getAttribute('data-desc');
+            if (descRow) descRow.textContent = desc;
+        }
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                if (this.classList.contains('active')) {
+                    this.classList.remove('active');
+                    if (descRow) descRow.textContent = '';
+                } else {
+                    setActive(this);
+                }
+            });
+        });
+
+        function handleHash() {
+            const h = location.hash.replace('#','');
+            showPage(['home','about','services','contact','privacy'].includes(h) ? h : 'home');
+        }
+        window.addEventListener('hashchange', handleHash);
+        handleHash();
+    })();
+    </script>
 </body>
 </html>
