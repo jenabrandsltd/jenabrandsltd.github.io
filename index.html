@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jena Brands Ltd – Connecting brands, people & opportunities. Expert resource mobilisation, event planning, marketing & corporate communications in Nairobi, Kenya.">
     <title>Jena Brands Ltd — Connecting Brands, People & Opportunities</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.21.6/dist/css/uikit.min.css" />
@@ -84,7 +85,7 @@
 
         .btn-primary {
             display: inline-block; background: var(--purple) !important; color: #fff !important;
-            border: none !important; border-radius: var(--radius) !important; padding: 14px 30px !important;
+            border: none !important; border-radius: var(--radius) !important; padding: 15px 34px !important;
             font-family: 'Radio Canada', sans-serif !important; font-weight: 600 !important;
             font-stretch: 100% !important; font-size: 0.95rem !important; letter-spacing: 0.02em;
             text-decoration: none !important; transition: background var(--trans), transform var(--trans), box-shadow var(--trans) !important;
@@ -99,7 +100,7 @@
         .btn-ghost {
             display: inline-block; background: transparent !important; color: rgba(255,255,255,0.92) !important;
             border: 1px solid rgba(255,255,255,0.45) !important; border-radius: var(--radius) !important;
-            padding: 14px 30px !important; font-family: 'Radio Canada', sans-serif !important;
+            padding: 15px 34px !important; font-family: 'Radio Canada', sans-serif !important;
             font-weight: 600 !important; font-stretch: 100% !important; font-size: 0.95rem !important;
             letter-spacing: 0.02em; text-decoration: none !important;
             transition: border-color var(--trans), color var(--trans), transform var(--trans), background var(--trans) !important;
@@ -125,11 +126,11 @@
 
         .hero {
             background-size: cover; background-position: center; position: relative;
-            display: flex; align-items: flex-end; padding: 0 0 80px; color: #fff;
+            display: flex; align-items: flex-end; padding: 0 0 60px; color: #fff;
         }
         .hero::before {
             content: ''; position: absolute; inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.1) 100%);
+            background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.45) 55%, rgba(0,0,0,0.2) 100%);
             z-index: 1;
         }
         .hero .uk-container { position: relative; z-index: 2; width: 100%; }
@@ -137,18 +138,20 @@
         .hero-inner-height { min-height: 42vh; padding: 0 0 60px; }
 
         .hero h1 {
-            font-size: clamp(2.8rem, 6vw, 5.6rem); font-weight: 800; color: #fff;
+            font-size: clamp(2.2rem, 4.5vw, 4.2rem); font-weight: 800; color: #fff;
             margin-bottom: 24px; max-width: 18ch; line-height: 1.1;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.5);
         }
-        .hero-inner-height h1 { font-size: clamp(2.4rem, 4.5vw, 4rem); margin-bottom: 12px; max-width: 16ch; }
+        .hero-inner-height h1 { font-size: clamp(2rem, 4vw, 3.4rem); margin-bottom: 12px; max-width: 16ch; }
         .hero .hero-sub {
-            font-size: clamp(1.05rem, 1.8vw, 1.25rem); font-weight: 380; color: rgba(255,255,255,0.85);
+            font-size: clamp(1rem, 1.6vw, 1.15rem); font-weight: 400; color: rgba(255,255,255,0.88);
             margin-bottom: 36px; max-width: 46ch; line-height: 1.55;
+            text-shadow: 0 1px 6px rgba(0,0,0,0.4);
         }
-        .hero-inner-height .hero-sub { font-size: 1.05rem; margin-bottom: 0; max-width: 42ch; }
+        .hero-inner-height .hero-sub { font-size: 1rem; margin-bottom: 0; max-width: 42ch; }
         .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
 
-        .section { padding: 80px 0; }
+        .section { padding: 60px 0; }
         .section--warm { background: var(--bg-warm); }
         .section-title {
             font-size: clamp(1.8rem, 3.2vw, 2.6rem); margin-bottom: 14px; font-weight: 750;
@@ -161,117 +164,153 @@
             margin-right: auto;
         }
 
-        .section-subtitle {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: var(--ink-mid);
-            max-width: 52ch;
-            margin: 0 auto 28px;
-            text-align: center;
-        }
-
-        .home-service-item {
+        /* ---------- Services slider ---------- */
+        .service-slide {
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            padding: 10px 0;
+            padding: 0 10px;
+            color: var(--ink);
         }
-        .home-service-item .home-service-icon {
-            background: var(--purple);
-            color: #fff;
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .service-slide i {
             font-size: 2.8rem;
-            margin-bottom: 14px;
+            color: var(--purple);
+            margin-bottom: 10px;
         }
-        .home-service-item h3 {
-            font-size: 1.2rem;
+        .service-slide h3 {
+            font-size: 1.1rem;
             font-weight: 700;
             margin: 0;
             line-height: 1.3;
-            max-width: 14ch;
+            color: var(--ink);
         }
 
-        .page-hero {
-            position: relative;
-            padding: 100px 0 84px;
-            border-bottom: 1px solid var(--rule);
-            overflow: hidden;
-            background: #0d0d0d;
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 24px;
+        }
+        .slider-nav a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--purple);
             color: #fff;
+            text-decoration: none;
+            transition: background var(--trans);
         }
-        .page-hero .wrap {
-            position: relative;
-            z-index: 2;
-            max-width: 520px;
+        .slider-nav a svg {
+            width: 20px;
+            height: 20px;
         }
-        .page-hero .eyebrow { color: rgba(255,255,255,0.55); }
-        .page-hero .eyebrow::before,
-        .page-hero .eyebrow::after { background: rgba(255,255,255,0.3); }
-        .page-hero .section-title { color: #fff; margin-bottom: 24px; font-size: clamp(1.8rem, 3.2vw, 2.6rem); }
-        .page-hero .why-desc {
-            color: rgba(255,255,255,0.72);
-            font-size: 0.95rem;
-            line-height: 1.7;
-            margin-bottom: 28px;
-            max-width: 46ch;
+        .slider-nav a:hover {
+            background: var(--purple-hover);
         }
 
-        .page-hero::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            width: 48%;
+        /* ---------- Why Choose Section (more compact) ---------- */
+        .why-compact {
+            padding: 40px 0;
+        }
+        .why-compact .uk-grid {
+            align-items: center;
+        }
+        .why-list-compact {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px 20px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--ink-mid);
+        }
+        .why-list-compact li {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.3;
+        }
+        .why-list-compact li i {
+            color: var(--purple);
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 640px) {
+            .why-list-compact {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .divider-hr {
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 0;
+        }
+
+        /* ---------- Vision / Mission icons (tight spacing, more padding in columns) ---------- */
+        .vm-full-bleed { display: flex; flex-wrap: wrap; margin: 0; }
+        .vm-full-bleed .vm-bg-col {
+            flex: 1 1 50%;
+            min-height: 340px;
             background-size: cover;
             background-position: center;
-            z-index: 0;
-            pointer-events: none;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            padding: 64px 40px;      /* increased top/bottom padding */
+            border-radius: 0;
         }
-        .page-hero::after {
-            content: "";
+        .vm-full-bleed .vm-bg-col::before {
+            content: '';
             position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            width: 48%;
-            background: linear-gradient(to right, #0d0d0d 0%, rgba(13,13,13,0.4) 50%, rgba(13,13,13,0) 100%);
+            inset: 0;
+            background: rgba(0,0,0,0.5);
             z-index: 1;
-            pointer-events: none;
+        }
+        .vm-full-bleed .vm-content {
+            position: relative;
+            z-index: 2;
+            max-width: 360px;
+        }
+        .vm-icon-large {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--purple);
+            color: #fff;
+            font-size: 2rem;
+            margin: 0 auto 8px;      /* reduced margin, closer to title */
+        }
+        .vm-full-bleed h3 {
+            color: #fff;
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            margin-top: 0;           /* removed default margin-top */
+        }
+        .vm-full-bleed p {
+            color: rgba(255,255,255,0.85);
+            font-size: 0.95rem;
+            line-height: 1.65;
         }
 
-        .page-hero--why-image::before {
-            background-image: url('assets/img/why-choose.jpg');
-        }
-
-        @media (max-width: 960px) {
-            .page-hero {
-                padding: 60px 0 60px;
-            }
-            .page-hero::before,
-            .page-hero::after {
-                width: 100%;
-                top: auto;
-                bottom: 0;
-                height: 40%;
-            }
-            .page-hero::after {
-                background: linear-gradient(to bottom, #0d0d0d 0%, rgba(13,13,13,0.4) 50%, rgba(13,13,13,0) 100%);
-            }
-            .page-hero .wrap {
-                max-width: 100%;
+        @media (max-width: 640px) {
+            .vm-full-bleed .vm-bg-col {
+                flex: 1 1 100%;
+                min-height: 280px;
             }
         }
-
-        .client-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
-        .client-pill { background: var(--bg); border: 1px solid var(--rule); border-radius: 50px; padding: 6px 16px; font-size: 0.82rem; font-weight: 500; color: var(--ink-mid); transition: border-color var(--trans), color var(--trans); white-space: nowrap; }
-        .client-pill:hover { border-color: var(--purple); color: var(--purple); }
 
         .obj-grid {
             display: grid;
@@ -321,113 +360,33 @@
             }
         }
 
-        .vm-full-bleed { display: flex; flex-wrap: wrap; margin: 0; }
-        .vm-full-bleed .vm-bg-col { flex: 1 1 50%; min-height: 340px; background-size: cover; background-position: center; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; color: #fff; padding: 40px 24px; border-radius: 0; }
-        .vm-full-bleed .vm-bg-col::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.45); z-index: 1; }
-        .vm-full-bleed .vm-content { position: relative; z-index: 2; max-width: 360px; }
-        .vm-full-bleed .vm-icon-large {
-            font-size: clamp(2.6rem, 5.4vw, 4.3rem);
-            color: #fff;
-            margin-bottom: 8px;
-            line-height: 1;
-        }
-        .vm-full-bleed h3 { color: #fff; font-size: 1.3rem; margin-bottom: 12px; }
-        .vm-full-bleed p { color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.65; }
-        @media (max-width: 640px) {
-            .vm-full-bleed .vm-bg-col { flex: 1 1 100%; min-height: 280px; }
-        }
-
-        .core-values-section {
-            margin-top: 28px;
-        }
-        .core-tabs {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0;
-            border: 1px solid var(--rule);
-            border-radius: var(--radius);
-            overflow: hidden;
-            width: fit-content;
-        }
-        .core-tab {
-            padding: 8px 18px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--ink-faint);
-            cursor: pointer;
-            background: none;
-            border: none;
-            border-right: 1px solid var(--rule);
-            transition: color 0.2s, border-color 0.2s, background 0.2s;
-            font-family: 'Radio Canada', sans-serif;
-        }
-        .core-tab:last-child {
-            border-right: none;
-        }
-        .core-tab:hover {
-            color: var(--ink-mid);
-        }
-        .core-tab.active {
-            color: var(--green);
-            font-weight: 600;
-            background: var(--bg-warm);
-        }
-        .values-desc-row {
-            font-size: 0.88rem;
-            color: var(--ink-mid);
-            text-align: left;
-            min-height: 28px;
-            margin-top: 16px;
-        }
-
         .contact-info-list {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+            display: flex; flex-direction: column; gap: 20px;
         }
         .contact-info-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 14px;
+            display: flex; align-items: flex-start; gap: 14px;
         }
         .contact-info-item i {
-            font-size: 1.3rem;
-            color: var(--purple);
-            flex-shrink: 0;
-            margin-top: 2px;
+            font-size: 1.4rem; color: var(--purple); flex-shrink: 0; margin-top: 2px;
         }
-        .contact-info-text {
-            line-height: 1.45;
-        }
+        .contact-info-text { line-height: 1.45; }
         .contact-info-label {
-            font-size: 0.72rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--ink-faint);
-            margin-bottom: 2px;
+            font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+            color: var(--ink-faint); margin-bottom: 2px;
         }
         .contact-info-value {
-            font-size: 0.98rem;
-            color: var(--ink);
-            font-weight: 500;
+            font-size: 1rem; color: var(--ink); font-weight: 500;
         }
         .contact-info-value a {
-            color: var(--ink);
-            text-decoration: none;
-            transition: color var(--trans);
+            color: var(--ink); text-decoration: none; transition: color var(--trans);
         }
-        .contact-info-value a:hover {
-            color: var(--purple);
-        }
+        .contact-info-value a:hover { color: var(--purple); }
 
-        .uk-form-label { font-size: 0.72rem !important; font-weight: 700 !important; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint) !important; margin-bottom: 6px; display: block; }
+        .uk-form-label { font-size: 0.75rem !important; font-weight: 700 !important; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint) !important; margin-bottom: 6px; display: block; }
         .uk-input, .uk-select, .uk-textarea { border-radius: var(--radius) !important; border: 1px solid var(--rule) !important; font-family: 'Radio Canada', sans-serif !important; font-size: 0.93rem !important; padding: 11px 14px !important; background: var(--bg) !important; color: var(--ink) !important; }
         .uk-select {
-            height: 50px !important;
-            line-height: 1.4;
-            padding: 11px 36px 11px 14px !important;
-            background-position: right 14px center;
+            height: 50px !important; line-height: 1.4;
+            padding: 11px 36px 11px 14px !important; background-position: right 14px center;
         }
         .uk-input:focus, .uk-select:focus, .uk-textarea:focus { border-color: var(--purple) !important; box-shadow: 0 0 0 3px rgba(119,14,117,0.07) !important; }
         .uk-grid-small > .uk-width-1-2\@s { display: flex; flex-direction: column; justify-content: flex-start; }
@@ -435,8 +394,8 @@
         .card-service { background: var(--bg); border: 1px solid var(--rule); border-radius: var(--radius); padding: 28px 24px 22px; cursor: pointer; height: 100%; display: flex; flex-direction: column; transition: box-shadow var(--trans), transform var(--trans); }
         .card-service:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.09); transform: translateY(-3px); }
         .service-icon { font-size: 2rem; color: #fff; margin-bottom: 16px; display: flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 50%; background: var(--purple); }
-        .card-service h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; }
-        .card-service p { font-size: 0.88rem; color: var(--ink-mid); flex-grow: 1; margin-bottom: 18px; }
+        .card-service h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; }
+        .card-service p { font-size: 0.9rem; color: var(--ink-mid); flex-grow: 1; margin-bottom: 18px; }
         .card-link { font-size: 0.83rem; font-weight: 600; color: var(--purple); display: inline-flex; align-items: center; gap: 5px; text-decoration: none; transition: gap var(--trans); }
         .card-link:hover { gap: 9px; }
 
@@ -450,11 +409,11 @@
         .cta-section {
             background-image: url('assets/img/cta-bg.jpg');
             background-size: cover; background-position: center;
-            position: relative; padding: 100px 0; text-align: center; color: #fff;
+            position: relative; padding: 80px 0; text-align: center; color: #fff;
         }
         .cta-section::before {
             content: ''; position: absolute; inset: 0;
-            background: rgba(15,15,15,0.65);
+            background: rgba(15,15,15,0.7);
             z-index: 0;
         }
         .cta-section .uk-container { position: relative; z-index: 2; }
@@ -505,8 +464,9 @@
             .footer-inner { flex-direction: column; align-items: flex-start; }
             .footer-links { flex-direction: column; gap: 12px; }
             .hero-home-height { min-height: 80vh; }
-            .section { padding: 60px 0; }
-            .home-service-item h3 { max-width: none; }
+            .section { padding: 40px 0; }
+            .service-slide i { font-size: 2.4rem; }
+            .service-slide h3 { font-size: 1rem; }
         }
     </style>
 </head>
@@ -528,7 +488,7 @@
                             <li><a href="#services" data-nav="services">Services</a></li>
                             <li><a href="#contact" data-nav="contact">Contact</a></li>
                         </ul>
-                        <a href="#contact" class="btn-primary uk-button nav-cta" data-nav="contact">Get in touch</a>
+                        <a href="tel:+254739537367" class="btn-primary uk-button nav-cta">Call Us</a>
                     </div>
                     <div class="uk-navbar-right uk-hidden@m">
                         <a class="uk-navbar-toggle" uk-toggle="target: #offcanvas-nav" uk-navbar-toggle-icon></a>
@@ -546,7 +506,7 @@
                 <li><a href="#about" data-nav="about">About</a></li>
                 <li><a href="#services" data-nav="services">Services</a></li>
                 <li><a href="#contact" data-nav="contact">Contact</a></li>
-                <li class="uk-margin-medium-top"><a href="#contact" class="btn-primary uk-button uk-width-1-1" data-nav="contact">Get in touch</a></li>
+                <li class="uk-margin-medium-top"><a href="tel:+254739537367" class="btn-primary uk-button uk-width-1-1">Call Us</a></li>
             </ul>
         </div>
     </div>
@@ -555,80 +515,93 @@
         <section class="hero hero-home-height" style="background-image:url('assets/img/hero-home.jpg')">
             <div class="uk-container">
                 <h1>Creating Meaningful Connections, Powerful Partnerships and Impactful Experiences</h1>
-                <p class="hero-sub">Jena Brands Ltd is a premier resource mobilization, event management, marketing and stakeholder engagement company helping organizations secure opportunities, build strategic partnerships and deliver world-class events that drive measurable results.</p>
+                <p class="hero-sub">Jena Brands Ltd is a premier resource mobilisation, event management, and marketing company that helps organisations secure opportunities, build strategic partnerships, and deliver world‑class events with measurable impact.</p>
                 <div class="hero-actions">
                     <a href="#contact" class="btn-primary" data-nav="contact">Request a Consultation</a>
-                    <a href="#contact" class="btn-ghost" data-nav="contact">Partner With Us</a>
+                    <a href="#services" class="btn-ghost" data-nav="services">Explore Our Services</a>
                 </div>
             </div>
         </section>
 
+        <!-- Services Slider -->
         <section class="section">
             <div class="uk-container narrow-container">
-                <div class="uk-text-center">
-                    <div class="eyebrow">What We Do</div>
-                    <h2 class="section-title">Comprehensive Business Solutions</h2>
-                    <p class="section-subtitle">We drive growth through resource mobilization, impactful events, strategic marketing, and corporate communications that create measurable results for organizations across East Africa and beyond.</p>
-                </div>
-                <div class="uk-grid uk-grid-medium uk-child-width-1-2@s uk-child-width-1-4@m uk-margin-medium-top uk-flex-center" uk-grid>
-                    <div>
-                        <div class="home-service-item">
-                            <div class="home-service-icon"><i class="ri-funds-line"></i></div>
-                            <h3>Resource Mobilization</h3>
-                        </div>
+                <div uk-slider="velocity: 0.1">
+                    <ul class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@m uk-child-width-1-4@l uk-grid uk-grid-medium">
+                        <li>
+                            <div class="service-slide">
+                                <i class="ri-funds-line"></i>
+                                <h3>Resource Mobilisation & Sponsorship</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="service-slide">
+                                <i class="ri-calendar-event-line"></i>
+                                <h3>Event Planning & Management</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="service-slide">
+                                <i class="ri-megaphone-line"></i>
+                                <h3>Event Marketing & Promotion</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="service-slide">
+                                <i class="ri-chat-3-line"></i>
+                                <h3>Corporate Communications</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="service-slide">
+                                <i class="ri-shake-hands-line"></i>
+                                <h3>Public Relations Support</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="service-slide">
+                                <i class="ri-brush-3-line"></i>
+                                <h3>Brand Activation Campaigns</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="service-slide">
+                                <i class="ri-link"></i>
+                                <h3>Strategic Partnerships</h3>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="slider-nav">
+                        <a href="#" uk-slider-item="previous"><svg width="20" height="20" viewBox="0 0 20 20"><polyline fill="none" stroke="#fff" stroke-width="2" points="13,4 6,10 13,16"/></svg></a>
+                        <a href="#" uk-slider-item="next"><svg width="20" height="20" viewBox="0 0 20 20"><polyline fill="none" stroke="#fff" stroke-width="2" points="7,4 14,10 7,16"/></svg></a>
                     </div>
-                    <div>
-                        <div class="home-service-item">
-                            <div class="home-service-icon"><i class="ri-calendar-event-line"></i></div>
-                            <h3>Event Planning &amp; Management</h3>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="home-service-item">
-                            <div class="home-service-icon"><i class="ri-megaphone-line"></i></div>
-                            <h3>Event Marketing</h3>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="home-service-item">
-                            <div class="home-service-icon"><i class="ri-chat-3-line"></i></div>
-                            <h3>Corporate Communications</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="uk-text-center uk-margin-medium-top">
-                    <a href="#services" class="btn-primary" data-nav="services">Explore All Services</a>
                 </div>
             </div>
         </section>
 
-        <div class="page-hero page-hero--why-image">
-            <div class="uk-container">
-                <div class="wrap">
-                    <div class="eyebrow">Why Choose Jena Brands</div>
-                    <h2 class="section-title">Trusted Since 2020</h2>
-                    <p class="why-desc">
-                        With an experienced team, strategic partnership expertise, and a results‑oriented approach, we deliver end‑to‑end support, customized solutions, and international‑grade standards — all backed by reliable delivery and measurable accountability.
-                    </p>
-                    <a href="#contact" class="btn-primary" data-nav="contact">Get in touch</a>
-                </div>
-            </div>
-        </div>
+        <hr class="divider-hr">
 
-        <section class="section section--warm">
-            <div class="uk-container">
-                <div class="eyebrow eyebrow--green">Clients We Serve</div>
-                <h2 class="section-title">Diverse Sectors, One Standard</h2>
-                <div class="client-pills">
-                    <span class="client-pill">Government Institutions</span>
-                    <span class="client-pill">Professional Associations</span>
-                    <span class="client-pill">Corporations</span>
-                    <span class="client-pill">International Organizations</span>
-                    <span class="client-pill">NGOs &amp; Development Partners</span>
-                    <span class="client-pill">Educational Institutions</span>
-                    <span class="client-pill">Industry Bodies</span>
-                    <span class="client-pill">Chambers of Commerce</span>
-                    <span class="client-pill">SMEs and Startups among others</span>
+        <!-- Why Choose Jena Brands Ltd (compact grid) -->
+        <section class="section why-compact">
+            <div class="uk-container narrow-container">
+                <div class="uk-grid uk-grid-large uk-child-width-1-2@m" uk-grid>
+                    <div>
+                        <div class="eyebrow">Why Choose Jena Brands Ltd?</div>
+                        <h2 class="section-title">Trusted Since 2020</h2>
+                        <p style="color:var(--ink-mid); font-size:0.95rem; max-width:42ch;">We bring together an experienced team, strategic partnership expertise, and a results‑oriented approach to deliver end‑to‑end support, customised solutions, and international‑grade standards—all backed by reliable delivery and measurable accountability.</p>
+                    </div>
+                    <div>
+                        <ul class="why-list-compact">
+                            <li><i class="ri-check-line"></i> Experienced Team since 2020</li>
+                            <li><i class="ri-check-line"></i> Strategic Partnerships</li>
+                            <li><i class="ri-check-line"></i> Results‑Oriented</li>
+                            <li><i class="ri-check-line"></i> Strong Networks</li>
+                            <li><i class="ri-check-line"></i> End‑to‑End Support</li>
+                            <li><i class="ri-check-line"></i> Customised Solutions</li>
+                            <li><i class="ri-check-line"></i> Corporate Standards</li>
+                            <li><i class="ri-check-line"></i> Reliable Delivery</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
@@ -644,25 +617,12 @@
                     <div class="uk-width-1-2@m">
                         <div class="eyebrow">Who We Are</div>
                         <h2 class="section-title">A Dynamic Business Solutions Company</h2>
-                        <p class="uk-margin-medium-top" style="font-size:1.05rem; color:var(--ink-mid); line-height:1.75; max-width:48ch;">Jena Brands Ltd is a dynamic business solutions company specializing in resource mobilization, sponsorship acquisition, event planning and management, event marketing, corporate communications, public relations and strategic partnership development.</p>
+                        <p class="uk-margin-medium-top" style="font-size:1.05rem; color:var(--ink-mid); line-height:1.75; max-width:48ch;">Jena Brands Ltd is a dynamic business solutions company specialising in resource mobilisation, sponsorship acquisition, event planning and management, event marketing, corporate communications, public relations, and strategic partnership development.</p>
                     </div>
                     <div class="uk-width-1-2@m">
-                        <p style="font-size:0.95rem; color:var(--ink-mid); line-height:1.75;">We work with corporations, government institutions, professional associations, development partners, NGOs and international organizations to create meaningful engagements that strengthen brands, mobilize resources and deliver exceptional experiences.</p>
-                        <p style="font-size:0.95rem; color:var(--ink-mid); line-height:1.75; margin-top:20px;">Our approach combines strategic thinking, creativity, professionalism and execution excellence to help our clients achieve their objectives while creating lasting value for stakeholders.</p>
+                        <p style="font-size:0.95rem; color:var(--ink-mid); line-height:1.75;">We work with corporations, government institutions, professional associations, development partners, NGOs, and international organisations to create meaningful engagements that strengthen brands, mobilise resources, and deliver exceptional experiences.</p>
+                        <p style="font-size:0.95rem; color:var(--ink-mid); line-height:1.75; margin-top:20px;">Our approach combines strategic thinking, creativity, professionalism, and execution excellence to help our clients achieve their objectives while creating lasting value for stakeholders.</p>
                     </div>
-                </div>
-                <div class="core-values-section">
-                    <div class="eyebrow">Core Values</div>
-                    <div class="core-tabs" id="coreTabs">
-                        <button class="core-tab" data-value="excellence" data-desc="We pursue the highest standards of quality, professionalism and service delivery.">Excellence</button>
-                        <button class="core-tab" data-value="collaboration" data-desc="We believe strong partnerships and teamwork create sustainable success.">Collaboration</button>
-                        <button class="core-tab" data-value="integrity" data-desc="We conduct our business with honesty, transparency, accountability and ethical responsibility.">Integrity</button>
-                        <button class="core-tab" data-value="client-centricity" data-desc="We place our clients' objectives at the center of everything we do.">Client-Centricity</button>
-                        <button class="core-tab" data-value="innovation" data-desc="We embrace creativity and forward-thinking solutions to address evolving client needs.">Innovation</button>
-                        <button class="core-tab" data-value="reliability" data-desc="We honor our commitments and consistently deliver on our promises.">Reliability</button>
-                        <button class="core-tab" data-value="impact" data-desc="We focus on delivering measurable outcomes that create meaningful value.">Impact</button>
-                    </div>
-                    <div class="values-desc-row" id="valuesDescRow"></div>
                 </div>
             </div>
         </section>
@@ -672,14 +632,14 @@
                 <div class="vm-content">
                     <div class="vm-icon-large"><i class="ri-lightbulb-flash-line"></i></div>
                     <h3>Our Vision</h3>
-                    <p>To be Africa's leading strategic partnerships, resource mobilization and event solutions company, connecting organizations with opportunities that create sustainable impact and growth.</p>
+                    <p>To be Africa's leading strategic partnerships, resource mobilisation, and event solutions company, connecting organisations with opportunities that create sustainable impact and growth.</p>
                 </div>
             </div>
             <div class="vm-bg-col" style="background-image: url('assets/img/mission.jpg');">
                 <div class="vm-content">
                     <div class="vm-icon-large"><i class="ri-rocket-line"></i></div>
                     <h3>Our Mission</h3>
-                    <p>To empower organizations through innovative resource mobilization, impactful events, strategic partnerships and effective communication solutions that drive visibility, growth and lasting stakeholder value.</p>
+                    <p>To empower organisations through innovative resource mobilisation, impactful events, strategic partnerships, and effective communication solutions that drive visibility, growth, and lasting stakeholder value.</p>
                 </div>
             </div>
         </div>
@@ -689,11 +649,11 @@
                 <div class="eyebrow">Strategic Objectives</div>
                 <h2 class="section-title">Our Roadmap for Growth</h2>
                 <div class="obj-grid">
-                    <div class="obj-card"><div class="obj-title">Strengthen Resource Mobilization Capacity</div><div class="obj-divider"></div><div class="obj-desc">Help organizations access sustainable funding, sponsorships and strategic support.</div></div>
+                    <div class="obj-card"><div class="obj-title">Strengthen Resource Mobilisation Capacity</div><div class="obj-divider"></div><div class="obj-desc">Help organisations access sustainable funding, sponsorships and strategic support.</div></div>
                     <div class="obj-card"><div class="obj-title">Deliver World‑Class Events</div><div class="obj-divider"></div><div class="obj-desc">Provide innovative event management solutions that exceed stakeholder expectations.</div></div>
                     <div class="obj-card"><div class="obj-title">Build Strategic Partnerships</div><div class="obj-divider"></div><div class="obj-desc">Facilitate collaborations that create long‑term value and mutual growth.</div></div>
-                    <div class="obj-card"><div class="obj-title">Enhance Organizational Visibility</div><div class="obj-divider"></div><div class="obj-desc">Support clients in strengthening their brands, reputation, and stakeholder engagement.</div></div>
-                    <div class="obj-card"><div class="obj-title">Promote Sustainable Growth</div><div class="obj-divider"></div><div class="obj-desc">Develop solutions that contribute to organizational resilience and long‑term success.</div></div>
+                    <div class="obj-card"><div class="obj-title">Enhance Organisational Visibility</div><div class="obj-divider"></div><div class="obj-desc">Support clients in strengthening their brands, reputation, and stakeholder engagement.</div></div>
+                    <div class="obj-card"><div class="obj-title">Promote Sustainable Growth</div><div class="obj-divider"></div><div class="obj-desc">Develop solutions that contribute to organisational resilience and long‑term success.</div></div>
                     <div class="obj-card"><div class="obj-title">Expand Regional and Global Reach</div><div class="obj-divider"></div><div class="obj-desc">Connect clients to local, regional, and international opportunities.</div></div>
                 </div>
             </div>
@@ -702,26 +662,26 @@
 
     <div id="page-services" class="page-section" style="display:none;">
         <section class="hero hero-inner-height" style="background-image:url('assets/img/hero-services.jpg')">
-            <div class="uk-container"><h1>Our Services</h1><p class="hero-sub">Comprehensive solutions designed to mobilize resources, elevate brands and deliver exceptional experiences.</p></div>
+            <div class="uk-container"><h1>Our Services</h1><p class="hero-sub">Comprehensive solutions designed to mobilise resources, elevate brands and deliver exceptional experiences.</p></div>
         </section>
         <section class="section"><div class="uk-container"><div class="uk-grid uk-grid-medium uk-child-width-1-2@s uk-child-width-1-3@l" uk-grid>
-            <div><div class="card-service" uk-toggle="target: #modal-service-1"><div class="service-icon"><i class="ri-funds-line"></i></div><h3>Resource Mobilization & Sponsorship</h3><p>We help organizations secure financial and non-financial support through strategic sponsorship acquisition, donor engagement, fundraising initiatives and partnership development.</p><span class="card-link">Learn more <i class="ri-arrow-right-line"></i></span></div></div>
-            <div><div class="card-service" uk-toggle="target: #modal-service-2"><div class="service-icon"><i class="ri-calendar-event-line"></i></div><h3>Event Planning & Management</h3><p>We design, coordinate and execute professional events that deliver exceptional experiences and measurable outcomes.</p><span class="card-link">Learn more <i class="ri-arrow-right-line"></i></span></div></div>
-            <div><div class="card-service" uk-toggle="target: #modal-service-3"><div class="service-icon"><i class="ri-megaphone-line"></i></div><h3>Event Marketing & Promotion</h3><p>A successful event requires the right audience. We develop and implement targeted marketing strategies that maximize attendance, engagement, visibility and return on investment.</p><span class="card-link">Learn more <i class="ri-arrow-right-line"></i></span></div></div>
-            <div><div class="card-service" uk-toggle="target: #modal-service-4"><div class="service-icon"><i class="ri-chat-3-line"></i></div><h3>Corporate Communications</h3><p>We help organizations communicate effectively with internal and external stakeholders through strategic messaging and communication planning.</p><span class="card-link">Learn more <i class="ri-arrow-right-line"></i></span></div></div>
-            <div><div class="card-service" uk-toggle="target: #modal-service-5"><div class="service-icon"><i class="ri-shake-hands-line"></i></div><h3>Public Relations Support</h3><p>We build and protect organizational reputation through strategic media engagement, public relations planning and stakeholder relations.</p><span class="card-link">Learn more <i class="ri-arrow-right-line"></i></span></div></div>
-            <div><div class="card-service" uk-toggle="target: #modal-service-6"><div class="service-icon"><i class="ri-brush-3-line"></i></div><h3>Brand Activation Campaigns</h3><p>We create memorable brand experiences that connect organizations with their target audiences and inspire meaningful engagement.</p><span class="card-link">Learn more <i class="ri-arrow-right-line"></i></span></div></div>
-            <div><div class="card-service" uk-toggle="target: #modal-service-7"><div class="service-icon"><i class="ri-link"></i></div><h3>Strategic Partnerships</h3><p>Strong partnerships create sustainable growth and long-term success. We help organizations identify, establish and manage strategic alliances that create shared value.</p><span class="card-link">Learn more <i class="ri-arrow-right-line"></i></span></div></div>
+            <div><div class="card-service" uk-toggle="target: #modal-service-1"><div class="service-icon"><i class="ri-funds-line"></i></div><h3>Resource Mobilisation & Sponsorship</h3><p>We help organisations secure financial and non‑financial support through strategic sponsorship acquisition, donor engagement, fundraising initiatives and partnership development.</p><span class="card-link">Learn More <i class="ri-arrow-right-line"></i></span></div></div>
+            <div><div class="card-service" uk-toggle="target: #modal-service-2"><div class="service-icon"><i class="ri-calendar-event-line"></i></div><h3>Event Planning & Management</h3><p>We design, coordinate and execute professional events that deliver exceptional experiences and measurable outcomes.</p><span class="card-link">Learn More <i class="ri-arrow-right-line"></i></span></div></div>
+            <div><div class="card-service" uk-toggle="target: #modal-service-3"><div class="service-icon"><i class="ri-megaphone-line"></i></div><h3>Event Marketing & Promotion</h3><p>A successful event requires the right audience. We develop and implement targeted marketing strategies that maximise attendance, engagement, visibility and return on investment.</p><span class="card-link">Learn More <i class="ri-arrow-right-line"></i></span></div></div>
+            <div><div class="card-service" uk-toggle="target: #modal-service-4"><div class="service-icon"><i class="ri-chat-3-line"></i></div><h3>Corporate Communications</h3><p>We help organisations communicate effectively with internal and external stakeholders through strategic messaging and communication planning.</p><span class="card-link">Learn More <i class="ri-arrow-right-line"></i></span></div></div>
+            <div><div class="card-service" uk-toggle="target: #modal-service-5"><div class="service-icon"><i class="ri-shake-hands-line"></i></div><h3>Public Relations Support</h3><p>We build and protect organisational reputation through strategic media engagement, public relations planning and stakeholder relations.</p><span class="card-link">Learn More <i class="ri-arrow-right-line"></i></span></div></div>
+            <div><div class="card-service" uk-toggle="target: #modal-service-6"><div class="service-icon"><i class="ri-brush-3-line"></i></div><h3>Brand Activation Campaigns</h3><p>We create memorable brand experiences that connect organisations with their target audiences and inspire meaningful engagement.</p><span class="card-link">Learn More <i class="ri-arrow-right-line"></i></span></div></div>
+            <div><div class="card-service" uk-toggle="target: #modal-service-7"><div class="service-icon"><i class="ri-link"></i></div><h3>Strategic Partnerships</h3><p>Strong partnerships create sustainable growth and long‑term success. We help organisations identify, establish and manage strategic alliances that create shared value.</p><span class="card-link">Learn More <i class="ri-arrow-right-line"></i></span></div></div>
         </div></div></section>
     </div>
 
-    <div id="modal-service-1" class="service-modal" uk-modal><div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" style="max-width:580px;"><button class="uk-modal-close-default" type="button" uk-close></button><h2 class="uk-modal-title">Resource Mobilization & Sponsorship</h2><p>We help organizations secure financial and non-financial support through strategic sponsorship acquisition, donor engagement, fundraising initiatives and partnership development.</p><p>Our team identifies opportunities, develops compelling sponsorship proposals, engages potential partners and manages stakeholder relationships to maximize resource generation and project sustainability.</p><h4>Key Solutions</h4><ul class="modal-list"><li><i class="ri-check-fill"></i><span>Sponsorship Strategy Development</span></li><li><i class="ri-check-fill"></i><span>Fundraising Campaigns</span></li><li><i class="ri-check-fill"></i><span>Donor Engagement</span></li><li><i class="ri-check-fill"></i><span>Partnership Acquisition</span></li><li><i class="ri-check-fill"></i><span>Proposal Development</span></li><li><i class="ri-check-fill"></i><span>Corporate Sponsorship Management</span></li><li><i class="ri-check-fill"></i><span>Resource Mobilization Advisory</span></li></ul><button class="enquire-btn js-enquire-btn" data-service="Resource Mobilization">Enquire about this service</button></div></div>
-    <div id="modal-service-2" class="service-modal" uk-modal><div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" style="max-width:580px;"><button class="uk-modal-close-default" type="button" uk-close></button><h2 class="uk-modal-title">Event Planning & Management</h2><p>We design, coordinate and execute professional events that deliver exceptional experiences and measurable outcomes.</p><p>From concept development to post-event reporting, we manage every aspect of your event with precision and attention to detail.</p><h4>Events We Manage</h4><ul class="modal-list"><li><i class="ri-check-fill"></i><span>Conferences</span></li><li><i class="ri-check-fill"></i><span>Corporate Events</span></li><li><i class="ri-check-fill"></i><span>Annual General Meetings</span></li><li><i class="ri-check-fill"></i><span>Professional Forums</span></li><li><i class="ri-check-fill"></i><span>Product Launches</span></li><li><i class="ri-check-fill"></i><span>Awards Ceremonies</span></li><li><i class="ri-check-fill"></i><span>Trade Exhibitions</span></li><li><i class="ri-check-fill"></i><span>Networking Events</span></li><li><i class="ri-check-fill"></i><span>Government Functions</span></li><li><i class="ri-check-fill"></i><span>Team Buildings</span></li></ul><button class="enquire-btn js-enquire-btn" data-service="Event Planning">Enquire about this service</button></div></div>
-    <div id="modal-service-3" class="service-modal" uk-modal><div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" style="max-width:580px;"><button class="uk-modal-close-default" type="button" uk-close></button><h2 class="uk-modal-title">Event Marketing & Promotion</h2><p>A successful event requires the right audience. We develop and implement targeted marketing strategies that maximize attendance, engagement, visibility and return on investment.</p><p>Our campaigns leverage both traditional and digital platforms to ensure your event reaches the right stakeholders.</p><h4>Services Include</h4><ul class="modal-list"><li><i class="ri-check-fill"></i><span>Event Branding</span></li><li><i class="ri-check-fill"></i><span>Digital Marketing</span></li><li><i class="ri-check-fill"></i><span>Media Buying</span></li><li><i class="ri-check-fill"></i><span>Social Media Campaigns</span></li><li><i class="ri-check-fill"></i><span>Audience Acquisition</span></li><li><i class="ri-check-fill"></i><span>Email Marketing</span></li><li><i class="ri-check-fill"></i><span>Content Creation</span></li><li><i class="ri-check-fill"></i><span>Stakeholder Engagement</span></li></ul><button class="enquire-btn js-enquire-btn" data-service="Event Marketing">Enquire about this service</button></div></div>
-    <div id="modal-service-4" class="service-modal" uk-modal><div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" style="max-width:580px;"><button class="uk-modal-close-default" type="button" uk-close></button><h2 class="uk-modal-title">Corporate Communications</h2><p>We help organizations communicate effectively with internal and external stakeholders through strategic messaging and communication planning.</p><p>Our communication solutions enhance reputation, strengthen stakeholder trust and support organizational objectives.</p><h4>Services Include</h4><ul class="modal-list"><li><i class="ri-check-fill"></i><span>Communication Strategy Development</span></li><li><i class="ri-check-fill"></i><span>Corporate Messaging</span></li><li><i class="ri-check-fill"></i><span>Internal Communications</span></li><li><i class="ri-check-fill"></i><span>Executive Communications</span></li><li><i class="ri-check-fill"></i><span>Crisis Communication Support</span></li><li><i class="ri-check-fill"></i><span>Stakeholder Communication Plans</span></li></ul><button class="enquire-btn js-enquire-btn" data-service="Corporate Communications">Enquire about this service</button></div></div>
-    <div id="modal-service-5" class="service-modal" uk-modal><div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" style="max-width:580px;"><button class="uk-modal-close-default" type="button" uk-close></button><h2 class="uk-modal-title">Public Relations Support</h2><p>We build and protect organizational reputation through strategic media engagement, public relations planning and stakeholder relations.</p><p>Our PR services ensure your organization maintains a positive public image while effectively communicating its value proposition.</p><h4>Services Include</h4><ul class="modal-list"><li><i class="ri-check-fill"></i><span>Media Relations</span></li><li><i class="ri-check-fill"></i><span>Press Conferences</span></li><li><i class="ri-check-fill"></i><span>Press Release Development</span></li><li><i class="ri-check-fill"></i><span>Reputation Management</span></li><li><i class="ri-check-fill"></i><span>Thought Leadership Positioning</span></li><li><i class="ri-check-fill"></i><span>Stakeholder Engagement</span></li></ul><button class="enquire-btn js-enquire-btn" data-service="PR Support">Enquire about this service</button></div></div>
-    <div id="modal-service-6" class="service-modal" uk-modal><div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" style="max-width:580px;"><button class="uk-modal-close-default" type="button" uk-close></button><h2 class="uk-modal-title">Brand Activation Campaigns</h2><p>We create memorable brand experiences that connect organizations with their target audiences and inspire meaningful engagement.</p><p>Our activation campaigns are designed to increase visibility, awareness, customer interaction and brand loyalty.</p><h4>Services Include</h4><ul class="modal-list"><li><i class="ri-check-fill"></i><span>Experiential Marketing</span></li><li><i class="ri-check-fill"></i><span>Product Launch Activations</span></li><li><i class="ri-check-fill"></i><span>Roadshows</span></li><li><i class="ri-check-fill"></i><span>Consumer Engagement Campaigns</span></li><li><i class="ri-check-fill"></i><span>Trade Activations</span></li><li><i class="ri-check-fill"></i><span>Community Outreach Programs</span></li></ul><button class="enquire-btn js-enquire-btn" data-service="Brand Activation">Enquire about this service</button></div></div>
-    <div id="modal-service-7" class="service-modal" uk-modal><div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" style="max-width:580px;"><button class="uk-modal-close-default" type="button" uk-close></button><h2 class="uk-modal-title">Strategic Partnerships</h2><p>Strong partnerships create sustainable growth and long-term success. We help organizations identify, establish and manage strategic alliances that create shared value.</p><p>We facilitate collaboration between private sector organizations, government agencies, professional associations, development partners and international institutions.</p><h4>Services Include</h4><ul class="modal-list"><li><i class="ri-check-fill"></i><span>Partnership Strategy Development</span></li><li><i class="ri-check-fill"></i><span>Stakeholder Mapping</span></li><li><i class="ri-check-fill"></i><span>Strategic Alliance Facilitation</span></li><li><i class="ri-check-fill"></i><span>Partnership Negotiations</span></li><li><i class="ri-check-fill"></i><span>Relationship Management</span></li><li><i class="ri-check-fill"></i><span>Collaborative Project Development</span></li></ul><button class="enquire-btn js-enquire-btn" data-service="Strategic Partnerships">Enquire about this service</button></div></div>
+    <div id="modal-service-1" class="service-modal" uk-modal><div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" style="max-width:580px;"><button class="uk-modal-close-default" type="button" uk-close></button><h2 class="uk-modal-title">Resource Mobilisation & Sponsorship</h2><p>We help organisations secure financial and non‑financial support through strategic sponsorship acquisition, donor engagement, fundraising initiatives and partnership development.</p><p>Our team identifies opportunities, develops compelling sponsorship proposals, engages potential partners and manages stakeholder relationships to maximise resource generation and project sustainability.</p><h4>Key Solutions</h4><ul class="modal-list"><li><i class="ri-check-fill"></i><span>Sponsorship Strategy Development</span></li><li><i class="ri-check-fill"></i><span>Fundraising Campaigns</span></li><li><i class="ri-check-fill"></i><span>Donor Engagement</span></li><li><i class="ri-check-fill"></i><span>Partnership Acquisition</span></li><li><i class="ri-check-fill"></i><span>Proposal Development</span></li><li><i class="ri-check-fill"></i><span>Corporate Sponsorship Management</span></li><li><i class="ri-check-fill"></i><span>Resource Mobilisation Advisory</span></li></ul><button class="enquire-btn js-enquire-btn" data-service="Resource Mobilisation">Enquire Now</button></div></div>
+    <div id="modal-service-2" class="service-modal" uk-modal><div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" style="max-width:580px;"><button class="uk-modal-close-default" type="button" uk-close></button><h2 class="uk-modal-title">Event Planning & Management</h2><p>We design, coordinate and execute professional events that deliver exceptional experiences and measurable outcomes.</p><p>From concept development to post‑event reporting, we manage every aspect of your event with precision and attention to detail.</p><h4>Events We Manage</h4><ul class="modal-list"><li><i class="ri-check-fill"></i><span>Conferences</span></li><li><i class="ri-check-fill"></i><span>Corporate Events</span></li><li><i class="ri-check-fill"></i><span>Annual General Meetings</span></li><li><i class="ri-check-fill"></i><span>Professional Forums</span></li><li><i class="ri-check-fill"></i><span>Product Launches</span></li><li><i class="ri-check-fill"></i><span>Awards Ceremonies</span></li><li><i class="ri-check-fill"></i><span>Trade Exhibitions</span></li><li><i class="ri-check-fill"></i><span>Networking Events</span></li><li><i class="ri-check-fill"></i><span>Government Functions</span></li><li><i class="ri-check-fill"></i><span>Team Buildings</span></li></ul><button class="enquire-btn js-enquire-btn" data-service="Event Planning">Enquire Now</button></div></div>
+    <div id="modal-service-3" class="service-modal" uk-modal><div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" style="max-width:580px;"><button class="uk-modal-close-default" type="button" uk-close></button><h2 class="uk-modal-title">Event Marketing & Promotion</h2><p>A successful event requires the right audience. We develop and implement targeted marketing strategies that maximise attendance, engagement, visibility and return on investment.</p><p>Our campaigns leverage both traditional and digital platforms to ensure your event reaches the right stakeholders.</p><h4>Services Include</h4><ul class="modal-list"><li><i class="ri-check-fill"></i><span>Event Branding</span></li><li><i class="ri-check-fill"></i><span>Digital Marketing</span></li><li><i class="ri-check-fill"></i><span>Media Buying</span></li><li><i class="ri-check-fill"></i><span>Social Media Campaigns</span></li><li><i class="ri-check-fill"></i><span>Audience Acquisition</span></li><li><i class="ri-check-fill"></i><span>Email Marketing</span></li><li><i class="ri-check-fill"></i><span>Content Creation</span></li><li><i class="ri-check-fill"></i><span>Stakeholder Engagement</span></li></ul><button class="enquire-btn js-enquire-btn" data-service="Event Marketing">Enquire Now</button></div></div>
+    <div id="modal-service-4" class="service-modal" uk-modal><div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" style="max-width:580px;"><button class="uk-modal-close-default" type="button" uk-close></button><h2 class="uk-modal-title">Corporate Communications</h2><p>We help organisations communicate effectively with internal and external stakeholders through strategic messaging and communication planning.</p><p>Our communication solutions enhance reputation, strengthen stakeholder trust and support organisational objectives.</p><h4>Services Include</h4><ul class="modal-list"><li><i class="ri-check-fill"></i><span>Communication Strategy Development</span></li><li><i class="ri-check-fill"></i><span>Corporate Messaging</span></li><li><i class="ri-check-fill"></i><span>Internal Communications</span></li><li><i class="ri-check-fill"></i><span>Executive Communications</span></li><li><i class="ri-check-fill"></i><span>Crisis Communication Support</span></li><li><i class="ri-check-fill"></i><span>Stakeholder Communication Plans</span></li></ul><button class="enquire-btn js-enquire-btn" data-service="Corporate Communications">Enquire Now</button></div></div>
+    <div id="modal-service-5" class="service-modal" uk-modal><div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" style="max-width:580px;"><button class="uk-modal-close-default" type="button" uk-close></button><h2 class="uk-modal-title">Public Relations Support</h2><p>We build and protect organisational reputation through strategic media engagement, public relations planning and stakeholder relations.</p><p>Our PR services ensure your organisation maintains a positive public image while effectively communicating its value proposition.</p><h4>Services Include</h4><ul class="modal-list"><li><i class="ri-check-fill"></i><span>Media Relations</span></li><li><i class="ri-check-fill"></i><span>Press Conferences</span></li><li><i class="ri-check-fill"></i><span>Press Release Development</span></li><li><i class="ri-check-fill"></i><span>Reputation Management</span></li><li><i class="ri-check-fill"></i><span>Thought Leadership Positioning</span></li><li><i class="ri-check-fill"></i><span>Stakeholder Engagement</span></li></ul><button class="enquire-btn js-enquire-btn" data-service="PR Support">Enquire Now</button></div></div>
+    <div id="modal-service-6" class="service-modal" uk-modal><div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" style="max-width:580px;"><button class="uk-modal-close-default" type="button" uk-close></button><h2 class="uk-modal-title">Brand Activation Campaigns</h2><p>We create memorable brand experiences that connect organisations with their target audiences and inspire meaningful engagement.</p><p>Our activation campaigns are designed to increase visibility, awareness, customer interaction and brand loyalty.</p><h4>Services Include</h4><ul class="modal-list"><li><i class="ri-check-fill"></i><span>Experiential Marketing</span></li><li><i class="ri-check-fill"></i><span>Product Launch Activations</span></li><li><i class="ri-check-fill"></i><span>Roadshows</span></li><li><i class="ri-check-fill"></i><span>Consumer Engagement Campaigns</span></li><li><i class="ri-check-fill"></i><span>Trade Activations</span></li><li><i class="ri-check-fill"></i><span>Community Outreach Programmes</span></li></ul><button class="enquire-btn js-enquire-btn" data-service="Brand Activation">Enquire Now</button></div></div>
+    <div id="modal-service-7" class="service-modal" uk-modal><div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" style="max-width:580px;"><button class="uk-modal-close-default" type="button" uk-close></button><h2 class="uk-modal-title">Strategic Partnerships</h2><p>Strong partnerships create sustainable growth and long‑term success. We help organisations identify, establish and manage strategic alliances that create shared value.</p><p>We facilitate collaboration between private sector organisations, government agencies, professional associations, development partners and international institutions.</p><h4>Services Include</h4><ul class="modal-list"><li><i class="ri-check-fill"></i><span>Partnership Strategy Development</span></li><li><i class="ri-check-fill"></i><span>Stakeholder Mapping</span></li><li><i class="ri-check-fill"></i><span>Strategic Alliance Facilitation</span></li><li><i class="ri-check-fill"></i><span>Partnership Negotiations</span></li><li><i class="ri-check-fill"></i><span>Relationship Management</span></li><li><i class="ri-check-fill"></i><span>Collaborative Project Development</span></li></ul><button class="enquire-btn js-enquire-btn" data-service="Strategic Partnerships">Enquire Now</button></div></div>
 
     <div id="page-contact" class="page-section" style="display:none;">
         <section class="hero hero-inner-height" style="background-image:url('assets/img/hero-contact.jpg')">
@@ -746,7 +706,7 @@
                                 <i class="ri-phone-line"></i>
                                 <div class="contact-info-text">
                                     <div class="contact-info-label">Phone</div>
-                                    <div class="contact-info-value">+254 739 537 367</div>
+                                    <div class="contact-info-value"><a href="tel:+254739537367">+254 739 537 367</a></div>
                                 </div>
                             </div>
                             <div class="contact-info-item">
@@ -766,7 +726,7 @@
                             </div>
                             <div class="uk-grid uk-grid-small uk-margin-small-top" uk-grid>
                                 <div class="uk-width-1-2@s"><label class="uk-form-label">Phone Number</label><input class="uk-input" type="tel" name="phone" placeholder="+254 700 000 000"></div>
-                                <div class="uk-width-1-2@s"><label class="uk-form-label">Service Interest</label><select class="uk-select" name="service" id="contact-service-select"><option>— Select —</option><option>Resource Mobilization</option><option>Event Planning</option><option>Event Marketing</option><option>Corporate Communications</option><option>PR Support</option><option>Brand Activation</option><option>Strategic Partnerships</option><option>General Inquiry</option></select></div>
+                                <div class="uk-width-1-2@s"><label class="uk-form-label">Service Interest</label><select class="uk-select" name="service" id="contact-service-select"><option>— Select —</option><option>Resource Mobilisation</option><option>Event Planning</option><option>Event Marketing</option><option>Corporate Communications</option><option>PR Support</option><option>Brand Activation</option><option>Strategic Partnerships</option><option>General Inquiry</option></select></div>
                             </div>
                             <div class="uk-margin-small-top"><label class="uk-form-label">Your Message *</label><textarea class="uk-textarea" name="message" rows="5" placeholder="Tell us about your project or inquiry..." required></textarea></div>
                             <button type="submit" class="btn-primary uk-button uk-margin-medium-top">Send Message</button>
@@ -783,7 +743,7 @@
         </section>
         <section class="section">
             <div class="uk-container" style="max-width:720px;">
-                <p><strong>Effective Date:</strong> January 2024</p>
+                <p><strong>Effective Date:</strong> 13 June 2026</p>
                 <p>Jena Brands Ltd ("we", "us", or "our") respects your privacy and is committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.</p>
                 <h3>1. Information We Collect</h3>
                 <p>We may collect the following types of information:</p>
@@ -804,7 +764,7 @@
                 <h3>4. Cookies and Tracking Technologies</h3>
                 <p>Our website may use cookies to enhance your browsing experience. You can choose to disable cookies through your browser settings; however, this may affect certain features of the site.</p>
                 <h3>5. Data Security</h3>
-                <p>We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the Internet is 100% secure.</p>
+                <p>We implement appropriate technical and organisational measures to protect your personal information against unauthorised access, alteration, disclosure, or destruction. However, no method of transmission over the Internet is 100% secure.</p>
                 <h3>6. Your Data Protection Rights</h3>
                 <p>Depending on your jurisdiction, you may have the right to:</p>
                 <ul>
@@ -819,7 +779,7 @@
                 <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated effective date. We encourage you to review this policy periodically.</p>
                 <h3>8. Contact Us</h3>
                 <p>If you have any questions about this Privacy Policy, please contact us:</p>
-                <p>Email: <a href="mailto:info@jenabrandsltd.co.ke">info@jenabrandsltd.co.ke</a><br>Phone: +254 739 537 367</p>
+                <p>Email: <a href="mailto:info@jenabrandsltd.co.ke">info@jenabrandsltd.co.ke</a><br>Phone: <a href="tel:+254739537367">+254 739 537 367</a></p>
             </div>
         </section>
     </div>
@@ -827,8 +787,8 @@
     <section id="global-cta" class="cta-section" style="display:none;">
         <div class="uk-container">
             <h2>Ready to create impact together?</h2>
-            <p>Let's discuss how we can mobilize resources, build partnerships and deliver exceptional experiences for your organization.</p>
-            <a href="#contact" class="btn-ghost" data-nav="contact">Request a Consultation</a>
+            <p>Let's discuss how we can mobilise resources, build partnerships and deliver exceptional experiences for your organisation.</p>
+            <a href="#contact" class="btn-ghost" data-nav="contact">Contact Us</a>
         </div>
     </section>
 
@@ -901,25 +861,6 @@
                     const select = document.getElementById('contact-service-select');
                     if (select) { select.value = service; }
                 }, 120);
-            });
-        });
-
-        const tabs = document.querySelectorAll('.core-tab');
-        const descRow = document.getElementById('valuesDescRow');
-        function setActive(tab) {
-            tabs.forEach(t => t.classList.remove('active'));
-            tab.classList.add('active');
-            const desc = tab.getAttribute('data-desc');
-            if (descRow) descRow.textContent = desc;
-        }
-        tabs.forEach(tab => {
-            tab.addEventListener('click', function() {
-                if (this.classList.contains('active')) {
-                    this.classList.remove('active');
-                    if (descRow) descRow.textContent = '';
-                } else {
-                    setActive(this);
-                }
             });
         });
 
